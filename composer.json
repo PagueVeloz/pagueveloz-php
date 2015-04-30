@@ -1,0 +1,22 @@
+{
+    "name": "pagueveloz/pagueveloz",
+    "description": "Client PHP for PagueVeloz API",
+    "type": "client",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Cristian B. Santos",
+            "email": "cristian.deveng@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+            "monolog/monolog": "1.13.*@dev"
+        },
+    "autoload": {
+        "psr-4": {
+            "PagueVeloz\\": "src/"
+        }
+    }
+
+}
