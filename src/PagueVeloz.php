@@ -110,7 +110,7 @@ abstract class PagueVeloz
 		return $service;
 	}
 
-	public static function Cep($v = NULL)
+	public static function Cep($version = NULL)
 	{
 		$service = self::GetService('Cep');
 		
@@ -126,7 +126,7 @@ abstract class PagueVeloz
 		return $service;
 	}
 
-	public static function Ping($v = NULL)
+	public static function Ping($version = NULL)
 	{
 		$service = self::GetService('Ping');
 		
@@ -142,7 +142,7 @@ abstract class PagueVeloz
 		return $service;
 	}
 
-	public static function PacotesSMS($v = NULL)
+	public static function PacotesSMS($version = NULL)
 	{
 		$service = self::GetService('PacotesSMS');
 		
@@ -158,7 +158,7 @@ abstract class PagueVeloz
 		return $service;
 	}
 
-	public static function Saldo($v = NULL)
+	public static function Saldo($version = NULL)
 	{
 		$service = self::GetService('Saldo');
 		
@@ -174,7 +174,7 @@ abstract class PagueVeloz
 		return $service;
 	}
 
-	public static function ConsultarBoleto($v = NULL)
+	public static function ConsultarBoleto($version = NULL)
 	{
 		$service = self::GetService('ConsultarBoleto');
 		
@@ -191,7 +191,7 @@ abstract class PagueVeloz
 	}
 
 
-	public static function Saque($v = NULL)
+	public static function Saque($version = NULL)
 	{
 		$service = self::GetService('Saque');
 		
@@ -207,7 +207,7 @@ abstract class PagueVeloz
 		return $service;
 	}
 
-	public static function ComprarCreditoSMS($v = NULL)
+	public static function ComprarCreditoSMS($version = NULL)
 	{
 		$service = self::GetService('ComprarCreditoSMS');
 		
@@ -223,7 +223,7 @@ abstract class PagueVeloz
 		return $service;
 	}
 
-	public static function Boleto($v = NULL)
+	public static function Boleto($version = NULL)
 	{
 		$service = self::GetService('Boleto');
 		
@@ -243,7 +243,7 @@ abstract class PagueVeloz
 		return $service;
 	}
 
-	public static function ContaBancaria($v = NULL)
+	public static function ContaBancaria($version = NULL)
 	{
 		$service = self::GetService('ContaBancaria');
 		
@@ -264,7 +264,7 @@ abstract class PagueVeloz
 		return $service;
 	}
 
-	public static function DefaultBoleto($v = NULL)
+	public static function DefaultBoleto($version = NULL)
 	{
 		$service = self::GetService('DefaultBoleto');
 		
@@ -280,7 +280,7 @@ abstract class PagueVeloz
 		return $service;
 	}
 
-	public static function MensagemSMS($v = NULL)
+	public static function MensagemSMS($version = NULL)
 	{
 		$service = self::GetService('MensagemSMS');
 		
@@ -296,7 +296,7 @@ abstract class PagueVeloz
 		return $service;
 	}
 
-	public static function UsuarioCliente($v = NULL)
+	public static function UsuarioCliente($version = NULL)
 	{
 		$service = self::GetService('UsuarioCliente');
 		
@@ -312,7 +312,7 @@ abstract class PagueVeloz
 		return $service;
 	}
 
-	public static function Transferencia($v = NULL)
+	public static function Transferencia($version = NULL)
 	{
 		$service = self::GetService('Transferencia');
 		
@@ -328,7 +328,7 @@ abstract class PagueVeloz
 		return $service;
 	}
 
-	public static function Tarifa($v = NULL)
+	public static function Tarifa($version = NULL)
 	{
 		$service = self::GetService('Tarifa');
 		
@@ -344,7 +344,7 @@ abstract class PagueVeloz
 		return $service;
 	}
 
-	public static function Extrato($v = NULL)
+	public static function Extrato($version = NULL)
 	{
 		$service = self::GetService('Cep');
 		
@@ -360,7 +360,7 @@ abstract class PagueVeloz
 		return $service;
 	}
 
-	public static function CreditoSMS($v = NULL)
+	public static function CreditoSMS($version = NULL)
 	{
 		$service = self::GetService('Cep');
 		
@@ -376,7 +376,7 @@ abstract class PagueVeloz
 		return $service;
 	}
 
-	public static function Consultar($v = NULL)
+	public static function Consultar($version = NULL)
 	{
 		$service = self::GetService('Consultar');
 		
@@ -396,7 +396,7 @@ abstract class PagueVeloz
 		return $service;
 	}
 
-	public static function Cliente($v = NULL)
+	public static function Cliente($version = NULL)
 	{
 		$service = self::GetService('Cep');
 		
