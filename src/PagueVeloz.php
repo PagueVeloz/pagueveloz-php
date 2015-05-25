@@ -103,7 +103,8 @@ abstract class PagueVeloz
 				$service =  new \PagueVeloz\Api\v1\Assinar($dto);
 				break;
 			case 'v2':
-				$service =  new \PagueVeloz\Api\v2\Assinar;
+				$dto = new \PagueVeloz\Api\v2\Dto\AssinarDTO;
+				$service =  new \PagueVeloz\Api\v2\Assinar($dto);
 				break;
 		}
 		
