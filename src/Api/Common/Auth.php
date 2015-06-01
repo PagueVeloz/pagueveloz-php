@@ -21,7 +21,7 @@ class Auth
 
 	public function getAuthorization()
 	{
-		return 'Authorization: Basic '.base64_encode($this->getEmail().":".$this->getSenha());
+		return 'Authorization: Basic '.base64_encode($this->getEmail().":".$this->getToken());
 	}
 
     /**

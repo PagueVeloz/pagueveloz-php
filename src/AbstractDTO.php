@@ -19,9 +19,9 @@ abstract class AbstractDTO extends ObjectFactory
     	foreach (ObjectFactory::toArray($this->getKeys()) as $key => $value) 
     	{
     		if (!empty($value))
-    			$request[$key] = $value;
+    			$request[$key] = utf8_encode($value);
     	}
-        
+   
     	return json_encode($request);
     }
 
