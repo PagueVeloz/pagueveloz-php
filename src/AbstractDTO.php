@@ -15,13 +15,13 @@ abstract class AbstractDTO extends ObjectFactory
     public function getRequest()
     {
     	$request = array();
-    	
-    	foreach (ObjectFactory::toArray($this->getKeys()) as $key => $value) 
+
+    	foreach (ObjectFactory::toArray($this->getKeys()) as $key => $value)
     	{
     		if (!empty($value))
-    			$request[$key] = $value;
+    			$request[$key] = utf8_encode($value);
     	}
-        
+
     	return json_encode($request);
     }
 
@@ -29,7 +29,7 @@ abstract class AbstractDTO extends ObjectFactory
 
     public function toArray()
     {
-    	
+
     	return $this->_toArray();
     }
 
@@ -37,7 +37,7 @@ abstract class AbstractDTO extends ObjectFactory
     {
     	$vars = get_object_vars($this);
 
-    	foreach ($vars as $key => $value) 
+    	foreach ($vars as $key => $value)
     	{
     		if (is_object($value))
     		{

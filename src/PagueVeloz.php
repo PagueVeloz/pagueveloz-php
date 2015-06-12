@@ -52,23 +52,23 @@ abstract class PagueVeloz
 			{
 				if ($el === self::$version)
 					return $el;
-				
+
 			}));
-		else 
+		else
 		if (!empty($v))
 			$version = array_pop(array_filter($service['version'], function($el) use ($v)
 			{
 				if ($el === $v)
 					return $el;
-				
+
 			}));
-		else 
+		else
 			$version = $service['default'];
-		
+
 		if (empty($version))
 			throw new \Exception("Verão da API não encontrada", 1);
-			
-		
+
+
 		return $version;
 	}
 
@@ -87,7 +87,7 @@ abstract class PagueVeloz
 
 		if (empty($listService) || count($listService) === 0 || count($listService) > 1)
 			throw new \Exception("Erro ao localizar Serviço", 1);
-			
+
 		return array_pop($listService);
 	}
 
@@ -95,7 +95,7 @@ abstract class PagueVeloz
 	{
 		$service = self::GetService('Assinar');
 
-		switch (self::GetVersion($service, $version)) 
+		switch (self::GetVersion($service, $version))
 		{
 			case 'v1':
 
@@ -103,18 +103,19 @@ abstract class PagueVeloz
 				$service =  new \PagueVeloz\Api\v1\Assinar($dto);
 				break;
 			case 'v2':
-				$service =  new \PagueVeloz\Api\v2\Assinar;
+				$dto = new \PagueVeloz\Api\v2\Dto\AssinarDTO;
+				$service =  new \PagueVeloz\Api\v2\Assinar($dto);
 				break;
 		}
-		
+
 		return $service;
 	}
 
-	public static function Cep($v = NULL)
+	public static function Cep($version = NULL)
 	{
 		$service = self::GetService('Cep');
-		
-		switch (self::GetVersion($service, $version)) 
+
+		switch (self::GetVersion($service, $version))
 		{
 			case 'v1':
 
@@ -122,15 +123,15 @@ abstract class PagueVeloz
 				break;
 
 		}
-		
+
 		return $service;
 	}
 
-	public static function Ping($v = NULL)
+	public static function Ping($version = NULL)
 	{
 		$service = self::GetService('Ping');
-		
-		switch (self::GetVersion($service, $version)) 
+
+		switch (self::GetVersion($service, $version))
 		{
 			case 'v1':
 
@@ -138,15 +139,15 @@ abstract class PagueVeloz
 				break;
 
 		}
-		
+
 		return $service;
 	}
 
-	public static function PacotesSMS($v = NULL)
+	public static function PacotesSMS($version = NULL)
 	{
 		$service = self::GetService('PacotesSMS');
-		
-		switch (self::GetVersion($service, $version)) 
+
+		switch (self::GetVersion($service, $version))
 		{
 			case 'v1':
 
@@ -154,15 +155,15 @@ abstract class PagueVeloz
 				break;
 
 		}
-		
+
 		return $service;
 	}
 
-	public static function Saldo($v = NULL)
+	public static function Saldo($version = NULL)
 	{
 		$service = self::GetService('Saldo');
-		
-		switch (self::GetVersion($service, $version)) 
+
+		switch (self::GetVersion($service, $version))
 		{
 			case 'v1':
 
@@ -170,15 +171,15 @@ abstract class PagueVeloz
 				break;
 
 		}
-		
+
 		return $service;
 	}
 
-	public static function ConsultarBoleto($v = NULL)
+	public static function ConsultarBoleto($version = NULL)
 	{
 		$service = self::GetService('ConsultarBoleto');
-		
-		switch (self::GetVersion($service, $version)) 
+
+		switch (self::GetVersion($service, $version))
 		{
 			case 'v1':
 
@@ -186,16 +187,16 @@ abstract class PagueVeloz
 				break;
 
 		}
-		
+
 		return $service;
 	}
 
 
-	public static function Saque($v = NULL)
+	public static function Saque($version = NULL)
 	{
 		$service = self::GetService('Saque');
-		
-		switch (self::GetVersion($service, $version)) 
+
+		switch (self::GetVersion($service, $version))
 		{
 			case 'v1':
 				$dto = new \PagueVeloz\Api\v1\Dto\SaqueDTO;
@@ -203,15 +204,15 @@ abstract class PagueVeloz
 				break;
 
 		}
-		
+
 		return $service;
 	}
 
-	public static function ComprarCreditoSMS($v = NULL)
+	public static function ComprarCreditoSMS($version = NULL)
 	{
 		$service = self::GetService('ComprarCreditoSMS');
-		
-		switch (self::GetVersion($service, $version)) 
+
+		switch (self::GetVersion($service, $version))
 		{
 			case 'v2':
 				$dto = new \PagueVeloz\Api\v2\Dto\ComprarCreditoSMSDTO;
@@ -219,15 +220,15 @@ abstract class PagueVeloz
 				break;
 
 		}
-		
+
 		return $service;
 	}
 
-	public static function Boleto($v = NULL)
+	public static function Boleto($version = NULL)
 	{
 		$service = self::GetService('Boleto');
-		
-		switch (self::GetVersion($service, $version)) 
+
+		switch (self::GetVersion($service, $version))
 		{
 			case 'v2':
 				$dto = new \PagueVeloz\Api\v2\Dto\BoletoDTO;
@@ -239,15 +240,15 @@ abstract class PagueVeloz
 				break;
 
 		}
-		
+
 		return $service;
 	}
 
-	public static function ContaBancaria($v = NULL)
+	public static function ContaBancaria($version = NULL)
 	{
 		$service = self::GetService('ContaBancaria');
-		
-		switch (self::GetVersion($service, $version)) 
+
+		switch (self::GetVersion($service, $version))
 		{
 			case 'v1':
 				$dto = new \PagueVeloz\Api\v1\Dto\ContaBancariaDTO;
@@ -260,15 +261,15 @@ abstract class PagueVeloz
 				break;
 
 		}
-		
+
 		return $service;
 	}
 
-	public static function DefaultBoleto($v = NULL)
+	public static function DefaultBoleto($version = NULL)
 	{
 		$service = self::GetService('DefaultBoleto');
-		
-		switch (self::GetVersion($service, $version)) 
+
+		switch (self::GetVersion($service, $version))
 		{
 			case 'v1':
 				$dto = new \PagueVeloz\Api\v1\Dto\DefaultBoletoDTO;
@@ -276,15 +277,15 @@ abstract class PagueVeloz
 				break;
 
 		}
-		
+
 		return $service;
 	}
 
-	public static function MensagemSMS($v = NULL)
+	public static function MensagemSMS($version = NULL)
 	{
 		$service = self::GetService('MensagemSMS');
-		
-		switch (self::GetVersion($service, $version)) 
+
+		switch (self::GetVersion($service, $version))
 		{
 			case 'v1':
 				$dto = new \PagueVeloz\Api\v1\Dto\MensagemSMSDTO;
@@ -292,15 +293,15 @@ abstract class PagueVeloz
 				break;
 
 		}
-		
+
 		return $service;
 	}
 
-	public static function UsuarioCliente($v = NULL)
+	public static function UsuarioCliente($version = NULL)
 	{
 		$service = self::GetService('UsuarioCliente');
-		
-		switch (self::GetVersion($service, $version)) 
+
+		switch (self::GetVersion($service, $version))
 		{
 			case 'v1':
 				$dto = new \PagueVeloz\Api\v1\Dto\UsuarioClienteDTO;
@@ -308,15 +309,15 @@ abstract class PagueVeloz
 				break;
 
 		}
-		
+
 		return $service;
 	}
 
-	public static function Transferencia($v = NULL)
+	public static function Transferencia($version = NULL)
 	{
 		$service = self::GetService('Transferencia');
-		
-		switch (self::GetVersion($service, $version)) 
+
+		switch (self::GetVersion($service, $version))
 		{
 			case 'v1':
 				$dto = new \PagueVeloz\Api\v1\Dto\TransferenciaDTO;
@@ -324,15 +325,15 @@ abstract class PagueVeloz
 				break;
 
 		}
-		
+
 		return $service;
 	}
 
-	public static function Tarifa($v = NULL)
+	public static function Tarifa($version = NULL)
 	{
 		$service = self::GetService('Tarifa');
-		
-		switch (self::GetVersion($service, $version)) 
+
+		switch (self::GetVersion($service, $version))
 		{
 			case 'v1':
 
@@ -340,15 +341,15 @@ abstract class PagueVeloz
 				break;
 
 		}
-		
+
 		return $service;
 	}
 
-	public static function Extrato($v = NULL)
+	public static function Extrato($version = NULL)
 	{
 		$service = self::GetService('Cep');
-		
-		switch (self::GetVersion($service, $version)) 
+
+		switch (self::GetVersion($service, $version))
 		{
 			case 'v1':
 
@@ -356,15 +357,15 @@ abstract class PagueVeloz
 				break;
 
 		}
-		
+
 		return $service;
 	}
 
-	public static function CreditoSMS($v = NULL)
+	public static function CreditoSMS($version = NULL)
 	{
 		$service = self::GetService('Cep');
-		
-		switch (self::GetVersion($service, $version)) 
+
+		switch (self::GetVersion($service, $version))
 		{
 			case 'v1':
 
@@ -372,15 +373,15 @@ abstract class PagueVeloz
 				break;
 
 		}
-		
+
 		return $service;
 	}
 
-	public static function Consultar($v = NULL)
+	public static function Consultar($version = NULL)
 	{
 		$service = self::GetService('Consultar');
-		
-		switch (self::GetVersion($service, $version)) 
+
+		switch (self::GetVersion($service, $version))
 		{
 			case 'v1':
 				$dto = new \PagueVeloz\Api\v1\Dto\ConsultarDTO;
@@ -392,15 +393,15 @@ abstract class PagueVeloz
 				break;
 
 		}
-		
+
 		return $service;
 	}
 
-	public static function Cliente($v = NULL)
+	public static function Cliente($version = NULL)
 	{
 		$service = self::GetService('Cep');
-		
-		switch (self::GetVersion($service, $version)) 
+
+		switch (self::GetVersion($service, $version))
 		{
 			case 'v1':
 				$dto = new \PagueVeloz\Api\v1\Dto\ClienteDTO;
@@ -409,7 +410,7 @@ abstract class PagueVeloz
 				break;
 
 		}
-		
+
 		return $service;
 	}
 }

@@ -4,8 +4,8 @@ namespace PagueVeloz\Api\v1;
 
 /**
  * Transferencia.php
- * 
- * 
+ *
+ *
  * @author Cristian B. dos Santos <cristian.deveng@gmail.com>
  * @copyright 2015
  * @version 1.0v
@@ -33,15 +33,15 @@ class Transferencia extends ServiceProvider implements InterfaceApi
 	{
 		$this->method = 'GET';
 		$this->Authorization();
-		
+
 		return $this->init();
 	}
-	
+
 	public function GetById($id)
 	{
-		
-		return $this->NoContent();	
-		
+
+		return $this->NoContent();
+
 	}
 
 	public function GetByPeriodo($dtInicial, $dtFinal)
@@ -54,32 +54,32 @@ class Transferencia extends ServiceProvider implements InterfaceApi
 		$this->Authorization();
 
 		$this->url = sprintf('%s/%s/%s', $this->url, $_inicio->format('Y-m-d'), $_final->format('Y-m-d'));
-		
+
 		return $this->init();
 	}
-	
+
 	public function Post()
 	{
 		if ($this->isEmpty($this->dto->getRequest()))
 			throw new \Exception("Erro ao montar request", 1);
-		
+
 		$request = new HttpRequest;
 
 		$request->body = $this->dto->getRequest();
 		$this->method = 'POST';
 		$this->Authorization();
-		
+
 		return $this->init($request);
 	}
-	
-	public function Put()
+
+	public function Put($id)
 	{
 		return $this->NoContent();
 	}
-	
+
 	public function Delete($id)
 	{
 		return $this->NoContent();
 	}
-	
+
 }

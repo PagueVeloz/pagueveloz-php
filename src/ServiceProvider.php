@@ -4,8 +4,8 @@ namespace PagueVeloz;
 
 /**
  * PagueVeloz.php
- * 
- * 
+ *
+ *
  * @author Cristian B. dos Santos <cristian.deveng@gmail.com>
  * @copyright 2015
  * @version 1.0v
@@ -27,7 +27,7 @@ abstract class ServiceProvider extends Curl
 	{
 		if (empty(PagueVeloz::$url))
 			throw new \Exception("Favor informar a URL do Pague Veloz", 1);
-		
+
 		$this->ssl   = true;
 		$this->log   = true;
 		$this->proxy = false;
@@ -35,9 +35,9 @@ abstract class ServiceProvider extends Curl
 		$this->url   = PagueVeloz::$url.$this->uri;
 
 		$this->auth = new Auth;
-		
+
 		$this->headers[] = 'Content-Type: application/json';
-		
+
 	}
 
 	protected function NoContent()

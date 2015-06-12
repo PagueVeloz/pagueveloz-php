@@ -4,8 +4,8 @@ namespace PagueVeloz\Api\v1;
 
 /**
  * UsuarioCliente.php
- * 
- * 
+ *
+ *
  * @author Cristian B. dos Santos <cristian.deveng@gmail.com>
  * @copyright 2015
  * @version 1.0v
@@ -33,35 +33,35 @@ class UsuarioCliente extends ServiceProvider implements InterfaceApi
 	{
 		$this->method = 'GET';
 		$this->Authorization();
-		
+
 		return $this->init();
 	}
-	
+
 	public function GetById($id)
 	{
-		
+
 		$this->method = 'GET';
 		$this->Authorization();
 		$this->url = sprintf('%s/%s', $this->url, $id);
 
-		return $this->init();	
-		
+		return $this->init();
+
 	}
 
-	
+
 	public function Post()
 	{
 		return $this->NoContent();
 	}
-	
-	public function Put()
+
+	public function Put($id)
 	{
 		return $this->NoContent();
 	}
-	
+
 	public function Delete($id)
 	{
 		return $this->NoContent();
 	}
-	
+
 }

@@ -6,7 +6,7 @@ namespace PagueVeloz\Api\v1\Dto;
 class ContaDTO extends \PagueVeloz\AbstractDTO
 {
     protected $Tipo = NULL; //Bancos|Clientes|ClientesBoletoZClienteJaCadastrado|SMSTelefoneDestino|SMSTelefoneRemetente
-   
+
 
     /**
      * Gets the value of Tipo.

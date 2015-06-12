@@ -4,8 +4,8 @@ namespace PagueVeloz\Api\v1;
 
 /**
  * Conta.php
- * 
- * 
+ *
+ *
  * @author Cristian B. dos Santos <cristian.deveng@gmail.com>
  * @copyright 2015
  * @version 1.0v
@@ -34,10 +34,10 @@ class Conta extends ServiceProvider implements InterfaceApi
 	{
 		$this->method = 'GET';
 		$this->Authorization();
-		
+
 		return $this->init();
 	}
-	
+
 	public function GetById($id)
 	{
 		$this->method = 'GET';
@@ -45,14 +45,14 @@ class Conta extends ServiceProvider implements InterfaceApi
 		$this->url = sprintf('%s/%s', $this->url, $id);
 
 		return $this->init();
-		
+
 	}
-	
+
 	public function Post()
 	{
 		if ($this->isEmpty($this->dto->getRequest()))
 			throw new \Exception("Erro ao montar request", 1);
-		
+
 		$request = new HttpRequest;
 
 		$request->body = $this->dto->getRequest();
@@ -61,12 +61,12 @@ class Conta extends ServiceProvider implements InterfaceApi
 
 		return $this->init($request);
 	}
-	
+
 	public function Put($id = NULL)
 	{
 		return $this->NoContent();
 	}
-	
+
 	public function Delete($id)
 	{
 		$this->method = 'DELETE';
@@ -75,5 +75,5 @@ class Conta extends ServiceProvider implements InterfaceApi
 
 		return $this->init();
 	}
-	
+
 }

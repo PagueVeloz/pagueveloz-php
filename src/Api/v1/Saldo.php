@@ -4,8 +4,8 @@ namespace PagueVeloz\Api\v1;
 
 /**
  * Saldo.php
- * 
- * 
+ *
+ *
  * @author Cristian B. dos Santos <cristian.deveng@gmail.com>
  * @copyright 2015
  * @version 1.0v
@@ -32,30 +32,30 @@ class Saldo extends ServiceProvider implements InterfaceApi
 	{
 		$this->method = 'GET';
 		$this->Authorization();
-		
+
 		return $this->init();
 	}
-	
+
 	public function GetById($id)
 	{
-		
-		return $this->NoContent();	
-		
+
+		return $this->NoContent();
+
 	}
-	
+
 	public function Post()
 	{
 		return $this->NoContent();
 	}
-	
+
 	public function Put($id = NULL)
 	{
 		return $this->NoContent();
 	}
-	
+
 	public function Delete($id)
 	{
 		return $this->NoContent();
 	}
-	
+
 }

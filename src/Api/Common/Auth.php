@@ -5,8 +5,8 @@ namespace PagueVeloz\Api\Common;
 
 /**
  * Auth.php
- * 
- * 
+ *
+ *
  * @author Cristian B. dos Santos <cristian.deveng@gmail.com>
  * @copyright 2015
  * @version 1.0v
@@ -21,7 +21,7 @@ class Auth
 
 	public function getAuthorization()
 	{
-		return 'Authorization: Basic '.base64_encode($this->getEmail().":".$this->getSenha());
+		return 'Authorization: Basic '.base64_encode($this->getEmail().":".$this->getToken());
 	}
 
     /**

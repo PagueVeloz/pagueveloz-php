@@ -2,26 +2,35 @@
 
 namespace PagueVeloz\Api\v2\Dto;
 
+use \PagueVeloz\Api\Common\Dto\CepDTO;
+
 class AssinarDTO extends \PagueVeloz\AbstractDTO
 {
-	protected $Nome = NULL;
-	protected $Documento = NULL;
-	protected $TipoPessoa = 0; // 0=NaoDefinido|1=Fisica|2=Juridica
-	protected $LoginUsuarioDefault = NULL;
-	protected $Email = NULL;
-	protected $UrlNotificacao = NULL;
-	protected $Id = NULL;
+    protected $Nome = NULL;
+    protected $Documento = NULL;
+    protected $TipoPessoa = 0; // 0=NaoDefinido|1=Fisica|2=Juridica
+    protected $LoginUsuarioDefault = NULL;
+    protected $Email = NULL;
+    protected $UrlNotificacao = NULL;
+    protected $Endereco = NULL;
+    protected $Id = NULL;
 
-	public function getNotEmpty()
-	{
-		return [
-				'Nome',
-				'Documento',
-				'TipoPessoa',
-				'LoginUsuarioDefault',
-				'Email',
-				];
-	}
+    public function __construct()
+    {
+        $this->setEndereco(new CepDTO);
+    }
+
+    public function getNotEmpty()
+    {
+        return [
+                'Nome',
+                'Documento',
+                'TipoPessoa',
+                'LoginUsuarioDefault',
+                'Email',
+                'Endereco',
+                ];
+    }
 
     /**
      * Gets the value of Nome.
@@ -187,6 +196,30 @@ class AssinarDTO extends \PagueVeloz\AbstractDTO
     public function setId($Id)
     {
         $this->Id = $Id;
+
+        return $this;
+    }
+
+    /**
+     * Gets the value of Endereco.
+     *
+     * @return mixed
+     */
+    public function getEndereco()
+    {
+        return $this->Endereco;
+    }
+
+    /**
+     * Sets the value of Endereco.
+     *
+     * @param mixed $Endereco the endereco
+     *
+     * @return self
+     */
+    public function setEndereco(CepDTO $Endereco)
+    {
+        $this->Endereco = $Endereco;
 
         return $this;
     }

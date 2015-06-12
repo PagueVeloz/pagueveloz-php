@@ -4,8 +4,8 @@ namespace PagueVeloz\Api\v1;
 
 /**
  * Tarifa.php
- * 
- * 
+ *
+ *
  * @author Cristian B. dos Santos <cristian.deveng@gmail.com>
  * @copyright 2015
  * @version 1.0v
@@ -32,30 +32,30 @@ class Tarifa extends ServiceProvider implements InterfaceApi
 	{
 		$this->method = 'GET';
 		$this->Authorization();
-		
+
 		return $this->init();
 	}
-	
+
 	public function GetById($id)
 	{
-		
-		return $this->NoContent();	
-		
+
+		return $this->NoContent();
+
 	}
-	
+
 	public function Post()
 	{
 		return $this->NoContent();
 	}
-	
-	public function Put()
+
+	public function Put($id)
 	{
 		return $this->NoContent();
 	}
-	
+
 	public function Delete($id)
 	{
 		return $this->NoContent();
 	}
-	
+
 }
