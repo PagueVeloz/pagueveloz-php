@@ -15,9 +15,9 @@ abstract class LogProvider
 		if (empty($inputs))
 			$inputs = array();
 
-		
+
 		$_path = sprintf('%s/Logs/PagueVeloz_%s.log', __DIR__, $_data->format('Ymd'));
-	
+
 		$log = new Logger('PagueVeloz');
 		$log->pushHandler(new StreamHandler($_path, Logger::INFO));
 
@@ -31,10 +31,10 @@ abstract class LogProvider
 
 		if (empty($inputs))
 			$inputs = array();
-		
-		
+
+
 		$_path = sprintf('%s/Logs/PagueVeloz_%s.log', __DIR__, $_data->format('Ymd'));
-	
+
 		$log = new Logger('PagueVeloz');
 		$log->pushHandler(new StreamHandler($_path, Logger::ERROR));
 

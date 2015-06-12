@@ -4,8 +4,8 @@ namespace PagueVeloz\Api\v2;
 
 /**
  * ComprarCreditoSMS.php
- * 
- * 
+ *
+ *
  * @author Cristian B. dos Santos <cristian.deveng@gmail.com>
  * @copyright 2015
  * @version 1.0v
@@ -24,7 +24,7 @@ class ComprarCreditoSMS extends ServiceProvider implements InterfaceApi
 
 		$this->dto = $dto;
 		$this->uri = '/v2/ComprarCreditoSMS';
-		
+
 		parent::__construct();
 
 		return $this;
@@ -44,7 +44,7 @@ class ComprarCreditoSMS extends ServiceProvider implements InterfaceApi
 	{
 		if ($this->isEmpty($this->dto->getRequest()))
 			throw new \Exception("Erro ao montar request", 1);
-		
+
 		$request = new HttpRequest;
 
 		$request->body = $this->dto->getRequest();

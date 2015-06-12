@@ -106,7 +106,7 @@ class CepDTO extends \PagueVeloz\AbstractDTO
     /**
      * Sets the value of CEP.
      *
-     * @param mixed $CEP the 
+     * @param mixed $CEP the
      *
      * @return self
      */

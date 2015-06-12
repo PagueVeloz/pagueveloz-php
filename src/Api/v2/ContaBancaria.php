@@ -4,8 +4,8 @@ namespace PagueVeloz\Api\v2;
 
 /**
  * ContaBancaria.php
- * 
- * 
+ *
+ *
  * @author Cristian B. dos Santos <cristian.deveng@gmail.com>
  * @copyright 2015
  * @version 1.0v
@@ -33,10 +33,10 @@ class ContaBancaria extends ServiceProvider implements InterfaceApi
 	{
 		$this->method = 'GET';
 		$this->Authorization();
-		
+
 		return $this->init();
 	}
-	
+
 	public function GetById($id)
 	{
 		$this->method = 'GET';
@@ -44,14 +44,14 @@ class ContaBancaria extends ServiceProvider implements InterfaceApi
 		$this->url = sprintf('%s/%s', $this->url, $id);
 
 		return $this->init();
-		
+
 	}
-	
+
 	public function Post()
 	{
 		if ($this->isEmpty($this->dto->getRequest()))
 			throw new \Exception("Erro ao montar request", 1);
-		
+
 		$request = new HttpRequest;
 
 		$request->body = $this->dto->getRequest();
@@ -60,22 +60,22 @@ class ContaBancaria extends ServiceProvider implements InterfaceApi
 
 		return $this->init($request);
 	}
-	
+
 	public function Put($id = NULL)
 	{
 		if ($this->isEmpty($this->dto->getRequest()))
 			throw new \Exception("Erro ao montar request", 1);
-		
+
 		$this->Authorization();
 		$request = new HttpRequest;
-		
+
 		$this->url = sprintf('%s?id=%s', $this->url, $id);
 		$request->body = $this->dto->getRequest();
-		$this->method = 'PUT';	
-	
+		$this->method = 'PUT';
+
 		return $this->init($request);
 	}
-	
+
 	public function Delete($id)
 	{
 		$this->method = 'DELETE';
@@ -84,5 +84,5 @@ class ContaBancaria extends ServiceProvider implements InterfaceApi
 
 		return $this->init();
 	}
-	
+
 }

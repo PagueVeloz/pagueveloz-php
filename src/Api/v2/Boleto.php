@@ -4,8 +4,8 @@ namespace PagueVeloz\Api\v2;
 
 /**
  * Boleto.php
- * 
- * 
+ *
+ *
  * @author Cristian B. dos Santos <cristian.deveng@gmail.com>
  * @copyright 2015
  * @version 1.0v
@@ -24,24 +24,24 @@ class Boleto extends ServiceProvider implements InterfaceApi
 		$this->dto = $dto;
 
 		$this->uri = '/v2/Boleto';
-		
+
 		parent::__construct();
 
 		return $this;
-		
+
 	}
 
 	public function Get()
 	{
 		return $this->NoContent();
 	}
-	
+
 	public function GetById($id)
 	{
 		return $this->NoContent();
-		
+
 	}
-	
+
 	public function GetByPagamento($data)
 	{
 		$_data = new \DateTime($data);
@@ -50,7 +50,7 @@ class Boleto extends ServiceProvider implements InterfaceApi
 		$this->Authorization();
 
 		$this->url = sprintf('%s/?data=%s', $this->url, $_data->format('Y-m-d'));
-		
+
 		return $this->init();
 	}
 
@@ -58,7 +58,7 @@ class Boleto extends ServiceProvider implements InterfaceApi
 	{
 		if ($this->isEmpty($this->dto->getRequest()))
 			throw new \Exception("Erro ao montar request", 1);
-		
+
 		$request = new HttpRequest;
 
 		$request->body = $this->dto->getRequest();
@@ -67,12 +67,12 @@ class Boleto extends ServiceProvider implements InterfaceApi
 
 		return $this->init($request);
 	}
-	
+
 	public function Put($id = NULL)
 	{
 		return $this->NoContent();
 	}
-	
+
 	public function Delete($id)
 	{
 		return $this->NoContent();

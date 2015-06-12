@@ -9,10 +9,10 @@ abstract class ObjectFactory
     	if (in_array($atrib, $this->getKeys()))
         	$this->$atrib = $value;
     }
- 
+
     public function __get($atrib)
     {
-     
+
         return $this->$atrib;
     }
 
@@ -28,7 +28,7 @@ abstract class ObjectFactory
 
     public function toArray()
     {
-    	
+
     	return $this->_toArray();
     }
 
@@ -36,7 +36,7 @@ abstract class ObjectFactory
     {
     	$vars = get_object_vars($this);
 
-    	foreach ($vars as $key => $value) 
+    	foreach ($vars as $key => $value)
     	{
     		if (is_object($value))
     		{

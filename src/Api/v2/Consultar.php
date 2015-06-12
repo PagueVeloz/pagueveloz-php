@@ -4,8 +4,8 @@ namespace PagueVeloz\Api\v2;
 
 /**
  * Consultar.php
- * 
- * 
+ *
+ *
  * @author Cristian B. dos Santos <cristian.deveng@gmail.com>
  * @copyright 2015
  * @version 1.0v
@@ -24,7 +24,7 @@ class Consultar extends ServiceProvider implements InterfaceApi
 
 		$this->dto = $dto;
 		$this->uri = '/v2/Consultar';
-		
+
 		parent::__construct();
 
 		return $this;

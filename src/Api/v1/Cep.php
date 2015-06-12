@@ -4,8 +4,8 @@ namespace PagueVeloz\Api\v1;
 
 /**
  * Cep.php
- * 
- * 
+ *
+ *
  * @author Cristian B. dos Santos <cristian.deveng@gmail.com>
  * @copyright 2015
  * @version 1.0v
@@ -32,7 +32,7 @@ class Cep extends ServiceProvider implements InterfaceApi
 	{
 		return $this->NoContent();
 	}
-	
+
 	public function GetById($id)
 	{
 		$this->method = 'GET';
@@ -41,20 +41,20 @@ class Cep extends ServiceProvider implements InterfaceApi
 
 		return $this->init();
 	}
-	
+
 	public function Post()
 	{
 		return $this->NoContent();
 	}
-	
+
 	public function Put($id = NULL)
 	{
 		return $this->NoContent();
 	}
-	
+
 	public function Delete($id)
 	{
 		return $this->NoContent();
 	}
-	
+
 }

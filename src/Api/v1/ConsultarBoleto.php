@@ -4,8 +4,8 @@ namespace PagueVeloz\Api\v1;
 
 /**
  * ConsultarBoleto.php
- * 
- * 
+ *
+ *
  * @author Cristian B. dos Santos <cristian.deveng@gmail.com>
  * @copyright 2015
  * @version 1.0v
@@ -30,7 +30,7 @@ class ConsultarBoleto extends ServiceProvider implements InterfaceApi
 
 	public function Get()
 	{
-		return $this->NoContent();	
+		return $this->NoContent();
 	}
 
 	public function GetByPagamento($data)
@@ -41,30 +41,30 @@ class ConsultarBoleto extends ServiceProvider implements InterfaceApi
 		$this->Authorization();
 
 		$this->url = sprintf('%s/?data=%s', $this->url, $_data->format('Y-m-d'));
-		
+
 		return $this->init();
 	}
-	
+
 	public function GetById($id)
 	{
-		
-		return $this->NoContent();	
-		
+
+		return $this->NoContent();
+
 	}
-	
+
 	public function Post()
 	{
 		return $this->NoContent();
 	}
-	
+
 	public function Put($id = NULL)
 	{
 		return $this->NoContent();
 	}
-	
+
 	public function Delete($id)
 	{
 		return $this->NoContent();
 	}
-	
+
 }

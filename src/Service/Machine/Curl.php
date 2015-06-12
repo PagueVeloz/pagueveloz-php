@@ -4,8 +4,8 @@ namespace PagueVeloz\Service\Machine;
 
 /**
  * Curl.php
- * 
- * 
+ *
+ *
  * @author Cristian B. dos Santos <cristian.deveng@gmail.com>
  * @copyright 2015
  * @version 1.0v
@@ -18,7 +18,7 @@ use \PagueVeloz\LogProvider;
 
 class Curl extends \PagueVeloz\Service\Machine\CurlDTO implements \PagueVeloz\Service\Interfaces\InterfaceCurl
 {
-	
+
 	protected $request;
 
 	public function headers()
@@ -43,7 +43,7 @@ class Curl extends \PagueVeloz\Service\Machine\CurlDTO implements \PagueVeloz\Se
 
 	public function init(HttpRequest $request = null)
 	{
-       
+
 		$init = curl_init();
 
         curl_setopt($init, CURLOPT_URL, $this->url);
@@ -55,9 +55,9 @@ class Curl extends \PagueVeloz\Service\Machine\CurlDTO implements \PagueVeloz\Se
 
         if (!empty($request) && in_array($this->method, array('POST','PUT')))
             curl_setopt($init, CURLOPT_POSTFIELDS, $request->body);
-        
+
         curl_setopt($init, CURLOPT_RETURNTRANSFER, 1);
-        
+
         curl_setopt($init, CURLOPT_HEADER, 1);
 
         if (!empty($this->headers))
@@ -72,14 +72,14 @@ class Curl extends \PagueVeloz\Service\Machine\CurlDTO implements \PagueVeloz\Se
 	        curl_setopt($init, CURLOPT_SSL_VERIFYPEER, 0);
 	    }
 
-        
-       
+
+
         $this->request = curl_exec($init);
 
-       
+
 
 	    $response = new HttpResponse;
-		
+
 		$response->headers     = $this->headers();
 		$response->status      = !empty($this->request) ? substr($response->headers[0], 9, 3) : 204;
 		$response->contentType = !empty($this->request) ? implode(';',array_filter($this->headers(), function($header)
@@ -93,10 +93,10 @@ class Curl extends \PagueVeloz\Service\Machine\CurlDTO implements \PagueVeloz\Se
 
         if ($this->log)
         {
-            
+
             if (isset($request) && !empty($request))
                 LogProvider::Info(sprintf('Request (%s)',$this->url.' '.$this->method), json_decode($request->body, true));
-            
+
             LogProvider::Info(sprintf('Headers (%s)',$this->url), $this->headers);
             LogProvider::Info(sprintf('Response RAW (%s)',$this->url.' '.$this->method), array($this->request));
             LogProvider::Info(sprintf('Response  (%s)',$this->url.' '.$this->method), $response->toArray());

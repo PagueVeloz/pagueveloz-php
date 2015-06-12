@@ -4,8 +4,8 @@ namespace PagueVeloz\Api\v3;
 
 /**
  * Boleto.php
- * 
- * 
+ *
+ *
  * @author Cristian B. dos Santos <cristian.deveng@gmail.com>
  * @copyright 2015
  * @version 1.0v
@@ -24,11 +24,11 @@ class Boleto extends ServiceProvider implements InterfaceApi
 		$this->dto = $dto;
 
 		$this->uri = '/v3/Boleto';
-		
+
 		parent::__construct();
 
 		return $this;
-		
+
 	}
 
 	public function Get()
@@ -37,21 +37,21 @@ class Boleto extends ServiceProvider implements InterfaceApi
 		$this->Authorization();
 
 		$this->url = sprintf('%s/?Status=%s', $this->url, 0);
-		
+
 		return $this->init();
 	}
-	
+
 	public function GetById($id)
 	{
 		$this->method = 'GET';
 		$this->Authorization();
 
 		$this->url = sprintf('%s/?SeuNumero=%s', $this->url, $id);
-		
+
 		return $this->init();
-		
+
 	}
-	
+
 	public function GetByPeriodo($dtInicial, $dtFinal,$status = 0)
 	{
 		$_inicio = new \DateTime($dtInicial);
@@ -61,7 +61,7 @@ class Boleto extends ServiceProvider implements InterfaceApi
 		$this->Authorization();
 
 		$this->url = sprintf('%s/?DataInicio=%s&DataFim=%s&Status=%s', $this->url, $_inicio->format('Y-m-d'), $_final->format('Y-m-d'), $status);
-		
+
 		return $this->init();
 	}
 
@@ -69,7 +69,7 @@ class Boleto extends ServiceProvider implements InterfaceApi
 	{
 		if ($this->isEmpty($this->dto->getRequest()))
 			throw new \Exception("Erro ao montar request", 1);
-		
+
 		$request = new HttpRequest;
 
 		$request->body = $this->dto->getRequest();
@@ -78,12 +78,12 @@ class Boleto extends ServiceProvider implements InterfaceApi
 
 		return $this->init($request);
 	}
-	
+
 	public function Put($id = NULL)
 	{
 		return $this->NoContent();
 	}
-	
+
 	public function Delete($id)
 	{
 		return $this->NoContent();

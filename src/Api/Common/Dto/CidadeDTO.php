@@ -6,7 +6,7 @@ class CidadeDTO extends \PagueVeloz\AbstractDTO
 {
     protected $Nome = NULL;
     protected $Estado = NULL;
-    
+
 
 
 	public function getNotEmpty()

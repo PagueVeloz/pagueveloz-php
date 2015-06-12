@@ -10,7 +10,7 @@ class SaqueDTO extends \PagueVeloz\AbstractDTO
     protected $Valor;
     protected $DataProcessamento;
     protected $Id;
-   
+
 
     /**
      * Gets the value of ContaBancaria.

@@ -4,8 +4,8 @@ namespace PagueVeloz\Api\v1;
 
 /**
  * Consultar.php
- * 
- * 
+ *
+ *
  * @author Cristian B. dos Santos <cristian.deveng@gmail.com>
  * @copyright 2015
  * @version 1.0v
@@ -21,7 +21,7 @@ class Consultar extends ServiceProvider implements InterfaceApi
 {
 	public function __construct(ConsultarDTO $dto)
 	{
-	
+
 		$this->dto = $dto;
 		$this->uri = '/v1/Consultar';
 
@@ -32,9 +32,9 @@ class Consultar extends ServiceProvider implements InterfaceApi
 
 	public function Get()
 	{
-		return $this->NoContent();	
+		return $this->NoContent();
 	}
-	
+
 	public function GetById($id)
 	{
 		$this->method = 'GET';
@@ -43,20 +43,20 @@ class Consultar extends ServiceProvider implements InterfaceApi
 
 		return $this->init();
 	}
-	
+
 	public function Post()
 	{
 		return $this->NoContent();
 	}
-	
+
 	public function Put($id = NULL)
 	{
 		return $this->NoContent();
 	}
-	
+
 	public function Delete($id)
 	{
 		return $this->NoContent();
 	}
-	
+
 }

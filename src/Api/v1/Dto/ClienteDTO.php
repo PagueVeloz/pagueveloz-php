@@ -11,7 +11,7 @@ class ClienteDTO extends \PagueVeloz\AbstractDTO
     protected $EnviarEmailBoletosPagos = NULL;
     protected $Endereco = NULL;
     protected $Id = NULL;
-	
+
     public function __construct()
     {
         $this->setEndereco(new CepDTO);
