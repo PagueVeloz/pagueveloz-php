@@ -5,13 +5,13 @@
 **Instalação via composer:**
 ```
 - composer require pagueveloz/pagueveloz
+```
 
-Este Client Package foi criado para consumir serviços disponíveis na API do PagueVeloz.
+Este Client Package foi criado para consumir serviços disponíveis na API do PagueVeloz, com base nas informações contidas no [help do PagueVeloz](https://www.pagueveloz.com.br/help) .
 
-Foi desenvolvido com base nas informações contidas no [help do PagueVeloz](https://www.pagueveloz.com.br/help) .
+## Serviços disponíveis:
 
-Serviços disponíveis:
-## V1
+### V1
 ------------
 - Cep
 - Cliente
@@ -29,7 +29,7 @@ Serviços disponíveis:
 - Transferencia
 - UsuarioCliente
 
-## V2
+### V2
 ------
 - Assinar
 - Boleto
@@ -37,7 +37,7 @@ Serviços disponíveis:
 - Consultar
 - ContaBancaria
 
-## V3
+### V3
 -----
 - Boleto
 
@@ -61,6 +61,7 @@ $assinar->dto
 		->setEmail('xxxxx@xxxx.xxx.xx');
 
 $assinar->Post();
+```
 
 ----
 **
