@@ -8,7 +8,7 @@
 
 Este Client Package foi criado para consumir serviços disponíveis na API do PagueVeloz.
 
-Foi desenvolvido com base nas informações contidas no [help do PagueVeloz](https://www.pagueveloz.com.br/help).
+Foi desenvolvido com base nas informações contidas no [help do PagueVeloz](https://www.pagueveloz.com.br/help) .
 
 
 Serviços disponíveis:
