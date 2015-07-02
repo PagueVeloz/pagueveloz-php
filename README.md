@@ -4,7 +4,7 @@
 
 **Instalação via composer:**
 ```
-> composer require pagueveloz/pagueveloz
+- composer require pagueveloz/pagueveloz
 
 Este Client Package foi criado para consumir serviços disponíveis na API do PagueVeloz.
 
