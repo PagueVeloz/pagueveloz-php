@@ -10,7 +10,6 @@ Este Client Package foi criado para consumir serviços disponíveis na API do Pa
 
 Foi desenvolvido com base nas informações contidas no [help do PagueVeloz](https://www.pagueveloz.com.br/help) .
 
-
 Serviços disponíveis:
 ## V1
 ------------
