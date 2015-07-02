@@ -2,6 +2,7 @@
 
 namespace PagueVeloz\Api\v1\Dto;
 
+use PagueVeloz\Api\v1\Dto\ContaBancariaDTO;
 
 class SaqueDTO extends \PagueVeloz\AbstractDTO
 {
@@ -11,6 +12,10 @@ class SaqueDTO extends \PagueVeloz\AbstractDTO
     protected $DataProcessamento;
     protected $Id;
 
+    public function __construct()
+    {
+        $this->setContaBancaria(new ContaBancariaDTO);
+    }
 
     /**
      * Gets the value of ContaBancaria.
@@ -29,7 +34,7 @@ class SaqueDTO extends \PagueVeloz\AbstractDTO
      *
      * @return self
      */
-    public function setContaBancaria($ContaBancaria)
+    public function setContaBancaria(ContaBancariaDTO $ContaBancaria)
     {
         $this->ContaBancaria = $ContaBancaria;
 
