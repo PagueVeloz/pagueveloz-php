@@ -17,6 +17,7 @@ class BoletoDTO extends \PagueVeloz\AbstractDTO
     protected $DataPagamento;
     protected $Pdf;
     protected $Id;
+    protected $Status;
 
     /**
      * Gets the value of Valor.
@@ -328,6 +329,30 @@ class BoletoDTO extends \PagueVeloz\AbstractDTO
     public function setPdf($Pdf)
     {
         $this->Pdf = $Pdf;
+
+        return $this;
+    }
+
+    /**
+     * Gets the value of Status.
+     *
+     * @return mixed
+     */
+    public function getStatus()
+    {
+        return $this->Status;
+    }
+
+    /**
+     * Sets the value of Status.
+     *
+     * @param mixed $Status the status
+     *
+     * @return self
+     */
+    public function setStatus($Status)
+    {
+        $this->Status = $Status;
 
         return $this;
     }

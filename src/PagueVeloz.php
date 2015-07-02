@@ -25,6 +25,7 @@ abstract class PagueVeloz
 											['service'=>'ContaBancaria', 'version'=> ['v1','v2'], 'default'=>'v2'],
 											['service'=>'Boleto', 'version'=> ['v2','v3'], 'default'=>'v3'],
 											['service'=>'ComprarCreditoSMS', 'version'=> ['v2'], 'default'=>'v2'],
+											['service'=>'TarifarBoleto', 'version'=> ['v1'], 'default'=>'v1'],
 										];
 
 	private static $version;
@@ -338,6 +339,22 @@ abstract class PagueVeloz
 			case 'v1':
 
 				$service =  new \PagueVeloz\Api\v1\Tarifa;
+				break;
+
+		}
+
+		return $service;
+	}
+
+	public static function TarifarBoleto($version = NULL)
+	{
+		$service = self::GetService('TarifarBoleto');
+
+		switch (self::GetVersion($service, $version))
+		{
+			case 'v1':
+				$dto = new \PagueVeloz\Api\v1\Dto\TarifarBoletoDTO;
+				$service =  new \PagueVeloz\Api\v1\TarifarBoleto($dto);
 				break;
 
 		}

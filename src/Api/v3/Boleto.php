@@ -36,7 +36,13 @@ class Boleto extends ServiceProvider implements InterfaceApi
 		$this->method = 'GET';
 		$this->Authorization();
 
-		$this->url = sprintf('%s/?Status=%s', $this->url, 0);
+		$filters = $this->filters();
+
+		if (!empty($filters))
+			$this->url = sprintf('%s/%s', $this->url, $filters);
+		else
+			$this->url = sprintf('%s/?Status=%s', $this->url, 0);
+
 
 		return $this->init();
 	}
@@ -87,6 +93,32 @@ class Boleto extends ServiceProvider implements InterfaceApi
 	public function Delete($id)
 	{
 		return $this->NoContent();
+	}
+
+	private function filters()
+	{
+		$seuNumero     = $this->dto->getSeuNumero();
+		$dataPagamento = $this->dto->getDataPagamento();
+		$status        = $this->dto->getStatus();
+
+		$filters = array();
+
+		if (!empty($seuNumero))
+			$filters[] = sprintf('SeuNumero=%s',$seuNumero);
+
+		if (!empty($dataPagamento))
+		{
+			//$dataPagamento = implode('-', array_reverse(explode('/', $dataPagamento)));
+			//$dataPagamento = new \DateTime($dataPagamento);
+			//$filters[] = sprintf('DataInicio=%s&DataFim=%s',$dataPagamento->format('Y-m-d'),$dataPagamento->format('Y-m-d'));
+			$filters[] = sprintf('DataInicio=%s&DataFim=%s',$dataPagamento, $dataPagamento);
+		}
+
+		if (!empty($status))
+			$filters[] = sprintf('Status=%s',$status);
+
+
+		return !empty($filters)?'?'.implode('&', $filters):null;
 	}
 
 }
