@@ -2,14 +2,12 @@
 
 ==========================
 ---------------
-Utilize composer para instalar as dependências do package.
+# Instalação via composer
 
-***Necessário instanciar o autoload do projeto:***
-````
-require __DIR__.'/vendor/autoload.php';
-````
+composer require pagueveloz/pagueveloz
 
-Este Client Package foi criado para consumir serviços disponíveis na API do PagueVeloz. 
+
+Este Client Package foi criado para consumir serviços disponíveis na API do PagueVeloz.
 
 Foi desenvolvido com base nas informações contidas no help do PagueVeloz, disponível em: https://www.pagueveloz.com.br/help
 
@@ -46,7 +44,7 @@ Serviços disponíveis:
 - Boleto
 
 =========================
-# Exemplo de Utilização 
+# Exemplo de Utilização
 -Assinar (Serviço de assinatura do PagueVeloz)
 ```
 require_once __DIR__."/vendor/autoload.php";
