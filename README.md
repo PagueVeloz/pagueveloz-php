@@ -69,6 +69,7 @@ $assinar->Post();
 
 ---
 Todos os serviços disponíveis devem enviar ***obrigatoriamente*** a autenticação ***(email:token)*** do cliente.
+
 ***Métodos que não utilizam autenticação:***
 ````
 - Assinar;
