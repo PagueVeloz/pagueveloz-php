@@ -7,7 +7,7 @@
 - composer require pagueveloz/pagueveloz
 ```
 
-Este Client Package foi criado para consumir serviços disponíveis na API do PagueVeloz, com base nas informações contidas no [help do PagueVeloz](https://www.pagueveloz.com.br/help) .
+Este Client Package foi criado para consumir serviços disponíveis na API do [PagueVeloz](https://www.pagueveloz.com.br), com base nas informações contidas no [help do PagueVeloz](https://www.pagueveloz.com.br/help) .
 
 ## Serviços disponíveis:
 
