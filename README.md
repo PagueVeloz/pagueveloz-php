@@ -68,7 +68,7 @@ $assinar->Post();
  *Ps.: O retorno sempre será em um objeto "PagueVeloz\Service\Context\HttpResponse"
 
 ---
-Todos os serviços disponíveis devem enviar ***obrigatoriamente*** a autenticação ***(email+token)*** do cliente.
+Todos os serviços disponíveis devem enviar ***obrigatoriamente*** a autenticação ***(email:token)*** do cliente.
 ***Métodos que não utilizam autenticação:***
 ````
 - Assinar;
