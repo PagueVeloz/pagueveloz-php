@@ -1,5 +1,5 @@
 {
-    "name": "pagueveloz/pagueveloz-php",
+    "name": "pagueveloz/pagueveloz",
     "description": "Client PHP for PagueVeloz API",
     "type": "client",
     "license": "MIT",
