@@ -36,6 +36,7 @@ abstract class ServiceProvider extends Curl
 
 		$this->auth = new Auth;
 
+		$this->Expect();
 		$this->headers[] = 'Content-Type: application/json';
 
 	}
@@ -54,6 +55,11 @@ abstract class ServiceProvider extends Curl
 	protected function Authorization()
 	{
 		$this->headers[] = $this->auth->getAuthorization();
+	}
+
+	protected function Expect()
+	{
+		$this->headers[] = 'Expect: 100-continue';
 	}
 
 

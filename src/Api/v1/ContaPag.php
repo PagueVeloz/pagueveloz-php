@@ -3,7 +3,7 @@
 namespace PagueVeloz\Api\v1;
 
 /**
- * Consultar.php
+ * ContaPag.php
  *
  *
  * @author Cristian B. dos Santos <cristian.deveng@gmail.com>
@@ -14,16 +14,17 @@ namespace PagueVeloz\Api\v1;
 use \PagueVeloz\ServiceProvider;
 use \PagueVeloz\Api\InterfaceApi;
 use \PagueVeloz\Service\Context\HttpRequest;
-use \PagueVeloz\Api\v1\Dto\ConsultarDTO;
+
+use \PagueVeloz\Api\v1\Dto\ContaPagDTO;
 use \PagueVeloz\Api\Common\Auth;
 
-class Consultar extends ServiceProvider implements InterfaceApi
+class ContaPag extends ServiceProvider implements InterfaceApi
 {
-	public function __construct(ConsultarDTO $dto)
+	public function __construct(ContaPagDTO $dto)
 	{
 
 		$this->dto = $dto;
-		$this->uri = '/v1/Consultar';
+		$this->uri = '/v1/Conta';
 
 		parent::__construct();
 
@@ -32,25 +33,40 @@ class Consultar extends ServiceProvider implements InterfaceApi
 
 	public function Get()
 	{
-		return $this->NoContent();
+		$this->url = $this->url.'/Filtro';
+
+		$this->method = 'GET';
+		$this->Authorization();
+
+		return $this->init();
+
 	}
 
 	public function GetById($id)
 	{
-		$this->method = 'GET';
-		$this->Authorization();
-		$this->url = sprintf('%s/%s', $this->url, $id);
 
-		return $this->init();
+
+		return $this->NoContent();
+
 	}
 
 	public function Post()
 	{
-		return $this->NoContent();
+		if ($this->isEmpty($this->dto->getRequest()))
+			throw new \Exception("Erro ao montar request", 1);
+
+		$request = new HttpRequest;
+
+		$request->body = $this->dto->getRequest();
+		$this->method = 'POST';
+		$this->Authorization();
+
+		return $this->init($request);
 	}
 
 	public function Put($id = NULL)
 	{
+
 		return $this->NoContent();
 	}
 
@@ -58,4 +74,5 @@ class Consultar extends ServiceProvider implements InterfaceApi
 	{
 		return $this->NoContent();
 	}
+
 }

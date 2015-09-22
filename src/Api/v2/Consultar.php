@@ -59,4 +59,15 @@ class Consultar extends ServiceProvider implements InterfaceApi
 		return $this->NoContent();
 	}
 
+	public function GetContasDeposito()
+	{
+
+		$this->url = $this->url.'/ContasPagueVelozDeposito';
+
+		$this->method = 'GET';
+		$this->Authorization();
+
+		return $this->init();
+	}
+
 }

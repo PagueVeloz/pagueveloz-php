@@ -35,7 +35,7 @@ class Curl extends \PagueVeloz\Service\Machine\CurlDTO implements \PagueVeloz\Se
         if ($this->proxy)
         {
             $pos  = strpos($body, "\r\n\r\n");
-            $body = substr($body, $pos+4);
+            $body = substr($body, $pos);
         }
 
         return $body;
@@ -46,48 +46,43 @@ class Curl extends \PagueVeloz\Service\Machine\CurlDTO implements \PagueVeloz\Se
 
 		$init = curl_init();
 
-        curl_setopt($init, CURLOPT_URL, $this->url);
+        $opt = [];
+
+        $opt[CURLOPT_URL]            = $this->url;
+        $opt[CURLOPT_CUSTOMREQUEST]  = $this->method;
+        $opt[CURLOPT_RETURNTRANSFER] = 1;
+        //$opt[CURLOPT_HEADER]         = 1;
 
         if (!empty($this->urlReferer))
-            curl_setopt($init, CURLOPT_REFERER, $this->urlReferer);
+            $opt[CURLOPT_REFERER] = $this->urlReferer;
 
-        curl_setopt($init, CURLOPT_CUSTOMREQUEST, $this->method);
-
-        if (!empty($request) && in_array($this->method, array('POST','PUT')))
-            curl_setopt($init, CURLOPT_POSTFIELDS, $request->body);
-
-        curl_setopt($init, CURLOPT_RETURNTRANSFER, 1);
-
-        curl_setopt($init, CURLOPT_HEADER, 1);
+        if (!empty($request) && in_array($this->method, ['POST','PUT']))
+            $opt[CURLOPT_POSTFIELDS] = $request->body;
 
         if (!empty($this->headers))
-        	curl_setopt($init, CURLOPT_HTTPHEADER, $this->headers);
+            $opt[CURLOPT_HTTPHEADER] = $this->headers;
 
         if ($this->proxy)
-        	curl_setopt($init, CURLOPT_PROXY, '127.0.0.1:8888');
+            $opt[CURLOPT_PROXY] = '127.0.0.1:8888';
 
         if ($this->ssl)
         {
-	        curl_setopt($init, CURLOPT_SSL_VERIFYHOST, 0);
-	        curl_setopt($init, CURLOPT_SSL_VERIFYPEER, 0);
-	    }
+            $opt[CURLOPT_SSL_VERIFYHOST] = 0;
+            $opt[CURLOPT_SSL_VERIFYPEER] = 0;
+        }
 
 
+        curl_setopt_array($init, $opt);
 
         $this->request = curl_exec($init);
-
-
+        $info = curl_getinfo($init);
 
 	    $response = new HttpResponse;
 
 		$response->headers     = $this->headers();
-		$response->status      = !empty($this->request) ? substr($response->headers[0], 9, 3) : 204;
-		$response->contentType = !empty($this->request) ? implode(';',array_filter($this->headers(), function($header)
-															        	{
-															        		if (preg_match('/^Content-Type:\s*([^;]*)/mi', $header))
-															        			return $header;
-															        	})) : NULL;
-	    $response->body = $this->body();
+		$response->status      = !empty($info['http_code']) ? $info['http_code'] : 204;
+		$response->contentType = !empty($info['content_type']) ? $info['content_type'] : NULL;
+	    $response->body = $this->request;
 
         curl_close($init);
 

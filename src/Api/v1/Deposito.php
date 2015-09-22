@@ -3,7 +3,7 @@
 namespace PagueVeloz\Api\v1;
 
 /**
- * Consultar.php
+ * Deposito.php
  *
  *
  * @author Cristian B. dos Santos <cristian.deveng@gmail.com>
@@ -14,25 +14,29 @@ namespace PagueVeloz\Api\v1;
 use \PagueVeloz\ServiceProvider;
 use \PagueVeloz\Api\InterfaceApi;
 use \PagueVeloz\Service\Context\HttpRequest;
-use \PagueVeloz\Api\v1\Dto\ConsultarDTO;
 use \PagueVeloz\Api\Common\Auth;
+use \PagueVeloz\Api\v1\Dto\DepositoDTO;
 
-class Consultar extends ServiceProvider implements InterfaceApi
+class Deposito extends ServiceProvider implements InterfaceApi
 {
-	public function __construct(ConsultarDTO $dto)
+	public function __construct(DepositoDTO $dto)
 	{
 
 		$this->dto = $dto;
-		$this->uri = '/v1/Consultar';
+		$this->uri = '/v1/Deposito';
 
 		parent::__construct();
+
 
 		return $this;
 	}
 
 	public function Get()
 	{
-		return $this->NoContent();
+		$this->method = 'GET';
+		$this->Authorization();
+
+		return $this->init();
 	}
 
 	public function GetById($id)
@@ -42,11 +46,21 @@ class Consultar extends ServiceProvider implements InterfaceApi
 		$this->url = sprintf('%s/%s', $this->url, $id);
 
 		return $this->init();
+
 	}
 
 	public function Post()
 	{
-		return $this->NoContent();
+		if ($this->isEmpty($this->dto->getRequest()))
+			throw new \Exception("Erro ao montar request", 1);
+
+		$request = new HttpRequest;
+
+		$request->body = $this->dto->getRequest();
+		$this->method = 'POST';
+		$this->Authorization();
+
+		return $this->init($request);
 	}
 
 	public function Put($id = NULL)
@@ -58,4 +72,7 @@ class Consultar extends ServiceProvider implements InterfaceApi
 	{
 		return $this->NoContent();
 	}
+
+
+
 }
