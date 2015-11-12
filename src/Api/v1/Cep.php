@@ -20,7 +20,6 @@ class Cep extends ServiceProvider implements InterfaceApi
 {
 	public function __construct()
 	{
-		$this->dto = $dto;
 		$this->uri = '/v1/CEP';
 
 		parent::__construct();
