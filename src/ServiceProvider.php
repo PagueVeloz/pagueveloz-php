@@ -22,22 +22,34 @@ abstract class ServiceProvider extends Curl
 	protected $uri  = NULL;
 	protected $auth = NULL;
 	protected $dto  = NULL;
+	protected $isOperationCartao  = false;
 
 	public function __construct()
 	{
 		if (empty(PagueVeloz::$url))
-			throw new \Exception("Favor informar a URL do Pague Veloz", 1);
+			throw new \Exception("Favor informar a URL do PagueVeloz", 1);
+
+		if ($this->isOperationCartao && empty(PagueVeloz::$urlCartao))
+			throw new \Exception("Favor informar a URL do Cartão PagueVeloz", 1);
 
 		$this->ssl   = true;
 		$this->log   = true;
 		$this->proxy = false;
-		$this->host  = PagueVeloz::$url;
-		$this->url   = PagueVeloz::$url.$this->uri;
+
+		if (!$this->isOperationCartao)
+		{
+			$this->host  = PagueVeloz::$url;
+			$this->url   = PagueVeloz::$url.$this->uri;
+		} else
+		{
+			$this->host = PagueVeloz::$urlCartao;
+			$this->url  = PagueVeloz::$urlCartao.$this->uri;
+		}
 
 		$this->auth = new Auth;
 
 		$this->Expect();
-		$this->headers[] = 'Content-Type: application/json';
+		$this->headers['Content-Type'] = 'Content-Type: application/json';
 
 	}
 
@@ -54,12 +66,12 @@ abstract class ServiceProvider extends Curl
 
 	protected function Authorization()
 	{
-		$this->headers[] = $this->auth->getAuthorization();
+		$this->headers['Authorization'] = $this->auth->getAuthorization();
 	}
 
 	protected function Expect()
 	{
-		$this->headers[] = 'Expect: 100-continue';
+		$this->headers['Expect'] = 'Expect: 100-continue';
 	}
 
 

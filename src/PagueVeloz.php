@@ -5,7 +5,7 @@ namespace PagueVeloz;
 abstract class PagueVeloz
 {
 
-	private static $servicesAvailable = [
+	const SERVICES_PAGUEVELOZ = [
 											['service'=>'Assinar', 'version'=> ['v1','v2'], 'default'=>'v2'],
 											['service'=>'Cep', 'version'=> ['v1'], 'default'=>'v1'],
 											['service'=>'Cliente', 'version'=> ['v1'], 'default'=>'v1'],
@@ -28,11 +28,20 @@ abstract class PagueVeloz
 											['service'=>'TarifarBoleto', 'version'=> ['v1'], 'default'=>'v1'],
 											['service'=>'ContaPag', 'version'=> ['v1'], 'default'=>'v1'],
 											['service'=>'Deposito', 'version'=> ['v1'], 'default'=>'v1'],
+											['service'=>'BandeirasCartao', 'version'=> ['v1'], 'default'=>'v1'],
+											['service'=>'Parcelamento', 'version'=> ['v1'], 'default'=>'v1'],
+											['service'=>'Transacao', 'version'=> ['v1'], 'default'=>'v1'],
+											['service'=>'Pagamento', 'version'=> ['v1'], 'default'=>'v1'],
+											['service'=>'Confirmacao', 'version'=> ['v1'], 'default'=>'v1'],
+											['service'=>'CartaoHabilitado', 'version'=> ['v1'], 'default'=>'v1'],
+											['service'=>'ConsultaCartao', 'version'=> ['v1'], 'default'=>'v1'],
+											['service'=>'Formulario', 'version'=> ['v1'], 'default'=>'v1'],
 										];
 
 	private static $version;
 
 	public static $url;
+	public static $urlCartao;
 
 	public static function ApiVersion($v)
 	{
@@ -44,6 +53,11 @@ abstract class PagueVeloz
 	public static function Url($url)
 	{
 		self::$url = $url;
+	}
+
+	public static function UrlCartao($url)
+	{
+		self::$urlCartao = $url;
 	}
 
 	private static function GetVersion($service, $v)
@@ -77,7 +91,7 @@ abstract class PagueVeloz
 
 	public static function Get()
 	{
-		return self::$servicesAvailable;
+		return self::SERVICES_PAGUEVELOZ;
 	}
 
 	private static function GetService($service)
@@ -458,6 +472,135 @@ abstract class PagueVeloz
 				$dto = new \PagueVeloz\Api\v1\Dto\ClienteDTO;
 
 				$service =  new \PagueVeloz\Api\v1\Cliente($dto);
+				break;
+
+		}
+
+		return $service;
+	}
+
+	public static function BandeirasCartao($version = NULL)
+	{
+		$service = self::GetService('BandeirasCartao');
+
+		switch (self::GetVersion($service, $version))
+		{
+			case 'v1':
+
+				$service =  new \PagueVeloz\Api\Cartao\v1\BandeirasCartao();
+				break;
+
+		}
+
+		return $service;
+	}
+
+	public static function Parcelamento($version = NULL)
+	{
+		$service = self::GetService('Parcelamento');
+
+		switch (self::GetVersion($service, $version))
+		{
+			case 'v1':
+				$dto = new \PagueVeloz\Api\Cartao\v1\Dto\ParcelamentoDTO;
+				$service =  new \PagueVeloz\Api\Cartao\v1\Parcelamento($dto);
+				break;
+
+		}
+
+		return $service;
+	}
+
+	public static function Transacao($version = NULL)
+	{
+		$service = self::GetService('Transacao');
+
+		switch (self::GetVersion($service, $version))
+		{
+			case 'v1':
+				$dto = new \PagueVeloz\Api\Cartao\v1\Dto\TransacaoDTO;
+				$service =  new \PagueVeloz\Api\Cartao\v1\Transacao($dto);
+				break;
+
+		}
+
+		return $service;
+	}
+
+	public static function Pagamento($version = NULL)
+	{
+		$service = self::GetService('Pagamento');
+
+		switch (self::GetVersion($service, $version))
+		{
+			case 'v1':
+				$dto = new \PagueVeloz\Api\Cartao\v1\Dto\PagamentoDTO;
+				$service =  new \PagueVeloz\Api\Cartao\v1\Pagamento($dto);
+				break;
+
+		}
+
+		return $service;
+	}
+
+	public static function Confirmacao($version = NULL)
+	{
+		$service = self::GetService('Confirmacao');
+
+		switch (self::GetVersion($service, $version))
+		{
+			case 'v1':
+
+				$dto = new \PagueVeloz\Api\Cartao\v1\Dto\ConfirmacaoDTO;
+				$service =  new \PagueVeloz\Api\Cartao\v1\Confirmacao($dto);
+				break;
+
+		}
+
+		return $service;
+	}
+
+	public static function CartaoHabilitado($version = NULL)
+	{
+		$service = self::GetService('CartaoHabilitado');
+
+		switch (self::GetVersion($service, $version))
+		{
+			case 'v1':
+
+				$service =  new \PagueVeloz\Api\Cartao\v1\Habilitado();
+				break;
+
+		}
+
+		return $service;
+	}
+
+	public static function ConsultaCartao($version = NULL)
+	{
+		$service = self::GetService('ConsultaCartao');
+
+		switch (self::GetVersion($service, $version))
+		{
+			case 'v1':
+
+				$service =  new \PagueVeloz\Api\Cartao\v1\ConsultaCartao();
+				break;
+
+		}
+
+		return $service;
+	}
+
+	public static function Formulario($version = NULL)
+	{
+		$service = self::GetService('Formulario');
+
+		switch (self::GetVersion($service, $version))
+		{
+			case 'v1':
+
+				$service =  new \PagueVeloz\Api\Cartao\v1\Formulario();
 				break;
 
 		}

@@ -24,6 +24,11 @@ class Auth
 		return 'Authorization: Basic '.base64_encode($this->getEmail().":".$this->getToken());
 	}
 
+    public function getAuthorizationCartao()
+    {
+        return 'Authorization: Chave '.base64_encode($this->getEmail().":".$this->getToken());
+    }
+
     /**
      * Gets the value of Email.
      *

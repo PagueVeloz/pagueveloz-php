@@ -48,7 +48,7 @@ class Curl extends \PagueVeloz\Service\Machine\CurlDTO implements \PagueVeloz\Se
 
         $opt = [];
 
-        $opt[CURLOPT_URL]            = $this->url;
+        $opt[CURLOPT_URL]            = trim($this->url);
         $opt[CURLOPT_CUSTOMREQUEST]  = $this->method;
         $opt[CURLOPT_RETURNTRANSFER] = 1;
         //$opt[CURLOPT_HEADER]         = 1;
@@ -71,10 +71,10 @@ class Curl extends \PagueVeloz\Service\Machine\CurlDTO implements \PagueVeloz\Se
             $opt[CURLOPT_SSL_VERIFYPEER] = 0;
         }
 
-
         curl_setopt_array($init, $opt);
 
         $this->request = curl_exec($init);
+
         $info = curl_getinfo($init);
 
 	    $response = new HttpResponse;

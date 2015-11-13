@@ -1,9 +1,9 @@
 <?php
 
-namespace PagueVeloz\Api\v1;
+namespace PagueVeloz\Api\Cartao\v1;
 
 /**
- * ContaPag.php
+ * Confirmacao.php
  *
  *
  * @author Cristian B. dos Santos <cristian.deveng@gmail.com>
@@ -11,21 +11,20 @@ namespace PagueVeloz\Api\v1;
  * @version 1.0v
 */
 
+use \PagueVeloz\PagueVeloz;
 use \PagueVeloz\ServiceProvider;
 use \PagueVeloz\Api\InterfaceApi;
 use \PagueVeloz\Service\Context\HttpRequest;
+use \PagueVeloz\Api\Cartao\v1\Dto\ConfirmacaoDTO;
 
-use \PagueVeloz\Api\v1\Dto\ContaPagDTO;
-use \PagueVeloz\Api\Common\Auth;
-
-class ContaPag extends ServiceProvider implements InterfaceApi
+class Confirmacao extends ServiceProvider implements InterfaceApi
 {
-	public function __construct(ContaPagDTO $dto)
+
+	public function __construct(ConfirmacaoDTO $dto)
 	{
-
 		$this->dto = $dto;
-		$this->uri = '/v1/Conta';
-
+		$this->uri = '/v1/Confirmacao';
+		$this->isOperationCartao = true;
 		parent::__construct();
 
 		return $this;
@@ -33,34 +32,12 @@ class ContaPag extends ServiceProvider implements InterfaceApi
 
 	public function Get()
 	{
-		$this->url = $this->url.'/Filtro';
-
-		$this->method = 'GET';
-		$this->Authorization();
-
-		return $this->init();
-
+		return $this->NoContent();
 	}
 
 	public function GetById($id)
 	{
-
-
 		return $this->NoContent();
-
-	}
-
-	public function GetByBarCode($barCode)
-	{
-
-		$this->url = $this->url.'/Filtro?CodigoDeBarras='.$barCode;
-
-		$this->method = 'GET';
-		$this->Authorization();
-
-		return $this->init();
-
-
 	}
 
 	public function Post()
@@ -68,18 +45,17 @@ class ContaPag extends ServiceProvider implements InterfaceApi
 		if ($this->isEmpty($this->dto->getRequest()))
 			throw new \Exception("Erro ao montar request", 1);
 
+		$this->Authorization();
 		$request = new HttpRequest;
 
 		$request->body = $this->dto->getRequest();
 		$this->method = 'POST';
-		$this->Authorization();
 
 		return $this->init($request);
 	}
 
 	public function Put($id = NULL)
 	{
-
 		return $this->NoContent();
 	}
 
@@ -87,5 +63,4 @@ class ContaPag extends ServiceProvider implements InterfaceApi
 	{
 		return $this->NoContent();
 	}
-
 }
