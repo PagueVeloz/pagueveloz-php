@@ -5,7 +5,7 @@ namespace PagueVeloz;
 abstract class PagueVeloz
 {
 
-	const SERVICES_PAGUEVELOZ = [
+	private static $servicesAvailable = [
 											['service'=>'Assinar', 'version'=> ['v1','v2'], 'default'=>'v2'],
 											['service'=>'Cep', 'version'=> ['v1'], 'default'=>'v1'],
 											['service'=>'Cliente', 'version'=> ['v1'], 'default'=>'v1'],
@@ -91,7 +91,7 @@ abstract class PagueVeloz
 
 	public static function Get()
 	{
-		return self::SERVICES_PAGUEVELOZ;
+		return self::$servicesAvailable;
 	}
 
 	private static function GetService($service)
