@@ -45,6 +45,7 @@ class ComprarCreditoSMS extends ServiceProvider implements InterfaceApi
 		if ($this->isEmpty($this->dto->getRequest()))
 			throw new \Exception("Erro ao montar request", 1);
 
+		$this->Authorization();
 		$request = new HttpRequest;
 
 		$request->body = $this->dto->getRequest();

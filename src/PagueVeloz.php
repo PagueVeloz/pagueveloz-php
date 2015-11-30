@@ -15,7 +15,7 @@ abstract class PagueVeloz
 											['service'=>'Saldo', 'version'=> ['v1'], 'default'=>'v1'],
 											['service'=>'Tarifa', 'version'=> ['v1'], 'default'=>'v1'],
 											['service'=>'Saque', 'version'=> ['v1'], 'default'=>'v1'],
-											['service'=>'Transferencia', 'version'=> ['v1'], 'default'=>'v1'],
+											['service'=>'Transferencia', 'version'=> ['v1','v2'], 'default'=>'v2'],
 											['service'=>'UsuarioCliente', 'version'=> ['v1'], 'default'=>'v1'],
 											['service'=>'MensagemSMS', 'version'=> ['v1'], 'default'=>'v1'],
 											['service'=>'PacotesSMS', 'version'=> ['v1'], 'default'=>'v1'],
@@ -371,6 +371,10 @@ abstract class PagueVeloz
 			case 'v1':
 				$dto = new \PagueVeloz\Api\v1\Dto\TransferenciaDTO;
 				$service =  new \PagueVeloz\Api\v1\Transferencia($dto);
+				break;
+			case 'v2':
+				$dto = new \PagueVeloz\Api\v2\Dto\TransferenciaDTO;
+				$service =  new \PagueVeloz\Api\v2\Transferencia($dto);
 				break;
 
 		}
