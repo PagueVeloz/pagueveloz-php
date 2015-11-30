@@ -76,9 +76,7 @@ class Transferencia extends ServiceProvider implements InterfaceApi
 
 		$request->body = $this->dto->getRequest();
 		$this->method = 'POST';
-		echo '<pre>';
-		print_r($request);
-		exit();
+
 		return $this->init($request);
 	}
 
