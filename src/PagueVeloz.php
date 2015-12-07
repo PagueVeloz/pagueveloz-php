@@ -6,7 +6,7 @@ abstract class PagueVeloz
 {
 
 	private static $servicesAvailable = [
-											['service'=>'Assinar', 'version'=> ['v1','v2'], 'default'=>'v2'],
+											['service'=>'Assinar', 'version'=> ['v1','v2','v3'], 'default'=>'v3'],
 											['service'=>'Cep', 'version'=> ['v1'], 'default'=>'v1'],
 											['service'=>'Cliente', 'version'=> ['v1'], 'default'=>'v1'],
 											['service'=>'Consultar', 'version'=> ['v1','v2'], 'default'=>'v2'],
@@ -122,6 +122,11 @@ abstract class PagueVeloz
 			case 'v2':
 				$dto = new \PagueVeloz\Api\v2\Dto\AssinarDTO;
 				$service =  new \PagueVeloz\Api\v2\Assinar($dto);
+				break;
+
+			case 'v3':
+				$dto = new \PagueVeloz\Api\v3\Dto\AssinarDTO;
+				$service =  new \PagueVeloz\Api\v3\Assinar($dto);
 				break;
 		}
 
