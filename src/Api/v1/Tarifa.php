@@ -18,7 +18,6 @@ use \PagueVeloz\Api\Common\Auth;
 
 class Tarifa extends ServiceProvider implements InterfaceApi
 {
-
 	const TIPO_NAODEFINIDO           = 0;
 	const TIPO_BOLETOEMISSAO         = 1;
 	const TIPO_BOLETOLIQUIDACAO      = 2;
