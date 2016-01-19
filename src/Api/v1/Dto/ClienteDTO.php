@@ -6,119 +6,63 @@ use \PagueVeloz\Api\Common\Dto\CepDTO;
 
 class ClienteDTO extends \PagueVeloz\AbstractDTO
 {
-    protected $Tipo = NULL;
-    protected $Email = NULL;
-    protected $EnviarEmailBoletosPagos = NULL;
-    protected $Endereco = NULL;
-    protected $Id = NULL;
-
-    public function __construct()
-    {
-        $this->setEndereco(new CepDTO);
-    }
+    protected $NomeArquivo;
+    protected $ConteudoArquivoBase64;
+    protected $Id;
 
 	public function getNotEmpty()
 	{
 		return [
-				'Nome',
-				'Email',
-				//'EnviarEmailBoletosPagos',
-				'Endereco',
+				'NomeArquivo',
+				'ConteudoArquivoBase64',
 				];
 	}
 
+
     /**
-     * Gets the value of Nome.
+     * Gets the value of NomeArquivo.
      *
      * @return mixed
      */
-    public function getNome()
+    public function getNomeArquivo()
     {
-        return $this->Nome;
+        return $this->NomeArquivo;
     }
 
     /**
-     * Sets the value of Nome.
+     * Sets the value of NomeArquivo.
      *
-     * @param mixed $Nome the nome
+     * @param mixed $NomeArquivo the nome arquivo
      *
      * @return self
      */
-    public function setNome($Nome)
+    public function setNomeArquivo($NomeArquivo)
     {
-        $this->Nome = $Nome;
+        $this->NomeArquivo = $NomeArquivo;
 
         return $this;
     }
 
     /**
-     * Gets the value of Email.
+     * Gets the value of ConteudoArquivoBase64.
      *
      * @return mixed
      */
-    public function getEmail()
+    public function getConteudoArquivoBase64()
     {
-        return $this->Email;
+        return $this->ConteudoArquivoBase64;
     }
 
     /**
-     * Sets the value of Email.
+     * Sets the value of ConteudoArquivoBase64.
      *
-     * @param mixed $Email the email
+     * @param mixed $ConteudoArquivoBase64 the conteudo arquivo base64
      *
      * @return self
      */
-    public function setEmail($Email)
+    public function setConteudoArquivoBase64($ConteudoArquivoBase64)
     {
-        $this->Email = $Email;
-
-        return $this;
-    }
-
-    /**
-     * Gets the value of EnviarEmailBoletosPagos.
-     *
-     * @return mixed
-     */
-    public function getEnviarEmailBoletosPagos()
-    {
-        return $this->EnviarEmailBoletosPagos;
-    }
-
-    /**
-     * Sets the value of EnviarEmailBoletosPagos.
-     *
-     * @param mixed $EnviarEmailBoletosPagos the enviar email boletos pagos
-     *
-     * @return self
-     */
-    public function setEnviarEmailBoletosPagos($EnviarEmailBoletosPagos)
-    {
-        $this->EnviarEmailBoletosPagos = $EnviarEmailBoletosPagos;
-
-        return $this;
-    }
-
-    /**
-     * Gets the value of Endereco.
-     *
-     * @return mixed
-     */
-    public function getEndereco()
-    {
-        return $this->Endereco;
-    }
-
-    /**
-     * Sets the value of Endereco.
-     *
-     * @param mixed $Endereco the endereco
-     *
-     * @return self
-     */
-    public function setEndereco(CepDTO $Endereco)
-    {
-        $this->Endereco = $Endereco;
+        $this->ConteudoArquivoBase64 = $ConteudoArquivoBase64;
 
         return $this;
     }

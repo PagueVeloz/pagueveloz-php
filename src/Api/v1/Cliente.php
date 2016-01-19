@@ -41,10 +41,35 @@ class Cliente extends ServiceProvider implements InterfaceApi
 
 	public function GetById($id)
 	{
-
-
 		return $this->NoContent();
 
+	}
+
+	public function GetStatus()
+	{
+		$this->method = 'GET';
+		$this->Authorization();
+		$this->url = sprintf('%s/Status', $this->url);
+
+		return $this->init();
+	}
+
+	public function GetDocumentosPendentes()
+	{
+		$this->method = 'GET';
+		$this->Authorization();
+		$this->url = sprintf('/%s/DocumentosPendentes', $this->url);
+
+		return $this->init();
+	}
+
+	public function GetDocumentosEnviados($id)
+	{
+		$this->method = 'GET';
+		$this->Authorization();
+		$this->url = sprintf('/%s/DocumentosEnviados/%s/Baixar', $this->url, $id);
+
+		return $this->init();
 	}
 
 	public function Post()
