@@ -61,6 +61,18 @@ class ContaBancaria extends ServiceProvider implements InterfaceApi
 		return $this->init($request);
 	}
 
+	public function Ativar($id)
+	{
+
+		$this->method = 'POST';
+		$this->Authorization();
+
+		$this->url = sprintf('%s/%s/Ativar', $this->url, $id);
+
+		return $this->init($request);
+	}
+
+
 	public function Put($id = NULL)
 	{
 		if ($this->isEmpty($this->dto->getRequest()))
