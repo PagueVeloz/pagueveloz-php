@@ -9,6 +9,7 @@ class ContaPagDTO extends \PagueVeloz\AbstractDTO
     protected $NomeTitulo;
     protected $Vencimento;
     protected $CodigoDeBarras;
+    protected $TituloBase64;
 
     /**
      * Gets the value of Valor.
@@ -126,6 +127,30 @@ class ContaPagDTO extends \PagueVeloz\AbstractDTO
     public function setCodigoDeBarras($CodigoDeBarras)
     {
         $this->CodigoDeBarras = $CodigoDeBarras;
+
+        return $this;
+    }
+
+    /**
+     * Gets the value of TituloBase64.
+     *
+     * @return mixed
+     */
+    public function getTituloBase64()
+    {
+        return $this->TituloBase64;
+    }
+
+    /**
+     * Sets the value of TituloBase64.
+     *
+     * @param mixed $TituloBase64 the titulo base64
+     *
+     * @return self
+     */
+    public function setTituloBase64($TituloBase64)
+    {
+        $this->TituloBase64 = $TituloBase64;
 
         return $this;
     }
