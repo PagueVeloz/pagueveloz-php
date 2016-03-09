@@ -7,7 +7,7 @@
 [![Latest Unstable Version](https://poser.pugx.org/pagueveloz/pagueveloz/v/unstable)](https://packagist.org/packages/pagueveloz/pagueveloz) 
 [![License](https://poser.pugx.org/pagueveloz/pagueveloz/license)](https://packagist.org/packages/pagueveloz/pagueveloz)
 
-> Cliente da API do [PagueVeloz](https://www.pagueveloz.com.br), com base nas informações contidas no [help do PagueVeloz](https://www.pagueveloz.com.br/help) .
+> Cliente PHP da API do [PagueVeloz](https://www.pagueveloz.com.br), com base nas informações contidas no [help](https://www.pagueveloz.com.br/help) .
 
 **Pré-requisitos**
 
