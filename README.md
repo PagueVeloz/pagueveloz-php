@@ -1,8 +1,13 @@
 # Cliente API do [PagueVeloz](https://www.pagueveloz.com.br/)
 
+**Pré-requisitos**
+
+ * PHP 5.4 ou superior
+ * [composer](https://getcomposer.org)
+
 **Instalação via composer:**
 ```
-  composer require pagueveloz/pagueveloz
+composer require pagueveloz/pagueveloz
 ```
 
 Este cliente foi criado para consumir serviços disponíveis na API do [PagueVeloz](https://www.pagueveloz.com.br), com base nas informações contidas no [help do PagueVeloz](https://www.pagueveloz.com.br/help) .
