@@ -20,36 +20,28 @@ composer require pagueveloz/pagueveloz
 Este cliente foi criado para consumir serviços disponíveis na API do [PagueVeloz](https://www.pagueveloz.com.br), com base nas informações contidas no [help do PagueVeloz](https://www.pagueveloz.com.br/help) .
 
 ## Serviços disponíveis:
-
-### V1
-------------
-- Cep
-- Cliente
-- Consultar
-- ConsultarBoleto
-- CreditoSMS
-- DefaultBoleto
-- Extrato
-- MensagemSMS
-- PacoteSMS
-- Ping
-- Saldo
-- Saque
-- Tarifa
-- Transferencia
-- UsuarioCliente
-
-### V2
-------
-- Assinar
-- Boleto
-- ComprarCreditoSMS
-- Consultar
-- ContaBancaria
-
-### V3
------
-- Boleto
+|                   	| V1 	| V2 	| V3 	|
+|-------------------	|----	|----	|----	|
+| Cep               	| x  	|    	|    	|
+| Cliente           	| x  	|    	|    	|
+| Consultar         	| x  	|    	|    	|
+| ConsultarBoleto   	| x  	|    	|    	|
+| CreditoSMS        	| x  	|    	|    	|
+| DefaultBoleto     	| x  	|    	|    	|
+| Extrato           	| x  	|    	|    	|
+| MensagemSMS       	| x  	|    	|    	|
+| PacoteSMS         	| x  	|    	|    	|
+| Ping              	| x  	|    	|    	|
+| Saldo             	| x  	|    	|    	|
+| Saque             	| x  	|    	|    	|
+| Tarifa            	| x  	|    	|    	|
+| Transferencia     	| x  	|    	|    	|
+| UsuarioCliente    	| x  	|    	|    	|
+| Assinar           	|    	| x  	|    	|
+| Boleto            	|    	| x  	| x  	|
+| ComprarCreditoSMS 	|    	| x  	|    	|
+| Consultar         	|    	| x  	|    	|
+| ContaBancaria     	|    	| x  	|    	|
 
 # Exemplos:
 
