@@ -68,11 +68,11 @@ Observação : Todo retorno será um objeto do tipo "PagueVeloz\Service\Context\
 
 ### Serviços com autenticação
 
-Métodos que necessitem de autenticação devem enviar o cabeçalho ***"Authentication"*** com o valor ***"Basic valor"***, sendo ***"valor"*** igual ao texto em base64 do e-mail do usuário concatenado com o caracter ":" concatenado com o token do usuário.
+Serviços que necessitem de autenticação devem enviar o cabeçalho ***"Authentication"*** com o valor ***"Basic valor"***, sendo ***"valor"*** igual ao texto em base64 do e-mail do usuário concatenado com o caracter ":" concatenado com o token do usuário.
 
 ### Serviços sem autenticação
 
-Os métodos abaixo não necessitam de autenticação e podem ser chamados diretamente.
+Os serviços abaixo não necessitam de autenticação e podem ser chamados diretamente.
 ````
 Assinar
 Cep
