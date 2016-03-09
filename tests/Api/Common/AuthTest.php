@@ -95,12 +95,12 @@ class AuthTest extends TestCase
 
     public function authorizationProvider()
     {
-        return [
-            ['test@example.com', 'test', 'dGVzdEBleGFtcGxlLmNvbTp0ZXN0'],
-            ['test1@example.com', 'test1', 'dGVzdDFAZXhhbXBsZS5jb206dGVzdDE='],
-            ['test2@example.com', 'test2', 'dGVzdDJAZXhhbXBsZS5jb206dGVzdDI='],
-            ['test3@example.com', 'test3', 'dGVzdDNAZXhhbXBsZS5jb206dGVzdDM='],
-        ];
+        return array(
+            array('test@example.com', 'test', 'dGVzdEBleGFtcGxlLmNvbTp0ZXN0'),
+            array('test1@example.com', 'test1', 'dGVzdDFAZXhhbXBsZS5jb206dGVzdDE='),
+            array('test2@example.com', 'test2', 'dGVzdDJAZXhhbXBsZS5jb206dGVzdDI='),
+            array('test3@example.com', 'test3', 'dGVzdDNAZXhhbXBsZS5jb206dGVzdDM='),
+        );
     }
 
     /**
