@@ -23,7 +23,7 @@ class Pagamento extends ServiceProvider implements InterfaceApi
 	public function __construct(PagamentoDTO $dto)
 	{
 		$this->dto = $dto;
-		$this->uri = '/v1/Pagamento';
+		$this->uri = '/VendaDigitada/v1/Pagamento';
 		$this->isOperationCartao = true;
 		parent::__construct();
 

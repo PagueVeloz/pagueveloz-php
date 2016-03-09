@@ -21,7 +21,7 @@ class Formulario extends ServiceProvider implements InterfaceApi
 
 	public function __construct()
 	{
-		$this->uri = '/v1/Formulario';
+		$this->uri = '/VendaDigitada/v1/Formulario';
 		$this->isOperationCartao = true;
 		parent::__construct();
 

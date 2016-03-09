@@ -36,6 +36,7 @@ abstract class PagueVeloz
 											['service'=>'CartaoHabilitado', 'version'=> ['v1'], 'default'=>'v1'],
 											['service'=>'ConsultaCartao', 'version'=> ['v1'], 'default'=>'v1'],
 											['service'=>'Formulario', 'version'=> ['v1'], 'default'=>'v1'],
+											['service'=>'PinPadOperacoes', 'version'=> ['v1'], 'default'=>'v1'],
 										];
 
 	private static $version;
@@ -610,6 +611,22 @@ abstract class PagueVeloz
 			case 'v1':
 
 				$service =  new \PagueVeloz\Api\Cartao\v1\Formulario();
+				break;
+
+		}
+
+		return $service;
+	}
+
+	public static function PinPadOperacoes($version = NULL)
+	{
+		$service = self::GetService('PinPadOperacoes');
+
+		switch (self::GetVersion($service, $version))
+		{
+			case 'v1':
+
+				$service =  new \PagueVeloz\Api\Cartao\v1\Operacoes();
 				break;
 
 		}

@@ -23,7 +23,7 @@ class Parcelamento extends ServiceProvider implements InterfaceApi
 	public function __construct(ParcelamentoDTO $dto)
 	{
 		$this->dto = $dto;
-		$this->uri = '/v1/Parcelamento';
+		$this->uri = '/VendaDigitada/v1/Parcelamento';
 		$this->isOperationCartao = true;
 		parent::__construct();
 

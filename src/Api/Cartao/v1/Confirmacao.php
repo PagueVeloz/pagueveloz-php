@@ -23,7 +23,7 @@ class Confirmacao extends ServiceProvider implements InterfaceApi
 	public function __construct(ConfirmacaoDTO $dto)
 	{
 		$this->dto = $dto;
-		$this->uri = '/v1/Confirmacao';
+		$this->uri = '/VendaDigitada/v1/Confirmacao';
 		$this->isOperationCartao = true;
 		parent::__construct();
 

@@ -21,7 +21,7 @@ class ConsultaCartao extends ServiceProvider implements InterfaceApi
 
 	public function __construct()
 	{
-		$this->uri = '/v1/Consulta';
+		$this->uri = '/VendaDigitada/v1/Consulta';
 		$this->isOperationCartao = true;
 		parent::__construct();
 

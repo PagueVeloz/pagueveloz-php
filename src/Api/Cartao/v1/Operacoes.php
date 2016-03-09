@@ -3,11 +3,11 @@
 namespace PagueVeloz\Api\Cartao\v1;
 
 /**
- * Habilitado.php
+ * Operacoes.php
  *
  *
  * @author Cristian B. dos Santos <cristian.deveng@gmail.com>
- * @copyright 2015
+ * @copyright 2016
  * @version 1.0v
 */
 
@@ -16,12 +16,13 @@ use \PagueVeloz\ServiceProvider;
 use \PagueVeloz\Api\InterfaceApi;
 use \PagueVeloz\Service\Context\HttpRequest;
 
-class Habilitado extends ServiceProvider implements InterfaceApi
+class Operacoes extends ServiceProvider implements InterfaceApi
 {
 
 	public function __construct()
 	{
-		$this->uri = '/VendaDigitada/v1/Habilitado';
+		$this->dto = $dto;
+		$this->uri = '/PinPad/v1/Operacoes';
 		$this->isOperationCartao = true;
 		parent::__construct();
 
@@ -30,7 +31,15 @@ class Habilitado extends ServiceProvider implements InterfaceApi
 
 	public function Get()
 	{
+
+		return $this->NoContent();
+	}
+
+	public function GetById($id)
+	{
 		$this->Authorization();
+
+		$this->url = sprintf('%s/%s', $this->url, $id);
 
 		$this->method = 'GET';
 		$this->Authorization();
@@ -38,14 +47,18 @@ class Habilitado extends ServiceProvider implements InterfaceApi
 		return $this->init();
 	}
 
-	public function GetById($id)
-	{
-		return $this->NoContent();
-	}
-
 	public function Post()
 	{
-		return $this->NoContent();
+		if ($this->isEmpty($this->dto->getRequest()))
+			throw new \Exception("Erro ao montar request", 1);
+
+		$this->Authorization();
+		$request = new HttpRequest;
+
+		$request->body = $this->dto->getRequest();
+		$this->method = 'POST';
+
+		return $this->init($request);
 	}
 
 	public function Put($id = NULL)

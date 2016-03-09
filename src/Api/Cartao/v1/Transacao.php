@@ -23,7 +23,7 @@ class Transacao extends ServiceProvider implements InterfaceApi
 	public function __construct(TransacaoDTO $dto)
 	{
 		$this->dto = $dto;
-		$this->uri = '/v1/Transacao';
+		$this->uri = '/VendaDigitada/v1/Transacao';
 		$this->isOperationCartao = true;
 		parent::__construct();
 

@@ -21,7 +21,7 @@ class BandeirasCartao extends ServiceProvider implements InterfaceApi
 
 	public function __construct()
 	{
-		$this->uri = '/v1/Bandeiras';
+		$this->uri = '/VendaDigitada/v1/Bandeiras';
 		$this->isOperationCartao = true;
 		parent::__construct();
 
