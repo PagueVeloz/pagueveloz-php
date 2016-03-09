@@ -2,7 +2,7 @@
 
 namespace PagueVeloz\Api\v2;
 
-/**
+/*
  * Boleto.php
  *
  *
@@ -11,71 +11,68 @@ namespace PagueVeloz\Api\v2;
  * @version 1.0v
 */
 
-use \PagueVeloz\ServiceProvider;
-use \PagueVeloz\Api\InterfaceApi;
-use \PagueVeloz\Api\v2\Dto\BoletoDTO;
-use \PagueVeloz\Service\Context\HttpRequest;
+use PagueVeloz\Api\InterfaceApi;
+use PagueVeloz\Api\v2\Dto\BoletoDTO;
+use PagueVeloz\Service\Context\HttpRequest;
+use PagueVeloz\ServiceProvider;
 
 class Boleto extends ServiceProvider implements InterfaceApi
 {
-	public function __construct(BoletoDTO $dto)
-	{
+    public function __construct(BoletoDTO $dto)
+    {
+        $this->dto = $dto;
 
-		$this->dto = $dto;
+        $this->uri = '/v2/Boleto';
 
-		$this->uri = '/v2/Boleto';
+        parent::__construct();
 
-		parent::__construct();
+        return $this;
+    }
 
-		return $this;
+    public function Get()
+    {
+        return $this->NoContent();
+    }
 
-	}
+    public function GetById($id)
+    {
+        return $this->NoContent();
+    }
 
-	public function Get()
-	{
-		return $this->NoContent();
-	}
+    public function GetByPagamento($data)
+    {
+        $_data = new \DateTime($data);
 
-	public function GetById($id)
-	{
-		return $this->NoContent();
+        $this->method = 'GET';
+        $this->Authorization();
 
-	}
+        $this->url = sprintf('%s/?data=%s', $this->url, $_data->format('Y-m-d'));
 
-	public function GetByPagamento($data)
-	{
-		$_data = new \DateTime($data);
+        return $this->init();
+    }
 
-		$this->method = 'GET';
-		$this->Authorization();
+    public function Post()
+    {
+        if ($this->isEmpty($this->dto->getRequest())) {
+            throw new \Exception('Erro ao montar request', 1);
+        }
 
-		$this->url = sprintf('%s/?data=%s', $this->url, $_data->format('Y-m-d'));
+        $request = new HttpRequest();
 
-		return $this->init();
-	}
+        $request->body = $this->dto->getRequest();
+        $this->method = 'POST';
+        $this->Authorization();
 
-	public function Post()
-	{
-		if ($this->isEmpty($this->dto->getRequest()))
-			throw new \Exception("Erro ao montar request", 1);
+        return $this->init($request);
+    }
 
-		$request = new HttpRequest;
+    public function Put($id = null)
+    {
+        return $this->NoContent();
+    }
 
-		$request->body = $this->dto->getRequest();
-		$this->method = 'POST';
-		$this->Authorization();
-
-		return $this->init($request);
-	}
-
-	public function Put($id = NULL)
-	{
-		return $this->NoContent();
-	}
-
-	public function Delete($id)
-	{
-		return $this->NoContent();
-	}
-
+    public function Delete($id)
+    {
+        return $this->NoContent();
+    }
 }

@@ -4,21 +4,21 @@ namespace PagueVeloz\Api\Cartao\v1\Dto;
 
 class PagamentoDTO extends \PagueVeloz\AbstractDTO
 {
-	protected $Id;
+    protected $Id;
     protected $NumeroCartao;
     protected $CodigoSeguranca;
     protected $Validade;
     protected $Confirmado = false;
 
-	public function getNotEmpty()
-	{
-		return [
-				'Id',
+    public function getNotEmpty()
+    {
+        return [
+                'Id',
                 'NumeroCartao',
                 'CodigoSeguranca',
                 'Validade',
-				];
-	}
+                ];
+    }
 
     /**
      * Gets the value of Id.
@@ -63,7 +63,7 @@ class PagamentoDTO extends \PagueVeloz\AbstractDTO
      */
     public function setNumeroCartao($NumeroCartao)
     {
-        $this->NumeroCartao = preg_replace('/[^0-9]/','',$NumeroCartao);
+        $this->NumeroCartao = preg_replace('/[^0-9]/', '', $NumeroCartao);
 
         return $this;
     }
@@ -87,7 +87,7 @@ class PagamentoDTO extends \PagueVeloz\AbstractDTO
      */
     public function setCodigoSeguranca($CodigoSeguranca)
     {
-        $this->CodigoSeguranca = preg_replace('/[^0-9]/','',$CodigoSeguranca);
+        $this->CodigoSeguranca = preg_replace('/[^0-9]/', '', $CodigoSeguranca);
 
         return $this;
     }
@@ -111,7 +111,7 @@ class PagamentoDTO extends \PagueVeloz\AbstractDTO
      */
     public function setValidade($Validade)
     {
-        $this->Validade = preg_replace('/[^0-9]/','',$Validade);
+        $this->Validade = preg_replace('/[^0-9]/', '', $Validade);
 
         return $this;
     }

@@ -2,11 +2,9 @@
 
 namespace PagueVeloz\Api\v1\Dto;
 
-
 class ConsultarDTO extends \PagueVeloz\AbstractDTO
 {
-    protected $Tipo = NULL; //Bancos|Clientes|ClientesBoletoZClienteJaCadastrado|SMSTelefoneDestino|SMSTelefoneRemetente
-
+    protected $Tipo = null; //Bancos|Clientes|ClientesBoletoZClienteJaCadastrado|SMSTelefoneDestino|SMSTelefoneRemetente
 
     /**
      * Gets the value of Tipo.

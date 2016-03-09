@@ -2,7 +2,7 @@
 
 namespace PagueVeloz\Api\v1;
 
-/**
+/*
  * Deposito.php
  *
  *
@@ -11,68 +11,62 @@ namespace PagueVeloz\Api\v1;
  * @version 1.0v
 */
 
-use \PagueVeloz\ServiceProvider;
-use \PagueVeloz\Api\InterfaceApi;
-use \PagueVeloz\Service\Context\HttpRequest;
-use \PagueVeloz\Api\Common\Auth;
-use \PagueVeloz\Api\v1\Dto\DepositoDTO;
+use PagueVeloz\Api\InterfaceApi;
+use PagueVeloz\Api\v1\Dto\DepositoDTO;
+use PagueVeloz\Service\Context\HttpRequest;
+use PagueVeloz\ServiceProvider;
 
 class Deposito extends ServiceProvider implements InterfaceApi
 {
-	public function __construct(DepositoDTO $dto)
-	{
+    public function __construct(DepositoDTO $dto)
+    {
+        $this->dto = $dto;
+        $this->uri = '/v1/Deposito';
 
-		$this->dto = $dto;
-		$this->uri = '/v1/Deposito';
+        parent::__construct();
 
-		parent::__construct();
+        return $this;
+    }
 
+    public function Get()
+    {
+        $this->method = 'GET';
+        $this->Authorization();
 
-		return $this;
-	}
+        return $this->init();
+    }
 
-	public function Get()
-	{
-		$this->method = 'GET';
-		$this->Authorization();
+    public function GetById($id)
+    {
+        $this->method = 'GET';
+        $this->Authorization();
+        $this->url = sprintf('%s/%s', $this->url, $id);
 
-		return $this->init();
-	}
+        return $this->init();
+    }
 
-	public function GetById($id)
-	{
-		$this->method = 'GET';
-		$this->Authorization();
-		$this->url = sprintf('%s/%s', $this->url, $id);
+    public function Post()
+    {
+        if ($this->isEmpty($this->dto->getRequest())) {
+            throw new \Exception('Erro ao montar request', 1);
+        }
 
-		return $this->init();
+        $request = new HttpRequest();
 
-	}
+        $request->body = $this->dto->getRequest();
+        $this->method = 'POST';
+        $this->Authorization();
 
-	public function Post()
-	{
-		if ($this->isEmpty($this->dto->getRequest()))
-			throw new \Exception("Erro ao montar request", 1);
+        return $this->init($request);
+    }
 
-		$request = new HttpRequest;
+    public function Put($id = null)
+    {
+        return $this->NoContent();
+    }
 
-		$request->body = $this->dto->getRequest();
-		$this->method = 'POST';
-		$this->Authorization();
-
-		return $this->init($request);
-	}
-
-	public function Put($id = NULL)
-	{
-		return $this->NoContent();
-	}
-
-	public function Delete($id)
-	{
-		return $this->NoContent();
-	}
-
-
-
+    public function Delete($id)
+    {
+        return $this->NoContent();
+    }
 }

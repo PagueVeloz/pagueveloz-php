@@ -2,7 +2,7 @@
 
 namespace PagueVeloz\Api\v1;
 
-/**
+/*
  * ContaBancaria.php
  *
  *
@@ -11,79 +11,77 @@ namespace PagueVeloz\Api\v1;
  * @version 1.0v
 */
 
-use \PagueVeloz\ServiceProvider;
-use \PagueVeloz\Api\InterfaceApi;
-use \PagueVeloz\Service\Context\HttpRequest;
-use \PagueVeloz\Api\Common\Auth;
-use \PagueVeloz\Api\v1\Dto\ContaBancariaDTO;
+use PagueVeloz\Api\InterfaceApi;
+use PagueVeloz\Api\v1\Dto\ContaBancariaDTO;
+use PagueVeloz\Service\Context\HttpRequest;
+use PagueVeloz\ServiceProvider;
 
 class ContaBancaria extends ServiceProvider implements InterfaceApi
 {
-	public function __construct(ContaBancariaDTO $dto)
-	{
+    public function __construct(ContaBancariaDTO $dto)
+    {
+        $this->dto = $dto;
+        $this->uri = '/v1/ContaBancaria';
 
-		$this->dto = $dto;
-		$this->uri = '/v1/ContaBancaria';
+        parent::__construct();
 
-		parent::__construct();
+        return $this;
+    }
 
-		return $this;
-	}
+    public function Get()
+    {
+        $this->method = 'GET';
+        $this->Authorization();
 
-	public function Get()
-	{
-		$this->method = 'GET';
-		$this->Authorization();
+        return $this->init();
+    }
 
-		return $this->init();
-	}
+    public function GetById($id)
+    {
+        $this->method = 'GET';
+        $this->Authorization();
+        $this->url = sprintf('%s/%s', $this->url, $id);
 
-	public function GetById($id)
-	{
-		$this->method = 'GET';
-		$this->Authorization();
-		$this->url = sprintf('%s/%s', $this->url, $id);
+        return $this->init();
+    }
 
-		return $this->init();
+    public function Post()
+    {
+        if ($this->isEmpty($this->dto->getRequest())) {
+            throw new \Exception('Erro ao montar request', 1);
+        }
 
-	}
+        $request = new HttpRequest();
 
-	public function Post()
-	{
-		if ($this->isEmpty($this->dto->getRequest()))
-			throw new \Exception("Erro ao montar request", 1);
+        $request->body = $this->dto->getRequest();
+        $this->method = 'POST';
+        $this->Authorization();
 
-		$request = new HttpRequest;
+        return $this->init($request);
+    }
 
-		$request->body = $this->dto->getRequest();
-		$this->method = 'POST';
-		$this->Authorization();
+    public function Put($id = null)
+    {
+        if ($this->isEmpty($this->dto->getRequest())) {
+            throw new \Exception('Erro ao montar request', 1);
+        }
 
-		return $this->init($request);
-	}
+        $this->Authorization();
+        $request = new HttpRequest();
 
-	public function Put($id = NULL)
-	{
-		if ($this->isEmpty($this->dto->getRequest()))
-			throw new \Exception("Erro ao montar request", 1);
+        $this->url = sprintf('%s/%s', $this->url, $id);
+        $request->body = $this->dto->getRequest();
+        $this->method = 'PUT';
 
-		$this->Authorization();
-		$request = new HttpRequest;
+        return $this->init($request);
+    }
 
-		$this->url = sprintf('%s/%s', $this->url, $id);
-		$request->body = $this->dto->getRequest();
-		$this->method = 'PUT';
+    public function Delete($id)
+    {
+        $this->method = 'DELETE';
+        $this->Authorization();
+        $this->url = sprintf('%s/%s', $this->url, $id);
 
-		return $this->init($request);
-	}
-
-	public function Delete($id)
-	{
-		$this->method = 'DELETE';
-		$this->Authorization();
-		$this->url = sprintf('%s/%s', $this->url, $id);
-
-		return $this->init();
-	}
-
+        return $this->init();
+    }
 }

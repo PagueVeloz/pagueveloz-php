@@ -2,7 +2,7 @@
 
 namespace PagueVeloz\Api\v2;
 
-/**
+/*
  * ComprarCreditoSMS.php
  *
  *
@@ -11,57 +11,55 @@ namespace PagueVeloz\Api\v2;
  * @version 1.0v
 */
 
-use \PagueVeloz\ServiceProvider;
-use \PagueVeloz\Api\InterfaceApi;
-use \PagueVeloz\Api\v2\Dto\ComprarCreditoSMSDTO;
-use \PagueVeloz\Service\Context\HttpRequest;
+use PagueVeloz\Api\InterfaceApi;
+use PagueVeloz\Api\v2\Dto\ComprarCreditoSMSDTO;
+use PagueVeloz\Service\Context\HttpRequest;
+use PagueVeloz\ServiceProvider;
 
 class ComprarCreditoSMS extends ServiceProvider implements InterfaceApi
 {
+    public function __construct(ComprarCreditoSMSDTO $dto)
+    {
+        $this->dto = $dto;
+        $this->uri = '/v2/ComprarCreditoSMS';
 
-	public function __construct(ComprarCreditoSMSDTO $dto)
-	{
+        parent::__construct();
 
-		$this->dto = $dto;
-		$this->uri = '/v2/ComprarCreditoSMS';
+        return $this;
+    }
 
-		parent::__construct();
+    public function Get()
+    {
+        return $this->NoContent();
+    }
 
-		return $this;
-	}
+    public function GetById($id)
+    {
+        return $this->NoContent();
+    }
 
-	public function Get()
-	{
-		return $this->NoContent();
-	}
+    public function Post()
+    {
+        if ($this->isEmpty($this->dto->getRequest())) {
+            throw new \Exception('Erro ao montar request', 1);
+        }
 
-	public function GetById($id)
-	{
-		return $this->NoContent();
-	}
+        $this->Authorization();
+        $request = new HttpRequest();
 
-	public function Post()
-	{
-		if ($this->isEmpty($this->dto->getRequest()))
-			throw new \Exception("Erro ao montar request", 1);
+        $request->body = $this->dto->getRequest();
+        $this->method = 'POST';
 
-		$this->Authorization();
-		$request = new HttpRequest;
+        return $this->init($request);
+    }
 
-		$request->body = $this->dto->getRequest();
-		$this->method = 'POST';
+    public function Put($id = null)
+    {
+        return $this->NoContent();
+    }
 
-		return $this->init($request);
-	}
-
-	public function Put($id = NULL)
-	{
-		return $this->NoContent();
-	}
-
-	public function Delete($id)
-	{
-		return $this->NoContent();
-	}
-
+    public function Delete($id)
+    {
+        return $this->NoContent();
+    }
 }

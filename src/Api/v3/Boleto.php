@@ -2,7 +2,7 @@
 
 namespace PagueVeloz\Api\v3;
 
-/**
+/*
  * Boleto.php
  *
  *
@@ -11,114 +11,111 @@ namespace PagueVeloz\Api\v3;
  * @version 1.0v
 */
 
-use \PagueVeloz\ServiceProvider;
-use \PagueVeloz\Api\InterfaceApi;
-use \PagueVeloz\Api\v3\Dto\BoletoDTO;
-use \PagueVeloz\Service\Context\HttpRequest;
+use PagueVeloz\Api\InterfaceApi;
+use PagueVeloz\Api\v3\Dto\BoletoDTO;
+use PagueVeloz\Service\Context\HttpRequest;
+use PagueVeloz\ServiceProvider;
 
 class Boleto extends ServiceProvider implements InterfaceApi
 {
-	public function __construct(BoletoDTO $dto)
-	{
+    public function __construct(BoletoDTO $dto)
+    {
+        $this->dto = $dto;
 
-		$this->dto = $dto;
+        $this->uri = '/v3/Boleto';
 
-		$this->uri = '/v3/Boleto';
+        parent::__construct();
 
-		parent::__construct();
+        return $this;
+    }
 
-		return $this;
+    public function Get()
+    {
+        $this->method = 'GET';
+        $this->Authorization();
 
-	}
+        $filters = $this->filters();
 
-	public function Get()
-	{
-		$this->method = 'GET';
-		$this->Authorization();
+        if (!empty($filters)) {
+            $this->url = sprintf('%s/%s', $this->url, $filters);
+        } else {
+            $this->url = sprintf('%s/?Status=%s', $this->url, 0);
+        }
 
-		$filters = $this->filters();
+        return $this->init();
+    }
 
-		if (!empty($filters))
-			$this->url = sprintf('%s/%s', $this->url, $filters);
-		else
-			$this->url = sprintf('%s/?Status=%s', $this->url, 0);
+    public function GetById($id)
+    {
+        $this->method = 'GET';
+        $this->Authorization();
 
+        $this->url = sprintf('%s/?SeuNumero=%s', $this->url, $id);
 
-		return $this->init();
-	}
+        return $this->init();
+    }
 
-	public function GetById($id)
-	{
-		$this->method = 'GET';
-		$this->Authorization();
+    public function GetByPeriodo($dtInicial, $dtFinal, $status = 0)
+    {
+        $_inicio = new \DateTime($dtInicial);
+        $_final = new \DateTime($dtFinal);
 
-		$this->url = sprintf('%s/?SeuNumero=%s', $this->url, $id);
+        $this->method = 'GET';
+        $this->Authorization();
 
-		return $this->init();
+        $this->url = sprintf('%s/?DataInicio=%s&DataFim=%s&Status=%s', $this->url, $_inicio->format('Y-m-d'), $_final->format('Y-m-d'), $status);
 
-	}
+        return $this->init();
+    }
 
-	public function GetByPeriodo($dtInicial, $dtFinal,$status = 0)
-	{
-		$_inicio = new \DateTime($dtInicial);
-		$_final  = new \DateTime($dtFinal);
+    public function Post()
+    {
+        if ($this->isEmpty($this->dto->getRequest())) {
+            throw new \Exception('Erro ao montar request', 1);
+        }
 
-		$this->method = 'GET';
-		$this->Authorization();
+        $request = new HttpRequest();
 
-		$this->url = sprintf('%s/?DataInicio=%s&DataFim=%s&Status=%s', $this->url, $_inicio->format('Y-m-d'), $_final->format('Y-m-d'), $status);
+        $request->body = $this->dto->getRequest();
+        $this->method = 'POST';
+        $this->Authorization();
 
-		return $this->init();
-	}
+        return $this->init($request);
+    }
 
-	public function Post()
-	{
-		if ($this->isEmpty($this->dto->getRequest()))
-			throw new \Exception("Erro ao montar request", 1);
+    public function Put($id = null)
+    {
+        return $this->NoContent();
+    }
 
-		$request = new HttpRequest;
+    public function Delete($id)
+    {
+        return $this->NoContent();
+    }
 
-		$request->body = $this->dto->getRequest();
-		$this->method = 'POST';
-		$this->Authorization();
+    private function filters()
+    {
+        $seuNumero = $this->dto->getSeuNumero();
+        $dataPagamento = $this->dto->getDataPagamento();
+        $status = $this->dto->getStatus();
 
-		return $this->init($request);
-	}
+        $filters = [];
 
-	public function Put($id = NULL)
-	{
-		return $this->NoContent();
-	}
+        if (!empty($seuNumero)) {
+            $filters[] = sprintf('SeuNumero=%s', $seuNumero);
+        }
 
-	public function Delete($id)
-	{
-		return $this->NoContent();
-	}
+        if (!empty($dataPagamento)) {
+            //$dataPagamento = implode('-', array_reverse(explode('/', $dataPagamento)));
+            //$dataPagamento = new \DateTime($dataPagamento);
+            //$filters[] = sprintf('DataInicio=%s&DataFim=%s',$dataPagamento->format('Y-m-d'),$dataPagamento->format('Y-m-d'));
+            $filters[] = sprintf('DataInicio=%s&DataFim=%s', $dataPagamento, $dataPagamento);
+        }
 
-	private function filters()
-	{
-		$seuNumero     = $this->dto->getSeuNumero();
-		$dataPagamento = $this->dto->getDataPagamento();
-		$status        = $this->dto->getStatus();
+        if (!empty($status)) {
+            $filters[] = sprintf('Status=%s', $status);
+        }
 
-		$filters = array();
-
-		if (!empty($seuNumero))
-			$filters[] = sprintf('SeuNumero=%s',$seuNumero);
-
-		if (!empty($dataPagamento))
-		{
-			//$dataPagamento = implode('-', array_reverse(explode('/', $dataPagamento)));
-			//$dataPagamento = new \DateTime($dataPagamento);
-			//$filters[] = sprintf('DataInicio=%s&DataFim=%s',$dataPagamento->format('Y-m-d'),$dataPagamento->format('Y-m-d'));
-			$filters[] = sprintf('DataInicio=%s&DataFim=%s',$dataPagamento, $dataPagamento);
-		}
-
-		if (!empty($status))
-			$filters[] = sprintf('Status=%s',$status);
-
-
-		return !empty($filters)?'?'.implode('&', $filters):null;
-	}
-
+        return !empty($filters) ? '?'.implode('&', $filters) : null;
+    }
 }

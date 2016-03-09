@@ -2,11 +2,11 @@
 
 namespace PagueVeloz\Api\Cartao\v1\Dto;
 
-use \PagueVeloz\Api\Cartao\v1\Dto\ProprietarioCartaoDTO;
+use PagueVeloz\Api\Cartao\v1\Dto\ProprietarioCartaoDTO;
 
 class TransacaoDTO extends \PagueVeloz\AbstractDTO
 {
-	protected $NSU;
+    protected $NSU;
     protected $ValorServico;
     protected $ValorTransacao;
     protected $Parcelas;
@@ -16,7 +16,7 @@ class TransacaoDTO extends \PagueVeloz\AbstractDTO
 
     public function __construct()
     {
-        $this->setProprietarioCartao(new ProprietarioCartaoDTO);
+        $this->setProprietarioCartao(new ProprietarioCartaoDTO());
     }
 
     public function getNotEmpty()

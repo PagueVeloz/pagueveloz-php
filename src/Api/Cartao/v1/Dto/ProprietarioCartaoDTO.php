@@ -4,22 +4,22 @@ namespace PagueVeloz\Api\Cartao\v1\Dto;
 
 class ProprietarioCartaoDTO extends \PagueVeloz\AbstractDTO
 {
-	protected $Nome;
+    protected $Nome;
     protected $CPF;
     protected $RG;
     protected $TelefoneFixo;
-	protected $TelefoneCelular;
+    protected $TelefoneCelular;
 
-	public function getNotEmpty()
-	{
-		return [
-				'Nome',
+    public function getNotEmpty()
+    {
+        return [
+                'Nome',
                 'CPF',
                 'RG',
                 'TelefoneFixo',
                 'TelefoneCelular',
-				];
-	}
+                ];
+    }
 
     /**
      * Gets the value of Nome.

@@ -2,7 +2,7 @@
 
 namespace PagueVeloz\Service\Interfaces;
 
-/**
+/*
  * InterfaceCurl.php
  *
  *
@@ -11,9 +11,7 @@ namespace PagueVeloz\Service\Interfaces;
  * @version 1.0v
 */
 
-use \BludataCurl\Service\CurlDTO;
-
 interface InterfaceCurl
 {
-	public function init();
+    public function init();
 }

@@ -2,7 +2,7 @@
 
 namespace PagueVeloz\Api\Cartao\v1;
 
-/**
+/*
  * Habilitado.php
  *
  *
@@ -11,50 +11,47 @@ namespace PagueVeloz\Api\Cartao\v1;
  * @version 1.0v
 */
 
-use \PagueVeloz\PagueVeloz;
-use \PagueVeloz\ServiceProvider;
-use \PagueVeloz\Api\InterfaceApi;
-use \PagueVeloz\Service\Context\HttpRequest;
+use PagueVeloz\Api\InterfaceApi;
+use PagueVeloz\ServiceProvider;
 
 class Habilitado extends ServiceProvider implements InterfaceApi
 {
+    public function __construct()
+    {
+        $this->uri = '/VendaDigitada/v1/Habilitado';
+        $this->isOperationCartao = true;
+        parent::__construct();
 
-	public function __construct()
-	{
-		$this->uri = '/VendaDigitada/v1/Habilitado';
-		$this->isOperationCartao = true;
-		parent::__construct();
+        return $this;
+    }
 
-		return $this;
-	}
+    public function Get()
+    {
+        $this->Authorization();
 
-	public function Get()
-	{
-		$this->Authorization();
+        $this->method = 'GET';
+        $this->Authorization();
 
-		$this->method = 'GET';
-		$this->Authorization();
+        return $this->init();
+    }
 
-		return $this->init();
-	}
+    public function GetById($id)
+    {
+        return $this->NoContent();
+    }
 
-	public function GetById($id)
-	{
-		return $this->NoContent();
-	}
+    public function Post()
+    {
+        return $this->NoContent();
+    }
 
-	public function Post()
-	{
-		return $this->NoContent();
-	}
+    public function Put($id = null)
+    {
+        return $this->NoContent();
+    }
 
-	public function Put($id = NULL)
-	{
-		return $this->NoContent();
-	}
-
-	public function Delete($id)
-	{
-		return $this->NoContent();
-	}
+    public function Delete($id)
+    {
+        return $this->NoContent();
+    }
 }

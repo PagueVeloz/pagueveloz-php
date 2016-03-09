@@ -2,7 +2,6 @@
 
 namespace PagueVeloz\Api\v2\Dto;
 
-
 class ComprarCreditoSMSDTO extends \PagueVeloz\AbstractDTO
 {
     protected $Creditos;

@@ -2,7 +2,7 @@
 
 namespace PagueVeloz\Api\Cartao\v1;
 
-/**
+/*
  * Operacoes.php
  *
  *
@@ -11,63 +11,61 @@ namespace PagueVeloz\Api\Cartao\v1;
  * @version 1.0v
 */
 
-use \PagueVeloz\PagueVeloz;
-use \PagueVeloz\ServiceProvider;
-use \PagueVeloz\Api\InterfaceApi;
-use \PagueVeloz\Service\Context\HttpRequest;
+use PagueVeloz\Api\InterfaceApi;
+use PagueVeloz\Service\Context\HttpRequest;
+use PagueVeloz\ServiceProvider;
 
 class Operacoes extends ServiceProvider implements InterfaceApi
 {
+    public function __construct()
+    {
+        $this->dto = $dto;
+        $this->uri = '/PinPad/v1/Operacoes';
+        $this->isOperationCartao = true;
+        parent::__construct();
 
-	public function __construct()
-	{
-		$this->dto = $dto;
-		$this->uri = '/PinPad/v1/Operacoes';
-		$this->isOperationCartao = true;
-		parent::__construct();
+        return $this;
+    }
 
-		return $this;
-	}
+    public function Get()
+    {
+        return $this->NoContent();
+    }
 
-	public function Get()
-	{
+    public function GetById($id)
+    {
+        $this->Authorization();
 
-		return $this->NoContent();
-	}
+        $this->url = sprintf('%s/%s', $this->url, $id);
 
-	public function GetById($id)
-	{
-		$this->Authorization();
+        $this->method = 'GET';
+        $this->Authorization();
 
-		$this->url = sprintf('%s/%s', $this->url, $id);
+        return $this->init();
+    }
 
-		$this->method = 'GET';
-		$this->Authorization();
+    public function Post()
+    {
+        if ($this->isEmpty($this->dto->getRequest())) {
+            throw new \Exception('Erro ao montar request', 1);
+        }
 
-		return $this->init();
-	}
+        $this->Authorization();
+        $request = new HttpRequest();
 
-	public function Post()
-	{
-		if ($this->isEmpty($this->dto->getRequest()))
-			throw new \Exception("Erro ao montar request", 1);
+        $request->body = $this->dto->getRequest();
+        $this->method = 'POST';
 
-		$this->Authorization();
-		$request = new HttpRequest;
+        return $this->init($request);
+    }
 
-		$request->body = $this->dto->getRequest();
-		$this->method = 'POST';
+    public function Put($id = null)
+    {
+        return $this->NoContent();
+    }
 
-		return $this->init($request);
-	}
-
-	public function Put($id = NULL)
-	{
-		return $this->NoContent();
-	}
-
-	public function Delete($id)
-	{
-		return $this->NoContent();
-	}
+    public function Delete($id)
+    {
+        return $this->NoContent();
+    }
 }

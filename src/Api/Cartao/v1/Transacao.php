@@ -2,7 +2,7 @@
 
 namespace PagueVeloz\Api\Cartao\v1;
 
-/**
+/*
  * Transacao.php
  *
  *
@@ -11,58 +11,55 @@ namespace PagueVeloz\Api\Cartao\v1;
  * @version 1.0v
 */
 
-use \PagueVeloz\PagueVeloz;
-use \PagueVeloz\ServiceProvider;
-use \PagueVeloz\Api\InterfaceApi;
-use \PagueVeloz\Service\Context\HttpRequest;
-use \PagueVeloz\Api\Cartao\v1\Dto\TransacaoDTO;
+use PagueVeloz\Api\Cartao\v1\Dto\TransacaoDTO;
+use PagueVeloz\Api\InterfaceApi;
+use PagueVeloz\Service\Context\HttpRequest;
+use PagueVeloz\ServiceProvider;
 
 class Transacao extends ServiceProvider implements InterfaceApi
 {
+    public function __construct(TransacaoDTO $dto)
+    {
+        $this->dto = $dto;
+        $this->uri = '/VendaDigitada/v1/Transacao';
+        $this->isOperationCartao = true;
+        parent::__construct();
 
-	public function __construct(TransacaoDTO $dto)
-	{
-		$this->dto = $dto;
-		$this->uri = '/VendaDigitada/v1/Transacao';
-		$this->isOperationCartao = true;
-		parent::__construct();
+        return $this;
+    }
 
-		return $this;
-	}
+    public function Get()
+    {
+        return $this->NoContent();
+    }
 
-	public function Get()
-	{
+    public function GetById($id)
+    {
+        return $this->NoContent();
+    }
 
-		return $this->NoContent();
-	}
+    public function Post()
+    {
+        if ($this->isEmpty($this->dto->getRequest())) {
+            throw new \Exception('Erro ao montar request', 1);
+        }
 
-	public function GetById($id)
-	{
-		return $this->NoContent();
-	}
+        $this->Authorization();
+        $request = new HttpRequest();
 
-	public function Post()
-	{
+        $request->body = $this->dto->getRequest();
+        $this->method = 'POST';
 
-		if ($this->isEmpty($this->dto->getRequest()))
-			throw new \Exception("Erro ao montar request", 1);
+        return $this->init($request);
+    }
 
-		$this->Authorization();
-		$request = new HttpRequest;
+    public function Put($id = null)
+    {
+        return $this->NoContent();
+    }
 
-		$request->body = $this->dto->getRequest();
-		$this->method = 'POST';
-
-		return $this->init($request);
-	}
-
-	public function Put($id = NULL)
-	{
-		return $this->NoContent();
-	}
-
-	public function Delete($id)
-	{
-		return $this->NoContent();
-	}
+    public function Delete($id)
+    {
+        return $this->NoContent();
+    }
 }

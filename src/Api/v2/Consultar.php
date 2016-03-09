@@ -2,7 +2,7 @@
 
 namespace PagueVeloz\Api\v2;
 
-/**
+/*
  * Consultar.php
  *
  *
@@ -11,63 +11,58 @@ namespace PagueVeloz\Api\v2;
  * @version 1.0v
 */
 
-use \PagueVeloz\ServiceProvider;
-use \PagueVeloz\Api\InterfaceApi;
-use \PagueVeloz\Service\Context\HttpRequest;
-use \PagueVeloz\Api\v2\Dto\ConsultarDTO;
+use PagueVeloz\Api\InterfaceApi;
+use PagueVeloz\Api\v2\Dto\ConsultarDTO;
+use PagueVeloz\ServiceProvider;
 
 class Consultar extends ServiceProvider implements InterfaceApi
 {
+    public function __construct(ConsultarDTO $dto)
+    {
+        $this->dto = $dto;
+        $this->uri = '/v2/Consultar';
 
-	public function __construct(ConsultarDTO $dto)
-	{
+        parent::__construct();
 
-		$this->dto = $dto;
-		$this->uri = '/v2/Consultar';
+        return $this;
+    }
 
-		parent::__construct();
+    public function Get()
+    {
+        return $this->NoContent();
+    }
 
-		return $this;
-	}
+    public function GetById($id)
+    {
+        $this->method = 'GET';
+        $this->Authorization();
+        $this->url = sprintf('%s/%s', $this->url, $id);
 
-	public function Get()
-	{
-		return $this->NoContent();
-	}
+        return $this->init();
+    }
 
-	public function GetById($id)
-	{
-		$this->method = 'GET';
-		$this->Authorization();
-		$this->url = sprintf('%s/%s', $this->url, $id);
+    public function Post()
+    {
+        return $this->NoContent();
+    }
 
-		return $this->init();
-	}
+    public function Put($id = null)
+    {
+        return $this->NoContent();
+    }
 
-	public function Post()
-	{
-		return $this->NoContent();
-	}
+    public function Delete($id)
+    {
+        return $this->NoContent();
+    }
 
-	public function Put($id = NULL)
-	{
-		return $this->NoContent();
-	}
+    public function GetContasDeposito()
+    {
+        $this->url = $this->url.'/ContasPagueVelozDeposito';
 
-	public function Delete($id)
-	{
-		return $this->NoContent();
-	}
+        $this->method = 'GET';
+        $this->Authorization();
 
-	public function GetContasDeposito()
-	{
-
-		$this->url = $this->url.'/ContasPagueVelozDeposito';
-
-		$this->method = 'GET';
-		$this->Authorization();
-
-		return $this->init();
-	}
-
+        return $this->init();
+    }
 }
