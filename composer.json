@@ -1,22 +1,36 @@
 {
     "name": "pagueveloz/pagueveloz",
     "description": "Client PHP for PagueVeloz API",
-    "type": "client",
-    "license": "MIT",
+	"keywords": ["pagueveloz", "api", "client"],
+	"license": "MIT",
+    "homepage": "https://www.pagueveloz.com.br/",
+	"support": {
+        "issues": "https://github.com/pagueveloz/pagueveloz-php/issues",
+        "source": "https://github.com/pagueveloz/pagueveloz-php"
+    },
     "authors": [
         {
             "name": "Cristian B. Santos",
             "email": "cristian.deveng@gmail.com"
         }
     ],
-    "minimum-stability": "dev",
-    "require": {
-            "monolog/monolog": ">=1.13.0"
-        },
+	"require": {
+		"monolog/monolog": ">=1.13.0"
+	},
+	"require-dev": {
+		"phpunit/phpunit": "dev-master",
+        "phpunit/phpunit-skeleton-generator": "^2.0",
+        "fzaninotto/faker": "^1.5"
+	},
     "autoload": {
         "psr-4": {
             "PagueVeloz\\": "src/"
         }
-    }
-
+    },
+	"autoload-dev": {
+		"classmap": [
+			"tests/"
+		]
+	},
+	"minimum-stability": "dev"
 }
