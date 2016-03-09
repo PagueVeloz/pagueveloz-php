@@ -42,6 +42,7 @@ abstract class PagueVeloz
 	private static $version;
 
 	public static $url;
+
 	public static $urlCartao;
 
 	public static function ApiVersion($v)
