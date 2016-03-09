@@ -1,13 +1,11 @@
-# Consumir API do PagueVeloz
-
-==========================
+# Cliente API do [PagueVeloz](https://www.pagueveloz.com.br/)
 
 **Instalação via composer:**
 ```
-- composer require pagueveloz/pagueveloz
+  composer require pagueveloz/pagueveloz
 ```
 
-Este Client Package foi criado para consumir serviços disponíveis na API do [PagueVeloz](https://www.pagueveloz.com.br), com base nas informações contidas no [help do PagueVeloz](https://www.pagueveloz.com.br/help) .
+Este cliente foi criado para consumir serviços disponíveis na API do [PagueVeloz](https://www.pagueveloz.com.br), com base nas informações contidas no [help do PagueVeloz](https://www.pagueveloz.com.br/help) .
 
 ## Serviços disponíveis:
 
@@ -41,9 +39,9 @@ Este Client Package foi criado para consumir serviços disponíveis na API do [P
 -----
 - Boleto
 
-=========================
-# Exemplo de Utilização
--Assinar (Serviço de assinatura do PagueVeloz)
+# Exemplos:
+
+Assinar (Serviço de assinatura do PagueVeloz)
 ```
 require_once __DIR__."/vendor/autoload.php";
 
@@ -54,24 +52,24 @@ PagueVeloz::Url('https://www.pagueveloz.com.br/api');
 $assinar = PagueVeloz::Assinar();
 
 $assinar->dto
-		->setNome('xxxxxxxx')
-		->setDocumento('xxxxxxxxxxx')
-		->setTipoPessoa(x)
-		->setLoginUsuarioDefault('xxxxx@xxxx.xxx.xx')
-		->setEmail('xxxxx@xxxx.xxx.xx');
+	->setNome('xxxxxxxx')
+	->setDocumento('xxxxxxxxxxx')
+	->setTipoPessoa(x)
+	->setLoginUsuarioDefault('xxxxx@xxxx.xxx.xx')
+	->setEmail('xxxxx@xxxx.xxx.xx');
 
 $assinar->Post();
 ```
+Observação : Todo retorno será um objeto do tipo "PagueVeloz\Service\Context\HttpResponse"
 
-----
-**
- *Ps.: O retorno sempre será em um objeto "PagueVeloz\Service\Context\HttpResponse"
+### Métodos com autenticação
 
----
-Todos os serviços disponíveis devem enviar ***obrigatoriamente*** a autenticação ***(email:token)*** do cliente.
+Métodos que necessitem de autenticação devem enviar o cabeçalho ***"Authentication"*** com o valor ***"Basic valor"***, sendo ***"valor"*** igual ao texto em base64 do e-mail do usuário concatenado com o caracter ":" concatenado com o token do usuário.
 
-***Métodos que não utilizam autenticação:***
+### Métodos sem autenticação
+
+Os métodos abaixo não necessitam de autenticação e podem ser chamados diretamente.
 ````
-- Assinar;
-- Cep;
+Assinar
+Cep
 ````
