@@ -19,8 +19,7 @@
 	},
 	"require-dev": {
 		"phpunit/phpunit": "dev-master",
-        "phpunit/phpunit-skeleton-generator": "^2.0",
-        "fzaninotto/faker": "^1.5"
+	        "fzaninotto/faker": "^1.5"
 	},
     "autoload": {
         "psr-4": {
