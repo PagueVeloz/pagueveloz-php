@@ -2,7 +2,7 @@
 
 namespace PagueVeloz\Api\Cartao\v1;
 
-/**
+/*
  * Parcelamento.php
  *
  *
@@ -11,57 +11,54 @@ namespace PagueVeloz\Api\Cartao\v1;
  * @version 1.0v
 */
 
-use \PagueVeloz\PagueVeloz;
-use \PagueVeloz\ServiceProvider;
-use \PagueVeloz\Api\InterfaceApi;
-use \PagueVeloz\Service\Context\HttpRequest;
-use \PagueVeloz\Api\Cartao\v1\Dto\ParcelamentoDTO;
+use PagueVeloz\Api\Cartao\v1\Dto\ParcelamentoDTO;
+use PagueVeloz\Api\InterfaceApi;
+use PagueVeloz\ServiceProvider;
 
 class Parcelamento extends ServiceProvider implements InterfaceApi
 {
+    public function __construct(ParcelamentoDTO $dto)
+    {
+        $this->dto = $dto;
+        $this->uri = '/VendaDigitada/v1/Parcelamento';
+        $this->isOperationCartao = true;
+        parent::__construct();
 
-	public function __construct(ParcelamentoDTO $dto)
-	{
-		$this->dto = $dto;
-		$this->uri = '/VendaDigitada/v1/Parcelamento';
-		$this->isOperationCartao = true;
-		parent::__construct();
+        return $this;
+    }
 
-		return $this;
-	}
+    public function Get()
+    {
+        if (empty($this->dto->getBandeira()) || empty($this->dto->getValor())) {
+            throw new \Exception('Informe a bandeira e o valor que deseja parcelar', 1);
+        }
 
-	public function Get()
-	{
+        $this->Authorization();
 
-		if (empty($this->dto->getBandeira()) || empty($this->dto->getValor()))
-			throw new \Exception("Informe a bandeira e o valor que deseja parcelar", 1);
+        $this->url = sprintf('%s?Bandeira=%s&valorServico=%01.2f', $this->url, $this->dto->getBandeira(), $this->dto->getValor());
+        $this->method = 'GET';
+        $this->Authorization();
 
-		$this->Authorization();
+        return $this->init();
+    }
 
-		$this->url = sprintf('%s?Bandeira=%s&valorServico=%01.2f', $this->url, $this->dto->getBandeira(), $this->dto->getValor());
-		$this->method = 'GET';
-		$this->Authorization();
+    public function GetById($id)
+    {
+        return $this->NoContent();
+    }
 
-		return $this->init();
-	}
+    public function Post()
+    {
+        return $this->NoContent();
+    }
 
-	public function GetById($id)
-	{
-		return $this->NoContent();
-	}
+    public function Put($id = null)
+    {
+        return $this->NoContent();
+    }
 
-	public function Post()
-	{
-		return $this->NoContent();
-	}
-
-	public function Put($id = NULL)
-	{
-		return $this->NoContent();
-	}
-
-	public function Delete($id)
-	{
-		return $this->NoContent();
-	}
+    public function Delete($id)
+    {
+        return $this->NoContent();
+    }
 }

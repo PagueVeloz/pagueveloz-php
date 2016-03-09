@@ -2,7 +2,7 @@
 
 namespace PagueVeloz\Api\v1\Dto;
 
-use \PagueVeloz\Api\v1\Dto\ContaBancariaDTO;
+use PagueVeloz\Api\v1\Dto\ContaBancariaDTO;
 
 class DepositoDTO extends \PagueVeloz\AbstractDTO
 {
@@ -19,7 +19,7 @@ class DepositoDTO extends \PagueVeloz\AbstractDTO
 
     public function __construct()
     {
-        $this->setContaBancaria(new ContaBancariaDTO);
+        $this->setContaBancaria(new ContaBancariaDTO());
     }
 
     /**

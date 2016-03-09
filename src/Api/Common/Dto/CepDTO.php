@@ -2,24 +2,24 @@
 
 namespace PagueVeloz\Api\Common\Dto;
 
-use \PagueVeloz\Api\Common\Dto\CidadeDTO;
+use PagueVeloz\Api\Common\Dto\CidadeDTO;
 
 class CepDTO extends \PagueVeloz\AbstractDTO
 {
-    protected $Cidade = NULL;
-    protected $Logradouro = NULL;
-    protected $Numero = NULL;
-    protected $CEP = NULL;
+    protected $Cidade = null;
+    protected $Logradouro = null;
+    protected $Numero = null;
+    protected $CEP = null;
 
     public function __construct()
     {
-        $this->setCidade(new CidadeDTO);
+        $this->setCidade(new CidadeDTO());
     }
 
-	public function getNotEmpty()
-	{
-		return [];
-	}
+    public function getNotEmpty()
+    {
+        return [];
+    }
 
     /**
      * Gets the value of Cidade.

@@ -2,7 +2,7 @@
 
 namespace PagueVeloz\Api\v1;
 
-/**
+/*
  * UsuarioCliente.php
  *
  *
@@ -11,57 +11,51 @@ namespace PagueVeloz\Api\v1;
  * @version 1.0v
 */
 
-use \PagueVeloz\ServiceProvider;
-use \PagueVeloz\Api\InterfaceApi;
-use \PagueVeloz\Service\Context\HttpRequest;
-use \PagueVeloz\Api\Common\Auth;
-use \PagueVeloz\Api\v1\Dto\UsuarioClienteDTO;
+use PagueVeloz\Api\InterfaceApi;
+use PagueVeloz\Api\v1\Dto\UsuarioClienteDTO;
+use PagueVeloz\ServiceProvider;
 
 class UsuarioCliente extends ServiceProvider implements InterfaceApi
 {
-	public function __construct(UsuarioClienteDTO $dto)
-	{
-		$this->dto = $dto;
-		$this->uri = '/v1/UsuarioCliente';
+    public function __construct(UsuarioClienteDTO $dto)
+    {
+        $this->dto = $dto;
+        $this->uri = '/v1/UsuarioCliente';
 
-		parent::__construct();
+        parent::__construct();
 
-		return $this;
-	}
+        return $this;
+    }
 
-	public function Get()
-	{
-		$this->method = 'GET';
-		$this->Authorization();
+    public function Get()
+    {
+        $this->method = 'GET';
+        $this->Authorization();
 
-		return $this->init();
-	}
+        return $this->init();
+    }
 
-	public function GetById($id)
-	{
+    public function GetById($id)
+    {
+        $this->method = 'GET';
+        $this->Authorization();
+        $this->url = sprintf('%s/%s', $this->url, $id);
 
-		$this->method = 'GET';
-		$this->Authorization();
-		$this->url = sprintf('%s/%s', $this->url, $id);
+        return $this->init();
+    }
 
-		return $this->init();
+    public function Post()
+    {
+        return $this->NoContent();
+    }
 
-	}
+    public function Put($id)
+    {
+        return $this->NoContent();
+    }
 
-
-	public function Post()
-	{
-		return $this->NoContent();
-	}
-
-	public function Put($id)
-	{
-		return $this->NoContent();
-	}
-
-	public function Delete($id)
-	{
-		return $this->NoContent();
-	}
-
+    public function Delete($id)
+    {
+        return $this->NoContent();
+    }
 }

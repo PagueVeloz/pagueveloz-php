@@ -2,7 +2,6 @@
 
 namespace PagueVeloz\Api\v1\Dto;
 
-
 class TransferenciaDTO extends \PagueVeloz\AbstractDTO
 {
     protected $ClienteDestino;

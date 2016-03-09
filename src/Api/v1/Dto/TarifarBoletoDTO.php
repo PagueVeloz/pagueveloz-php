@@ -2,7 +2,6 @@
 
 namespace PagueVeloz\Api\v1\Dto;
 
-
 class TarifarBoletoDTO extends \PagueVeloz\AbstractDTO
 {
     protected $Boleto;

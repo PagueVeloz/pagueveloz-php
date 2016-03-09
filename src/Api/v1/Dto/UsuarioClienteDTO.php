@@ -2,7 +2,6 @@
 
 namespace PagueVeloz\Api\v1\Dto;
 
-
 class UsuarioClienteDTO extends \PagueVeloz\AbstractDTO
 {
     protected $Email;

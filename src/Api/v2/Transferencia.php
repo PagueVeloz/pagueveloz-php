@@ -2,7 +2,7 @@
 
 namespace PagueVeloz\Api\v2;
 
-/**
+/*
  * Transferencia.php
  *
  *
@@ -11,83 +11,80 @@ namespace PagueVeloz\Api\v2;
  * @version 1.2v
 */
 
-use \PagueVeloz\ServiceProvider;
-use \PagueVeloz\Api\InterfaceApi;
-use \PagueVeloz\Api\v2\Dto\TransferenciaDTO;
-use \PagueVeloz\Service\Context\HttpRequest;
+use PagueVeloz\Api\InterfaceApi;
+use PagueVeloz\Api\v2\Dto\TransferenciaDTO;
+use PagueVeloz\Service\Context\HttpRequest;
+use PagueVeloz\ServiceProvider;
 
 class Transferencia extends ServiceProvider implements InterfaceApi
 {
+    public function __construct(TransferenciaDTO $dto)
+    {
+        $this->dto = $dto;
+        $this->uri = '/v2/Transferencia';
 
-	public function __construct(TransferenciaDTO $dto)
-	{
+        parent::__construct();
 
-		$this->dto = $dto;
-		$this->uri = '/v2/Transferencia';
+        return $this;
+    }
 
-		parent::__construct();
+    public function Get()
+    {
+        $this->method = 'GET';
+        $this->Authorization();
 
-		return $this;
-	}
+        return $this->init();
+    }
 
-	public function Get()
-	{
-		$this->method = 'GET';
-		$this->Authorization();
+    public function GetById($id)
+    {
+        return $this->NoContent();
+    }
 
-		return $this->init();
-	}
+    public function GetBySeuNumero($seuNumero)
+    {
+        $this->method = 'GET';
+        $this->Authorization();
+        $this->url = sprintf('%s/%s', $this->url, $seuNumero);
 
-	public function GetById($id)
-	{
-		return $this->NoContent();
-	}
+        return $this->init();
+    }
 
-	public function GetBySeuNumero($seuNumero)
-	{
-		$this->method = 'GET';
-		$this->Authorization();
-		$this->url = sprintf('%s/%s', $this->url, $seuNumero);
+    public function GetByPeriodo($dtInicial, $dtFinal)
+    {
+        $_inicio = new \DateTime($dtInicial);
+        $_final = new \DateTime($dtFinal);
 
-		return $this->init();
-	}
+        $this->method = 'GET';
+        $this->Authorization();
 
-	public function GetByPeriodo($dtInicial, $dtFinal)
-	{
+        $this->url = sprintf('%s/%s/%s', $this->url, $_inicio->format('Y-m-d'), $_final->format('Y-m-d'));
 
-		$_inicio = new \DateTime($dtInicial);
-		$_final  = new \DateTime($dtFinal);
+        return $this->init();
+    }
 
-		$this->method = 'GET';
-		$this->Authorization();
+    public function Post()
+    {
+        if ($this->isEmpty($this->dto->getRequest())) {
+            throw new \Exception('Erro ao montar request', 1);
+        }
 
-		$this->url = sprintf('%s/%s/%s', $this->url, $_inicio->format('Y-m-d'), $_final->format('Y-m-d'));
+        $this->Authorization();
+        $request = new HttpRequest();
 
-		return $this->init();
-	}
+        $request->body = $this->dto->getRequest();
+        $this->method = 'POST';
 
-	public function Post()
-	{
-		if ($this->isEmpty($this->dto->getRequest()))
-			throw new \Exception("Erro ao montar request", 1);
+        return $this->init($request);
+    }
 
-		$this->Authorization();
-		$request = new HttpRequest;
+    public function Put($id = null)
+    {
+        return $this->NoContent();
+    }
 
-		$request->body = $this->dto->getRequest();
-		$this->method = 'POST';
-
-		return $this->init($request);
-	}
-
-	public function Put($id = NULL)
-	{
-		return $this->NoContent();
-	}
-
-	public function Delete($id)
-	{
-		return $this->NoContent();
-	}
-
+    public function Delete($id)
+    {
+        return $this->NoContent();
+    }
 }

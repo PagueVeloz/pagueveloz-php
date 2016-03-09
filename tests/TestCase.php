@@ -4,11 +4,10 @@ use Faker\Factory;
 
 class TestCase extends PHPUnit_Framework_TestCase
 {
-
-	/**
-	 * @var Factory
-	 */
-	protected $faker;
+    /**
+     * @var Factory
+     */
+    protected $faker;
 
     /**
      * Sets up the fixture, for example, opens a network connection.
@@ -16,7 +15,7 @@ class TestCase extends PHPUnit_Framework_TestCase
      */
     protected function setUp()
     {
-		$this->faker = Factory::create();
+        $this->faker = Factory::create();
     }
 
     /**

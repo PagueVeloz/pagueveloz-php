@@ -2,7 +2,7 @@
 
 namespace PagueVeloz\Api\v1;
 
-/**
+/*
  * Cep.php
  *
  *
@@ -11,49 +11,46 @@ namespace PagueVeloz\Api\v1;
  * @version 1.0v
 */
 
-use \PagueVeloz\ServiceProvider;
-use \PagueVeloz\Api\InterfaceApi;
-use \PagueVeloz\Service\Context\HttpRequest;
-
+use PagueVeloz\Api\InterfaceApi;
+use PagueVeloz\ServiceProvider;
 
 class Cep extends ServiceProvider implements InterfaceApi
 {
-	public function __construct()
-	{
-		$this->uri = '/v1/CEP';
+    public function __construct()
+    {
+        $this->uri = '/v1/CEP';
 
-		parent::__construct();
+        parent::__construct();
 
-		return $this;
-	}
+        return $this;
+    }
 
-	public function Get()
-	{
-		return $this->NoContent();
-	}
+    public function Get()
+    {
+        return $this->NoContent();
+    }
 
-	public function GetById($id)
-	{
-		$this->method = 'GET';
+    public function GetById($id)
+    {
+        $this->method = 'GET';
 
-		$this->url = sprintf('%s/%s', $this->url, $id);
+        $this->url = sprintf('%s/%s', $this->url, $id);
 
-		return $this->init();
-	}
+        return $this->init();
+    }
 
-	public function Post()
-	{
-		return $this->NoContent();
-	}
+    public function Post()
+    {
+        return $this->NoContent();
+    }
 
-	public function Put($id = NULL)
-	{
-		return $this->NoContent();
-	}
+    public function Put($id = null)
+    {
+        return $this->NoContent();
+    }
 
-	public function Delete($id)
-	{
-		return $this->NoContent();
-	}
-
+    public function Delete($id)
+    {
+        return $this->NoContent();
+    }
 }

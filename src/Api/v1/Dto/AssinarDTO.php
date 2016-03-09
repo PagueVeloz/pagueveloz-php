@@ -4,24 +4,24 @@ namespace PagueVeloz\Api\v1\Dto;
 
 class AssinarDTO extends \PagueVeloz\AbstractDTO
 {
-	protected $Nome = NULL;
-	protected $Documento = NULL;
-	protected $TipoPessoa = 0; // 0=NaoDefinido|1=Fisica|2=Juridica
-	protected $LoginUsuarioDefault = NULL;
-	protected $Email = NULL;
-	protected $UrlNotificacao = NULL;
-	protected $Id = NULL;
+    protected $Nome = null;
+    protected $Documento = null;
+    protected $TipoPessoa = 0; // 0=NaoDefinido|1=Fisica|2=Juridica
+    protected $LoginUsuarioDefault = null;
+    protected $Email = null;
+    protected $UrlNotificacao = null;
+    protected $Id = null;
 
-	public function getNotEmpty()
-	{
-		return [
-				'Nome',
-				'Documento',
-				'TipoPessoa',
-				'LoginUsuarioDefault',
-				'Email',
-				];
-	}
+    public function getNotEmpty()
+    {
+        return [
+                'Nome',
+                'Documento',
+                'TipoPessoa',
+                'LoginUsuarioDefault',
+                'Email',
+                ];
+    }
 
     /**
      * Gets the value of Nome.
