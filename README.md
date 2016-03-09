@@ -72,8 +72,7 @@ Serviços que necessitem de autenticação devem enviar o cabeçalho ***"Authent
 
 ### Serviços sem autenticação
 
-Os serviços abaixo não necessitam de autenticação e podem ser chamados diretamente.
-````
-Assinar
-Cep
-````
+Alguns serviços não necessitam de autenticação e podem ser chamados diretamente, veja abaixo alguns:
+
+ * Assinar
+ * Cep
