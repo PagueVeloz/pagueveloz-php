@@ -14,7 +14,7 @@ class AuthTest extends TestCase
     {
         $this->auth = new Auth;
 
-		parent::setUp();
+	parent::setUp();
     }
 
     /**
@@ -23,11 +23,11 @@ class AuthTest extends TestCase
     public function testSetEmail()
     {
 		$email = $this->faker->email;
-
+	
 		$this->auth->setEmail($email);
-
+	
 		$this->assertAttributeEquals($email, 'Email', $this->auth);
-
+	
 		return $email;
     }
 
@@ -35,10 +35,10 @@ class AuthTest extends TestCase
      * @covers PagueVeloz\Api\Common\Auth::getEmail
      * @depends testSetEmail
      */
-    public function testGetEmail()
+    public function testGetEmail($email)
     {
 		$this->auth->setEmail($email);
-
+	
 		$this->assertEquals($email, $this->auth->getEmail());
     }
 
@@ -48,11 +48,11 @@ class AuthTest extends TestCase
     public function testSetSenha()
     {
 		$senha = $this->faker->password;
-
+	
 		$this->auth->setSenha($senha);
-
+	
 		$this->assertAttributeEquals($senha, 'Senha', $this->auth);
-
+	
 		return $senha;
     }
 
@@ -62,8 +62,8 @@ class AuthTest extends TestCase
 	*/
 	public function testGetSenha($senha)
 	{
-		$this->auth->setSenha($senha);
-
+	    $this->auth->setSenha($senha);
+	
 		$this->assertEquals($senha, $this->auth->getSenha());
 	}
 
