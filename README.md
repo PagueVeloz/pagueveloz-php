@@ -1,4 +1,4 @@
-# Cliente API do [PagueVeloz](https://www.pagueveloz.com.br/)
+# Cliente PHP da API do [PagueVeloz](https://www.pagueveloz.com.br/)
 
 [![StyleCI](https://styleci.io/repos/27489184/shield)](https://styleci.io/repos/27489184)
 [![Build Status](https://travis-ci.org/PagueVeloz/pagueveloz-php.svg)](https://travis-ci.org/PagueVeloz/pagueveloz-php)
