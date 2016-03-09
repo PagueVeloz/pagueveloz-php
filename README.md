@@ -1,5 +1,12 @@
 # Cliente API do [PagueVeloz](https://www.pagueveloz.com.br/)
 
+[![StyleCI](https://styleci.io/repos/27489184/shield)](https://styleci.io/repos/27489184)
+[![Build Status](https://travis-ci.org/PagueVeloz/pagueveloz-php.svg)](https://travis-ci.org/PagueVeloz/pagueveloz-php)
+[![Latest Stable Version](https://poser.pugx.org/pagueveloz/pagueveloz/v/stable)](https://packagist.org/packages/pagueveloz/pagueveloz) 
+[![Total Downloads](https://poser.pugx.org/pagueveloz/pagueveloz/downloads)](https://packagist.org/packages/pagueveloz/pagueveloz) 
+[![Latest Unstable Version](https://poser.pugx.org/pagueveloz/pagueveloz/v/unstable)](https://packagist.org/packages/pagueveloz/pagueveloz) 
+[![License](https://poser.pugx.org/pagueveloz/pagueveloz/license)](https://packagist.org/packages/pagueveloz/pagueveloz)
+
 **Pré-requisitos**
 
  * PHP 5.4 ou superior
