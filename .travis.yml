@@ -1,30 +1,19 @@
 language: php
-
+ 
 php:
   - 5.4
   - 5.5
   - 5.6
-  - 7.0
   - hhvm
-
-matrix:
-  allow_failures:
-    - php: hhvm
-
-sudo: false
-
-before_install:
-  - composer self-update
-  
-after_success:
-  - sh -c 'if [ "$TRAVIS_PHP_VERSION" != "7.0" ]; then php vendor/bin/coveralls -v; fi;'
-
+ 
 install:
-  - travis_retry composer install --no-interaction --prefer-source
-  - composer require satooshi/php-coveralls
-
+  - composer require satooshi/php-coveralls:~0.6@stable
+ 
+before_script:
+  - mkdir -p build/logs
+ 
 script:
-  - ./vendor/bin/phpunit --coverage-clover clover.xml
-
-notifications:
-  email: true
+  - phpunit --coverage-clover build/logs/clover.xml
+ 
+after_success:
+  - sh -c 'if [ "$TRAVIS_PHP_VERSION" != "hhvm" ]; then php vendor/bin/coveralls -v; fi;'
