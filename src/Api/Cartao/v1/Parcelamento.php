@@ -29,13 +29,16 @@ class Parcelamento extends ServiceProvider implements InterfaceApi
 
     public function Get()
     {
-        if (empty($this->dto->getBandeira()) || empty($this->dto->getValor())) {
+        $bandeira = $this->dto->getBandeira();
+        $valor = $this->dto->getValor();
+        
+        if (empty($bandeira) || empty($valor)) {
             throw new \Exception('Informe a bandeira e o valor que deseja parcelar', 1);
         }
 
         $this->Authorization();
 
-        $this->url = sprintf('%s?Bandeira=%s&valorServico=%01.2f', $this->url, $this->dto->getBandeira(), $this->dto->getValor());
+        $this->url = sprintf('%s?Bandeira=%s&valorServico=%01.2f', $this->url, $bandeira, $valor);
         $this->method = 'GET';
         $this->Authorization();
 
