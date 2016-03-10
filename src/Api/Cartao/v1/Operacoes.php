@@ -19,7 +19,7 @@ class Operacoes extends ServiceProvider implements InterfaceApi
 {
     public function __construct()
     {
-        $this->dto = $dto;
+
         $this->uri = '/PinPad/v1/Operacoes';
         $this->isOperationCartao = true;
         parent::__construct();
