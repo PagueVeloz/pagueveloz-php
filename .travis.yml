@@ -21,7 +21,7 @@ after_success:
 
 install:
   - travis_retry composer install --no-interaction --prefer-source
-  - composer require satooshi/php-coveralls:~0.6@stable
+  - composer require satooshi/php-coveralls
 
 script:
   - ./vendor/bin/phpunit --coverage-clover clover.xml
