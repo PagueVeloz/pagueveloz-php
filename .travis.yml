@@ -17,13 +17,14 @@ before_install:
   - composer self-update
   
 after_success:
-  - coveralls
+  - sh -c 'if [ "$TRAVIS_PHP_VERSION" != "7.0" ]; then php vendor/bin/coveralls -v; fi;'
 
 install:
   - travis_retry composer install --no-interaction --prefer-source
+  - composer require satooshi/php-coveralls:~0.6@stable
 
 script:
-  - ./vendor/bin/phpunit
+  - ./vendor/bin/phpunit --coverage-clover clover.xml
 
 notifications:
   email: true
