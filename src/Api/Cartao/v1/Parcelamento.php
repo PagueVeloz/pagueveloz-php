@@ -31,7 +31,7 @@ class Parcelamento extends ServiceProvider implements InterfaceApi
     {
         $bandeira = $this->dto->getBandeira();
         $valor = $this->dto->getValor();
-        
+
         if (empty($bandeira) || empty($valor)) {
             throw new \Exception('Informe a bandeira e o valor que deseja parcelar', 1);
         }
