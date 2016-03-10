@@ -2,7 +2,6 @@
 
 namespace PagueVeloz\Api\v1\Dto;
 
-
 class ContaBancariaDTO extends \PagueVeloz\AbstractDTO
 {
     protected $CodigoBanco;

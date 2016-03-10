@@ -4,16 +4,16 @@ namespace PagueVeloz\Api\Cartao\v1\Dto;
 
 class ConfirmacaoDTO extends \PagueVeloz\AbstractDTO
 {
-	protected $Id;
+    protected $Id;
     protected $Confirmado = false;
 
-	public function getNotEmpty()
-	{
-		return [
-				'Id',
+    public function getNotEmpty()
+    {
+        return [
+                'Id',
                 'Confirmado',
-				];
-	}
+                ];
+    }
 
     /**
      * Gets the value of Id.

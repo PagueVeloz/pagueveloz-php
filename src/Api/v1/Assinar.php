@@ -2,7 +2,7 @@
 
 namespace PagueVeloz\Api\v1;
 
-/**
+/*
  * Assinar.php
  *
  *
@@ -11,57 +11,50 @@ namespace PagueVeloz\Api\v1;
  * @version 1.0v
 */
 
-
-use \PagueVeloz\ServiceProvider;
-use \PagueVeloz\Api\InterfaceApi;
-use \PagueVeloz\Api\v1\Dto\AssinarDTO;
-use \PagueVeloz\Service\Context\HttpRequest;
+use PagueVeloz\Api\InterfaceApi;
+use PagueVeloz\Api\v1\Dto\AssinarDTO;
+use PagueVeloz\Service\Context\HttpRequest;
+use PagueVeloz\ServiceProvider;
 
 class Assinar extends ServiceProvider implements InterfaceApi
 {
+    public function __construct(AssinarDTO $dto)
+    {
+        $this->dto = $dto;
+        $this->uri = '/v1/Assinar';
 
-	public function __construct(AssinarDTO $dto)
-	{
+        parent::__construct();
 
-		$this->dto = $dto;
-		$this->uri = '/v1/Assinar';
+        return $this;
+    }
 
-		parent::__construct();
+    public function Get()
+    {
+    }
 
-		return $this;
-	}
+    public function GetById($id)
+    {
+    }
 
-	public function Get()
-	{
+    public function Post()
+    {
+        if ($this->isEmpty($this->dto->getRequest())) {
+            throw new \Exception('Erro ao montar request', 1);
+        }
 
-	}
+        $request = new HttpRequest();
 
-	public function GetById($id)
-	{
+        $request->body = $this->dto->getRequest();
+        $this->method = 'POST';
 
-	}
+        return $this->init($request);
+    }
 
-	public function Post()
-	{
-		if ($this->isEmpty($this->dto->getRequest()))
-			throw new \Exception("Erro ao montar request", 1);
+    public function Put($id = null)
+    {
+    }
 
-		$request = new HttpRequest;
-
-		$request->body = $this->dto->getRequest();
-		$this->method = 'POST';
-
-		return $this->init($request);
-	}
-
-	public function Put($id = NULL)
-	{
-
-	}
-
-	public function Delete($id)
-	{
-
-	}
-
+    public function Delete($id)
+    {
+    }
 }

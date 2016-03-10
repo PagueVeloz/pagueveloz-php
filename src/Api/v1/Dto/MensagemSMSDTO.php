@@ -2,7 +2,6 @@
 
 namespace PagueVeloz\Api\v1\Dto;
 
-
 class MensagemSMSDTO extends \PagueVeloz\AbstractDTO
 {
     protected $SeuId;

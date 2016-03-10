@@ -2,42 +2,40 @@
 
 namespace PagueVeloz;
 
-use \Monolog\Logger;
-use \Monolog\Handler\StreamHandler;
+use Monolog\Handler\StreamHandler;
+use Monolog\Logger;
 
 abstract class LogProvider
 {
+    public static function Info($info, $inputs)
+    {
+        $_data = new \DateTime();
 
-	public static function Info($info, $inputs)
-	{
-		$_data = new \DateTime();
+        if (empty($inputs)) {
+            $inputs = [];
+        }
 
-		if (empty($inputs))
-			$inputs = array();
+        $_path = sprintf('%s/Logs/PagueVeloz_%s.log', __DIR__, $_data->format('Ymd'));
 
+        $log = new Logger('PagueVeloz');
+        $log->pushHandler(new StreamHandler($_path, Logger::INFO));
 
-		$_path = sprintf('%s/Logs/PagueVeloz_%s.log', __DIR__, $_data->format('Ymd'));
+        $log->addInfo($info, $inputs);
+    }
 
-		$log = new Logger('PagueVeloz');
-		$log->pushHandler(new StreamHandler($_path, Logger::INFO));
+    public static function Error($info, $inputs)
+    {
+        $_data = new \DateTime();
 
-		$log->addInfo($info, $inputs);
-	}
+        if (empty($inputs)) {
+            $inputs = [];
+        }
 
+        $_path = sprintf('%s/Logs/PagueVeloz_%s.log', __DIR__, $_data->format('Ymd'));
 
-	public static function Error($info, $inputs)
-	{
-		$_data = new \DateTime();
+        $log = new Logger('PagueVeloz');
+        $log->pushHandler(new StreamHandler($_path, Logger::ERROR));
 
-		if (empty($inputs))
-			$inputs = array();
-
-
-		$_path = sprintf('%s/Logs/PagueVeloz_%s.log', __DIR__, $_data->format('Ymd'));
-
-		$log = new Logger('PagueVeloz');
-		$log->pushHandler(new StreamHandler($_path, Logger::ERROR));
-
-		$log->addError($info, $inputs);
-	}
+        $log->addError($info, $inputs);
+    }
 }

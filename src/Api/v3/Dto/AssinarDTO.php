@@ -2,23 +2,23 @@
 
 namespace PagueVeloz\Api\v3\Dto;
 
-use \PagueVeloz\Api\Common\Dto\CepDTO;
+use PagueVeloz\Api\Common\Dto\CepDTO;
 
 class AssinarDTO extends \PagueVeloz\AbstractDTO
 {
-    protected $Nome = NULL;
-    protected $Documento = NULL;
+    protected $Nome = null;
+    protected $Documento = null;
     protected $TipoPessoa = 0; // 0=NaoDefinido|1=Fisica|2=Juridica
-    protected $LoginUsuarioDefault = NULL;
-    protected $Email = NULL;
-    protected $UrlNotificacao = NULL;
-    protected $Endereco = NULL;
-    protected $Cupom = NULL;
-    protected $Id = NULL;
+    protected $LoginUsuarioDefault = null;
+    protected $Email = null;
+    protected $UrlNotificacao = null;
+    protected $Endereco = null;
+    protected $Cupom = null;
+    protected $Id = null;
 
     public function __construct()
     {
-        $this->setEndereco(new CepDTO);
+        $this->setEndereco(new CepDTO());
     }
 
     public function getNotEmpty()

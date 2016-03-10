@@ -2,7 +2,7 @@
 
 namespace PagueVeloz\Api\v1;
 
-/**
+/*
  * MensagemSMS.php
  *
  *
@@ -11,79 +11,75 @@ namespace PagueVeloz\Api\v1;
  * @version 1.0v
 */
 
-use \PagueVeloz\ServiceProvider;
-use \PagueVeloz\Api\InterfaceApi;
-use \PagueVeloz\Service\Context\HttpRequest;
-use \PagueVeloz\Api\Common\Auth;
-use \PagueVeloz\Api\v1\Dto\MensagemSMSDTO;
+use PagueVeloz\Api\InterfaceApi;
+use PagueVeloz\Api\v1\Dto\MensagemSMSDTO;
+use PagueVeloz\Service\Context\HttpRequest;
+use PagueVeloz\ServiceProvider;
 
 class MensagemSMS extends ServiceProvider implements InterfaceApi
 {
-	public function __construct(MensagemSMSDTO $dto)
-	{
-		$this->dto = $dto;
-		$this->uri = '/v1/MensagemSMS';
+    public function __construct(MensagemSMSDTO $dto)
+    {
+        $this->dto = $dto;
+        $this->uri = '/v1/MensagemSMS';
 
-		parent::__construct();
+        parent::__construct();
 
-		return $this;
-	}
+        return $this;
+    }
 
-	public function Get()
-	{
-		$this->method = 'GET';
-		$this->Authorization();
+    public function Get()
+    {
+        $this->method = 'GET';
+        $this->Authorization();
 
-		return $this->init();
-	}
+        return $this->init();
+    }
 
-	public function GetById($id)
-	{
+    public function GetById($id)
+    {
+        $this->method = 'GET';
+        $this->Authorization();
+        $this->url = sprintf('%s/%s', $this->url, $id);
 
-		$this->method = 'GET';
-		$this->Authorization();
-		$this->url = sprintf('%s/%s', $this->url, $id);
+        return $this->init();
+    }
 
-		return $this->init();
+    public function GetByPeriodo($status, $dtInicial, $dtFinal)
+    {
+        $_inicio = new \DateTime($dtInicial);
+        $_final = new \DateTime($dtFinal);
 
-	}
+        $this->method = 'GET';
+        $this->Authorization();
 
-	public function GetByPeriodo($status,$dtInicial, $dtFinal)
-	{
+        $this->url = sprintf('%?status=%s&dataInicial%s&dataFinal=%s', $this->url, $status, $_inicio->format('Y-m-d'), $_final->format('Y-m-d'));
 
-		$_inicio = new \DateTime($dtInicial);
-		$_final  = new \DateTime($dtFinal);
+        return $this->init();
+    }
 
-		$this->method = 'GET';
-		$this->Authorization();
+    public function Post()
+    {
+        if ($this->isEmpty($this->dto->getRequest())) {
+            throw new \Exception('Erro ao montar request', 1);
+        }
 
-		$this->url = sprintf('%?status=%s&dataInicial%s&dataFinal=%s', $this->url, $status, $_inicio->format('Y-m-d'), $_final->format('Y-m-d'));
+        $request = new HttpRequest();
 
-		return $this->init();
-	}
+        $request->body = $this->dto->getRequest();
+        $this->method = 'POST';
+        $this->Authorization();
 
-	public function Post()
-	{
-		if ($this->isEmpty($this->dto->getRequest()))
-			throw new \Exception("Erro ao montar request", 1);
+        return $this->init($request);
+    }
 
-		$request = new HttpRequest;
+    public function Put($id)
+    {
+        return $this->NoContent();
+    }
 
-		$request->body = $this->dto->getRequest();
-		$this->method = 'POST';
-		$this->Authorization();
-
-		return $this->init($request);
-	}
-
-	public function Put($id)
-	{
-		return $this->NoContent();
-	}
-
-	public function Delete($id)
-	{
-		return $this->NoContent();
-	}
-
+    public function Delete($id)
+    {
+        return $this->NoContent();
+    }
 }

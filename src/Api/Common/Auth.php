@@ -1,9 +1,8 @@
 <?php
 
-
 namespace PagueVeloz\Api\Common;
 
-/**
+/*
  * Auth.php
  *
  *
@@ -11,22 +10,21 @@ namespace PagueVeloz\Api\Common;
  * @copyright 2015
  * @version 1.0v
 */
-use \PagueVeloz\ServiceProvider;
 
 class Auth
 {
-	protected $Email = NULL;
-	protected $Senha = NULL;
-	protected $Token = NULL;
+    protected $Email = null;
+    protected $Senha = null;
+    protected $Token = null;
 
-	public function getAuthorization()
-	{
-		return 'Authorization: Basic '.base64_encode($this->getEmail().":".$this->getToken());
-	}
+    public function getAuthorization()
+    {
+        return 'Authorization: Basic '.base64_encode($this->getEmail().':'.$this->getToken());
+    }
 
     public function getAuthorizationCartao()
     {
-        return 'Authorization: Chave '.base64_encode($this->getEmail().":".$this->getToken());
+        return 'Authorization: Chave '.base64_encode($this->getEmail().':'.$this->getToken());
     }
 
     /**

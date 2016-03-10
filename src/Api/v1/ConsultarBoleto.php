@@ -2,7 +2,7 @@
 
 namespace PagueVeloz\Api\v1;
 
-/**
+/*
  * ConsultarBoleto.php
  *
  *
@@ -11,60 +11,54 @@ namespace PagueVeloz\Api\v1;
  * @version 1.0v
 */
 
-use \PagueVeloz\ServiceProvider;
-use \PagueVeloz\Api\InterfaceApi;
-use \PagueVeloz\Service\Context\HttpRequest;
-use \PagueVeloz\Api\Common\Auth;
+use PagueVeloz\Api\InterfaceApi;
+use PagueVeloz\ServiceProvider;
 
 class ConsultarBoleto extends ServiceProvider implements InterfaceApi
 {
-	public function __construct()
-	{
+    public function __construct()
+    {
+        $this->uri = '/v1/ConsultarBoleto';
 
-		$this->uri = '/v1/ConsultarBoleto';
+        parent::__construct();
 
-		parent::__construct();
+        return $this;
+    }
 
-		return $this;
-	}
+    public function Get()
+    {
+        return $this->NoContent();
+    }
 
-	public function Get()
-	{
-		return $this->NoContent();
-	}
+    public function GetByPagamento($data)
+    {
+        $_data = new \DateTime($data);
 
-	public function GetByPagamento($data)
-	{
-		$_data = new \DateTime($data);
+        $this->method = 'GET';
+        $this->Authorization();
 
-		$this->method = 'GET';
-		$this->Authorization();
+        $this->url = sprintf('%s/?data=%s', $this->url, $_data->format('Y-m-d'));
 
-		$this->url = sprintf('%s/?data=%s', $this->url, $_data->format('Y-m-d'));
+        return $this->init();
+    }
 
-		return $this->init();
-	}
+    public function GetById($id)
+    {
+        return $this->NoContent();
+    }
 
-	public function GetById($id)
-	{
+    public function Post()
+    {
+        return $this->NoContent();
+    }
 
-		return $this->NoContent();
+    public function Put($id = null)
+    {
+        return $this->NoContent();
+    }
 
-	}
-
-	public function Post()
-	{
-		return $this->NoContent();
-	}
-
-	public function Put($id = NULL)
-	{
-		return $this->NoContent();
-	}
-
-	public function Delete($id)
-	{
-		return $this->NoContent();
-	}
-
+    public function Delete($id)
+    {
+        return $this->NoContent();
+    }
 }

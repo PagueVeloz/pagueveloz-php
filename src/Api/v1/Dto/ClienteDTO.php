@@ -2,22 +2,19 @@
 
 namespace PagueVeloz\Api\v1\Dto;
 
-use \PagueVeloz\Api\Common\Dto\CepDTO;
-
 class ClienteDTO extends \PagueVeloz\AbstractDTO
 {
     protected $NomeArquivo;
     protected $ConteudoArquivoBase64;
     protected $Id;
 
-	public function getNotEmpty()
-	{
-		return [
-				'NomeArquivo',
-				'ConteudoArquivoBase64',
-				];
-	}
-
+    public function getNotEmpty()
+    {
+        return [
+                'NomeArquivo',
+                'ConteudoArquivoBase64',
+                ];
+    }
 
     /**
      * Gets the value of NomeArquivo.

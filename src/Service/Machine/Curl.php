@@ -2,7 +2,7 @@
 
 namespace PagueVeloz\Service\Machine;
 
-/**
+/*
  * Curl.php
  *
  *
@@ -11,62 +11,62 @@ namespace PagueVeloz\Service\Machine;
  * @version 1.0v
 */
 
-use \PagueVeloz\Service\Context\HttpResponse,
-    \PagueVeloz\Service\Context\HttpRequest;
-
-use \PagueVeloz\LogProvider;
+use PagueVeloz\LogProvider;
+use PagueVeloz\Service\Context\HttpRequest;
+use PagueVeloz\Service\Context\HttpResponse;
 
 class Curl extends \PagueVeloz\Service\Machine\CurlDTO implements \PagueVeloz\Service\Interfaces\InterfaceCurl
 {
+    protected $request;
 
-	protected $request;
-
-	public function headers()
+    public function headers()
     {
         $pos = strpos($this->request, "\r\n\r\n");
+
         return explode("\r\n", substr($this->request, 0, $pos));
     }
 
     public function body()
     {
-        $pos  = strpos($this->request, "\r\n\r\n");
-        $body = substr($this->request, $pos+4);
+        $pos = strpos($this->request, "\r\n\r\n");
+        $body = substr($this->request, $pos + 4);
 
-        if ($this->proxy)
-        {
-            $pos  = strpos($body, "\r\n\r\n");
+        if ($this->proxy) {
+            $pos = strpos($body, "\r\n\r\n");
             $body = substr($body, $pos);
         }
 
         return $body;
     }
 
-	public function init(HttpRequest $request = null)
-	{
-
-		$init = curl_init();
+    public function init(HttpRequest $request = null)
+    {
+        $init = curl_init();
 
         $opt = [];
 
-        $opt[CURLOPT_URL]            = trim($this->url);
-        $opt[CURLOPT_CUSTOMREQUEST]  = $this->method;
+        $opt[CURLOPT_URL] = trim($this->url);
+        $opt[CURLOPT_CUSTOMREQUEST] = $this->method;
         $opt[CURLOPT_RETURNTRANSFER] = 1;
         //$opt[CURLOPT_HEADER]         = 1;
 
-        if (!empty($this->urlReferer))
+        if (!empty($this->urlReferer)) {
             $opt[CURLOPT_REFERER] = $this->urlReferer;
+        }
 
-        if (!empty($request) && in_array($this->method, ['POST','PUT']))
+        if (!empty($request) && in_array($this->method, ['POST', 'PUT'])) {
             $opt[CURLOPT_POSTFIELDS] = $request->body;
+        }
 
-        if (!empty($this->headers))
+        if (!empty($this->headers)) {
             $opt[CURLOPT_HTTPHEADER] = $this->headers;
+        }
 
-        if ($this->proxy)
+        if ($this->proxy) {
             $opt[CURLOPT_PROXY] = '127.0.0.1:8888';
+        }
 
-        if ($this->ssl)
-        {
+        if ($this->ssl) {
             $opt[CURLOPT_SSL_VERIFYHOST] = 0;
             $opt[CURLOPT_SSL_VERIFYPEER] = 0;
         }
@@ -77,29 +77,28 @@ class Curl extends \PagueVeloz\Service\Machine\CurlDTO implements \PagueVeloz\Se
 
         $info = curl_getinfo($init);
 
-	    $response = new HttpResponse;
+        $response = new HttpResponse();
 
-		$response->headers     = $this->headers();
-		$response->status      = !empty($info['http_code']) ? $info['http_code'] : 204;
-		$response->contentType = !empty($info['content_type']) ? $info['content_type'] : NULL;
-	    $response->body = $this->request;
+        $response->headers = $this->headers();
+        $response->status = !empty($info['http_code']) ? $info['http_code'] : 204;
+        $response->contentType = !empty($info['content_type']) ? $info['content_type'] : null;
+        $response->body = $this->request;
 
         curl_close($init);
 
-        if ($this->log)
-        {
+        if ($this->log) {
+            if (isset($request) && !empty($request)) {
+                LogProvider::Info(sprintf('Request (%s)', $this->url.' '.$this->method), json_decode($request->body, true));
+            }
 
-            if (isset($request) && !empty($request))
-                LogProvider::Info(sprintf('Request (%s)',$this->url.' '.$this->method), json_decode($request->body, true));
-
-            LogProvider::Info(sprintf('Headers (%s)',$this->url), $this->headers);
-            LogProvider::Info(sprintf('Response RAW (%s)',$this->url.' '.$this->method), array($this->request));
-            LogProvider::Info(sprintf('Response  (%s)',$this->url.' '.$this->method), $response->toArray());
+            LogProvider::Info(sprintf('Headers (%s)', $this->url), $this->headers);
+            LogProvider::Info(sprintf('Response RAW (%s)', $this->url.' '.$this->method), [$this->request]);
+            LogProvider::Info(sprintf('Response  (%s)', $this->url.' '.$this->method), $response->toArray());
 
             /*if (!in_array($response->status, array(200,201)))
                 LogProvider::Error(sprintf('ERRO PAGUEVELOZ  (%s)',$this->url), $request);*/
         }
 
         return $response;
-	}
+    }
 }

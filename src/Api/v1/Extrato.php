@@ -2,7 +2,7 @@
 
 namespace PagueVeloz\Api\v1;
 
-/**
+/*
  * Extrato.php
  *
  *
@@ -11,65 +11,58 @@ namespace PagueVeloz\Api\v1;
  * @version 1.0v
 */
 
-use \PagueVeloz\ServiceProvider;
-use \PagueVeloz\Api\InterfaceApi;
-use \PagueVeloz\Service\Context\HttpRequest;
-use \PagueVeloz\Api\Common\Auth;
+use PagueVeloz\Api\InterfaceApi;
+use PagueVeloz\ServiceProvider;
 
 class Extrato extends ServiceProvider implements InterfaceApi
 {
-	public function __construct()
-	{
+    public function __construct()
+    {
+        $this->uri = '/v1/Extrato';
 
-		$this->uri = '/v1/Extrato';
+        parent::__construct();
 
-		parent::__construct();
+        return $this;
+    }
 
-		return $this;
-	}
+    public function Get()
+    {
+        $this->method = 'GET';
+        $this->Authorization();
 
-	public function Get()
-	{
-		$this->method = 'GET';
-		$this->Authorization();
+        return $this->init();
+    }
 
-		return $this->init();
-	}
+    public function GetById($id)
+    {
+        return $this->NoContent();
+    }
 
-	public function GetById($id)
-	{
+    public function GetByPeriodo($dtInicial, $dtFinal)
+    {
+        $_inicio = new \DateTime($dtInicial);
+        $_final = new \DateTime($dtFinal);
 
-		return $this->NoContent();
+        $this->method = 'GET';
+        $this->Authorization();
 
-	}
+        $this->url = sprintf('%s/%s/%s', $this->url, $_inicio->format('Y-m-d'), $_final->format('Y-m-d'));
 
-	public function GetByPeriodo($dtInicial, $dtFinal)
-	{
+        return $this->init();
+    }
 
-		$_inicio = new \DateTime($dtInicial);
-		$_final  = new \DateTime($dtFinal);
+    public function Post()
+    {
+        return $this->NoContent();
+    }
 
-		$this->method = 'GET';
-		$this->Authorization();
+    public function Put($id = null)
+    {
+        return $this->NoContent();
+    }
 
-		$this->url = sprintf('%s/%s/%s', $this->url, $_inicio->format('Y-m-d'), $_final->format('Y-m-d'));
-
-		return $this->init();
-	}
-
-	public function Post()
-	{
-		return $this->NoContent();
-	}
-
-	public function Put($id = NULL)
-	{
-		return $this->NoContent();
-	}
-
-	public function Delete($id)
-	{
-		return $this->NoContent();
-	}
-
+    public function Delete($id)
+    {
+        return $this->NoContent();
+    }
 }

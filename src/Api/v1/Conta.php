@@ -2,7 +2,7 @@
 
 namespace PagueVeloz\Api\v1;
 
-/**
+/*
  * Conta.php
  *
  *
@@ -11,69 +11,66 @@ namespace PagueVeloz\Api\v1;
  * @version 1.0v
 */
 
-use \PagueVeloz\ServiceProvider;
-use \PagueVeloz\Api\InterfaceApi;
-use \PagueVeloz\Service\Context\HttpRequest;
-use \PagueVeloz\Api\Common\Auth;
-use \PagueVeloz\Api\v1\Dto\ContaDTO;
+use PagueVeloz\Api\InterfaceApi;
+use PagueVeloz\Api\v1\Dto\ContaDTO;
+use PagueVeloz\Service\Context\HttpRequest;
+use PagueVeloz\ServiceProvider;
 
 class Conta extends ServiceProvider implements InterfaceApi
 {
-	public function __construct(ContaDTO $dto)
-	{
+    public function __construct(ContaDTO $dto)
+    {
+        $this->dto = $dto;
+        $this->uri = '/v1/Conta';
 
-		$this->dto = $dto;
-		$this->uri = '/v1/Conta';
+        parent::__construct();
 
-		parent::__construct();
+        return $this;
+    }
 
-		return $this;
-	}
+    public function Get()
+    {
+        $this->method = 'GET';
+        $this->Authorization();
 
-	public function Get()
-	{
-		$this->method = 'GET';
-		$this->Authorization();
+        return $this->init();
+    }
 
-		return $this->init();
-	}
+    public function GetById($id)
+    {
+        $this->method = 'GET';
+        $this->Authorization();
+        $this->url = sprintf('%s/%s', $this->url, $id);
 
-	public function GetById($id)
-	{
-		$this->method = 'GET';
-		$this->Authorization();
-		$this->url = sprintf('%s/%s', $this->url, $id);
+        return $this->init();
+    }
 
-		return $this->init();
+    public function Post()
+    {
+        if ($this->isEmpty($this->dto->getRequest())) {
+            throw new \Exception('Erro ao montar request', 1);
+        }
 
-	}
+        $request = new HttpRequest();
 
-	public function Post()
-	{
-		if ($this->isEmpty($this->dto->getRequest()))
-			throw new \Exception("Erro ao montar request", 1);
+        $request->body = $this->dto->getRequest();
+        $this->method = 'POST';
+        $this->Authorization();
 
-		$request = new HttpRequest;
+        return $this->init($request);
+    }
 
-		$request->body = $this->dto->getRequest();
-		$this->method = 'POST';
-		$this->Authorization();
+    public function Put($id = null)
+    {
+        return $this->NoContent();
+    }
 
-		return $this->init($request);
-	}
+    public function Delete($id)
+    {
+        $this->method = 'DELETE';
+        $this->Authorization();
+        $this->url = sprintf('%s/%s', $this->url, $id);
 
-	public function Put($id = NULL)
-	{
-		return $this->NoContent();
-	}
-
-	public function Delete($id)
-	{
-		$this->method = 'DELETE';
-		$this->Authorization();
-		$this->url = sprintf('%s/%s', $this->url, $id);
-
-		return $this->init();
-	}
-
+        return $this->init();
+    }
 }

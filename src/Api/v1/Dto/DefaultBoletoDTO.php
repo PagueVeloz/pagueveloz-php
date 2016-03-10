@@ -2,7 +2,6 @@
 
 namespace PagueVeloz\Api\v1\Dto;
 
-
 class DefaultBoletoDTO extends \PagueVeloz\AbstractDTO
 {
     protected $Linha1;

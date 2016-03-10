@@ -4,16 +4,13 @@ namespace PagueVeloz\Api\Common\Dto;
 
 class CidadeDTO extends \PagueVeloz\AbstractDTO
 {
-    protected $Nome = NULL;
-    protected $Estado = NULL;
+    protected $Nome = null;
+    protected $Estado = null;
 
-
-
-	public function getNotEmpty()
-	{
-		return [];
-	}
-
+    public function getNotEmpty()
+    {
+        return [];
+    }
 
     /**
      * Gets the value of Nome.

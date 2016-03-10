@@ -4,7 +4,7 @@ namespace PagueVeloz\Api\v3\Dto;
 
 class BoletoDTO extends \PagueVeloz\AbstractDTO
 {
-	protected $Valor;
+    protected $Valor;
     protected $Vencimento;
     protected $SeuNumero;
     protected $Sacado;
