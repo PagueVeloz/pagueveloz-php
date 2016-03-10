@@ -15,6 +15,9 @@ sudo: false
 
 before_install:
   - composer self-update
+  
+after_success:
+  - coveralls
 
 install:
   - travis_retry composer install --no-interaction --prefer-source
