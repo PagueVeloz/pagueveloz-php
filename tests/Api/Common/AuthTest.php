@@ -39,8 +39,6 @@ class AuthTest extends TestCase
         $this->assertEquals($email, $this->auth->getEmail());
     }
 
-    /**
-     */
     public function testSetSenha()
     {
         $senha = $this->faker->password;
@@ -62,8 +60,6 @@ class AuthTest extends TestCase
         $this->assertEquals($senha, $this->auth->getSenha());
     }
 
-    /**
-     */
     public function testSetToken()
     {
         $token = $this->faker->uuid;
