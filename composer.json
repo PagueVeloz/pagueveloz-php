@@ -20,7 +20,8 @@
 	},
 	"require-dev": {
 		"phpunit/phpunit": ">=4.8",
-	    "fzaninotto/faker": "^1.5"
+	    "fzaninotto/faker": "^1.5",
+        "satooshi/php-coveralls": "^1.0"
 	},
     "autoload": {
         "psr-4": {

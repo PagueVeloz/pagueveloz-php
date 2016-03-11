@@ -18,9 +18,6 @@ class AuthTest extends TestCase
         parent::setUp();
     }
 
-    /**
-     * @covers PagueVeloz\Api\Common\Auth::setEmail
-     */
     public function testSetEmail()
     {
         $email = $this->faker->email;
@@ -33,7 +30,6 @@ class AuthTest extends TestCase
     }
 
     /**
-     * @covers PagueVeloz\Api\Common\Auth::getEmail
      * @depends testSetEmail
      */
     public function testGetEmail($email)
@@ -43,9 +39,6 @@ class AuthTest extends TestCase
         $this->assertEquals($email, $this->auth->getEmail());
     }
 
-    /**
-     * @covers PagueVeloz\Api\Common\Auth::setSenha
-     */
     public function testSetSenha()
     {
         $senha = $this->faker->password;
@@ -58,7 +51,6 @@ class AuthTest extends TestCase
     }
 
     /**
-     * @covers PagueVeloz\Api\Common\Auth::getSenha
      * @depends testSetSenha
      */
     public function testGetSenha($senha)
@@ -68,9 +60,6 @@ class AuthTest extends TestCase
         $this->assertEquals($senha, $this->auth->getSenha());
     }
 
-    /**
-     * @covers PagueVeloz\Api\Common\Auth::setToken
-     */
     public function testSetToken()
     {
         $token = $this->faker->uuid;
@@ -83,7 +72,6 @@ class AuthTest extends TestCase
     }
 
     /**
-     * @covers PagueVeloz\Api\Common\Auth::getToken
      * @depends testSetToken
      */
     public function testGetToken($token)
@@ -104,7 +92,6 @@ class AuthTest extends TestCase
     }
 
     /**
-     * @covers PagueVeloz\Api\Common\Auth::getAuthorization
      * @dataProvider authorizationProvider
      */
     public function testGetAuthorization($email, $token, $authorization)
@@ -115,7 +102,6 @@ class AuthTest extends TestCase
     }
 
     /**
-     * @covers PagueVeloz\Api\Common\Auth::getAuthorizationCartao
      * @dataProvider authorizationProvider
      */
     public function testGetAuthorizationCartao($email, $token, $authorization)
