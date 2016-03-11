@@ -2,8 +2,6 @@
 
 namespace PagueVeloz\Api\v1\Dto;
 
-use PagueVeloz\Api\v1\Dto\ContaBancariaDTO;
-
 class DepositoDTO extends \PagueVeloz\AbstractDTO
 {
     protected $Banco;

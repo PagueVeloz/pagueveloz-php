@@ -2,8 +2,6 @@
 
 namespace PagueVeloz;
 
-use PagueVeloz\ObjectFactory;
-
 abstract class AbstractDTO extends ObjectFactory
 {
     public function getKeys()

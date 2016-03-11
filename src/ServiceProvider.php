@@ -11,7 +11,6 @@ namespace PagueVeloz;
  * @version 1.0v
 */
 use PagueVeloz\Api\Common\Auth;
-use PagueVeloz\PagueVeloz;
 use PagueVeloz\Service\Context\HttpResponse;
 use PagueVeloz\Service\Machine\Curl;
 
