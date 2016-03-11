@@ -2,8 +2,6 @@
 
 namespace PagueVeloz\Api\Cartao\v1\Dto;
 
-use PagueVeloz\Api\Cartao\v1\Dto\ProprietarioCartaoDTO;
-
 class TransacaoDTO extends \PagueVeloz\AbstractDTO
 {
     protected $NSU;

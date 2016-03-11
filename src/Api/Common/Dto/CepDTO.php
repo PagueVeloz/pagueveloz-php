@@ -2,8 +2,6 @@
 
 namespace PagueVeloz\Api\Common\Dto;
 
-use PagueVeloz\Api\Common\Dto\CidadeDTO;
-
 class CepDTO extends \PagueVeloz\AbstractDTO
 {
     protected $Cidade = null;
