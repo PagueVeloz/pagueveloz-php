@@ -25,7 +25,7 @@ abstract class PagueVeloz
         ['service' => 'Boleto', 'version' => ['v2', 'v3'], 'default' => 'v3'],
         ['service' => 'ComprarCreditoSMS', 'version' => ['v2'], 'default' => 'v2'],
         ['service' => 'TarifarBoleto', 'version' => ['v1'], 'default' => 'v1'],
-        ['service' => 'ContaPag', 'version' => ['v1'], 'default' => 'v1'],
+        ['service' => 'ContaPag', 'version' => ['v1','v2'], 'default' => 'v2'],
         ['service' => 'Deposito', 'version' => ['v1'], 'default' => 'v1'],
         ['service' => 'BandeirasCartao', 'version' => ['v1'], 'default' => 'v1'],
         ['service' => 'Parcelamento', 'version' => ['v1'], 'default' => 'v1'],
@@ -158,7 +158,10 @@ abstract class PagueVeloz
                 $dto = new \PagueVeloz\Api\v1\Dto\ContaPagDTO();
                 $service = new \PagueVeloz\Api\v1\ContaPag($dto);
                 break;
-
+            case 'v2':
+                $dto = new \PagueVeloz\Api\v2\Dto\ContaPagDTO();
+                $service = new \PagueVeloz\Api\v2\ContaPag($dto);
+                break;
         }
 
         return $service;
