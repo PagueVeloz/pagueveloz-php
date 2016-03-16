@@ -25,7 +25,7 @@ abstract class PagueVeloz
         ['service' => 'Boleto', 'version' => ['v2', 'v3'], 'default' => 'v3'],
         ['service' => 'ComprarCreditoSMS', 'version' => ['v2'], 'default' => 'v2'],
         ['service' => 'TarifarBoleto', 'version' => ['v1'], 'default' => 'v1'],
-        ['service' => 'ContaPag', 'version' => ['v1','v2'], 'default' => 'v2'],
+        ['service' => 'ContaPag', 'version' => ['v1', 'v2'], 'default' => 'v2'],
         ['service' => 'Deposito', 'version' => ['v1'], 'default' => 'v1'],
         ['service' => 'BandeirasCartao', 'version' => ['v1'], 'default' => 'v1'],
         ['service' => 'Parcelamento', 'version' => ['v1'], 'default' => 'v1'],
