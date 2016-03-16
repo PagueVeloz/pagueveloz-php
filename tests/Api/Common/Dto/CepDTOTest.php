@@ -22,7 +22,7 @@ class CepDTOTest extends TestCase
 
     public function testGetCidade()
     {
-		$this->assertInstanceOf(CidadeDTO::class, $this->dto->getCidade());
+		$this->assertInstanceOf('PagueVeloz\Api\Common\Dto\CidadeDTO', $this->dto->getCidade());
     }
 
     public function testSetCidade()
