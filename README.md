@@ -3,9 +3,9 @@
 [![StyleCI](https://styleci.io/repos/27489184/shield)](https://styleci.io/repos/27489184)
 [![Build Status](https://travis-ci.org/PagueVeloz/pagueveloz-php.svg)](https://travis-ci.org/PagueVeloz/pagueveloz-php)
 [![Coverage Status](https://coveralls.io/repos/github/PagueVeloz/pagueveloz-php/badge.svg?branch=master)](https://coveralls.io/github/PagueVeloz/pagueveloz-php?branch=master)
-[![Latest Stable Version](https://poser.pugx.org/pagueveloz/pagueveloz/v/stable)](https://packagist.org/packages/pagueveloz/pagueveloz) 
-[![Total Downloads](https://poser.pugx.org/pagueveloz/pagueveloz/downloads)](https://packagist.org/packages/pagueveloz/pagueveloz) 
-[![Latest Unstable Version](https://poser.pugx.org/pagueveloz/pagueveloz/v/unstable)](https://packagist.org/packages/pagueveloz/pagueveloz) 
+[![Latest Stable Version](https://poser.pugx.org/pagueveloz/pagueveloz/v/stable)](https://packagist.org/packages/pagueveloz/pagueveloz)
+[![Total Downloads](https://poser.pugx.org/pagueveloz/pagueveloz/downloads)](https://packagist.org/packages/pagueveloz/pagueveloz)
+[![Latest Unstable Version](https://poser.pugx.org/pagueveloz/pagueveloz/v/unstable)](https://packagist.org/packages/pagueveloz/pagueveloz)
 [![License](https://poser.pugx.org/pagueveloz/pagueveloz/license)](https://packagist.org/packages/pagueveloz/pagueveloz)
 
 > Cliente PHP da API do [PagueVeloz](https://www.pagueveloz.com.br), com base nas informações contidas no [help](https://www.pagueveloz.com.br/help) .
@@ -64,6 +64,170 @@ $assinar->dto
 	->setEmail('xxxxx@xxxx.xxx.xx');
 
 $assinar->Post();
+```
+Operações de financiamento via cartão digitado
+```php
+<?php
+
+/**
+ * Verificar se a operação de Financiamento via VendaDigitada está habilitada para o cliente
+ * - Cliente deve ter o termo CHARGEBACK assinado com o PAGUEVELOZ
+ */
+$cartaoHabilitado = PagueVeloz::CartaoHabilitado();
+
+$cartaoHabilitado->auth->setEmail('suaassinaturacompagueveloz@dominio.com')
+                       ->setToken('seutokenacessoaopagueveloz')
+                       ->setSenha('senhaassinatura');
+
+$response = $cartaoHabilitado->Get();
+
+$cartaoHabilitado = (bool)$response->body;
+
+/**
+ * Lista as Bandeiras disponíveis para o cliente
+ *
+ * Response final será um object json ex:
+ * [{
+ *    "Id": "33",
+ *    "Nome": "Diners"
+ *  },
+ *  {
+ *    "Id": "2",
+ *    "Nome": "Master Card"
+ *  },
+ *  {
+ *    "Id": "1",
+ *    "Nome": "Visa"
+ *  }]
+ */
+
+$bandeiras = PagueVeloz::BandeirasCartao();
+
+$bandeiras->auth->setEmail('suaassinaturacompagueveloz@dominio.com')
+                ->setToken('seutokenacessoaopagueveloz')
+                ->setSenha('senhaassinatura');
+
+$response = $bandeiras->Get();
+
+$bandeiras = json_decode($response->body);
+
+/**
+ * 	Listagem de parcelas para a bandeira selecionada
+ *
+ * Ex.Retorno:
+ * [{
+ *   "Parcelas": 1,
+ *   "ValorParcela": 510,
+ *   "ValorServico": 500.50,
+ *   "ValorTotal": 510
+ * },
+ * {
+ *   "Parcelas": 2,
+ *   "ValorParcela": 257,
+ *   "ValorServico": 500.50,
+ *   "ValorTotal": 514
+ * }]
+ */
+
+$parcelamento = PagueVeloz::Parcelamento();
+
+$parcelamento->auth->setEmail('suaassinaturacompagueveloz@dominio.com')
+                   ->setToken('seutokenacessoaopagueveloz')
+                   ->setSenha('senhaassinatura');
+
+$parcelamento->dto->setBandeira($bandeira)
+                  ->setValor($servico->getValor());
+
+$response = $parcelamento->Get();
+
+$parcelamento = json_decode($response->body);
+
+/**
+ * Cria transação com o PagueVeloz
+ *
+ * Caso o request retorne 200 a api retorna o Id da transação no PagueVeloz Ex. 740
+ */
+$transacaoPV = PagueVeloz::Transacao();
+
+$transacaoPV->auth->setEmail('suaassinaturacompagueveloz@dominio.com')
+                ->setToken('seutokenacessoaopagueveloz')
+                ->setSenha('senhaassinatura');
+
+$proprietarioDTO = $transacaoPV->dto->getProprietarioCartao();
+
+$proprietarioDTO->setNome('	Lorem ipsum dolor sit amet.')
+                ->setRG('1234567890')
+                ->setCPF('12345678901')
+                ->setTelefoneFixo('47 21234000')
+                ->setTelefoneCelular('47 99887755');
+
+$transacaoPV->dto
+          ->setNSU('1a2b3c')
+          ->setValorTransacao(9.99)
+          ->setValorServico(9.99)
+          ->setParcelas(1)
+          ->setBandeira(1)
+          ->setDescricao('Lorem ipsum dolor sit amet, consectetur adipisicing.')
+          ->setProprietarioCartao($proprietarioDTO);
+
+$response = $transacaoPV->Post();
+
+$transacaoPagueVeloz = json_decode($response->body);
+
+/**
+ * 	Faz o pagamento no PagueVeloz
+ *
+ *  Ex.Response Recusa:
+ * {
+ *  "Id": 740,
+ *  "Sucesso": false,
+ *  "Mensagem": "Houve um problema de transação com o emissor do cartão. Mensagem recebida do emissor do cartão: (denied  *card)",
+ *  "NSU": "123abc",
+ *  "CupomEstabelecimento": null,
+ *  "CupomCliente": null
+ *}
+ *
+ * Ex.OK:
+ * {
+ * "Id": 740,
+ * "Sucesso": true,
+ * "Mensagem": "",
+ * "NSU": "123abc",
+ * "CupomEstabelecimento": "S...I...M...U...L...A...D...O....",
+ * "CupomCliente": "S...I...M...U...L...A...D...O...."
+ *	}
+ */
+$pagamento = PagueVeloz::Pagamento();
+
+$pagamento->auth
+          ->setEmail('suaassinaturacompagueveloz@dominio.com')
+          ->setToken('seutokenacessoaopagueveloz')
+          ->setSenha('senhaassinatura');
+
+$pagamento->dto
+          ->setId(740)
+          ->setNumeroCartao('400000000000044')
+          ->setCodigoSeguranca('123')
+          ->setValidade('1016');
+
+$response = $pagamento->Post();
+$pagamentoPagueVeloz = json_decode($response->body);
+
+/**
+ * Confirma ou Cancela o Pagamento
+ */
+$confirmaPagamento = PagueVeloz::Confirmacao();
+
+$confirmaPagamento->auth
+                  ->setEmail('suaassinaturacompagueveloz@dominio.com')
+                  ->setToken('seutokenacessoaopagueveloz')
+                  ->setSenha('senhaassinatura');
+
+$confirmaPagamento->dto
+                  ->setId(740)
+                  ->setConfirmado('true'); //Pode ser true ou false
+
+$response = $confirmaPagamento->Post();
 ```
 Observação : Todo retorno será um objeto do tipo "PagueVeloz\Service\Context\HttpResponse"
 
