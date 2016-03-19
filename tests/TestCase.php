@@ -15,7 +15,7 @@ class TestCase extends PHPUnit_Framework_TestCase
      */
     protected function setUp()
     {
-        $this->faker = Factory::create();
+        $this->faker = Factory::create('pt_BR');
     }
 
     /**
