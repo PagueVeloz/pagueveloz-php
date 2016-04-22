@@ -7,35 +7,38 @@ use Monolog\Logger;
 
 abstract class LogProvider
 {
-    public static function Info($info, $inputs)
+    const LAST_LOG_SESSION_KEY = 'PAGUEVELOZ_LAST_LOG_MESSAGE';
+
+    protected static $debug = false;
+
+    protected static function Path() 
     {
-        $_data = new \DateTime();
+        $currentDate = new \DateTime();
+        return sprintf(__DIR__ . '/../logs/PagueVeloz_%s.log', $currentDate->format('Ymd'));
+    }  
 
-        if (empty($inputs)) {
-            $inputs = [];
-        }
-
-        $_path = sprintf('%s/Logs/PagueVeloz_%s.log', __DIR__, $_data->format('Ymd'));
-
-        $log = new Logger('PagueVeloz');
-        $log->pushHandler(new StreamHandler($_path, Logger::INFO));
-
-        $log->addInfo($info, $inputs);
+    protected static function Handler($level)
+    {
+        $logger = new Logger('PagueVeloz');
+        $logger->pushHandler(new StreamHandler(self::Path(), $level));
+        return $logger;
     }
 
-    public static function Error($info, $inputs)
+    public static function Info($info, $inputs = [])
     {
-        $_data = new \DateTime();
+        self::Handler(Logger::INFO)->addInfo($info, $inputs);
 
-        if (empty($inputs)) {
-            $inputs = [];
+        if(self::$debug) {
+            $_SESSION[self::LAST_LOG_SESSION_KEY] = $info . implode(',', $inputs);
         }
+    }
 
-        $_path = sprintf('%s/Logs/PagueVeloz_%s.log', __DIR__, $_data->format('Ymd'));
-
-        $log = new Logger('PagueVeloz');
-        $log->pushHandler(new StreamHandler($_path, Logger::ERROR));
-
-        $log->addError($info, $inputs);
+    public static function Error($error, $inputs = [])
+    {
+        self::Handler(Logger::ERROR)->addError($error, $inputs);
+        
+        if(self::$debug) {
+            $_SESSION[self::LAST_LOG_SESSION_KEY] = $error . implode(',', $inputs);
+        }
     }
 }
