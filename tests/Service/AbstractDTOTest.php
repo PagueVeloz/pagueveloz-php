@@ -18,12 +18,11 @@ class AbstractDTOTest extends TestCase {
 
     public function attributes() {
         $keys = $this->keys();
-        return [
-          [$keys[0]],
-          [$keys[1]],
-          [$keys[2]],
-          [$keys[3]],
-        ];
+        $attributes = [];
+        foreach ($keys as $key) {
+            $attributes[] = [ $key ];
+        }
+        return $attributes;
     }
 
     /**
