@@ -48,7 +48,7 @@ class ObjectFactoryTest extends TestCase {
     }
     
     public function testGetkeysProvider() {
-        $this->assertEquals($this->keysProvider(), $this->mock->getkeysProvider());
+        $this->assertEquals($this->keysProvider(), $this->mock->getKeys());
     }
 }
 
