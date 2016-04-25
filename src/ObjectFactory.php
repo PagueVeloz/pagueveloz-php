@@ -31,7 +31,7 @@ abstract class ObjectFactory
         return $this->_toArray();
     }
 
-    private function _toArray()
+    protected function _toArray()
     {
         $vars = get_object_vars($this);
 
