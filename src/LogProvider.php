@@ -9,27 +9,31 @@ abstract class LogProvider
 {
     /**
      * Get the log handler.
+     *
      * @return Monolog\Logger
      */
     protected static function Handler($level)
     {
         $logger = new Logger('PagueVeloz');
         $logger->pushHandler(new StreamHandler(self::CurrentStream(), $level));
+
         return $logger;
     }
 
     /**
      * Get the current stream.
+     *
      * @return string
      */
-    public static function CurrentStream() 
+    public static function CurrentStream()
     {
         $currentDate = new \DateTime();
-        return sprintf(__DIR__ . '/../logs/PagueVeloz_%s.log', $currentDate->format('Ymd'));
-    }  
+
+        return sprintf(__DIR__.'/../logs/PagueVeloz_%s.log', $currentDate->format('Ymd'));
+    }
 
     /**
-     * Register a Info level log message
+     * Register a Info level log message.
      */
     public static function Info($info, $inputs = [])
     {
@@ -37,7 +41,7 @@ abstract class LogProvider
     }
 
     /**
-     * Register a Error level log message
+     * Register a Error level log message.
      */
     public static function Error($error, $inputs = [])
     {
