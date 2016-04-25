@@ -12,42 +12,42 @@ class AbstractDTOTest extends TestCase {
         $this->mock = new ChildMockAbstractDTO();
     }
 
-    public function keys() {
+    public function keysProvider() {
         return ['field1','field2','field3','field4'];
     }
 
-    public function attributes() {
-        $keys = $this->keys();
-        $attributes = [];
-        foreach ($keys as $key) {
-            $attributes[] = [ $key ];
+    public function attributesProvider() {
+        $keysProvider = $this->keysProvider();
+        $attributesProvider = [];
+        foreach ($keysProvider as $key) {
+            $attributesProvider[] = [ $key ];
         }
-        return $attributes;
+        return $attributesProvider;
     }
 
     /**
-     * @dataProvider attributes
+     * @dataProvider attributesProvider
      */
     public function testToArray($field) {
         $this->assertArrayHasKey($field, $this->mock->toArray());
     }
     
     /**
-     * @dataProvider attributes
+     * @dataProvider attributesProvider
      */
     public function testToArrayHasArray($field) {
         $this->assertArrayHasKey($field, (array) $this->mock->toArray());
     }
     
     /**
-     * @dataProvider attributes
+     * @dataProvider attributesProvider
      */
     public function testGetRequest($field) {
         $this->assertArrayHasKey($field, $this->mock->toArray());
     }
     
-    public function testGetKeys() {
-        $this->assertEquals($this->keys(), $this->mock->getKeys());
+    public function testGetkeysProvider() {
+        $this->assertEquals($this->keysProvider(), $this->mock->getkeysProvider());
     }
 }
 
