@@ -9,7 +9,6 @@ class TelefoneDTO extends \PagueVeloz\AbstractDTO
     protected $Observacao = null;
     protected $Id = null;
 
-
     public function getNotEmpty()
     {
         return [];

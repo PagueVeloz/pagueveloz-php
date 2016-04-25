@@ -25,8 +25,9 @@ abstract class AbstractDTO extends ObjectFactory
 
         foreach ($array as $key => $element) {
             if (is_array($element)) {
-                if ($child = $this->__request($element))
+                if ($child = $this->__request($element)) {
                     $response[$key] = $child;
+                }
             } elseif (!empty($element)) {
                 $response[$key] = utf8_encode($element);
             }
