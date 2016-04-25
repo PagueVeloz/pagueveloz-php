@@ -1,10 +1,10 @@
 {
     "name": "pagueveloz/pagueveloz",
-    "description": "Client PHP for PagueVeloz API",
-	"keywords": ["pagueveloz", "api", "client"],
-	"license": "MIT",
+    "description": "Client for PagueVeloz API",
+    "keywords": ["pagueveloz", "api", "client"],
+    "license": "MIT",
     "homepage": "https://www.pagueveloz.com.br/",
-	"support": {
+    "support": {
         "issues": "https://github.com/pagueveloz/pagueveloz-php/issues",
         "source": "https://github.com/pagueveloz/pagueveloz-php"
     },
@@ -12,26 +12,30 @@
         {
             "name": "Cristian B. Santos",
             "email": "cristian.deveng@gmail.com"
+        },
+        {
+            "name": "Jonathan A. Schweder",
+            "email": "jonathanschweder@gmail.com"
         }
     ],
-	"require": {
-		"php": ">=5.4",
-		"monolog/monolog": "1.19.0"
-	},
-	"require-dev": {
-		"phpunit/phpunit": ">=4.8",
-	    "fzaninotto/faker": "^1.5",
-        "satooshi/php-coveralls": "^1.0"
-	},
-    "autoload": {
-        "psr-4": {
-            "PagueVeloz\\": "src/"
-        }
+    "require": {
+      "php": ">=5.4",
+      "monolog/monolog": "1.19.0"
     },
-	"autoload-dev": {
-		"classmap": [
-			"tests/"
-		]
-	},
-	"minimum-stability": "dev"
+    "require-dev": {
+      "phpunit/phpunit": ">=4.8",
+      "fzaninotto/faker": "^1.5",
+      "satooshi/php-coveralls": "^1.0"
+    },
+      "autoload": {
+          "psr-4": {
+              "PagueVeloz\\": "src/"
+          }
+      },
+    "autoload-dev": {
+      "classmap": [
+        "tests/"
+      ]
+    },
+    "minimum-stability": "dev"
 }
