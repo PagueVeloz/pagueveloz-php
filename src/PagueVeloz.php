@@ -21,7 +21,7 @@ abstract class PagueVeloz
         ['service' => 'Ping', 'version' => ['v1'], 'default' => 'v1'],
         ['service' => 'DefaultBoleto', 'version' => ['v1'], 'default' => 'v1'],
         ['service' => 'ConsultarBoleto', 'version' => ['v1'], 'default' => 'v1'],
-        ['service' => 'ContaBancaria', 'version' => ['v1', 'v2', 'v3'], 'default' => 'v3'],
+        ['service' => 'ContaBancaria', 'version' => ['v1', 'v2', 'v3', 'v4'], 'default' => 'v4'],
         ['service' => 'Boleto', 'version' => ['v2', 'v3'], 'default' => 'v3'],
         ['service' => 'ComprarCreditoSMS', 'version' => ['v2'], 'default' => 'v2'],
         ['service' => 'TarifarBoleto', 'version' => ['v1'], 'default' => 'v1'],
@@ -44,6 +44,8 @@ abstract class PagueVeloz
 
     public static $urlCartao;
 
+    public static $isLog = true;
+
     public static function ApiVersion($v)
     {
         self::$version = $v;
@@ -59,6 +61,11 @@ abstract class PagueVeloz
     public static function UrlCartao($url)
     {
         self::$urlCartao = $url;
+    }
+
+    public static function isLog($log)
+    {
+        self::$isLog = $log;
     }
 
     private static function GetVersion($service, $v)
@@ -309,6 +316,16 @@ abstract class PagueVeloz
             case 'v2':
                 $dto = new \PagueVeloz\Api\v2\Dto\ContaBancariaDTO();
                 $service = new \PagueVeloz\Api\v2\ContaBancaria($dto);
+                break;
+
+            case 'v3':
+                $dto = new \PagueVeloz\Api\v3\Dto\ContaBancariaDTO();
+                $service = new \PagueVeloz\Api\v3\ContaBancaria($dto);
+                break;
+
+            case 'v4':
+                $dto = new \PagueVeloz\Api\v4\Dto\ContaBancariaDTO();
+                $service = new \PagueVeloz\Api\v4\ContaBancaria($dto);
                 break;
 
         }

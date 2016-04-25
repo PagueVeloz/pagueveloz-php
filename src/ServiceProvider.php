@@ -32,7 +32,7 @@ abstract class ServiceProvider extends Curl
         }
 
         $this->ssl = true;
-        $this->log = true;
+        $this->log = PagueVeloz::$isLog;
         $this->proxy = false;
 
         if (!$this->isOperationCartao) {

@@ -7,35 +7,28 @@ use Monolog\Logger;
 
 abstract class LogProvider
 {
-    public static function Info($info, $inputs)
+    protected static function Handler($level)
     {
-        $_data = new \DateTime();
+        $logger = new Logger('PagueVeloz');
+        $logger->pushHandler(new StreamHandler(self::CurrentStream(), $level));
 
-        if (empty($inputs)) {
-            $inputs = [];
-        }
-
-        $_path = sprintf('%s/Logs/PagueVeloz_%s.log', __DIR__, $_data->format('Ymd'));
-
-        $log = new Logger('PagueVeloz');
-        $log->pushHandler(new StreamHandler($_path, Logger::INFO));
-
-        $log->addInfo($info, $inputs);
+        return $logger;
     }
 
-    public static function Error($info, $inputs)
+    public static function CurrentStream()
     {
-        $_data = new \DateTime();
+        $currentDate = new \DateTime();
 
-        if (empty($inputs)) {
-            $inputs = [];
-        }
+        return sprintf(__DIR__.'/../logs/PagueVeloz_%s.log', $currentDate->format('Ymd'));
+    }
 
-        $_path = sprintf('%s/Logs/PagueVeloz_%s.log', __DIR__, $_data->format('Ymd'));
+    public static function Info($info, $inputs = [])
+    {
+        self::Handler(Logger::INFO)->addInfo($info, $inputs);
+    }
 
-        $log = new Logger('PagueVeloz');
-        $log->pushHandler(new StreamHandler($_path, Logger::ERROR));
-
-        $log->addError($info, $inputs);
+    public static function Error($error, $inputs = [])
+    {
+        self::Handler(Logger::ERROR)->addError($error, $inputs);
     }
 }
