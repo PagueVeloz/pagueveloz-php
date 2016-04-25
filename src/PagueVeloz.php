@@ -4,7 +4,7 @@ namespace PagueVeloz;
 
 abstract class PagueVeloz
 {
-    private static $servicesAvailable = [
+    protected static $servicesAvailable = [
         ['service' => 'Assinar', 'version' => ['v1', 'v2', 'v3','v4'], 'default' => 'v3'],
         ['service' => 'Cep', 'version' => ['v1'], 'default' => 'v1'],
         ['service' => 'Cliente', 'version' => ['v1'], 'default' => 'v1'],
@@ -38,7 +38,7 @@ abstract class PagueVeloz
         ['service' => 'PinPadOperacoes', 'version' => ['v1'], 'default' => 'v1'],
     ];
 
-    private static $version;
+    protected static $version;
 
     public static $url;
 
@@ -91,7 +91,7 @@ abstract class PagueVeloz
         }
 
         if (empty($version)) {
-            throw new \Exception('Verão da API não encontrada', 1);
+            throw new \Exception('Versão da API não encontrada', 1);
         }
 
         return $version;
@@ -102,7 +102,7 @@ abstract class PagueVeloz
         return self::$servicesAvailable;
     }
 
-    private static function GetService($service)
+    protected static function GetService($service)
     {
         $listService = array_filter(self::Get(), function ($el) use ($service) {
             if ($el['service'] === $service) {

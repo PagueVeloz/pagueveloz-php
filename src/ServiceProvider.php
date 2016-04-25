@@ -52,7 +52,6 @@ abstract class ServiceProvider extends Curl
     protected function NoContent()
     {
         $response = new HttpResponse();
-
         $response->status = 204;
         $response->body = json_encode(['Não implementado']);
 
@@ -71,8 +70,6 @@ abstract class ServiceProvider extends Curl
 
     public function isEmpty($value)
     {
-        $verify = $value;
-
-        return empty($verify);
+        return empty($value);
     }
 }

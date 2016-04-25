@@ -4,17 +4,22 @@ namespace PagueVeloz;
 
 abstract class AbstractDTO extends ObjectFactory
 {
-    public function getKeys()
-    {
-        return array_keys($this->toArray());
-    }
-
+    /**
+     * Convert object to stdClass.
+     *
+     * @return stdClass
+     */
     public function getRequest()
     {
         return json_encode($this->__request(ObjectFactory::toArray($this->getKeys())));
     }
 
-    public function __request($array)
+    /**
+     * Method runner of getRequest().
+     *
+     * @return array
+     */
+    protected function __request($array)
     {
         $response = [];
 
@@ -28,25 +33,5 @@ abstract class AbstractDTO extends ObjectFactory
         }
 
         return $response;
-    }
-
-    public function toArray()
-    {
-        return $this->_toArray();
-    }
-
-    private function _toArray()
-    {
-        $vars = get_object_vars($this);
-
-        foreach ($vars as $key => $value) {
-            if (is_object($value)) {
-                $vars[$key] = method_exists($value, 'toArray') ? $value->toArray() : (array) $value;
-            } elseif (is_array($value)) {
-                $vars[$key] = $value;
-            }
-        }
-
-        return $vars;
     }
 }

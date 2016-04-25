@@ -17,4 +17,9 @@
             <directory suffix=".php">src</directory>
         </whitelist>
     </filter>
+
+    <php>
+        <env name="SANDBOX_URL" value="https://sandbox.pagueveloz.com.br/" />
+    </php>
+
 </phpunit>
