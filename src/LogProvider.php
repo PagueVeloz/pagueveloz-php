@@ -11,14 +11,16 @@ abstract class LogProvider
     {
         $logger = new Logger('PagueVeloz');
         $logger->pushHandler(new StreamHandler(self::CurrentStream(), $level));
+
         return $logger;
     }
 
-    public static function CurrentStream() 
+    public static function CurrentStream()
     {
         $currentDate = new \DateTime();
-        return sprintf(__DIR__ . '/../logs/PagueVeloz_%s.log', $currentDate->format('Ymd'));
-    }  
+
+        return sprintf(__DIR__.'/../logs/PagueVeloz_%s.log', $currentDate->format('Ymd'));
+    }
 
     public static function Info($info, $inputs = [])
     {
