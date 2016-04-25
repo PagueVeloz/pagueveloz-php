@@ -59,4 +59,5 @@ class ChildMockAbstractDTO extends AbstractDTO {
     protected $field2;
     protected $field3;
     protected $field4;
+    private $field5;
 }
