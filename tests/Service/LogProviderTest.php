@@ -12,16 +12,32 @@ class LogProviderTest extends TestCase {
         $this->mock = new ChildMockLogProvider();
     }
 
-    public function testInfo() {
-        $message = $this->faker->text;
-        $this->mock->Info($message);
-        $this->assertGreaterThan(strpos($_SESSION[$this->mock->LAST_LOG_SESSION_KEY], $message),-1);
+    public function messagesProvider() {
+      return [
+        ['this is the first log message'],
+        ['this is the second log message'],
+        ['this is the third log message'],
+      ];
     }
 
-    public function testError() {
-        $message = $this->faker->text;
-        $this->mock->Error($message);
-        $this->assertGreaterThan(strpos($_SESSION[$this->mock->LAST_LOG_SESSION_KEY], $message),-1);
+    /**
+     * @dataProvider messagesProvider
+     */
+    public function testInfo($message) {
+        $this->mock->Info($message);
+        $stream = $this->mock->CurrentStream();
+        $content = file_get_contents($stream);
+        $this->assertGreaterThan(-1, strpos($content, $message));
+    }
+
+    /**
+     * @dataProvider messagesProvider
+     */
+    public function testError($message) {
+        $this->mock->Info($message);
+        $stream = $this->mock->CurrentStream();
+        $content = file_get_contents($stream);
+        $this->assertGreaterThan(-1, strpos($content, $message));
     }
 
 }
@@ -30,9 +46,4 @@ class LogProviderTest extends TestCase {
  * ChildMockLogProvider
  */
 class ChildMockLogProvider extends LogProvider {
-
-    public function __construct() {
-        $this->debug = true;
-    }
-
 }
