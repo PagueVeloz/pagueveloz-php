@@ -9,12 +9,8 @@ php:
 
 before_script:
   - mkdir -p ./build/logs
-<<<<<<< HEAD
-
-=======
   - composer install
- 
->>>>>>> e4aa87db6b87ef05f91f7e12875419b0f99aa0ca
+  
 script:
   - ./vendor/bin/phpunit --coverage-clover build/logs/clover.xml
 
