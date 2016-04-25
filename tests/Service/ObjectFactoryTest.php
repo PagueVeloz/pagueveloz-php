@@ -9,6 +9,7 @@ class ObjectFactoryTest extends TestCase {
     protected $mock;
 
     public function setUp() {
+        parent::setUp();
         $this->mock = new ChildMockObjectFactory();
     }
 
