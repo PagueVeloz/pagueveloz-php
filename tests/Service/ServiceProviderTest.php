@@ -37,8 +37,6 @@ class ServiceProviderTest extends TestCase
  * ChildMockServiceProvider
  */
 class ChildMockServiceProvider extends ServiceProvider {
-    protected $url;  
-
     public function __construct(){
         PagueVeloz::$url = getenv('SANDBOX_URL');
         parent::__construct();
