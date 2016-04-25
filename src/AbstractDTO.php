@@ -6,6 +6,7 @@ abstract class AbstractDTO extends ObjectFactory
 {
     /**
      * Convert object to stdClass.
+     *
      * @return stdClass
      */
     public function getRequest()
@@ -15,6 +16,7 @@ abstract class AbstractDTO extends ObjectFactory
 
     /**
      * Method runner of getRequest().
+     *
      * @return array
      */
     protected function __request($array)
