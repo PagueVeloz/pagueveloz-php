@@ -17,26 +17,25 @@ use PagueVeloz\ServiceProvider;
 
 class Consultar extends ServiceProvider implements InterfaceApi
 {
-
-    const TIPO_BANCOS                           = 0;
-    const TIPO_CLIENTES                         = 1;
-    const TIPO_CLIENTESBOLETO                   = 2;
-    const TIPO_CLIENTEJACADASTRADO              = 3;
-    const TIPO_SMSTELEFONEDESTINO               = 4;
-    const TIPO_SMSTELEFONEREMETENTE             = 5;
-    const TIPO_CONTASPAGUEVELOZ                 = 6;
-    const TIPO_CONTASPAGUEVELOZDEPOSITO         = 7;
-    const TIPO_STATUSDOCUMENTOFINANCEIRO        = 8;
+    const TIPO_BANCOS = 0;
+    const TIPO_CLIENTES = 1;
+    const TIPO_CLIENTESBOLETO = 2;
+    const TIPO_CLIENTEJACADASTRADO = 3;
+    const TIPO_SMSTELEFONEDESTINO = 4;
+    const TIPO_SMSTELEFONEREMETENTE = 5;
+    const TIPO_CONTASPAGUEVELOZ = 6;
+    const TIPO_CONTASPAGUEVELOZDEPOSITO = 7;
+    const TIPO_STATUSDOCUMENTOFINANCEIRO = 8;
     const TIPO_STATUSSOLICITACAOPAGAMENTOCARTAO = 9;
-    const TIPO_TIPOCONTA                        = 10;
-    const TIPO_TIPOCONTABANCARIA                = 11;
-    const TIPO_TIPOTITULARCONTABANCARIA         = 12;
-    const TIPO_TIPOPESSOA                       = 13;
-    const TIPO_STATUSCONTABANCARIA              = 14;
-    const TIPO_PERMISSAODEUSUARIO               = 15;
-    const TIPO_EXTRATODATAORDEM                 = 16;
-    const TIPO_TELEFONETIPO                     = 17;
-    const TIPO_TIPOCOMPRACREDITO                = 18;
+    const TIPO_TIPOCONTA = 10;
+    const TIPO_TIPOCONTABANCARIA = 11;
+    const TIPO_TIPOTITULARCONTABANCARIA = 12;
+    const TIPO_TIPOPESSOA = 13;
+    const TIPO_STATUSCONTABANCARIA = 14;
+    const TIPO_PERMISSAODEUSUARIO = 15;
+    const TIPO_EXTRATODATAORDEM = 16;
+    const TIPO_TELEFONETIPO = 17;
+    const TIPO_TIPOCOMPRACREDITO = 18;
 
     public function __construct(ConsultarDTO $dto)
     {

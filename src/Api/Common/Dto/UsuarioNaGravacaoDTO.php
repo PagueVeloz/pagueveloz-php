@@ -11,13 +11,10 @@ class UsuarioNaGravacaoDTO extends \PagueVeloz\AbstractDTO
     protected $Ativo = null;
     protected $Id = null;
 
-
     public function getNotEmpty()
     {
-        return ['Nome','Email','Senha','ConfirmacaoSenha'];
+        return ['Nome', 'Email', 'Senha', 'ConfirmacaoSenha'];
     }
-
-
 
     /**
      * Gets the value of Nome.

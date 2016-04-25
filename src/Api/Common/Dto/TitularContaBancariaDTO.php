@@ -5,8 +5,8 @@ namespace PagueVeloz\Api\Common\Dto;
 class TitularContaBancariaDTO extends \PagueVeloz\AbstractDTO
 {
     const TIPO_PESSOA_NAODEFINIDO = 0;
-    const TIPO_PESSOA_FISICA      = 1;
-    const TIPO_PESSOA_JURIDICA    = 2;
+    const TIPO_PESSOA_FISICA = 1;
+    const TIPO_PESSOA_JURIDICA = 2;
 
     protected $Nome = null;
     protected $Documento = null;
@@ -16,8 +16,6 @@ class TitularContaBancariaDTO extends \PagueVeloz\AbstractDTO
     {
         return [];
     }
-
-
 
     /**
      * Gets the value of Nome.

@@ -3,14 +3,14 @@
 namespace PagueVeloz\Api\v4\Dto;
 
 use PagueVeloz\Api\Common\Dto\CepV2DTO;
-use PagueVeloz\Api\Common\Dto\UsuarioNaGravacaoDTO;
 use PagueVeloz\Api\Common\Dto\TelefoneDTO;
+use PagueVeloz\Api\Common\Dto\UsuarioNaGravacaoDTO;
 
 class AssinarDTO extends \PagueVeloz\AbstractDTO
 {
     const TIPO_PESSOA_NAODEFINIDO = 0;
-    const TIPO_PESSOA_FISICA      = 1;
-    const TIPO_PESSOA_JURIDICA    = 2;
+    const TIPO_PESSOA_FISICA = 1;
+    const TIPO_PESSOA_JURIDICA = 2;
 
     protected $Nome = null;
     protected $Documento = null;
@@ -46,8 +46,6 @@ class AssinarDTO extends \PagueVeloz\AbstractDTO
                 'Telefones',
                 ];
     }
-
-
 
     /**
      * Gets the value of Nome.
