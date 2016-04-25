@@ -46,9 +46,9 @@ abstract class PagueVeloz
 
     public static $isLog = true;
 
-    public static function ApiVersion($v)
+    public static function ApiVersion($version)
     {
-        self::$version = $v;
+        self::$version = $version;
 
         return self;
     }
