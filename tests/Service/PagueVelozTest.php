@@ -8,50 +8,23 @@ class PagueVelozTest extends TestCase
 {
     public $mock;
 
-    public function setUp(){
-        parent::setUp();
-        $this->mock = new ChildMockPagueVeloz(getenv('SANDBOX_URL'));
-    }
-
     public function testHasServicesAvailable() {
-        $this->assertAttributeNotEmpty('servicesAvailable', $this->mock);
+        $this->assertNotEmpty(PagueVeloz::Get());
     }
 
-    public function testCanSetUrl() {
-        $url = getenv('SANDBOX_URL');
-        $this->mock->url = $url;
-        $this->assertEquals($url, $this->mock->url);
-    }
-    
-    public function testCanSetUrlCartao() {
-        $urlCartao = getenv('SANDBOX_URL');
-        $this->mock->urlCartao = $urlCartao;
-        $this->assertEquals($urlCartao, $this->mock->urlCartao);
+    public function testHasVersion() {
+        $this->assertNotEmpty(PagueVeloz::GetVersion());
     }
 
-    public function testApiVersion() {
-        $version = $this->faker->numerify('v#');
-        $this->mock->ApiVersion($version);
-        $this->assertAttributeEquals($version, 'version', $this->mock);
+    public function testHasUrl() {
+        $url = $this->faker->url;
+        PagueVeloz::$url = $url;
+        $this->assertNotEmpty((PagueVeloz::$url));
     }
 
-    public function testUrl() {
-        $this->markTestSkipped('Não implementado');
+    public function testHasUrlCartao() {
+        $url = $this->faker->url;
+        PagueVeloz::$urlCartao = $url;
+        $this->assertNotEmpty((PagueVeloz::$urlCartao));
     }
-
-    public function testUrlCartao() {
-        $this->markTestSkipped('Não implementado');
-    }
-
-    public function testIsLog() {
-        $isLog = $this->faker->boolean;
-        $this->mock->isLog($isLog);
-        $this->assertAttributeEquals($isLog, 'isLog', $this->mock);
-    }
-}
-
-/**
- * ChildMockPagueVeloz
- */
-class ChildMockPagueVeloz extends PagueVeloz {
 }
