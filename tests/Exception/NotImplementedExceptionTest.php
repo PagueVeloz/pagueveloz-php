@@ -16,8 +16,8 @@ class NotImplementedExceptionTest extends TestCase {
         try {
             throw $this->exception;
         } catch (NotImplementedException $exception) {
-            $this->assertContains('não', $exception->getMessage());
-            $this->assertContains('implementado', $exception->getMessage());
+            $this->assertContains('Não', (string) $exception);
+            $this->assertContains('implementado', (string) $exception);
         }
     }
 
