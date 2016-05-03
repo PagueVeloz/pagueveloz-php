@@ -10,7 +10,7 @@ class LogProviderTest extends TestCase {
 
     public function setUp() {
         parent::setUp();
-        $this->mock = new ChildMockLogProvider();
+        $this->mock = new LogProviderSub();
     }
 
     public function messagesProvider() {
@@ -41,10 +41,4 @@ class LogProviderTest extends TestCase {
         $this->assertGreaterThan(-1, strpos($content, $message));
     }
 
-}
-
-/*
- * ChildMockLogProvider
- */
-class ChildMockLogProvider extends LogProvider {
 }

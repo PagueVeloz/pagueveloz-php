@@ -9,7 +9,7 @@ class AbstractDTOTest extends TestCase {
     protected $mock;
 
     public function setUp() {
-        $this->mock = new ChildMockAbstractDTO();
+        $this->mock = new AbstractDTOSub();
     }
 
     public function keysProvider() {
@@ -31,33 +31,22 @@ class AbstractDTOTest extends TestCase {
     public function testToArray($field) {
         $this->assertArrayHasKey($field, $this->mock->toArray());
     }
-    
+
     /**
      * @dataProvider attributesProvider
      */
     public function testToArrayHasArray($field) {
         $this->assertArrayHasKey($field, (array) $this->mock->toArray());
     }
-    
+
     /**
      * @dataProvider attributesProvider
      */
     public function testGetRequest($field) {
         $this->assertArrayHasKey($field, $this->mock->toArray());
     }
-    
+
     public function testGetkeysProvider() {
         $this->assertEquals($this->keysProvider(), $this->mock->getKeys());
     }
-}
-
-/*
- * ChildMockAbstractDTO
- */
-class ChildMockAbstractDTO extends AbstractDTO {
-    public $field1;
-    protected $field2;
-    protected $field3;
-    protected $field4;
-    private $field5;
 }

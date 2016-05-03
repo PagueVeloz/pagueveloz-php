@@ -10,7 +10,7 @@ class ServiceProviderTest extends TestCase
 
     public function setUp(){
         parent::setUp();
-        $this->mock = new ChildMockServiceProvider(getenv('SANDBOX_URL'));
+        $this->mock = new ServiceProviderSub(getenv('SANDBOX_URL'));
     }
 
     public function isEmptyProvider() {
@@ -30,15 +30,5 @@ class ServiceProviderTest extends TestCase
     public function testIsEmpty($value, $result)
     {
         $this->assertEquals($this->mock->isEmpty($value), $result);
-    }
-}
-
-/**
- * ChildMockServiceProvider
- */
-class ChildMockServiceProvider extends ServiceProvider {
-    public function __construct(){
-        PagueVeloz::$url = getenv('SANDBOX_URL');
-        parent::__construct();
     }
 }
