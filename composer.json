@@ -35,7 +35,10 @@
     "autoload-dev": {
       "classmap": [
         "tests/"
-      ]
+      ],
+      "files": [
+          "tests/helpers/functions.php"
+        ]
     },
     "minimum-stability": "dev"
 }

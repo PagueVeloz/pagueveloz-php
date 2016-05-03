@@ -2,15 +2,6 @@
 
 namespace PagueVeloz\Api\v2;
 
-/*
- * Boleto.php
- *
- *
- * @author Cristian B. dos Santos <cristian.deveng@gmail.com>
- * @copyright 2015
- * @version 1.0v
-*/
-
 use PagueVeloz\Api\InterfaceApi;
 use PagueVeloz\Api\v2\Dto\BoletoDTO;
 use PagueVeloz\Service\Context\HttpRequest;
@@ -54,7 +45,7 @@ class Boleto extends ServiceProvider implements InterfaceApi
     public function Post()
     {
         if ($this->isEmpty($this->dto->getRequest())) {
-            throw new \Exception('Erro ao montar request', 1);
+            throw new \Exception('Erro ao montar request');
         }
 
         $request = new HttpRequest();

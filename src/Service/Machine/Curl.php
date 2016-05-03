@@ -2,15 +2,6 @@
 
 namespace PagueVeloz\Service\Machine;
 
-/*
- * Curl.php
- *
- *
- * @author Cristian B. dos Santos <cristian.deveng@gmail.com>
- * @copyright 2015
- * @version 1.0v
-*/
-
 use PagueVeloz\LogProvider;
 use PagueVeloz\Service\Context\HttpRequest;
 use PagueVeloz\Service\Context\HttpResponse;
@@ -48,7 +39,6 @@ class Curl extends \PagueVeloz\Service\Machine\CurlDTO implements \PagueVeloz\Se
         $opt[CURLOPT_URL] = trim($this->url);
         $opt[CURLOPT_CUSTOMREQUEST] = $this->method;
         $opt[CURLOPT_RETURNTRANSFER] = 1;
-        //$opt[CURLOPT_HEADER]         = 1;
 
         if (!empty($this->urlReferer)) {
             $opt[CURLOPT_REFERER] = $this->urlReferer;
@@ -78,7 +68,6 @@ class Curl extends \PagueVeloz\Service\Machine\CurlDTO implements \PagueVeloz\Se
         $info = curl_getinfo($init);
 
         $response = new HttpResponse();
-
         $response->headers = $this->headers();
         $response->status = !empty($info['http_code']) ? $info['http_code'] : 204;
         $response->contentType = !empty($info['content_type']) ? $info['content_type'] : null;
@@ -94,10 +83,7 @@ class Curl extends \PagueVeloz\Service\Machine\CurlDTO implements \PagueVeloz\Se
             LogProvider::Info(sprintf('Headers (%s)', $this->url), $this->headers);
             LogProvider::Info(sprintf('Response RAW (%s)', $this->url.' '.$this->method), [$this->request]);
             LogProvider::Info(sprintf('Response  (%s)', $this->url.' '.$this->method), $response->toArray());
-
-            /*if (!in_array($response->status, array(200,201)))
-                LogProvider::Error(sprintf('ERRO PAGUEVELOZ  (%s)',$this->url), $request);*/
-        }
+       }
 
         return $response;
     }

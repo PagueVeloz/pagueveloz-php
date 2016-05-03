@@ -1,6 +1,7 @@
 <?php
 
 use Faker\Factory;
+use PagueVeloz\PagueVeloz;
 
 class TestCase extends PHPUnit_Framework_TestCase
 {
@@ -15,6 +16,8 @@ class TestCase extends PHPUnit_Framework_TestCase
      */
     protected function setUp()
     {
+        PagueVeloz::Url(getenv('PAGUEVELOZ_SANDBOX_URL'));
+
         $this->faker = Factory::create('pt_BR');
     }
 

@@ -10,7 +10,7 @@ class ServiceProviderTest extends TestCase
 
     public function setUp(){
         parent::setUp();
-        $this->mock = new ServiceProviderSub(getenv('SANDBOX_URL'));
+        $this->mock = new ServiceProviderSub(getenv('PAGUEVELOZ_SANDBOX_URL'));
     }
 
     public function isEmptyProvider() {

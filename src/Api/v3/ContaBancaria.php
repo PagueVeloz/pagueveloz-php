@@ -2,15 +2,6 @@
 
 namespace PagueVeloz\Api\v3;
 
-/*
- * ContaBancaria.php
- *
- *
- * @author Cristian B. dos Santos <cristian.deveng@gmail.com>
- * @copyright 2016
- * @version 1.0v
-*/
-
 use PagueVeloz\Api\InterfaceApi;
 use PagueVeloz\Api\v3\Dto\ContaBancariaDTO;
 use PagueVeloz\Service\Context\HttpRequest;
@@ -48,7 +39,7 @@ class ContaBancaria extends ServiceProvider implements InterfaceApi
     public function Post()
     {
         if ($this->isEmpty($this->dto->getRequest())) {
-            throw new \Exception('Erro ao montar request', 1);
+            throw new \Exception('Erro ao montar request');
         }
 
         $request = new HttpRequest();

@@ -2,15 +2,6 @@
 
 namespace PagueVeloz\Api\v4;
 
-/*
- * Assinar.php
- *
- *
- * @author Cristian B. dos Santos <cristian.deveng@gmail.com>
- * @copyright 2016
- * @version 1.2v
-*/
-
 use PagueVeloz\Api\InterfaceApi;
 use PagueVeloz\Api\v4\Dto\AssinarDTO;
 use PagueVeloz\Service\Context\HttpRequest;
@@ -41,7 +32,7 @@ class Assinar extends ServiceProvider implements InterfaceApi
     public function Post()
     {
         if ($this->isEmpty($this->dto->getRequest())) {
-            throw new \Exception('Erro ao montar request', 1);
+            throw new \Exception('Erro ao montar request');
         }
 
         $request = new HttpRequest();

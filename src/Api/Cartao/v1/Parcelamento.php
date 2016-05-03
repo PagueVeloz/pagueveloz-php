@@ -2,15 +2,6 @@
 
 namespace PagueVeloz\Api\Cartao\v1;
 
-/*
- * Parcelamento.php
- *
- *
- * @author Cristian B. dos Santos <cristian.deveng@gmail.com>
- * @copyright 2015
- * @version 1.0v
-*/
-
 use PagueVeloz\Api\Cartao\v1\Dto\ParcelamentoDTO;
 use PagueVeloz\Api\InterfaceApi;
 use PagueVeloz\ServiceProvider;
@@ -33,7 +24,7 @@ class Parcelamento extends ServiceProvider implements InterfaceApi
         $valor = $this->dto->getValor();
 
         if (empty($bandeira) || empty($valor)) {
-            throw new \Exception('Informe a bandeira e o valor que deseja parcelar', 1);
+            throw new \Exception('Informe a bandeira e o valor que deseja parcelar');
         }
 
         $this->Authorization();

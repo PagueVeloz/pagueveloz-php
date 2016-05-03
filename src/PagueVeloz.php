@@ -91,7 +91,7 @@ abstract class PagueVeloz
         }
 
         if (empty($version)) {
-            throw new \Exception('Versão da API não encontrada', 1);
+            throw new \Exception('Versão da API não encontrada');
         }
 
         return $version;
@@ -111,7 +111,7 @@ abstract class PagueVeloz
         });
 
         if (empty($listService) || count($listService) === 0 || count($listService) > 1) {
-            throw new \Exception('Erro ao localizar Serviço', 1);
+            throw new \Exception('Erro ao localizar Serviço');
         }
 
         return array_pop($listService);
@@ -123,7 +123,6 @@ abstract class PagueVeloz
 
         switch (self::GetVersion($service, $version)) {
             case 'v1':
-
                 $dto = new \PagueVeloz\Api\v1\Dto\AssinarDTO();
                 $service = new \PagueVeloz\Api\v1\Assinar($dto);
                 break;

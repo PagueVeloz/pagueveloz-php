@@ -2,15 +2,6 @@
 
 namespace PagueVeloz\Api\Cartao\v1;
 
-/*
- * Transacao.php
- *
- *
- * @author Cristian B. dos Santos <cristian.deveng@gmail.com>
- * @copyright 2015
- * @version 1.0v
-*/
-
 use PagueVeloz\Api\Cartao\v1\Dto\TransacaoDTO;
 use PagueVeloz\Api\InterfaceApi;
 use PagueVeloz\Service\Context\HttpRequest;
@@ -41,7 +32,7 @@ class Transacao extends ServiceProvider implements InterfaceApi
     public function Post()
     {
         if ($this->isEmpty($this->dto->getRequest())) {
-            throw new \Exception('Erro ao montar request', 1);
+            throw new \Exception('Erro ao montar request');
         }
 
         $this->Authorization();

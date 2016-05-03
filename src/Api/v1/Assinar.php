@@ -2,48 +2,40 @@
 
 namespace PagueVeloz\Api\v1;
 
-/*
- * Assinar.php
- *
- *
- * @author Cristian B. dos Santos <cristian.deveng@gmail.com>
- * @copyright 2015
- * @version 1.0v
-*/
-
 use PagueVeloz\Api\InterfaceApi;
 use PagueVeloz\Api\v1\Dto\AssinarDTO;
 use PagueVeloz\Service\Context\HttpRequest;
 use PagueVeloz\ServiceProvider;
+use PagueVeloz\Exception\NotImplementedException;
+use PagueVeloz\Exception\InvalidInputException;
 
 class Assinar extends ServiceProvider implements InterfaceApi
 {
     public function __construct(AssinarDTO $dto)
     {
+        parent::__construct();
         $this->dto = $dto;
         $this->uri = '/v1/Assinar';
-
-        parent::__construct();
-
         return $this;
     }
 
     public function Get()
     {
+        throw new NotImplementedException;
     }
 
     public function GetById($id)
     {
+        throw new NotImplementedException;
     }
 
     public function Post()
     {
         if ($this->isEmpty($this->dto->getRequest())) {
-            throw new \Exception('Erro ao montar request', 1);
+            throw new InvalidInputException;
         }
 
         $request = new HttpRequest();
-
         $request->body = $this->dto->getRequest();
         $this->method = 'POST';
 
@@ -52,9 +44,11 @@ class Assinar extends ServiceProvider implements InterfaceApi
 
     public function Put($id = null)
     {
+        throw new NotImplementedException;
     }
 
     public function Delete($id)
     {
+        throw new NotImplementedException;
     }
 }

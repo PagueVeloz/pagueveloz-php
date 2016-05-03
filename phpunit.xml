@@ -19,7 +19,7 @@
     </filter>
 
     <php>
-        <env name="SANDBOX_URL" value="https://sandbox.pagueveloz.com.br/" />
+        <env name="PAGUEVELOZ_SANDBOX_URL" value="https://sandbox.pagueveloz.com.br/api" />
     </php>
 
 </phpunit>

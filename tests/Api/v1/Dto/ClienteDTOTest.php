@@ -14,6 +14,15 @@ class ClienteDTOTest extends TestCase {
 
 	}
 
+	public function testGetNotEmpty()
+	{
+		$result = $this->dto->getNotEmpty();
+
+		$this->assertGreaterThan(0, count($result));
+
+		$this->assertEquals('array', gettype($result));
+	}
+
 	public function testSetNomeArquivo()
 	{
 		$nomeArquivo = $this->faker->randomNumber;

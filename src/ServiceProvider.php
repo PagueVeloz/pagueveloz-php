@@ -2,17 +2,11 @@
 
 namespace PagueVeloz;
 
-/*
- * PagueVeloz.php
- *
- *
- * @author Cristian B. dos Santos <cristian.deveng@gmail.com>
- * @copyright 2015
- * @version 1.0v
-*/
 use PagueVeloz\Api\Common\Auth;
 use PagueVeloz\Service\Context\HttpResponse;
 use PagueVeloz\Service\Machine\Curl;
+use PagueVeloz\Exception\UrlNotSetException;
+use PagueVeloz\Exception\UrlCartaoNotSetException;
 
 abstract class ServiceProvider extends Curl
 {
@@ -24,16 +18,16 @@ abstract class ServiceProvider extends Curl
     public function __construct()
     {
         if (empty(PagueVeloz::$url)) {
-            throw new \Exception('Favor informar a URL do PagueVeloz', 1);
+            throw new UrlNotSetException;
         }
 
         if ($this->isOperationCartao && empty(PagueVeloz::$urlCartao)) {
-            throw new \Exception('Favor informar a URL do Cartão PagueVeloz', 1);
+            throw new UrlCartaoNotSetException;
         }
 
         $this->ssl = true;
-        $this->log = PagueVeloz::$isLog;
         $this->proxy = false;
+        $this->log = PagueVeloz::$isLog;
 
         if (!$this->isOperationCartao) {
             $this->host = PagueVeloz::$url;
@@ -54,7 +48,6 @@ abstract class ServiceProvider extends Curl
         $response = new HttpResponse();
         $response->status = 204;
         $response->body = json_encode(['Não implementado']);
-
         return $response;
     }
 

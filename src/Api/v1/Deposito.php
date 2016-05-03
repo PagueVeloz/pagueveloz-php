@@ -2,15 +2,6 @@
 
 namespace PagueVeloz\Api\v1;
 
-/*
- * Deposito.php
- *
- *
- * @author Cristian B. dos Santos <cristian.deveng@gmail.com>
- * @copyright 2015
- * @version 1.0v
-*/
-
 use PagueVeloz\Api\InterfaceApi;
 use PagueVeloz\Api\v1\Dto\DepositoDTO;
 use PagueVeloz\Service\Context\HttpRequest;
@@ -48,7 +39,7 @@ class Deposito extends ServiceProvider implements InterfaceApi
     public function Post()
     {
         if ($this->isEmpty($this->dto->getRequest())) {
-            throw new \Exception('Erro ao montar request', 1);
+            throw new \Exception('Erro ao montar request');
         }
 
         $request = new HttpRequest();

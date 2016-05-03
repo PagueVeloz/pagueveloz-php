@@ -22,17 +22,17 @@ abstract class AbstractDTO extends ObjectFactory
     protected function __request($array)
     {
         $response = [];
-
         foreach ($array as $key => $element) {
             if (is_array($element)) {
                 if ($child = $this->__request($element)) {
                     $response[$key] = $child;
                 }
+            } elseif (is_object($element)) {
+                $response[$key] = $element->toArray();
             } elseif (!empty($element)) {
                 $response[$key] = utf8_encode($element);
             }
         }
-
         return $response;
     }
 }

@@ -2,15 +2,6 @@
 
 namespace PagueVeloz\Api\v2;
 
-/*
- * Consultar.php
- *
- *
- * @author Cristian B. dos Santos <cristian.deveng@gmail.com>
- * @copyright 2015
- * @version 1.0v
-*/
-
 use PagueVeloz\Api\InterfaceApi;
 use PagueVeloz\Api\v2\Dto\ConsultarDTO;
 use PagueVeloz\ServiceProvider;

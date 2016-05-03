@@ -76,7 +76,7 @@ class Cliente extends ServiceProvider implements InterfaceApi
     public function Put($id = null)
     {
         if ($this->isEmpty($this->dto->getRequest())) {
-            throw new \Exception('Erro ao montar request', 1);
+            throw new \Exception('Erro ao montar request');
         }
 
         $this->Authorization();

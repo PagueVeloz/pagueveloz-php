@@ -116,4 +116,52 @@ class CepV2DTO extends \PagueVeloz\AbstractDTO
 
         return $this;
     }
+
+    /**
+     * Gets the value of Bairro.
+     *
+     * @return mixed
+     */
+    public function getBairro()
+    {
+        return $this->Bairro;
+    }
+
+    /**
+     * Sets the value of Bairro.
+     *
+     * @param mixed $Bairro the
+     *
+     * @return self
+     */
+    public function setBairro($Bairro)
+    {
+        $this->Bairro = $Bairro;
+
+        return $this;
+    }
+
+    /**
+     * Gets the value of Complemento.
+     *
+     * @return mixed
+     */
+    public function getComplemento()
+    {
+        return $this->Complemento;
+    }
+
+    /**
+     * Sets the value of Complemento.
+     *
+     * @param mixed $Complemento the
+     *
+     * @return self
+     */
+    public function setComplemento($Complemento)
+    {
+        $this->Complemento = $Complemento;
+
+        return $this;
+    }
 }

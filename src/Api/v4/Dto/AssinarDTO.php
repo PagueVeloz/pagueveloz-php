@@ -12,10 +12,10 @@ class AssinarDTO extends \PagueVeloz\AbstractDTO
     const TIPO_PESSOA_FISICA = 1;
     const TIPO_PESSOA_JURIDICA = 2;
 
+    protected $Id = null;
     protected $Nome = null;
     protected $Documento = null;
     protected $TipoPessoa = 0;
-    protected $LoginUsuarioDefault = null;
     protected $Email = null;
     protected $UrlNotificacao = null;
     protected $Endereco = null;
@@ -25,13 +25,12 @@ class AssinarDTO extends \PagueVeloz\AbstractDTO
     protected $InscricaoMunicipal = null;
     protected $Usuario = null;
     protected $DataNascimento = null;
-    protected $Id = null;
 
     public function __construct()
     {
         $this->setEndereco(new CepV2DTO());
         $this->setUsuario(new UsuarioNaGravacaoDTO());
-        $this->setTelefones(new TelefoneDTO());
+        $this->setTelefones([]);
     }
 
     public function getNotEmpty()
@@ -115,30 +114,6 @@ class AssinarDTO extends \PagueVeloz\AbstractDTO
     public function setTipoPessoa($TipoPessoa)
     {
         $this->TipoPessoa = $TipoPessoa;
-
-        return $this;
-    }
-
-    /**
-     * Gets the value of LoginUsuarioDefault.
-     *
-     * @return mixed
-     */
-    public function getLoginUsuarioDefault()
-    {
-        return $this->LoginUsuarioDefault;
-    }
-
-    /**
-     * Sets the value of LoginUsuarioDefault.
-     *
-     * @param mixed $LoginUsuarioDefault the login usuario default
-     *
-     * @return self
-     */
-    public function setLoginUsuarioDefault($LoginUsuarioDefault)
-    {
-        $this->LoginUsuarioDefault = $LoginUsuarioDefault;
 
         return $this;
     }
@@ -256,7 +231,7 @@ class AssinarDTO extends \PagueVeloz\AbstractDTO
      *
      * @return self
      */
-    public function setTelefones(TelefoneDTO $Telefones)
+    public function setTelefones(array $Telefones)
     {
         $this->Telefones = $Telefones;
 
