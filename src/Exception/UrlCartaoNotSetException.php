@@ -2,6 +2,7 @@
 
 namespace PagueVeloz\Exception;
 
-class UrlCartaoNotSetException extends InvalidInputException {
+class UrlCartaoNotSetException extends InvalidInputException
+{
     protected $message = "URL de cartão do PagueVeloz não informada";
 }

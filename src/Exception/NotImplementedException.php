@@ -2,6 +2,7 @@
 
 namespace PagueVeloz\Exception;
 
-class NotImplementedException extends \Exception {
+class NotImplementedException extends \Exception
+{
     protected $message = "não implementado";
 }

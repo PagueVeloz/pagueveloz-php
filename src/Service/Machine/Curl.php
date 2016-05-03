@@ -83,7 +83,7 @@ class Curl extends \PagueVeloz\Service\Machine\CurlDTO implements \PagueVeloz\Se
             LogProvider::Info(sprintf('Headers (%s)', $this->url), $this->headers);
             LogProvider::Info(sprintf('Response RAW (%s)', $this->url.' '.$this->method), [$this->request]);
             LogProvider::Info(sprintf('Response  (%s)', $this->url.' '.$this->method), $response->toArray());
-       }
+        }
 
         return $response;
     }
