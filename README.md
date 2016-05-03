@@ -2,7 +2,6 @@
 
 [![StyleCI](https://styleci.io/repos/27489184/shield)](https://styleci.io/repos/27489184)
 [![Build Status](https://travis-ci.org/PagueVeloz/pagueveloz-php.svg)](https://travis-ci.org/PagueVeloz/pagueveloz-php)
-[![Coverage Status](https://coveralls.io/repos/github/PagueVeloz/pagueveloz-php/badge.svg)](https://coveralls.io/github/PagueVeloz/pagueveloz-php)
 [![Latest Stable Version](https://poser.pugx.org/pagueveloz/pagueveloz/v/stable)](https://packagist.org/packages/pagueveloz/pagueveloz)
 [![Total Downloads](https://poser.pugx.org/pagueveloz/pagueveloz/downloads)](https://packagist.org/packages/pagueveloz/pagueveloz)
 [![Latest Unstable Version](https://poser.pugx.org/pagueveloz/pagueveloz/v/unstable)](https://packagist.org/packages/pagueveloz/pagueveloz)
@@ -21,28 +20,28 @@ composer require pagueveloz/pagueveloz
 ```
 
 ## Serviços disponíveis:
-|                   	| V1 	| V2 	| V3 	|
-|-------------------	|----	|----	|----	|
-| Cep               	| x  	|    	|    	|
-| Cliente           	| x  	|    	|    	|
-| Consultar         	| x  	|    	|    	|
-| ConsultarBoleto   	| x  	|    	|    	|
-| CreditoSMS        	| x  	|    	|    	|
-| DefaultBoleto     	| x  	|    	|    	|
-| Extrato           	| x  	|    	|    	|
-| MensagemSMS       	| x  	|    	|    	|
-| PacoteSMS         	| x  	|    	|    	|
-| Ping              	| x  	|    	|    	|
-| Saldo             	| x  	|    	|    	|
-| Saque             	| x  	|    	|    	|
-| Tarifa            	| x  	|    	|    	|
-| Transferencia     	| x  	|    	|    	|
-| UsuarioCliente    	| x  	|    	|    	|
-| Assinar           	|    	| x  	|    	|
-| Boleto            	|    	| x  	| x  	|
-| ComprarCreditoSMS 	|    	| x  	|    	|
-| Consultar         	|    	| x  	|    	|
-| ContaBancaria     	|    	| x  	|    	|
+|                   	| V1 	| V2 	| V3 	|V4  |
+|-------------------	|----	|----	|----	|----|
+| Cep               	| x  	|    	|    	|    |
+| Cliente           	| x  	|    	|    	|    |
+| Consultar         	| x  	|    	|    	|    |
+| ConsultarBoleto   	| x  	|    	|    	|    |
+| CreditoSMS        	| x  	|    	|    	|    |
+| DefaultBoleto     	| x  	|    	|    	|    |
+| Extrato           	| x  	|    	|    	|    |
+| MensagemSMS       	| x  	|    	|    	|    |
+| PacoteSMS         	| x  	|    	|    	|    |
+| Ping              	| x  	|    	|    	|    |
+| Saldo             	| x  	|    	|    	|    |
+| Saque             	| x  	|    	|    	|    |
+| Tarifa            	| x  	|    	|    	|    |
+| Transferencia     	| x  	|    	|    	|    |
+| UsuarioCliente    	| x  	|    	|    	|    |
+| Assinar           	|    	|   	|    	| x  |
+| Boleto            	|    	|   	| x  	|    |
+| ComprarCreditoSMS 	|    	| x  	|    	|    |
+| Consultar         	|    	| x  	|    	|    |
+| ContaBancaria     	|    	| x  	|    	|    |
 
 # Exemplos:
 
@@ -71,7 +70,7 @@ Operações de financiamento via cartão digitado
 
 /**
  * Verificar se a operação de Financiamento via VendaDigitada está habilitada para o cliente
- * - Cliente deve ter o termo CHARGEBACK assinado com o PAGUEVELOZ
+ * Obs.: Cliente deve ter o termo CHARGEBACK assinado com o PAGUEVELOZ
  */
 $cartaoHabilitado = PagueVeloz::CartaoHabilitado();
 
@@ -112,7 +111,7 @@ $response = $bandeiras->Get();
 $bandeiras = json_decode($response->body);
 
 /**
- * 	Listagem de parcelas para a bandeira selecionada
+ * Listagem de parcelas para a bandeira selecionada
  *
  * Ex.Retorno:
  * [{
