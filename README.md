@@ -41,7 +41,7 @@ composer require pagueveloz/pagueveloz
 | Boleto            	|    	|   	| x  	|    |
 | ComprarCreditoSMS 	|    	| x  	|    	|    |
 | Consultar         	|    	| x  	|    	|    |
-| ContaBancaria     	|    	| x  	|    	|    |
+| ContaBancaria     	|    	| x  	|    	| x  |
 
 # Exemplos:
 

@@ -35,16 +35,22 @@ abstract class LogProvider
     /**
      * Register a Info level log message.
      */
-    public static function Info($info, $inputs = [])
+    public static function Info($info, $inputs = null)
     {
+        if (is_null($inputs))
+            $inputs = [];
+
         self::Handler(Logger::INFO)->addInfo($info, $inputs);
     }
 
     /**
      * Register a Error level log message.
      */
-    public static function Error($error, $inputs = [])
+    public static function Error($error, $inputs = null)
     {
+        if (is_null($inputs))
+            $inputs = [];
+
         self::Handler(Logger::ERROR)->addError($error, $inputs);
     }
 }

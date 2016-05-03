@@ -31,7 +31,12 @@ class ContaPag extends ServiceProvider implements InterfaceApi
 
     public function GetById($id)
     {
-        return $this->NoContent();
+        $this->url = $this->url.'/'.$id;
+
+        $this->method = 'GET';
+        $this->Authorization();
+
+        return $this->init();
     }
 
     public function GetByBarCode($barCode)
