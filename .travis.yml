@@ -8,11 +8,7 @@ php:
   - hhvm
 
 before_script:
-  - mkdir -p ./build/logs
   - composer install
-  
-script:
-  - ./vendor/bin/phpunit --coverage-clover build/logs/clover.xml
 
-after_success:
-  - sh -c 'if [ "$TRAVIS_PHP_VERSION" != "7.0" ]; then travis_retry php vendor/bin/coveralls -v; fi;'
+script:
+  - ./vendor/bin/phpunit
