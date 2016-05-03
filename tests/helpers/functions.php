@@ -21,3 +21,15 @@ function pd() {
     }
     exit();
 }
+
+/**
+ * Dump and return
+ */
+function dr() {
+    $args = func_get_args();
+    $result = '';
+    foreach($args as $arg) {
+        $result .= print_r($arg, true);
+    }
+    return $result;
+}

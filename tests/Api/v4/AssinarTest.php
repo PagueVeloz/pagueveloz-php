@@ -52,15 +52,16 @@ class AssinarTest extends TestCase {
         $result = $this->assinar->Post();
 
         $responseObject = json_decode($result->body);
-        $this->assertObjectHasAttribute('Token', $responseObject, "Deve retornar o token\n" . $result->body);
-        $this->assertEquals(201, $result->status, "Deve retornar status 201\n" . $result->body);
+        $this->assertEquals('stdClass', get_class($responseObject), "Deve ser possível converter em objeto\n" . dr($responseObject));
+        $this->assertObjectHasAttribute('Token', $responseObject, "Deve retornar o token\n" . dr($result->body));
+        $this->assertEquals(201, $result->status, "Deve retornar status 201\n" . dr($result->body));
     }
 
     public function testPut()
     {
         $response = $this->assinar->Put(1);
         $this->assertEquals(204, $response->status);
-        $this->assertEquals('Content-type: application/json', $response->contentType);
+        $this->assertEquals('Content-type: application/json', dr($response->contentType));
         $this->assertNotEmpty($response->body);
     }
 
@@ -68,7 +69,7 @@ class AssinarTest extends TestCase {
     {
         $response = $this->assinar->Delete(1);
         $this->assertEquals(204, $response->status);
-        $this->assertEquals('Content-type: application/json', $response->contentType);
+        $this->assertEquals('Content-type: application/json', dr($response->contentType));
         $this->assertNotEmpty($response->body);
     }
 }
