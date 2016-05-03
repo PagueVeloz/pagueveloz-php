@@ -2,6 +2,8 @@
 
 namespace PagueVeloz;
 
+use PagueVeloz\Exception\ApiVersionNotFound;
+
 abstract class PagueVeloz
 {
     protected static $servicesAvailable = [
@@ -73,25 +75,26 @@ abstract class PagueVeloz
         $version = null;
 
         if (!empty(self::$version)) {
-            $version = array_pop(array_filter($service['version'], function ($el) {
+            $array = array_filter($service['version'], function ($el) {
                 if ($el === self::$version) {
                     return $el;
                 }
-
-            }));
+            });
+            $version = array_pop($array);
         } elseif (!empty($v)) {
-            $version = array_pop(array_filter($service['version'], function ($el) use ($v) {
+            $array = array_filter($service['version'], function ($el) use ($v) {
                 if ($el === $v) {
                     return $el;
                 }
+            });
 
-            }));
+            $version = array_pop($array);
         } else {
             $version = $service['default'];
         }
 
         if (empty($version)) {
-            throw new \Exception('Versão da API não encontrada');
+            throw new ApiVersionNotFound;
         }
 
         return $version;
