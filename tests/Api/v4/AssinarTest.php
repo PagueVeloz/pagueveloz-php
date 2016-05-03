@@ -14,7 +14,8 @@ class AssinarTest extends TestCase {
     public function setUp()
     {
         parent::setUp();
-        $assinar = PagueVeloz::Assinar('v4');
+        $version = 'v4';
+        $assinar = PagueVeloz::Assinar($version);
         $this->assinar = $assinar;
     }
 
