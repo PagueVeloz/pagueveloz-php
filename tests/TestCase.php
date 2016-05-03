@@ -16,7 +16,8 @@ class TestCase extends PHPUnit_Framework_TestCase
      */
     protected function setUp()
     {
-        PagueVeloz::Url(getenv('PAGUEVELOZ_SANDBOX_URL'));
+        $url = getenv('PAGUEVELOZ_SANDBOX_URL');
+        PagueVeloz::Url($url);
 
         $this->faker = Factory::create('pt_BR');
     }
