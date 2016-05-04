@@ -57,7 +57,7 @@ class CepDTOTest extends TestCase
 
 	public function testSetNumero()
 	{
-		$numero = $this->faker->buildingNumber;
+		$numero = $this->faker->numerify("####");
 
 		$this->dto->setNumero($numero);
 
