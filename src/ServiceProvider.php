@@ -64,7 +64,7 @@ abstract class ServiceProvider extends Curl
 
     public function isEmpty($value)
     {
-        if(is_string($value) && $value == "[]"){
+        if (is_string($value) && $value == '[]') {
             return true;
         }
 
