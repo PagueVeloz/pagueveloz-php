@@ -18,6 +18,26 @@ class AssinarTest extends TestCase {
         $this->assinar = PagueVeloz::Assinar($version);
     }
 
+    public function versionDataProvider()
+    {
+        return [
+            ['v1'],
+            ['v2'],
+            ['v3'],
+            ['v4'],
+        ];
+    }
+
+    /**
+     * @dataProvider versionDataProvider
+     */
+    public function testNew($version)
+    {
+        $object = PagueVeloz::Assinar($version);
+        $class = 'PagueVeloz\Api\\' . $version . '\Assinar';
+        $this->assertInstanceOf($class, $object);
+    }
+
     public function testGet()
     {
         $response = $this->assinar->Get();
