@@ -54,6 +54,14 @@ class AssinarTest extends TestCase {
         $this->assertNotEmpty($response->body);
     }
 
+    /**
+     * @expectedException Exception
+     */
+    public function testPostThrowExceptionIfNoParams()
+    {
+        $response = $this->assinar->Post();
+    }
+
     public function testPostHasPessoaFisica()
     {
         $dtoTest = new AssinarDTOTest;

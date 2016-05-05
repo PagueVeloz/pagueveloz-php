@@ -38,6 +38,14 @@ class ContaBancariaTest extends TestCase {
         $this->assertInstanceOf($class, $object);
     }
 
+    /**
+     * @expectedException Exception
+     */
+    public function testPostThrowExceptionIfNoParams()
+    {
+        $response = $this->contaBancaria->Post();
+    }
+
     public function testPostContaPropria()
     {
         $dtoTest = new ContaBancariaDTOTest;

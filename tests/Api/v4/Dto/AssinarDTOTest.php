@@ -293,4 +293,40 @@ class AssinarDTOTest extends TestCase {
 
 		$this->assertEquals($dataNascimento, $this->dto->getDataNascimento());
 	}
+
+	public function testSetInscricaoEstadual()
+	{
+		$number = $this->faker->randomNumber;
+		$this->dto->setInscricaoEstadual($number);
+		$this->assertAttributeEquals($number, 'InscricaoEstadual', $this->dto);
+		return $number;
+	}
+
+	/**
+	 * @depends testSetInscricaoEstadual
+	 */
+	public function testGetInscricaoEstadual($number)
+	{
+		$this->dto->setInscricaoEstadual($number);
+
+		$this->assertEquals($number, $this->dto->getInscricaoEstadual());
+	}
+
+	public function testSetInscricaoMunicipal()
+	{
+		$number = $this->faker->randomNumber;
+		$this->dto->setInscricaoMunicipal($number);
+		$this->assertAttributeEquals($number, 'InscricaoMunicipal', $this->dto);
+		return $number;
+	}
+
+	/**
+	 * @depends testSetInscricaoMunicipal
+	 */
+	public function testGetInscricaoMunicipal($number)
+	{
+		$this->dto->setInscricaoMunicipal($number);
+
+		$this->assertEquals($number, $this->dto->getInscricaoMunicipal());
+	}
 }
