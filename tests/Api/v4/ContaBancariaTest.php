@@ -192,6 +192,8 @@ class ContaBancariaTest extends TestCase {
         $conta = json_decode($result->body, true);
         $this->assertArrayHasKey('Id', $conta, "Deve retornar um campo 'Id");
         $this->assertEquals($contaBancariaId, $conta['Id'], "Deve ser igual a da conta cadastrada");
+
+        return $conta['Id'];
     }
 
     /**
