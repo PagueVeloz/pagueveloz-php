@@ -4,10 +4,10 @@ namespace PagueVeloz\Api\v1;
 
 use PagueVeloz\Api\InterfaceApi;
 use PagueVeloz\Api\v1\Dto\AssinarDTO;
+use PagueVeloz\Exception\InvalidInputException;
+use PagueVeloz\Exception\NotImplementedException;
 use PagueVeloz\Service\Context\HttpRequest;
 use PagueVeloz\ServiceProvider;
-use PagueVeloz\Exception\NotImplementedException;
-use PagueVeloz\Exception\InvalidInputException;
 
 class Assinar extends ServiceProvider implements InterfaceApi
 {
@@ -16,23 +16,24 @@ class Assinar extends ServiceProvider implements InterfaceApi
         parent::__construct();
         $this->dto = $dto;
         $this->uri = '/v1/Assinar';
+
         return $this;
     }
 
     public function Get()
     {
-        throw new NotImplementedException;
+        throw new NotImplementedException();
     }
 
     public function GetById($id)
     {
-        throw new NotImplementedException;
+        throw new NotImplementedException();
     }
 
     public function Post()
     {
         if ($this->isEmpty($this->dto->getRequest())) {
-            throw new InvalidInputException;
+            throw new InvalidInputException();
         }
 
         $request = new HttpRequest();
@@ -44,11 +45,11 @@ class Assinar extends ServiceProvider implements InterfaceApi
 
     public function Put($id = null)
     {
-        throw new NotImplementedException;
+        throw new NotImplementedException();
     }
 
     public function Delete($id)
     {
-        throw new NotImplementedException;
+        throw new NotImplementedException();
     }
 }

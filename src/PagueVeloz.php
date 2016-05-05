@@ -94,7 +94,7 @@ abstract class PagueVeloz
         }
 
         if (empty($version)) {
-            throw new ApiVersionNotFound;
+            throw new ApiVersionNotFound();
         }
 
         return $version;

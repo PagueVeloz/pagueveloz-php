@@ -168,7 +168,7 @@ class ContaBancariaTest extends TestCase {
         $result = $this->contaBancaria->Get();
 
         $arrayContas = json_decode($result->body, true);
-        $this->assertContains($contaBancariaId, array_column($arrayContas, 'Id'), "Deve retornar na lista uma conta já cadastrada\n" . array_column($arrayContas, 'Id'));
+        $this->assertContains($contaBancariaId, array_column($arrayContas, 'Id'), "Deve retornar na lista uma conta já cadastrada");
     }
 
     /**
