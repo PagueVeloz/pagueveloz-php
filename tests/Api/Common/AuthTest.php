@@ -20,7 +20,7 @@ class AuthTest extends TestCase
 
     public function testSetEmail()
     {
-        $email = $this->faker->email;
+        $email = $this->faker->bothify("#?#?#?#?#?#?#?#?#@gmail.com");;
 
         $this->auth->setEmail($email);
 
