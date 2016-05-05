@@ -7,7 +7,7 @@ use PagueVeloz\Exception\ApiVersionNotFound;
 abstract class PagueVeloz
 {
     protected static $servicesAvailable = [
-        ['service' => 'Assinar', 'version' => ['v1', 'v2', 'v3', 'v4'], 'default' => 'v3'],
+        ['service' => 'Assinar', 'version' => ['v1', 'v2', 'v3', 'v4'], 'default' => 'v4'],
         ['service' => 'Cep', 'version' => ['v1'], 'default' => 'v1'],
         ['service' => 'Cliente', 'version' => ['v1'], 'default' => 'v1'],
         ['service' => 'Consultar', 'version' => ['v1', 'v2'], 'default' => 'v2'],
