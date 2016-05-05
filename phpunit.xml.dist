@@ -20,7 +20,5 @@
 
     <php>
         <env name="PAGUEVELOZ_SANDBOX_URL" value="https://sandbox.pagueveloz.com.br/api" />
-        <env name="PAGUEVELOZ_SANDBOX_EMAIL" value="SEU EMAIL" />
-        <env name="PAGUEVELOZ_SANDBOX_TOKEN" value="SEU TOKEN" />
     </php>
 </phpunit>
