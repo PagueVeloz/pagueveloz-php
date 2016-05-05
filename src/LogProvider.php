@@ -37,8 +37,9 @@ abstract class LogProvider
      */
     public static function Info($info, $inputs = null)
     {
-        if (is_null($inputs))
+        if (is_null($inputs)) {
             $inputs = [];
+        }
 
         self::Handler(Logger::INFO)->addInfo($info, $inputs);
     }
@@ -48,8 +49,9 @@ abstract class LogProvider
      */
     public static function Error($error, $inputs = null)
     {
-        if (is_null($inputs))
+        if (is_null($inputs)) {
             $inputs = [];
+        }
 
         self::Handler(Logger::ERROR)->addError($error, $inputs);
     }

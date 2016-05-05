@@ -33,6 +33,7 @@ abstract class AbstractDTO extends ObjectFactory
                 $response[$key] = utf8_encode($element);
             }
         }
+
         return $response;
     }
 }
