@@ -3,10 +3,10 @@
 namespace PagueVeloz;
 
 use PagueVeloz\Api\Common\Auth;
+use PagueVeloz\Exception\UrlCartaoNotSetException;
+use PagueVeloz\Exception\UrlNotSetException;
 use PagueVeloz\Service\Context\HttpResponse;
 use PagueVeloz\Service\Machine\Curl;
-use PagueVeloz\Exception\UrlNotSetException;
-use PagueVeloz\Exception\UrlCartaoNotSetException;
 
 abstract class ServiceProvider extends Curl
 {
@@ -18,11 +18,11 @@ abstract class ServiceProvider extends Curl
     public function __construct()
     {
         if (empty(PagueVeloz::$url)) {
-            throw new UrlNotSetException;
+            throw new UrlNotSetException();
         }
 
         if ($this->isOperationCartao && empty(PagueVeloz::$urlCartao)) {
-            throw new UrlCartaoNotSetException;
+            throw new UrlCartaoNotSetException();
         }
 
         $this->ssl = true;
@@ -48,6 +48,7 @@ abstract class ServiceProvider extends Curl
         $response = new HttpResponse();
         $response->status = 204;
         $response->body = json_encode(['Não implementado']);
+
         return $response;
     }
 

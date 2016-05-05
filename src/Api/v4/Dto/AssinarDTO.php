@@ -3,7 +3,6 @@
 namespace PagueVeloz\Api\v4\Dto;
 
 use PagueVeloz\Api\Common\Dto\CepV2DTO;
-use PagueVeloz\Api\Common\Dto\TelefoneDTO;
 use PagueVeloz\Api\Common\Dto\UsuarioNaGravacaoDTO;
 
 class AssinarDTO extends \PagueVeloz\AbstractDTO
