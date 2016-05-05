@@ -1,6 +1,6 @@
 {
   "name": "PagueVeloz PHP",
   "tagline": "Cliente PHP da API do PagueVeloz",
-  "body": "### Instalação\r\nInstale usando o composer:\r\n`composer require pagueveloz/pagueveloz`\r\n\r\n### Comece a usar\r\n\r\n    //importe o autoload gerado pelo composer\r\n    require_once __DIR__.\"/vendor/autoload.php\";\r\n\r\n    //importe a classe do PagueVeloz\r\n    use PagueVeloz\\PagueVeloz;\r\n\r\n    //configure a classe para usar a url da API do PagueVeloz\r\n    PagueVeloz::Url('https://www.pagueveloz.com.br/api');\r\n\r\n### Autores e Mantenedores\r\n@cbsantos e @jaschweder\r\n\r\n### Suporte e Contato\r\nVeja mais detalhes na [documentação oficial](https://pagueveloz.com.br/help) ou acesse o [site](https://pagueveloz.com.br)\r\n",
+  "body": "### Instalação\r\nInstale usando o composer:\r\n    composer require pagueveloz/pagueveloz\r\n\r\n### Comece a usar\r\n\r\n    //importe o autoload gerado pelo composer\r\n    require_once __DIR__.\"/vendor/autoload.php\";\r\n\r\n    //importe a classe do PagueVeloz\r\n    use PagueVeloz\\PagueVeloz;\r\n\r\n    //configure a classe para usar a url da API do PagueVeloz\r\n    PagueVeloz::Url('https://www.pagueveloz.com.br/api');\r\n\r\n### Autores e Mantenedores\r\n@cbsantos e @jaschweder\r\n\r\n### Suporte e Contato\r\nVeja mais detalhes na [documentação oficial](https://pagueveloz.com.br/help) ou acesse o [site](https://pagueveloz.com.br)\r\n",
   "note": "Don't delete this file! It's used internally to help with page regeneration."
 }
