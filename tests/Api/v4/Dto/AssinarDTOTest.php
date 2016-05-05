@@ -55,6 +55,17 @@ class AssinarDTOTest extends TestCase {
 		return $nome;
 	}
 
+	public function testSetNomeEmpresa()
+	{
+		$nome = $this->faker->company;
+
+		$this->dto->setNome($nome);
+
+		$this->assertAttributeEquals($nome, 'Nome', $this->dto);
+
+		return $nome;
+	}
+
 	/**
 	 * @depends testSetNome
 	 */
@@ -65,7 +76,7 @@ class AssinarDTOTest extends TestCase {
 		$this->assertEquals($nome, $this->dto->getNome());
 	}
 
-	public function testSetDocumento()
+	public function testSetDocumentoCPF()
 	{
 		$documento = $this->faker->cpf(true);
 
@@ -76,8 +87,19 @@ class AssinarDTOTest extends TestCase {
 		return $documento;
 	}
 
+	public function testSetDocumentoCNPJ()
+	{
+		$documento = $this->faker->cnpj(true);
+
+		$this->dto->setDocumento($documento);
+
+		$this->assertAttributeEquals($documento, 'Documento', $this->dto);
+
+		return $documento;
+	}
+
 	/**
-	 * @depends testSetDocumento
+	 * @depends testSetDocumentoCPF
 	 */
 	public function testGetDocumento($documento)
 	{

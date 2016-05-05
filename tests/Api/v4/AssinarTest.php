@@ -34,19 +34,41 @@ class AssinarTest extends TestCase {
         $this->assertNotEmpty($response->body);
     }
 
-    public function testPost()
+    public function testPostHasPessoaFisica()
     {
         $dtoTest = new AssinarDTOTest;
         $dtoTest->setUp();
 
         $this->assinar->dto
             ->setNome($dtoTest->testSetNome())
-            ->setDocumento($dtoTest->testSetDocumento())
+            ->setDocumento($dtoTest->testSetDocumentoCPF())
             ->setTipoPessoa(1)
             ->setEmail($dtoTest->testSetEmail())
             ->setUsuario($dtoTest->testSetUsuario())
             ->setEndereco($dtoTest->testSetEndereco())
             ->setDataNascimento($dtoTest->testSetDataNascimento())
+            ->setTelefones($dtoTest->testSetTelefones());
+
+        $result = $this->assinar->Post();
+
+        $responseObject = json_decode($result->body);
+        $this->assertEquals('stdClass', get_class($responseObject), "Deve ser possível converter em objeto\n" . dr($responseObject));
+        $this->assertObjectHasAttribute('Token', $responseObject, "Deve retornar o token\n" . dr($result->body));
+        $this->assertEquals(201, $result->status, "Deve retornar status 201\n" . dr($result->body));
+    }
+
+    public function testPostHasPessoaJuridica()
+    {
+        $dtoTest = new AssinarDTOTest;
+        $dtoTest->setUp();
+
+        $this->assinar->dto
+            ->setNome($dtoTest->testSetNomeEmpresa())
+            ->setDocumento($dtoTest->testSetDocumentoCNPJ())
+            ->setTipoPessoa(2)
+            ->setEmail($dtoTest->testSetEmail())
+            ->setUsuario($dtoTest->testSetUsuario())
+            ->setEndereco($dtoTest->testSetEndereco())
             ->setTelefones($dtoTest->testSetTelefones());
 
         $result = $this->assinar->Post();
