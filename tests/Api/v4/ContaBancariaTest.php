@@ -166,9 +166,18 @@ class ContaBancariaTest extends TestCase {
         $this->contaBancaria->auth = $this->auth();
 
         $result = $this->contaBancaria->Get();
+        $result = json_decode($result->body, true);
 
-        $arrayContas = json_decode($result->body, true);
-        $this->assertContains($contaBancariaId, array_column($arrayContas, 'Id'), "Deve retornar na lista uma conta já cadastrada");
+        $this->assertEquals('array', gettype($result));
+
+        $contas = [];
+        foreach($result as $conta) {
+            $contas[] = $conta['Id'];
+        }
+
+        $this->assertContains($contaBancariaId, $contas, "Deve retornar na lista uma conta já cadastrada");
+
+        return $contas;
     }
 
     /**
