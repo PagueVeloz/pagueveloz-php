@@ -85,7 +85,7 @@ class ContaBancariaDTOTest extends TestCase {
 
 	public function testSetNumeroConta()
 	{
-		$numero = $this->faker->bankAccountNumber;
+		$numero = $this->faker->numerify('########');
 
 		$this->dto->setNumeroConta($numero);
 

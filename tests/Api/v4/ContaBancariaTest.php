@@ -63,4 +63,29 @@ class ContaBancariaTest extends TestCase {
         $this->assertEquals(201, $result->status, "Deve retornar status 201\n" . dr($result->body));
     }
 
+    public function testPostContaSocio()
+    {
+        $dtoTest = new ContaBancariaDTOTest;
+        $dtoTest->setUp();
+
+        $this->contaBancaria->auth = $this->auth();
+
+        $this->contaBancaria->dto
+            ->setCodigoBanco(1)
+            ->setCodigoAgencia('0405')
+            ->setDigitoAgencia('5')
+            ->setNumeroConta($dtoTest->testSetNumeroConta())
+            ->setDigitoConta('X')
+            ->setDescricao('Conta no Banco do Brasil')
+            ->setTitular($dtoTest->testSetTitular())
+            ->setTipoConta(ContaBancariaDTO::TIPO_CONTABANCARIA_CONTACORRENTE)
+            ->setTipoTitular(ContaBancariaDTO::TIPO_TITULARCONTABANCARIA_SOCIO);
+
+        $result = $this->contaBancaria->Post();
+
+        $responseObject = json_decode($result->body);
+        $this->assertEquals('stdClass', get_class($responseObject), "Deve ser possível converter em objeto\n" . dr($responseObject));
+        $this->assertObjectHasAttribute('Id', $responseObject, "Deve retornar um Id\n" . dr($result->body));
+        $this->assertEquals(201, $result->status, "Deve retornar status 201\n" . dr($result->body));
+    }
 }
