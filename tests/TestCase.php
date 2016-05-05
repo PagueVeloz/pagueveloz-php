@@ -2,6 +2,7 @@
 
 use Faker\Factory;
 use PagueVeloz\PagueVeloz;
+use PagueVeloz\Api\Common\Auth;
 
 class TestCase extends PHPUnit_Framework_TestCase
 {
@@ -28,5 +29,37 @@ class TestCase extends PHPUnit_Framework_TestCase
      */
     protected function tearDown()
     {
+    }
+
+    /**
+     * Return the email of the current user
+     */
+    protected function email()
+    {
+        return getenv('PAGUEVELOZ_SANDBOX_EMAIL');
+    }
+
+    /**
+     * Return the token of the current user
+     */
+    protected function token()
+    {
+        return getenv('PAGUEVELOZ_SANDBOX_TOKEN');
+    }
+
+    /**
+     * Get the current Auth instance
+     * @return PagueVeloz\Api\Common\Auth
+     */
+    protected function auth()
+    {
+        $email = $this->email();
+        $token = $this->token();
+
+        $auth = new Auth;
+        $auth->setEmail($email);
+        $auth->setToken($token);
+
+        return $auth;
     }
 }
