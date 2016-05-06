@@ -268,4 +268,16 @@ class ContaBancariaTest extends TestCase {
         $result = $this->contaBancaria->Put(1);
     }
 
+    /**
+     * @depends testPostContaPropria
+     */
+    public function testDelete($contaBancariaId)
+    {
+        $this->contaBancaria->auth = $this->auth();
+        $result = $this->contaBancaria->Delete($contaBancariaId);
+        $this->assertEquals(200, $result->status, "Deve retornar status 200\n" . dr($result->body));
+
+        return $responseObject->Id;
+    }
+
 }
