@@ -233,4 +233,39 @@ class ContaBancariaTest extends TestCase {
         $this->assertEquals('application/pdf', $result->contentType, "Deve retornar um arquivo PDF");
     }
 
+    /**
+     * @depends testPostContaPropria
+     */
+    public function testPut($contaBancariaId)
+    {
+        $dtoTest = new ContaBancariaDTOTest;
+        $dtoTest->setUp();
+
+        $this->contaBancaria->auth = $this->auth();
+
+        $this->contaBancaria->dto
+            ->setCodigoBanco(1)
+            ->setCodigoAgencia('0504')
+            ->setDigitoAgencia('5')
+            ->setNumeroConta($this->faker->numerify('########'))
+            ->setDigitoConta('X')
+            ->setDescricao('Conta no Banco do Brasil')
+            ->setTipoConta(ContaBancariaDTO::TIPO_CONTABANCARIA_CONTACORRENTE)
+            ->setTipoTitular(ContaBancariaDTO::TIPO_TITULARCONTABANCARIA_PROPRIA)
+            ->setId($contaBancariaId);
+
+        $result = $this->contaBancaria->Put($contaBancariaId);
+        $this->assertEquals(200, $result->status, "Deve retornar status 200\n" . dr($result->body));
+
+        return $responseObject->Id;
+    }
+
+    /**
+     * @expectedException Exception
+     */
+    public function testPutThrowException()
+    {
+        $result = $this->contaBancaria->Put(1);
+    }
+
 }
