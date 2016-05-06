@@ -80,9 +80,9 @@ class AssinarTest extends TestCase {
         $result = $this->assinar->Post();
 
         $responseObject = json_decode($result->body);
-        $this->assertEquals('stdClass', get_class($responseObject), "Deve ser possível converter em objeto\n" . dr($responseObject));
-        $this->assertObjectHasAttribute('Token', $responseObject, "Deve retornar o token\n" . dr($result->body));
-        $this->assertEquals(201, $result->status, "Deve retornar status 201\n" . dr($result->body));
+        $this->assertEquals('stdClass', get_class($responseObject));
+        $this->assertObjectHasAttribute('Token', $responseObject);
+        $this->assertEquals(201, $result->status);
     }
 
     public function testPostHasPessoaJuridica()
@@ -100,10 +100,10 @@ class AssinarTest extends TestCase {
             ->setTelefones($dtoTest->testSetTelefones());
 
         $result = $this->assinar->Post();
-
-        $responseObject = json_decode($result->body);
-        $this->assertObjectHasAttribute('Token', $responseObject, "Deve retornar o token\n" . dr($result->body));
-        $this->assertEquals(201, $result->status, "Deve retornar status 201\n" . dr($result->body));
+        $responseArray = json_decode($result->body, true);
+        $this->assertInternalType('array', $responseArray);
+        $this->assertArrayHasKey('Token', $responseArray);
+        $this->assertEquals(201, $result->status);
     }
 
     public function testPut()
