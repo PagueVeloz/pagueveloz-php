@@ -186,7 +186,6 @@ class ContaBancariaTest extends TestCase {
     public function testGetById($contaBancariaId)
     {
         $this->contaBancaria->auth = $this->auth();
-
         $result = $this->contaBancaria->GetById($contaBancariaId);
 
         $conta = json_decode($result->body, true);
@@ -202,9 +201,7 @@ class ContaBancariaTest extends TestCase {
     public function testTermoContaPropria($contaBancariaId)
     {
         $this->contaBancaria->auth = $this->auth();
-
         $result = $this->contaBancaria->Termo($contaBancariaId);
-
         $this->assertEquals(404, $result->status, "Deve retornar status 404");
     }
 
@@ -214,9 +211,7 @@ class ContaBancariaTest extends TestCase {
     public function testTermoContaSocio($contaBancariaId)
     {
         $this->contaBancaria->auth = $this->auth();
-
         $result = $this->contaBancaria->Termo($contaBancariaId);
-
         $this->assertEquals(404, $result->status, "Deve retornar status 404");
     }
 
@@ -256,8 +251,6 @@ class ContaBancariaTest extends TestCase {
 
         $result = $this->contaBancaria->Put($contaBancariaId);
         $this->assertEquals(200, $result->status, "Deve retornar status 200\n" . dr($result->body));
-
-        return $responseObject->Id;
     }
 
     /**
@@ -276,8 +269,6 @@ class ContaBancariaTest extends TestCase {
         $this->contaBancaria->auth = $this->auth();
         $result = $this->contaBancaria->Delete($contaBancariaId);
         $this->assertEquals(200, $result->status, "Deve retornar status 200\n" . dr($result->body));
-
-        return $responseObject->Id;
     }
 
     /**
@@ -288,8 +279,6 @@ class ContaBancariaTest extends TestCase {
         $this->contaBancaria->auth = $this->auth();
         $result = $this->contaBancaria->Ativar($contaBancariaId);
         $this->assertEquals(200, $result->status, "Deve retornar status 200\n" . dr($result->body));
-
-        return $responseObject->Id;
     }
 
     /**
@@ -300,7 +289,5 @@ class ContaBancariaTest extends TestCase {
         $this->contaBancaria->auth = $this->auth();
         $result = $this->contaBancaria->PossuiSaques($contaBancariaId);
         $this->assertEquals(200, $result->status, "Deve retornar status 200\n" . dr($result->body));
-
-        return $responseObject->Id;
     }
 }
