@@ -280,4 +280,15 @@ class ContaBancariaTest extends TestCase {
         return $responseObject->Id;
     }
 
+    /**
+     * @depends testPostContaPropria
+     */
+    public function testAtivar($contaBancariaId)
+    {
+        $this->contaBancaria->auth = $this->auth();
+        $result = $this->contaBancaria->Ativar($contaBancariaId);
+        $this->assertEquals(200, $result->status, "Deve retornar status 200\n" . dr($result->body));
+
+        return $responseObject->Id;
+    }
 }
