@@ -6,6 +6,7 @@ use TestCase;
 
 use PagueVeloz\PagueVeloz;
 use PagueVeloz\Api\v4\Dto\AssinarDTOTest;
+use PagueVeloz\LogProvider;
 
 class AssinarTest extends TestCase {
 
@@ -78,11 +79,12 @@ class AssinarTest extends TestCase {
             ->setTelefones($dtoTest->testSetTelefones());
 
         $result = $this->assinar->Post();
-
-        $responseObject = json_decode($result->body);
-        $this->assertEquals('stdClass', get_class($responseObject));
-        $this->assertObjectHasAttribute('Token', $responseObject);
         $this->assertEquals(201, $result->status);
+
+        LogProvider::Info(dr($result));
+        $responseArray = json_decode($result->body, true);
+        $this->assertInternalType('array', $responseArray);
+        $this->assertArrayHasKey('Token', $responseArray);
     }
 
     public function testPostHasPessoaJuridica()
@@ -100,10 +102,12 @@ class AssinarTest extends TestCase {
             ->setTelefones($dtoTest->testSetTelefones());
 
         $result = $this->assinar->Post();
+        $this->assertEquals(201, $result->status);
+
+        LogProvider::Info(dr($result));
         $responseArray = json_decode($result->body, true);
         $this->assertInternalType('array', $responseArray);
         $this->assertArrayHasKey('Token', $responseArray);
-        $this->assertEquals(201, $result->status);
     }
 
     public function testPut()

@@ -206,7 +206,7 @@ class AssinarDTOTest extends TestCase {
 		$endereco = new CepV2DTO();
 		$endereco->setCidade($cidade);
 		$endereco->setLogradouro($this->faker->address);
-		$endereco->setNumero($this->faker->randomNumber);
+		$endereco->setNumero(123);
 		$endereco->setCEP($this->faker->postcode);
 		$endereco->setBairro($this->faker->streetName);
 		$endereco->setComplemento($this->faker->randomElement(['casa', 'apartamento']));
@@ -256,7 +256,7 @@ class AssinarDTOTest extends TestCase {
 			$telefone = new TelefoneDTO;
 			$telefone->setNumero($this->faker->numerify("##########"));
 			$telefone->setTipo($this->faker->randomElement([1,2,4]));
-			$telefone->setObservacao($this->faker->text(255));
+			$telefone->setObservacao($this->faker->text(10));
 			$telefone->setId($this->faker->randomNumber());
 			$telefones[] = $telefone;
 		}
