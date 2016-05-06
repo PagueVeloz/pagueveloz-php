@@ -157,7 +157,7 @@ class AssinarDTOTest extends TestCase {
 
 	public function testSetEmail()
 	{
-		$email = $this->faker->freeEmail;
+		$email = $this->faker->bothify("#?#?#?#?#?#?#?#?#@gmail.com");;
 
 		$this->dto->setEmail($email);
 
