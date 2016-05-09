@@ -9,7 +9,7 @@ abstract class PagueVeloz
     protected static $servicesAvailable = [
         ['service' => 'Assinar', 'version' => ['v1', 'v2', 'v3', 'v4'], 'default' => 'v4'],
         ['service' => 'Cep', 'version' => ['v1'], 'default' => 'v1'],
-        ['service' => 'Cliente', 'version' => ['v1'], 'default' => 'v1'],
+        ['service' => 'Cliente', 'version' => ['v1','v3'], 'default' => 'v3'],
         ['service' => 'Consultar', 'version' => ['v1', 'v2'], 'default' => 'v2'],
         ['service' => 'CreditoSMS', 'version' => ['v1'], 'default' => 'v1'],
         ['service' => 'Extrato', 'version' => ['v1'], 'default' => 'v1'],
@@ -480,13 +480,19 @@ abstract class PagueVeloz
 
     public static function Cliente($version = null)
     {
-        $service = self::GetService('Cep');
+        $service = self::GetService('Cliente');
 
         switch (self::GetVersion($service, $version)) {
             case 'v1':
                 $dto = new \PagueVeloz\Api\v1\Dto\ClienteDTO();
 
                 $service = new \PagueVeloz\Api\v1\Cliente($dto);
+                break;
+
+            case 'v3':
+                $dto = new \PagueVeloz\Api\v3\Dto\ClienteDTO();
+
+                $service = new \PagueVeloz\Api\v3\Cliente($dto);
                 break;
 
         }
