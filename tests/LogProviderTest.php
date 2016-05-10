@@ -35,7 +35,7 @@ class LogProviderTest extends TestCase {
      * @dataProvider messagesProvider
      */
     public function testError($message) {
-        $this->mock->Info($message);
+        $this->mock->Error($message);
         $stream = $this->mock->CurrentStream();
         $content = file_get_contents($stream);
         $this->assertGreaterThan(-1, strpos($content, $message));
