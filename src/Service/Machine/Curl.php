@@ -13,6 +13,7 @@ class Curl extends \PagueVeloz\Service\Machine\CurlDTO implements \PagueVeloz\Se
     public function headers()
     {
         $pos = strpos($this->request, "\r\n\r\n");
+
         return explode("\r\n", substr($this->request, 0, $pos));
     }
 

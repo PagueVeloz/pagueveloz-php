@@ -25,9 +25,10 @@ class ClienteDTO extends \PagueVeloz\AbstractDTO
 
     public function __construct()
     {
-        $this->setEndereco(new CepV2DTO);
-        $this->setTelefones(new TelefoneDTO);
+        $this->setEndereco(new CepV2DTO());
+        $this->setTelefones(new TelefoneDTO());
     }
+
     /**
      * Gets the value of Endereco.
      *
