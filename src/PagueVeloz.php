@@ -75,18 +75,22 @@ abstract class PagueVeloz
         $version = null;
 
         if (!empty(self::$version)) {
-            $array = array_filter($service['version'], function ($el) {
-                if ($el === self::$version) {
-                    return $el;
+            $array = array_filter(
+                $service['version'], function ($el) {
+                    if ($el === self::$version) {
+                        return $el;
+                    }
                 }
-            });
+            );
             $version = array_pop($array);
         } elseif (!empty($v)) {
-            $array = array_filter($service['version'], function ($el) use ($v) {
-                if ($el === $v) {
-                    return $el;
+            $array = array_filter(
+                $service['version'], function ($el) use ($v) {
+                    if ($el === $v) {
+                        return $el;
+                    }
                 }
-            });
+            );
 
             $version = array_pop($array);
         } else {
@@ -107,11 +111,13 @@ abstract class PagueVeloz
 
     protected static function GetService($service)
     {
-        $listService = array_filter(self::Get(), function ($el) use ($service) {
-            if ($el['service'] === $service) {
-                return $el;
+        $listService = array_filter(
+            self::Get(), function ($el) use ($service) {
+                if ($el['service'] === $service) {
+                    return $el;
+                }
             }
-        });
+        );
 
         if (empty($listService) || count($listService) === 0 || count($listService) > 1) {
             throw new \Exception('Erro ao localizar Serviço');
@@ -125,24 +131,24 @@ abstract class PagueVeloz
         $service = self::GetService('Assinar');
 
         switch (self::GetVersion($service, $version)) {
-            case 'v1':
-                $dto = new \PagueVeloz\Api\v1\Dto\AssinarDTO();
-                $service = new \PagueVeloz\Api\v1\Assinar($dto);
-                break;
-            case 'v2':
-                $dto = new \PagueVeloz\Api\v2\Dto\AssinarDTO();
-                $service = new \PagueVeloz\Api\v2\Assinar($dto);
-                break;
+        case 'v1':
+            $dto = new \PagueVeloz\Api\v1\Dto\AssinarDTO();
+            $service = new \PagueVeloz\Api\v1\Assinar($dto);
+            break;
+        case 'v2':
+            $dto = new \PagueVeloz\Api\v2\Dto\AssinarDTO();
+            $service = new \PagueVeloz\Api\v2\Assinar($dto);
+            break;
 
-            case 'v3':
-                $dto = new \PagueVeloz\Api\v3\Dto\AssinarDTO();
-                $service = new \PagueVeloz\Api\v3\Assinar($dto);
-                break;
+        case 'v3':
+            $dto = new \PagueVeloz\Api\v3\Dto\AssinarDTO();
+            $service = new \PagueVeloz\Api\v3\Assinar($dto);
+            break;
 
-            case 'v4':
-                $dto = new \PagueVeloz\Api\v4\Dto\AssinarDTO();
-                $service = new \PagueVeloz\Api\v4\Assinar($dto);
-                break;
+        case 'v4':
+            $dto = new \PagueVeloz\Api\v4\Dto\AssinarDTO();
+            $service = new \PagueVeloz\Api\v4\Assinar($dto);
+            break;
         }
 
         return $service;
@@ -153,10 +159,10 @@ abstract class PagueVeloz
         $service = self::GetService('Cep');
 
         switch (self::GetVersion($service, $version)) {
-            case 'v1':
+        case 'v1':
 
-                $service = new \PagueVeloz\Api\v1\Cep();
-                break;
+            $service = new \PagueVeloz\Api\v1\Cep();
+            break;
 
         }
 
@@ -168,14 +174,14 @@ abstract class PagueVeloz
         $service = self::GetService('ContaPag');
 
         switch (self::GetVersion($service, $version)) {
-            case 'v1':
-                $dto = new \PagueVeloz\Api\v1\Dto\ContaPagDTO();
-                $service = new \PagueVeloz\Api\v1\ContaPag($dto);
-                break;
-            case 'v2':
-                $dto = new \PagueVeloz\Api\v2\Dto\ContaPagDTO();
-                $service = new \PagueVeloz\Api\v2\ContaPag($dto);
-                break;
+        case 'v1':
+            $dto = new \PagueVeloz\Api\v1\Dto\ContaPagDTO();
+            $service = new \PagueVeloz\Api\v1\ContaPag($dto);
+            break;
+        case 'v2':
+            $dto = new \PagueVeloz\Api\v2\Dto\ContaPagDTO();
+            $service = new \PagueVeloz\Api\v2\ContaPag($dto);
+            break;
         }
 
         return $service;
@@ -186,10 +192,10 @@ abstract class PagueVeloz
         $service = self::GetService('Deposito');
 
         switch (self::GetVersion($service, $version)) {
-            case 'v1':
-                $dto = new \PagueVeloz\Api\v1\Dto\DepositoDTO();
-                $service = new \PagueVeloz\Api\v1\Deposito($dto);
-                break;
+        case 'v1':
+            $dto = new \PagueVeloz\Api\v1\Dto\DepositoDTO();
+            $service = new \PagueVeloz\Api\v1\Deposito($dto);
+            break;
 
         }
 
@@ -201,10 +207,10 @@ abstract class PagueVeloz
         $service = self::GetService('Ping');
 
         switch (self::GetVersion($service, $version)) {
-            case 'v1':
+        case 'v1':
 
-                $service = new \PagueVeloz\Api\v1\Ping();
-                break;
+            $service = new \PagueVeloz\Api\v1\Ping();
+            break;
 
         }
 
@@ -216,10 +222,10 @@ abstract class PagueVeloz
         $service = self::GetService('PacotesSMS');
 
         switch (self::GetVersion($service, $version)) {
-            case 'v1':
+        case 'v1':
 
-                $service = new \PagueVeloz\Api\v1\PacotesSMS();
-                break;
+            $service = new \PagueVeloz\Api\v1\PacotesSMS();
+            break;
 
         }
 
@@ -231,10 +237,10 @@ abstract class PagueVeloz
         $service = self::GetService('Saldo');
 
         switch (self::GetVersion($service, $version)) {
-            case 'v1':
+        case 'v1':
 
-                $service = new \PagueVeloz\Api\v1\Saldo();
-                break;
+            $service = new \PagueVeloz\Api\v1\Saldo();
+            break;
 
         }
 
@@ -246,10 +252,10 @@ abstract class PagueVeloz
         $service = self::GetService('ConsultarBoleto');
 
         switch (self::GetVersion($service, $version)) {
-            case 'v1':
+        case 'v1':
 
-                $service = new \PagueVeloz\Api\v1\ConsultarBoleto();
-                break;
+            $service = new \PagueVeloz\Api\v1\ConsultarBoleto();
+            break;
 
         }
 
@@ -261,10 +267,10 @@ abstract class PagueVeloz
         $service = self::GetService('Saque');
 
         switch (self::GetVersion($service, $version)) {
-            case 'v1':
-                $dto = new \PagueVeloz\Api\v1\Dto\SaqueDTO();
-                $service = new \PagueVeloz\Api\v1\Saque($dto);
-                break;
+        case 'v1':
+            $dto = new \PagueVeloz\Api\v1\Dto\SaqueDTO();
+            $service = new \PagueVeloz\Api\v1\Saque($dto);
+            break;
 
         }
 
@@ -276,10 +282,10 @@ abstract class PagueVeloz
         $service = self::GetService('ComprarCreditoSMS');
 
         switch (self::GetVersion($service, $version)) {
-            case 'v2':
-                $dto = new \PagueVeloz\Api\v2\Dto\ComprarCreditoSMSDTO();
-                $service = new \PagueVeloz\Api\v2\ComprarCreditoSMS($dto);
-                break;
+        case 'v2':
+            $dto = new \PagueVeloz\Api\v2\Dto\ComprarCreditoSMSDTO();
+            $service = new \PagueVeloz\Api\v2\ComprarCreditoSMS($dto);
+            break;
 
         }
 
@@ -291,14 +297,14 @@ abstract class PagueVeloz
         $service = self::GetService('Boleto');
 
         switch (self::GetVersion($service, $version)) {
-            case 'v2':
-                $dto = new \PagueVeloz\Api\v2\Dto\BoletoDTO();
-                $service = new \PagueVeloz\Api\v2\Boleto($dto);
-                break;
-            case 'v3':
-                $dto = new \PagueVeloz\Api\v3\Dto\BoletoDTO();
-                $service = new \PagueVeloz\Api\v3\Boleto($dto);
-                break;
+        case 'v2':
+            $dto = new \PagueVeloz\Api\v2\Dto\BoletoDTO();
+            $service = new \PagueVeloz\Api\v2\Boleto($dto);
+            break;
+        case 'v3':
+            $dto = new \PagueVeloz\Api\v3\Dto\BoletoDTO();
+            $service = new \PagueVeloz\Api\v3\Boleto($dto);
+            break;
 
         }
 
@@ -310,25 +316,25 @@ abstract class PagueVeloz
         $service = self::GetService('ContaBancaria');
 
         switch (self::GetVersion($service, $version)) {
-            case 'v1':
-                $dto = new \PagueVeloz\Api\v1\Dto\ContaBancariaDTO();
-                $service = new \PagueVeloz\Api\v1\ContaBancaria($dto);
-                break;
+        case 'v1':
+            $dto = new \PagueVeloz\Api\v1\Dto\ContaBancariaDTO();
+            $service = new \PagueVeloz\Api\v1\ContaBancaria($dto);
+            break;
 
-            case 'v2':
-                $dto = new \PagueVeloz\Api\v2\Dto\ContaBancariaDTO();
-                $service = new \PagueVeloz\Api\v2\ContaBancaria($dto);
-                break;
+        case 'v2':
+            $dto = new \PagueVeloz\Api\v2\Dto\ContaBancariaDTO();
+            $service = new \PagueVeloz\Api\v2\ContaBancaria($dto);
+            break;
 
-            case 'v3':
-                $dto = new \PagueVeloz\Api\v3\Dto\ContaBancariaDTO();
-                $service = new \PagueVeloz\Api\v3\ContaBancaria($dto);
-                break;
+        case 'v3':
+            $dto = new \PagueVeloz\Api\v3\Dto\ContaBancariaDTO();
+            $service = new \PagueVeloz\Api\v3\ContaBancaria($dto);
+            break;
 
-            case 'v4':
-                $dto = new \PagueVeloz\Api\v4\Dto\ContaBancariaDTO();
-                $service = new \PagueVeloz\Api\v4\ContaBancaria($dto);
-                break;
+        case 'v4':
+            $dto = new \PagueVeloz\Api\v4\Dto\ContaBancariaDTO();
+            $service = new \PagueVeloz\Api\v4\ContaBancaria($dto);
+            break;
 
         }
 
@@ -340,10 +346,10 @@ abstract class PagueVeloz
         $service = self::GetService('DefaultBoleto');
 
         switch (self::GetVersion($service, $version)) {
-            case 'v1':
-                $dto = new \PagueVeloz\Api\v1\Dto\DefaultBoletoDTO();
-                $service = new \PagueVeloz\Api\v1\DefaultBoleto($dto);
-                break;
+        case 'v1':
+            $dto = new \PagueVeloz\Api\v1\Dto\DefaultBoletoDTO();
+            $service = new \PagueVeloz\Api\v1\DefaultBoleto($dto);
+            break;
 
         }
 
@@ -355,10 +361,10 @@ abstract class PagueVeloz
         $service = self::GetService('MensagemSMS');
 
         switch (self::GetVersion($service, $version)) {
-            case 'v1':
-                $dto = new \PagueVeloz\Api\v1\Dto\MensagemSMSDTO();
-                $service = new \PagueVeloz\Api\v1\MensagemSMS($dto);
-                break;
+        case 'v1':
+            $dto = new \PagueVeloz\Api\v1\Dto\MensagemSMSDTO();
+            $service = new \PagueVeloz\Api\v1\MensagemSMS($dto);
+            break;
 
         }
 
@@ -370,10 +376,10 @@ abstract class PagueVeloz
         $service = self::GetService('UsuarioCliente');
 
         switch (self::GetVersion($service, $version)) {
-            case 'v1':
-                $dto = new \PagueVeloz\Api\v1\Dto\UsuarioClienteDTO();
-                $service = new \PagueVeloz\Api\v1\UsuarioCliente($dto);
-                break;
+        case 'v1':
+            $dto = new \PagueVeloz\Api\v1\Dto\UsuarioClienteDTO();
+            $service = new \PagueVeloz\Api\v1\UsuarioCliente($dto);
+            break;
 
         }
 
@@ -385,14 +391,14 @@ abstract class PagueVeloz
         $service = self::GetService('Transferencia');
 
         switch (self::GetVersion($service, $version)) {
-            case 'v1':
-                $dto = new \PagueVeloz\Api\v1\Dto\TransferenciaDTO();
-                $service = new \PagueVeloz\Api\v1\Transferencia($dto);
-                break;
-            case 'v2':
-                $dto = new \PagueVeloz\Api\v2\Dto\TransferenciaDTO();
-                $service = new \PagueVeloz\Api\v2\Transferencia($dto);
-                break;
+        case 'v1':
+            $dto = new \PagueVeloz\Api\v1\Dto\TransferenciaDTO();
+            $service = new \PagueVeloz\Api\v1\Transferencia($dto);
+            break;
+        case 'v2':
+            $dto = new \PagueVeloz\Api\v2\Dto\TransferenciaDTO();
+            $service = new \PagueVeloz\Api\v2\Transferencia($dto);
+            break;
 
         }
 
@@ -404,10 +410,10 @@ abstract class PagueVeloz
         $service = self::GetService('Tarifa');
 
         switch (self::GetVersion($service, $version)) {
-            case 'v1':
+        case 'v1':
 
-                $service = new \PagueVeloz\Api\v1\Tarifa();
-                break;
+            $service = new \PagueVeloz\Api\v1\Tarifa();
+            break;
 
         }
 
@@ -419,10 +425,10 @@ abstract class PagueVeloz
         $service = self::GetService('TarifarBoleto');
 
         switch (self::GetVersion($service, $version)) {
-            case 'v1':
-                $dto = new \PagueVeloz\Api\v1\Dto\TarifarBoletoDTO();
-                $service = new \PagueVeloz\Api\v1\TarifarBoleto($dto);
-                break;
+        case 'v1':
+            $dto = new \PagueVeloz\Api\v1\Dto\TarifarBoletoDTO();
+            $service = new \PagueVeloz\Api\v1\TarifarBoleto($dto);
+            break;
 
         }
 
@@ -434,10 +440,10 @@ abstract class PagueVeloz
         $service = self::GetService('Cep');
 
         switch (self::GetVersion($service, $version)) {
-            case 'v1':
+        case 'v1':
 
-                $service = new \PagueVeloz\Api\v1\Extrato();
-                break;
+            $service = new \PagueVeloz\Api\v1\Extrato();
+            break;
 
         }
 
@@ -449,10 +455,10 @@ abstract class PagueVeloz
         $service = self::GetService('Cep');
 
         switch (self::GetVersion($service, $version)) {
-            case 'v1':
+        case 'v1':
 
-                $service = new \PagueVeloz\Api\v1\CreditoSMS();
-                break;
+            $service = new \PagueVeloz\Api\v1\CreditoSMS();
+            break;
 
         }
 
@@ -464,14 +470,14 @@ abstract class PagueVeloz
         $service = self::GetService('Consultar');
 
         switch (self::GetVersion($service, $version)) {
-            case 'v1':
-                $dto = new \PagueVeloz\Api\v1\Dto\ConsultarDTO();
-                $service = new \PagueVeloz\Api\v1\Consultar($dto);
-                break;
-            case 'v2':
-                $dto = new \PagueVeloz\Api\v2\Dto\ConsultarDTO();
-                $service = new \PagueVeloz\Api\v2\Consultar($dto);
-                break;
+        case 'v1':
+            $dto = new \PagueVeloz\Api\v1\Dto\ConsultarDTO();
+            $service = new \PagueVeloz\Api\v1\Consultar($dto);
+            break;
+        case 'v2':
+            $dto = new \PagueVeloz\Api\v2\Dto\ConsultarDTO();
+            $service = new \PagueVeloz\Api\v2\Consultar($dto);
+            break;
 
         }
 
@@ -483,17 +489,17 @@ abstract class PagueVeloz
         $service = self::GetService('Cliente');
 
         switch (self::GetVersion($service, $version)) {
-            case 'v1':
-                $dto = new \PagueVeloz\Api\v1\Dto\ClienteDTO();
+        case 'v1':
+            $dto = new \PagueVeloz\Api\v1\Dto\ClienteDTO();
 
-                $service = new \PagueVeloz\Api\v1\Cliente($dto);
-                break;
+            $service = new \PagueVeloz\Api\v1\Cliente($dto);
+            break;
 
-            case 'v3':
-                $dto = new \PagueVeloz\Api\v3\Dto\ClienteDTO();
+        case 'v3':
+            $dto = new \PagueVeloz\Api\v3\Dto\ClienteDTO();
 
-                $service = new \PagueVeloz\Api\v3\Cliente($dto);
-                break;
+            $service = new \PagueVeloz\Api\v3\Cliente($dto);
+            break;
 
         }
 
@@ -505,10 +511,10 @@ abstract class PagueVeloz
         $service = self::GetService('BandeirasCartao');
 
         switch (self::GetVersion($service, $version)) {
-            case 'v1':
+        case 'v1':
 
-                $service = new \PagueVeloz\Api\Cartao\v1\BandeirasCartao();
-                break;
+            $service = new \PagueVeloz\Api\Cartao\v1\BandeirasCartao();
+            break;
 
         }
 
@@ -520,10 +526,10 @@ abstract class PagueVeloz
         $service = self::GetService('Parcelamento');
 
         switch (self::GetVersion($service, $version)) {
-            case 'v1':
-                $dto = new \PagueVeloz\Api\Cartao\v1\Dto\ParcelamentoDTO();
-                $service = new \PagueVeloz\Api\Cartao\v1\Parcelamento($dto);
-                break;
+        case 'v1':
+            $dto = new \PagueVeloz\Api\Cartao\v1\Dto\ParcelamentoDTO();
+            $service = new \PagueVeloz\Api\Cartao\v1\Parcelamento($dto);
+            break;
 
         }
 
@@ -535,10 +541,10 @@ abstract class PagueVeloz
         $service = self::GetService('Transacao');
 
         switch (self::GetVersion($service, $version)) {
-            case 'v1':
-                $dto = new \PagueVeloz\Api\Cartao\v1\Dto\TransacaoDTO();
-                $service = new \PagueVeloz\Api\Cartao\v1\Transacao($dto);
-                break;
+        case 'v1':
+            $dto = new \PagueVeloz\Api\Cartao\v1\Dto\TransacaoDTO();
+            $service = new \PagueVeloz\Api\Cartao\v1\Transacao($dto);
+            break;
 
         }
 
@@ -550,10 +556,10 @@ abstract class PagueVeloz
         $service = self::GetService('Pagamento');
 
         switch (self::GetVersion($service, $version)) {
-            case 'v1':
-                $dto = new \PagueVeloz\Api\Cartao\v1\Dto\PagamentoDTO();
-                $service = new \PagueVeloz\Api\Cartao\v1\Pagamento($dto);
-                break;
+        case 'v1':
+            $dto = new \PagueVeloz\Api\Cartao\v1\Dto\PagamentoDTO();
+            $service = new \PagueVeloz\Api\Cartao\v1\Pagamento($dto);
+            break;
 
         }
 
@@ -565,11 +571,11 @@ abstract class PagueVeloz
         $service = self::GetService('Confirmacao');
 
         switch (self::GetVersion($service, $version)) {
-            case 'v1':
+        case 'v1':
 
-                $dto = new \PagueVeloz\Api\Cartao\v1\Dto\ConfirmacaoDTO();
-                $service = new \PagueVeloz\Api\Cartao\v1\Confirmacao($dto);
-                break;
+            $dto = new \PagueVeloz\Api\Cartao\v1\Dto\ConfirmacaoDTO();
+            $service = new \PagueVeloz\Api\Cartao\v1\Confirmacao($dto);
+            break;
 
         }
 
@@ -581,10 +587,10 @@ abstract class PagueVeloz
         $service = self::GetService('CartaoHabilitado');
 
         switch (self::GetVersion($service, $version)) {
-            case 'v1':
+        case 'v1':
 
-                $service = new \PagueVeloz\Api\Cartao\v1\Habilitado();
-                break;
+            $service = new \PagueVeloz\Api\Cartao\v1\Habilitado();
+            break;
 
         }
 
@@ -596,10 +602,10 @@ abstract class PagueVeloz
         $service = self::GetService('ConsultaCartao');
 
         switch (self::GetVersion($service, $version)) {
-            case 'v1':
+        case 'v1':
 
-                $service = new \PagueVeloz\Api\Cartao\v1\ConsultaCartao();
-                break;
+            $service = new \PagueVeloz\Api\Cartao\v1\ConsultaCartao();
+            break;
 
         }
 
@@ -611,10 +617,10 @@ abstract class PagueVeloz
         $service = self::GetService('Formulario');
 
         switch (self::GetVersion($service, $version)) {
-            case 'v1':
+        case 'v1':
 
-                $service = new \PagueVeloz\Api\Cartao\v1\Formulario();
-                break;
+            $service = new \PagueVeloz\Api\Cartao\v1\Formulario();
+            break;
 
         }
 
@@ -626,10 +632,10 @@ abstract class PagueVeloz
         $service = self::GetService('PinPadOperacoes');
 
         switch (self::GetVersion($service, $version)) {
-            case 'v1':
+        case 'v1':
 
-                $service = new \PagueVeloz\Api\Cartao\v1\Operacoes();
-                break;
+            $service = new \PagueVeloz\Api\Cartao\v1\Operacoes();
+            break;
 
         }
 
