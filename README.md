@@ -12,6 +12,7 @@
 **Pré-requisitos**
 
  * PHP 5.4 ou superior
+ * extensão cURL
  * [composer](https://getcomposer.org)
 
 **Instalação via composer:**
