@@ -38,6 +38,7 @@ abstract class PagueVeloz
         ['service' => 'ConsultaCartao', 'version' => ['v1'], 'default' => 'v1'],
         ['service' => 'Formulario', 'version' => ['v1'], 'default' => 'v1'],
         ['service' => 'PinPadOperacoes', 'version' => ['v1'], 'default' => 'v1'],
+        ['service' => 'RFB', 'version' => ['v1'], 'default' => 'v1'],
     ];
 
     protected static $version;
@@ -635,6 +636,21 @@ abstract class PagueVeloz
         case 'v1':
 
             $service = new \PagueVeloz\Api\Cartao\v1\Operacoes();
+            break;
+
+        }
+
+        return $service;
+    }
+
+    public static function RFB($version = null)
+    {
+        $service = self::GetService('RFB');
+
+        switch (self::GetVersion($service, $version)) {
+        case 'v1':
+
+            $service = new \PagueVeloz\Api\v1\RFB();
             break;
 
         }
