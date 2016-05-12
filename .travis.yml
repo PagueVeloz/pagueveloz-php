@@ -19,7 +19,8 @@ matrix:
     fast_finish: true
 
 before_script:
+  - phpenv config-rm xdebug.ini
   - composer install
 
 script:
-  - travis_retry ./vendor/bin/phpunit
+  - travis_retry ./vendor/bin/paratest --processes 7 --functional --phpunit vendor/bin/phpunit --bootstrap vendor/autoload.php --configuration phpunit.xml.dist --colors --path tests/
