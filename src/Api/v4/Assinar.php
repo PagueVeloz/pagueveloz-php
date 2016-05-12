@@ -6,6 +6,7 @@ use PagueVeloz\Api\InterfaceApi;
 use PagueVeloz\Api\v4\Dto\AssinarDTO;
 use PagueVeloz\Service\Context\HttpRequest;
 use PagueVeloz\ServiceProvider;
+use PagueVeloz\Exception\NotImplementedException;
 
 class Assinar extends ServiceProvider implements InterfaceApi
 {
@@ -21,12 +22,14 @@ class Assinar extends ServiceProvider implements InterfaceApi
 
     public function Get()
     {
-        return $this->NoContent();
+        throw new \NotImplementedException;
+
     }
 
     public function GetById($id)
     {
-        return $this->NoContent();
+        throw new \NotImplementedException;
+
     }
 
     public function Post()
@@ -45,11 +48,13 @@ class Assinar extends ServiceProvider implements InterfaceApi
 
     public function Put($id = null)
     {
-        return $this->NoContent();
+        throw new \NotImplementedException;
+
     }
 
     public function Delete($id)
     {
-        return $this->NoContent();
+        throw new \NotImplementedException;
+
     }
 }

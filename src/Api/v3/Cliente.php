@@ -2,30 +2,35 @@
 
 namespace PagueVeloz\Api\v3;
 
-/*
- * Cliente.php
- *
- *
- * @author Cristian B. dos Santos <cristian.deveng@gmail.com>
- * @copyright 2015
- * @version 1.0v
-*/
-
 use PagueVeloz\Api\InterfaceApi;
 use PagueVeloz\Api\v3\Dto\ClienteDTO;
+use PagueVeloz\Api\v3\Dto\DocumentoDoClienteDTO;
 use PagueVeloz\Service\Context\HttpRequest;
 use PagueVeloz\ServiceProvider;
+use PagueVeloz\Exception\NotImplementedException;
 
+/*
+ * @author Cristian B. dos Santos <cristian.deveng@gmail.com>
+ * @copyright BLudata Software 2016
+*/
 class Cliente extends ServiceProvider implements InterfaceApi
 {
-    public function __construct(ClienteDTO $dto)
+    protected $documentoDoClienteDTO;
+
+    public function __construct(ClienteDTO $dto,DocumentoDoClienteDTO $documentoDoClienteDTO)
     {
         $this->dto = $dto;
+        $this->documentoDoClienteDTO = $documentoDoClienteDTO;
         $this->uri = '/v3/Cliente';
 
         parent::__construct();
 
         return $this;
+    }
+
+    public function documentoDoClienteDTO()
+    {
+        return $this->documentoDoClienteDTO;
     }
 
     public function Get()
@@ -38,7 +43,8 @@ class Cliente extends ServiceProvider implements InterfaceApi
 
     public function GetById($id)
     {
-        return $this->NoContent();
+        throw new \NotImplementedException;
+
     }
 
     public function GetStatus()
@@ -57,6 +63,19 @@ class Cliente extends ServiceProvider implements InterfaceApi
         $this->url = sprintf('/%s/DocumentosPendentes', $this->url);
 
         return $this->init();
+    }
+
+    public function PutDocumentosPendentes()
+    {
+        $this->method = 'PUT';
+        $this->Authorization();
+        $this->url = sprintf('/%s/DocumentosPendentes', $this->url);
+
+        $request = new HttpRequest();
+
+        $request->body = $this->dto->getRequest();
+
+        return $this->init($request);
     }
 
     public function GetDocumentosEnviados($id)
@@ -90,6 +109,7 @@ class Cliente extends ServiceProvider implements InterfaceApi
 
     public function Delete($id)
     {
-        return $this->NoContent();
+        throw new \NotImplementedException;
+
     }
 }

@@ -4,14 +4,13 @@ namespace PagueVeloz\Api\Common\Dto;
 
 class TelefoneDTO extends \PagueVeloz\AbstractDTO
 {
-    protected $Numero = null;
-    protected $Tipo = null;
-    protected $Observacao = null;
-    protected $Id = null;
+    protected $Numero;
+    protected $Tipo;
+    protected $Observacao;
 
     public function getNotEmpty()
     {
-        return [];
+        return ['Numero','Tipo'];
     }
 
     /**

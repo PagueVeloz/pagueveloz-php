@@ -438,7 +438,7 @@ abstract class PagueVeloz
 
     public static function Extrato($version = null)
     {
-        $service = self::GetService('Cep');
+        $service = self::GetService('Extrato');
 
         switch (self::GetVersion($service, $version)) {
         case 'v1':
@@ -453,7 +453,7 @@ abstract class PagueVeloz
 
     public static function CreditoSMS($version = null)
     {
-        $service = self::GetService('Cep');
+        $service = self::GetService('CreditoSMS');
 
         switch (self::GetVersion($service, $version)) {
         case 'v1':
@@ -498,8 +498,9 @@ abstract class PagueVeloz
 
         case 'v3':
             $dto = new \PagueVeloz\Api\v3\Dto\ClienteDTO();
+            $documentoDoClienteDTO = new \PagueVeloz\Api\v3\Dto\DocumentoDoClienteDTO();
 
-            $service = new \PagueVeloz\Api\v3\Cliente($dto);
+            $service = new \PagueVeloz\Api\v3\Cliente($dto, $documentoDoClienteDTO);
             break;
 
         }
