@@ -43,7 +43,7 @@ class Cliente extends ServiceProvider implements InterfaceApi
 
     public function GetById($id)
     {
-        throw new \NotImplementedException;
+        throw new NotImplementedException;
 
     }
 
@@ -89,7 +89,7 @@ class Cliente extends ServiceProvider implements InterfaceApi
 
     public function Post()
     {
-        return $this->NoContent();
+        throw new NotImplementedException;
     }
 
     public function Put($id = null)
@@ -109,7 +109,7 @@ class Cliente extends ServiceProvider implements InterfaceApi
 
     public function Delete($id)
     {
-        throw new \NotImplementedException;
+        throw new NotImplementedException;
 
     }
 }
