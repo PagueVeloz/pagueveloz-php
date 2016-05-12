@@ -5,9 +5,9 @@ namespace PagueVeloz\Api\v3;
 use PagueVeloz\Api\InterfaceApi;
 use PagueVeloz\Api\v3\Dto\ClienteDTO;
 use PagueVeloz\Api\v3\Dto\DocumentoDoClienteDTO;
+use PagueVeloz\Exception\NotImplementedException;
 use PagueVeloz\Service\Context\HttpRequest;
 use PagueVeloz\ServiceProvider;
-use PagueVeloz\Exception\NotImplementedException;
 
 /*
  * @author Cristian B. dos Santos <cristian.deveng@gmail.com>
@@ -17,7 +17,7 @@ class Cliente extends ServiceProvider implements InterfaceApi
 {
     protected $documentoDoClienteDTO;
 
-    public function __construct(ClienteDTO $dto,DocumentoDoClienteDTO $documentoDoClienteDTO)
+    public function __construct(ClienteDTO $dto, DocumentoDoClienteDTO $documentoDoClienteDTO)
     {
         $this->dto = $dto;
         $this->documentoDoClienteDTO = $documentoDoClienteDTO;
@@ -43,8 +43,7 @@ class Cliente extends ServiceProvider implements InterfaceApi
 
     public function GetById($id)
     {
-        throw new NotImplementedException;
-
+        throw new NotImplementedException();
     }
 
     public function GetStatus()
@@ -89,7 +88,7 @@ class Cliente extends ServiceProvider implements InterfaceApi
 
     public function Post()
     {
-        throw new NotImplementedException;
+        throw new NotImplementedException();
     }
 
     public function Put($id = null)
@@ -109,7 +108,6 @@ class Cliente extends ServiceProvider implements InterfaceApi
 
     public function Delete($id)
     {
-        throw new NotImplementedException;
-
+        throw new NotImplementedException();
     }
 }

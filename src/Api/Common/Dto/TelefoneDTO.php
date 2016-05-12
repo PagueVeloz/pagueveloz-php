@@ -10,7 +10,7 @@ class TelefoneDTO extends \PagueVeloz\AbstractDTO
 
     public function getNotEmpty()
     {
-        return ['Numero','Tipo'];
+        return ['Numero', 'Tipo'];
     }
 
     /**
