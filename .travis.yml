@@ -23,4 +23,4 @@ before_script:
   - composer install
 
 script:
-  - travis_retry ./vendor/bin/paratest --processes 7 --functional --phpunit vendor/bin/phpunit --bootstrap vendor/autoload.php --configuration phpunit.xml.dist --colors --path tests/
+  - travis_retry ./run-tests.sh
