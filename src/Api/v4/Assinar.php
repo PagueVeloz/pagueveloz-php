@@ -22,13 +22,13 @@ class Assinar extends ServiceProvider implements InterfaceApi
 
     public function Get()
     {
-        throw new \NotImplementedException;
+        throw new NotImplementedException;
 
     }
 
     public function GetById($id)
     {
-        throw new \NotImplementedException;
+        throw new NotImplementedException;
 
     }
 
@@ -48,13 +48,13 @@ class Assinar extends ServiceProvider implements InterfaceApi
 
     public function Put($id = null)
     {
-        throw new \NotImplementedException;
+        throw new NotImplementedException;
 
     }
 
     public function Delete($id)
     {
-        throw new \NotImplementedException;
+        throw new NotImplementedException;
 
     }
 }
