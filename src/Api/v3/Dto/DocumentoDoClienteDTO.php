@@ -4,20 +4,19 @@ namespace PagueVeloz\Api\v3\Dto;
 
 class DocumentoDoClienteDTO extends \PagueVeloz\AbstractDTO
 {
-    const TIPO_DOC_OUTROS                          = 0;
-    const TIPO_DOC_FISICA_DOCUMENTO                = 1;
-    const TIPO_DOC_FISICA_COMPROVANTEENDERECO      = 2;
-    const TIPO_DOC_JURIDICA_CONTRATOSOCIAL         = 3;
-    const TIPO_DOC_JURIDICA_COMPROVANTEENDERECO    = 4;
-    const TIPO_DOC_JURIDICA_DOCUMENTOSOCIO         = 5;
+    const TIPO_DOC_OUTROS = 0;
+    const TIPO_DOC_FISICA_DOCUMENTO = 1;
+    const TIPO_DOC_FISICA_COMPROVANTEENDERECO = 2;
+    const TIPO_DOC_JURIDICA_CONTRATOSOCIAL = 3;
+    const TIPO_DOC_JURIDICA_COMPROVANTEENDERECO = 4;
+    const TIPO_DOC_JURIDICA_DOCUMENTOSOCIO = 5;
     const TIPO_DOC_JURIDICA_DOCUMENTOADMINISTRADOR = 6;
-    const TIPO_DOC_TERMO_CONTABANCARIATERCEIROS    = 20;
-    const TIPO_DOC_TERMO_CHARGEBACKCARTAO          = 21;
+    const TIPO_DOC_TERMO_CONTABANCARIATERCEIROS = 20;
+    const TIPO_DOC_TERMO_CHARGEBACKCARTAO = 21;
 
     protected $NomeArquivo;
     protected $ConteudoArquivoBase64;
     protected $Id;
-
 
     /**
      * Gets the value of NomeArquivo.
