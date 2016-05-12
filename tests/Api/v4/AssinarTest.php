@@ -39,20 +39,20 @@ class AssinarTest extends TestCase {
         $this->assertInstanceOf($class, $object);
     }
 
+    /**
+     * @expectedException PagueVeloz\Exception\NotImplementedException
+     */
     public function testGet()
     {
         $response = $this->assinar->Get();
-        $this->assertEquals(204, $response->status);
-        $this->assertEquals('Content-type: application/json', $response->contentType);
-        $this->assertNotEmpty($response->body);
     }
 
+    /**
+     * @expectedException PagueVeloz\Exception\NotImplementedException
+     */
     public function testGetById()
     {
         $response = $this->assinar->GetById(1);
-        $this->assertEquals(204, $response->status);
-        $this->assertEquals('Content-type: application/json', $response->contentType);
-        $this->assertNotEmpty($response->body);
     }
 
     /**
@@ -110,19 +110,19 @@ class AssinarTest extends TestCase {
         $this->assertArrayHasKey('Token', $responseArray);
     }
 
+    /**
+     * @expectedException PagueVeloz\Exception\NotImplementedException
+     */
     public function testPut()
     {
         $response = $this->assinar->Put(1);
-        $this->assertEquals(204, $response->status);
-        $this->assertEquals('Content-type: application/json', dr($response->contentType));
-        $this->assertNotEmpty($response->body);
     }
 
+    /**
+     * @expectedException PagueVeloz\Exception\NotImplementedException
+     */
     public function testDelete()
     {
         $response = $this->assinar->Delete(1);
-        $this->assertEquals(204, $response->status);
-        $this->assertEquals('Content-type: application/json', dr($response->contentType));
-        $this->assertNotEmpty($response->body);
     }
 }
