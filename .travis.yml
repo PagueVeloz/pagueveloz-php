@@ -20,7 +20,7 @@ matrix:
 
 before_script:
   - phpenv config-rm xdebug.ini
-  - composer install
+  - composer install --optimize-autoloader
 
 script:
-  - travis_retry ./vendor/bin/paratest --processes 7 --functional --phpunit vendor/bin/phpunit --bootstrap vendor/autoload.php --configuration phpunit.xml.dist --colors --path tests/
+  - travis_retry bash -x ./run-tests.sh
