@@ -20,7 +20,7 @@ matrix:
 
 before_script:
   - phpenv config-rm xdebug.ini
-  - composer install --optimize-autoloader --no-interaction --no-progress
+  - composer install --optimize-autoloader
 
 script:
   - travis_retry bash -x ./run-tests.sh

@@ -1,5 +1,6 @@
 #!/bin/sh
 
+# check wich config file to use .xml or .xml.dist
 if [ -f "./phpunit.xml" ]
 then
     TESTFILE="./phpunit.xml"
@@ -7,7 +8,8 @@ else
     TESTFILE="./phpunit.xml.dist"
 fi
 
-NUMPROC="$(nproc)"
-NUMPROC=$(($NUMPROC+1))
+# number of parallel jobs
+NUMJOBS="$(($(nproc)+1))"
 
-./vendor/bin/paratest --processes $NUMPROC --functional --phpunit ./vendor/bin/phpunit --bootstrap ./vendor/autoload.php --configuration $TESTFILE --colors --path ./tests/
+# run paratest
+./vendor/bin/paratest --processes $NUMJOBS --functional --phpunit ./vendor/bin/phpunit --bootstrap ./vendor/autoload.php --configuration $TESTFILE --colors --path ./tests/
