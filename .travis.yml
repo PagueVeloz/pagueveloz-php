@@ -23,4 +23,4 @@ before_script:
   - composer install
 
 script:
-  - travis_retry ./run-tests.sh
+  - travis_retry bash -x ./run-tests.sh
