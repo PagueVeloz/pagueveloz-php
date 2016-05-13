@@ -26,7 +26,12 @@ class ClienteDTO extends \PagueVeloz\AbstractDTO
     public function __construct()
     {
         $this->setEndereco(new CepV2DTO());
-        $this->setTelefones(new TelefoneDTO());
+        $this->setTelefones([]);
+    }
+
+    public function getDTOTelefone()
+    {
+        return new TelefoneDTO;
     }
 
     /**
@@ -142,7 +147,7 @@ class ClienteDTO extends \PagueVeloz\AbstractDTO
      *
      * @return self
      */
-    public function setTelefones(TelefoneDTO $Telefones)
+    public function setTelefones(array $Telefones)
     {
         $this->Telefones = $Telefones;
 
