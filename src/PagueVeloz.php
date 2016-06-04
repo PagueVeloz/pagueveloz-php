@@ -39,6 +39,7 @@ abstract class PagueVeloz
         ['service' => 'Formulario', 'version' => ['v1'], 'default' => 'v1'],
         ['service' => 'PinPadOperacoes', 'version' => ['v1'], 'default' => 'v1'],
         ['service' => 'RFB', 'version' => ['v1'], 'default' => 'v1'],
+        ['service' => 'Bancos', 'version' => ['v1'], 'default' => 'v1'],
     ];
 
     protected static $version;
@@ -652,6 +653,21 @@ abstract class PagueVeloz
         case 'v1':
 
             $service = new \PagueVeloz\Api\v1\RFB();
+            break;
+
+        }
+
+        return $service;
+    }
+
+    public static function Bancos($version = null)
+    {
+        $service = self::GetService('Bancos');
+
+        switch (self::GetVersion($service, $version)) {
+        case 'v1':
+
+            $service = new \PagueVeloz\Api\v1\Bancos();
             break;
 
         }
