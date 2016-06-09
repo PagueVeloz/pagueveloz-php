@@ -31,7 +31,7 @@ class ClienteDTO extends \PagueVeloz\AbstractDTO
 
     public function getDTOTelefone()
     {
-        return new TelefoneDTO;
+        return new TelefoneDTO();
     }
 
     /**
