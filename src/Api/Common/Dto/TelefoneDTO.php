@@ -4,6 +4,7 @@ namespace PagueVeloz\Api\Common\Dto;
 
 class TelefoneDTO extends \PagueVeloz\AbstractDTO
 {
+    protected $Id;
     protected $Numero;
     protected $Tipo;
     protected $Observacao;
