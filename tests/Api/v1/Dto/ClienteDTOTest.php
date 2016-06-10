@@ -4,86 +4,84 @@ namespace PagueVeloz\Api\v1\Dto;
 
 use TestCase;
 
-class ClienteDTOTest extends TestCase {
+class ClienteDTOTest extends TestCase
+{
+    public function setUp()
+    {
+        parent::setUp();
 
-	public function setUp() {
+        $this->dto = new ClienteDTO();
+    }
 
-		parent::setUp();
+    public function testGetNotEmpty()
+    {
+        $result = $this->dto->getNotEmpty();
 
-		$this->dto = new ClienteDTO;
+        $this->assertGreaterThan(0, count($result));
 
-	}
+        $this->assertEquals('array', gettype($result));
+    }
 
-	public function testGetNotEmpty()
-	{
-		$result = $this->dto->getNotEmpty();
+    public function testSetNomeArquivo()
+    {
+        $nomeArquivo = $this->faker->randomNumber;
 
-		$this->assertGreaterThan(0, count($result));
+        $this->dto->setNomeArquivo($nomeArquivo);
 
-		$this->assertEquals('array', gettype($result));
-	}
+        $this->assertAttributeEquals($nomeArquivo, 'NomeArquivo', $this->dto);
 
-	public function testSetNomeArquivo()
-	{
-		$nomeArquivo = $this->faker->randomNumber;
+        return $nomeArquivo;
+    }
 
-		$this->dto->setNomeArquivo($nomeArquivo);
+    /**
+     * @depends testSetNomeArquivo
+     */
+    public function testGetNomeArquivo($nomeArquivo)
+    {
+        $this->dto->setNomeArquivo($nomeArquivo);
 
-		$this->assertAttributeEquals($nomeArquivo, 'NomeArquivo', $this->dto);
+        $this->assertEquals($nomeArquivo, $this->dto->getNomeArquivo());
+    }
 
-		return $nomeArquivo;
-	}
+    public function testSetConteudoArquivoBase64()
+    {
+        $conteudo = $this->faker->sha256;
 
-	/**
-	 * @depends testSetNomeArquivo
-	 */
-	public function testGetNomeArquivo($nomeArquivo)
-	{
-		$this->dto->setNomeArquivo($nomeArquivo);
+        $this->dto->setConteudoArquivoBase64($conteudo);
 
-		$this->assertEquals($nomeArquivo, $this->dto->getNomeArquivo());
-	}
+        $this->assertAttributeEquals($conteudo, 'ConteudoArquivoBase64', $this->dto);
 
-	public function testSetConteudoArquivoBase64()
-	{
-		$conteudo = $this->faker->sha256;
+        return $conteudo;
+    }
 
-		$this->dto->setConteudoArquivoBase64($conteudo);
+    /**
+     * @depends testSetConteudoArquivoBase64
+     */
+    public function testGetConteudoArquivoBase64($conteudo)
+    {
+        $this->dto->setConteudoArquivoBase64($conteudo);
 
-		$this->assertAttributeEquals($conteudo, 'ConteudoArquivoBase64', $this->dto);
+        $this->assertEquals($conteudo, $this->dto->getConteudoArquivoBase64());
+    }
 
-		return $conteudo;
-	}
+    public function testSetId()
+    {
+        $id = $this->faker->randomNumber;
 
-	/**
-	 * @depends testSetConteudoArquivoBase64
-	 */
-	public function testGetConteudoArquivoBase64($conteudo)
-	{
-		$this->dto->setConteudoArquivoBase64($conteudo);
+        $this->dto->setId($id);
 
-		$this->assertEquals($conteudo, $this->dto->getConteudoArquivoBase64());
-	}
+        $this->assertAttributeEquals($id, 'Id', $this->dto);
 
-	public function testSetId()
-	{
-		$id = $this->faker->randomNumber;
+        return $id;
+    }
 
-		$this->dto->setId($id);
+    /**
+     * @depends testSetId
+     */
+    public function testGetId($id)
+    {
+        $this->dto->setId($id);
 
-		$this->assertAttributeEquals($id, 'Id', $this->dto);
-
-		return $id;
-	}
-
-	/**
-	 * @depends testSetId
-	 */
-	public function testGetId($id)
-	{
-		$this->dto->setId($id);
-
-		$this->assertEquals($id, $this->dto->getId());
-	}
-
+        $this->assertEquals($id, $this->dto->getId());
+    }
 }

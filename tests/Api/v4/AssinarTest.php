@@ -3,13 +3,12 @@
 namespace PagueVeloz\Api\v4;
 
 use TestCase;
-
 use PagueVeloz\PagueVeloz;
 use PagueVeloz\Api\v4\Dto\AssinarDTOTest;
 use PagueVeloz\LogProvider;
 
-class AssinarTest extends TestCase {
-
+class AssinarTest extends TestCase
+{
     protected $assinar;
 
     public function setUp()
@@ -35,7 +34,7 @@ class AssinarTest extends TestCase {
     public function testNew($version)
     {
         $object = PagueVeloz::Assinar($version);
-        $class = 'PagueVeloz\Api\\' . $version . '\Assinar';
+        $class = 'PagueVeloz\Api\\'.$version.'\Assinar';
         $this->assertInstanceOf($class, $object);
     }
 
@@ -65,7 +64,7 @@ class AssinarTest extends TestCase {
 
     public function testPostHasPessoaFisica()
     {
-        $dtoTest = new AssinarDTOTest;
+        $dtoTest = new AssinarDTOTest();
         $dtoTest->setUp();
 
         $this->assinar->dto
@@ -89,7 +88,7 @@ class AssinarTest extends TestCase {
 
     public function testPostHasPessoaJuridica()
     {
-        $dtoTest = new AssinarDTOTest;
+        $dtoTest = new AssinarDTOTest();
         $dtoTest->setUp();
 
         $this->assinar->dto

@@ -10,10 +10,11 @@ class PagueVelozTest extends TestCase
 
     public function setUp()
     {
-        $this->obj = new PagueVelozSub;
+        $this->obj = new PagueVelozSub();
     }
 
-    public function testHasServicesAvailable() {
+    public function testHasServicesAvailable()
+    {
         $this->assertNotEmpty($this->obj->Get());
     }
 }

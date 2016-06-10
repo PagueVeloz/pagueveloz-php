@@ -6,95 +6,94 @@ use TestCase;
 
 class CepDTOTest extends TestCase
 {
+    protected $dto;
 
-	protected $dto;
+    public function setUp()
+    {
+        parent::setUp();
 
-	public function setUp() {
-		parent::setUp();
-
-		$this->dto = new CepDTO;
-	}
+        $this->dto = new CepDTO();
+    }
 
     public function testGetNotEmpty()
     {
-		$this->assertEquals($this->dto->getNotEmpty(), []);
+        $this->assertEquals($this->dto->getNotEmpty(), []);
     }
 
     public function testGetCidade()
     {
-		$this->assertInstanceOf('PagueVeloz\Api\Common\Dto\CidadeDTO', $this->dto->getCidade());
+        $this->assertInstanceOf('PagueVeloz\Api\Common\Dto\CidadeDTO', $this->dto->getCidade());
     }
 
     public function testSetCidade()
     {
-		$cidade = new CidadeDTO;
+        $cidade = new CidadeDTO();
 
-		$this->dto->setCidade($cidade);
+        $this->dto->setCidade($cidade);
 
-		$this->assertAttributeEquals($cidade, 'Cidade', $this->dto);
+        $this->assertAttributeEquals($cidade, 'Cidade', $this->dto);
     }
 
-	public function testSetLogradouro()
-	{
-		$logradouro = $this->faker->streetAddress;
+    public function testSetLogradouro()
+    {
+        $logradouro = $this->faker->streetAddress;
 
-		$this->dto->setLogradouro($logradouro);
+        $this->dto->setLogradouro($logradouro);
 
-		$this->assertAttributeEquals($logradouro, 'Logradouro', $this->dto);
+        $this->assertAttributeEquals($logradouro, 'Logradouro', $this->dto);
 
-		return $logradouro;
-	}
+        return $logradouro;
+    }
 
-	/**
-	 * @depends testSetLogradouro
-	 */
+    /**
+     * @depends testSetLogradouro
+     */
     public function testGetLogradouro($logradouro)
     {
-		$this->dto->setLogradouro($logradouro);
+        $this->dto->setLogradouro($logradouro);
 
-		$this->assertEquals($logradouro, $this->dto->getLogradouro());
+        $this->assertEquals($logradouro, $this->dto->getLogradouro());
     }
 
-	public function testSetNumero()
-	{
-		$numero = $this->faker->numerify(123);
-
-		$this->dto->setNumero($numero);
-
-		$this->assertAttributeEquals($numero, 'Numero', $this->dto);
-
-		return $numero;
-	}
-
-	/**
-	 * @depends testSetNumero
-	 */
-	public function testGetNumero($numero)
+    public function testSetNumero()
     {
-		$this->dto->setNumero($numero);
+        $numero = $this->faker->numerify(123);
 
-		$this->assertEquals($numero, $this->dto->getNumero());
+        $this->dto->setNumero($numero);
+
+        $this->assertAttributeEquals($numero, 'Numero', $this->dto);
+
+        return $numero;
     }
 
-	public function testSetCEP()
-	{
-		$cep = $this->faker->postcode;
+    /**
+     * @depends testSetNumero
+     */
+    public function testGetNumero($numero)
+    {
+        $this->dto->setNumero($numero);
 
-		$this->dto->setCEP($cep);
+        $this->assertEquals($numero, $this->dto->getNumero());
+    }
 
-		$this->assertAttributeEquals($cep, 'CEP', $this->dto);
+    public function testSetCEP()
+    {
+        $cep = $this->faker->postcode;
 
-		return $cep;
-	}
+        $this->dto->setCEP($cep);
 
-	/**
-	 * @depends testSetCEP
-	 */
+        $this->assertAttributeEquals($cep, 'CEP', $this->dto);
+
+        return $cep;
+    }
+
+    /**
+     * @depends testSetCEP
+     */
     public function testGetCEP($cep)
     {
-		$this->dto->setCEP($cep);
+        $this->dto->setCEP($cep);
 
-		$this->assertEquals($cep, $this->dto->getCEP());
+        $this->assertEquals($cep, $this->dto->getCEP());
     }
-
 }

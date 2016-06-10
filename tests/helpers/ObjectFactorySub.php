@@ -2,7 +2,8 @@
 
 namespace PagueVeloz;
 
-class ObjectFactorySub extends ObjectFactory {
+class ObjectFactorySub extends ObjectFactory
+{
     public $field1;
     protected $field2;
     protected $field3;

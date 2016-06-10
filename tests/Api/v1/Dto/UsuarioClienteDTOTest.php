@@ -4,55 +4,56 @@ namespace PagueVeloz\Api\v1\Dto;
 
 use TestCase;
 
-class UsuarioClienteDTOTest extends TestCase {
+class UsuarioClienteDTOTest extends TestCase
+{
+    protected $dto;
 
-	protected $dto;
+    public function setUp()
+    {
+        parent::setUp();
 
-	public function setUp() {
-		parent::setUp();
+        $this->dto = new UsuarioClienteDTO();
+    }
 
-		$this->dto = new UsuarioClienteDTO;
-	}
+    public function testSetEmail()
+    {
+        $email = $this->faker->bothify('#?#?#?#?#?#?#?#?#@gmail.com');
 
-	public function testSetEmail()
-	{
-		$email = $this->faker->bothify("#?#?#?#?#?#?#?#?#@gmail.com");;
+        $this->dto->setEmail($email);
 
-		$this->dto->setEmail($email);
+        $this->assertAttributeEquals($email, 'Email', $this->dto);
 
-		$this->assertAttributeEquals($email, 'Email', $this->dto);
+        return $email;
+    }
 
-		return $email;
-	}
+    /**
+     * @depends testSetEmail
+     */
+    public function testGetEmail($email)
+    {
+        $this->dto->setEmail($email);
 
-	/**
-	 * @depends testSetEmail
-	 */
-	public function testGetEmail($email)
-	{
-		$this->dto->setEmail($email);
+        $this->assertEquals($email, $this->dto->getEmail());
+    }
 
-		$this->assertEquals($email, $this->dto->getEmail());
-	}
+    public function testSetAtivo()
+    {
+        $boolean = $this->faker->boolean(50);
 
-	public function testSetAtivo()
-	{
-		$boolean = $this->faker->boolean(50);
+        $this->dto->setAtivo($boolean);
 
-		$this->dto->setAtivo($boolean);
+        $this->assertAttributeEquals($boolean, 'Ativo', $this->dto);
 
-		$this->assertAttributeEquals($boolean, 'Ativo', $this->dto);
+        return $boolean;
+    }
 
-		return $boolean;
-	}
+    /**
+     * @depends testSetAtivo
+     */
+    public function testGetAtivo($boolean)
+    {
+        $this->dto->setAtivo($boolean);
 
-	/**
-	 * @depends testSetAtivo
-	 */
-	public function testGetAtivo($boolean)
-	{
-		$this->dto->setAtivo($boolean);
-
-		$this->assertEquals($boolean, $this->dto->getAtivo());
-	}
+        $this->assertEquals($boolean, $this->dto->getAtivo());
+    }
 }

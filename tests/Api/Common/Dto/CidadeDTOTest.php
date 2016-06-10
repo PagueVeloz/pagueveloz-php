@@ -4,62 +4,61 @@ namespace PagueVeloz\Api\Common\Dto;
 
 use TestCase;
 
-class CidadeDTOTest extends TestCase {
+class CidadeDTOTest extends TestCase
+{
+    protected $dto;
 
-	protected $dto;
-
-	public function setUp()
-	{
-		parent::setUp();
-
-		$this->dto = new CidadeDTO;
-	}
-
-	public function testGetNotEmpty()
+    public function setUp()
     {
-		$this->assertEquals($this->dto->getNotEmpty(), []);
+        parent::setUp();
+
+        $this->dto = new CidadeDTO();
     }
 
-	public function testSetNome()
+    public function testGetNotEmpty()
     {
-		$nome = $this->faker->name;
-
-		$this->dto->setNome($nome);
-
-		$this->assertAttributeEquals($nome, 'Nome', $this->dto);
-
-		return $nome;
+        $this->assertEquals($this->dto->getNotEmpty(), []);
     }
 
-	/**
-	 * @depends testSetNome
-	 */
-	public function testGetNome($nome)
+    public function testSetNome()
     {
-		$this->dto->setNome($nome);
+        $nome = $this->faker->name;
 
-		$this->assertEquals($nome, $this->dto->getNome());
+        $this->dto->setNome($nome);
+
+        $this->assertAttributeEquals($nome, 'Nome', $this->dto);
+
+        return $nome;
     }
 
-	public function testSetEstado()
-	{
-		$estado = $this->faker->state;
-
-		$this->dto->setEstado($estado);
-
-		$this->assertAttributeEquals($estado, 'Estado', $this->dto);
-
-		return $estado;
-	}
-
-	/**
-	 * @depends testSetEstado
-	 */
-	public function testGetEstado($estado)
+    /**
+     * @depends testSetNome
+     */
+    public function testGetNome($nome)
     {
-		$this->dto->setEstado($estado);
+        $this->dto->setNome($nome);
 
-		$this->assertEquals($estado, $this->dto->getEstado());
+        $this->assertEquals($nome, $this->dto->getNome());
     }
 
+    public function testSetEstado()
+    {
+        $estado = $this->faker->state;
+
+        $this->dto->setEstado($estado);
+
+        $this->assertAttributeEquals($estado, 'Estado', $this->dto);
+
+        return $estado;
+    }
+
+    /**
+     * @depends testSetEstado
+     */
+    public function testGetEstado($estado)
+    {
+        $this->dto->setEstado($estado);
+
+        $this->assertEquals($estado, $this->dto->getEstado());
+    }
 }

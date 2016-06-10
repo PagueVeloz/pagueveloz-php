@@ -4,20 +4,20 @@ namespace PagueVeloz\Api\v1\Dto;
 
 use TestCase;
 
-class SaqueDTOTest extends TestCase {
-
+class SaqueDTOTest extends TestCase
+{
     protected $dto;
 
     public function setUp()
     {
         parent::setUp();
 
-        $this->dto = new SaqueDTO;
+        $this->dto = new SaqueDTO();
     }
 
     public function testSetContaBancaria()
     {
-        $conta = new ContaBancariaDTO;
+        $conta = new ContaBancariaDTO();
 
         $this->dto->setContaBancaria($conta);
 

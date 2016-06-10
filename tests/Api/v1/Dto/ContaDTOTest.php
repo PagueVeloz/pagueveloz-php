@@ -4,15 +4,15 @@ namespace PagueVeloz\Api\v1\Dto;
 
 use TestCase;
 
-class ContaDTOTest extends TestCase {
-
+class ContaDTOTest extends TestCase
+{
     protected $dto;
 
     public function setUp()
     {
         parent::setUp();
 
-        $this->dto = new ContaDTO;
+        $this->dto = new ContaDTO();
     }
 
     public function testSetTipo()
@@ -22,7 +22,7 @@ class ContaDTOTest extends TestCase {
             'Clientes',
             'ClientesBoletoZClienteJaCadastrado',
             'SMSTelefoneDestino',
-            'SMSTelefoneRemetente'
+            'SMSTelefoneRemetente',
         ]);
 
         $this->dto->setTipo($tipo);
@@ -41,5 +41,4 @@ class ContaDTOTest extends TestCase {
 
         $this->assertEquals($tipo, $this->dto->getTipo());
     }
-
 }

@@ -2,6 +2,6 @@
 
 namespace PagueVeloz\Service\Machine;
 
-class CurlSub extends Curl {
-
+class CurlSub extends Curl
+{
 }

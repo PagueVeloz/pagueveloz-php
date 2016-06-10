@@ -4,140 +4,140 @@ namespace PagueVeloz\Api\v1\Dto;
 
 use TestCase;
 
-class ContaBancariaDTOTest extends TestCase {
-
+class ContaBancariaDTOTest extends TestCase
+{
     protected $dto;
 
     public function setUp()
     {
         parent::setUp();
 
-        $this->dto = new ContaBancariaDTO;
+        $this->dto = new ContaBancariaDTO();
     }
 
     public function testSetCodigoBanco()
-	{
-		$codigo = $this->faker->randomNumber;
+    {
+        $codigo = $this->faker->randomNumber;
 
-		$this->dto->setCodigoBanco($codigo);
+        $this->dto->setCodigoBanco($codigo);
 
-		$this->assertAttributeEquals($codigo, 'CodigoBanco', $this->dto);
+        $this->assertAttributeEquals($codigo, 'CodigoBanco', $this->dto);
 
-		return $codigo;
-	}
+        return $codigo;
+    }
 
-	/**
-	 * @depends testSetCodigoBanco
-	 */
+    /**
+     * @depends testSetCodigoBanco
+     */
     public function testGetCodigoBanco($codigo)
     {
-		$this->dto->setCodigoBanco($codigo);
+        $this->dto->setCodigoBanco($codigo);
 
-		$this->assertEquals($codigo, $this->dto->getCodigoBanco());
+        $this->assertEquals($codigo, $this->dto->getCodigoBanco());
     }
 
     public function testSetCodigoAgencia()
-	{
-		$codigo = $this->faker->randomNumber;
+    {
+        $codigo = $this->faker->randomNumber;
 
-		$this->dto->setCodigoAgencia($codigo);
+        $this->dto->setCodigoAgencia($codigo);
 
-		$this->assertAttributeEquals($codigo, 'CodigoAgencia', $this->dto);
+        $this->assertAttributeEquals($codigo, 'CodigoAgencia', $this->dto);
 
-		return $codigo;
-	}
+        return $codigo;
+    }
 
-	/**
-	 * @depends testSetCodigoAgencia
-	 */
+    /**
+     * @depends testSetCodigoAgencia
+     */
     public function testGetCodigoAgencia($codigo)
     {
-		$this->dto->setCodigoAgencia($codigo);
+        $this->dto->setCodigoAgencia($codigo);
 
-		$this->assertEquals($codigo, $this->dto->getCodigoAgencia());
+        $this->assertEquals($codigo, $this->dto->getCodigoAgencia());
     }
 
     public function testSetNumeroConta()
-	{
-		$codigo = $this->faker->bankAccountNumber;
+    {
+        $codigo = $this->faker->bankAccountNumber;
 
-		$this->dto->setNumeroConta($codigo);
+        $this->dto->setNumeroConta($codigo);
 
-		$this->assertAttributeEquals($codigo, 'NumeroConta', $this->dto);
+        $this->assertAttributeEquals($codigo, 'NumeroConta', $this->dto);
 
-		return $codigo;
-	}
+        return $codigo;
+    }
 
-	/**
-	 * @depends testSetNumeroConta
-	 */
+    /**
+     * @depends testSetNumeroConta
+     */
     public function testGetNumeroConta($codigo)
     {
-		$this->dto->setNumeroConta($codigo);
+        $this->dto->setNumeroConta($codigo);
 
-		$this->assertEquals($codigo, $this->dto->getNumeroConta());
+        $this->assertEquals($codigo, $this->dto->getNumeroConta());
     }
 
     public function testSetDescricao()
-	{
-		$descricao = $this->faker->text;
+    {
+        $descricao = $this->faker->text;
 
-		$this->dto->setDescricao($descricao);
+        $this->dto->setDescricao($descricao);
 
-		$this->assertAttributeEquals($descricao, 'Descricao', $this->dto);
+        $this->assertAttributeEquals($descricao, 'Descricao', $this->dto);
 
-		return $descricao;
-	}
+        return $descricao;
+    }
 
-	/**
-	 * @depends testSetDescricao
-	 */
+    /**
+     * @depends testSetDescricao
+     */
     public function testGetDescricao($descricao)
     {
-		$this->dto->setDescricao($descricao);
+        $this->dto->setDescricao($descricao);
 
-		$this->assertEquals($descricao, $this->dto->getDescricao());
+        $this->assertEquals($descricao, $this->dto->getDescricao());
     }
 
     public function testSetExcluida()
-	{
-		$excluida = $this->faker->boolean;
+    {
+        $excluida = $this->faker->boolean;
 
-		$this->dto->setExcluida($excluida);
+        $this->dto->setExcluida($excluida);
 
-		$this->assertAttributeEquals($excluida, 'Excluida', $this->dto);
+        $this->assertAttributeEquals($excluida, 'Excluida', $this->dto);
 
-		return $excluida;
-	}
+        return $excluida;
+    }
 
-	/**
-	 * @depends testSetExcluida
-	 */
+    /**
+     * @depends testSetExcluida
+     */
     public function testGetExcluida($excluida)
     {
-		$this->dto->setExcluida($excluida);
+        $this->dto->setExcluida($excluida);
 
-		$this->assertEquals($excluida, $this->dto->getExcluida());
+        $this->assertEquals($excluida, $this->dto->getExcluida());
     }
 
     public function testSetId()
-	{
-		$id = $this->faker->randomNumber;
+    {
+        $id = $this->faker->randomNumber;
 
-		$this->dto->setId($id);
+        $this->dto->setId($id);
 
-		$this->assertAttributeEquals($id, 'Id', $this->dto);
+        $this->assertAttributeEquals($id, 'Id', $this->dto);
 
-		return $id;
-	}
+        return $id;
+    }
 
-	/**
-	 * @depends testSetId
-	 */
+    /**
+     * @depends testSetId
+     */
     public function testGetId($id)
     {
-		$this->dto->setId($id);
+        $this->dto->setId($id);
 
-		$this->assertEquals($id, $this->dto->getId());
+        $this->assertEquals($id, $this->dto->getId());
     }
 }

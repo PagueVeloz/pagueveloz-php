@@ -4,15 +4,15 @@ namespace PagueVeloz\Api\v1\Dto;
 
 use TestCase;
 
-class ContaPagDTOTest extends TestCase {
-
+class ContaPagDTOTest extends TestCase
+{
     protected $dto;
 
     public function setUp()
     {
         parent::setUp();
 
-        $this->dto = new ContaPagDTO;
+        $this->dto = new ContaPagDTO();
     }
 
     public function testSetValor()

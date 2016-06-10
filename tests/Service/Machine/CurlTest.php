@@ -3,25 +3,24 @@
 namespace PagueVeloz\Service\Machine;
 
 use TestCase;
-use PagueVeloz\Service\Context\HttpRequest;
-use PagueVeloz\Service\Context\HttpResponse;
 
-class CurlTest extends TestCase {
-
+class CurlTest extends TestCase
+{
     protected $curl;
 
     public function setUp()
     {
-        $this->curl = new CurlSub;
+        $this->curl = new CurlSub();
         $this->curl->ssl = true;
-        $this->curl->method =  'GET';
-        $this->curl->url =  'https://sandbox.pagueveloz.com.br/api/v1/CEP/89050100';
+        $this->curl->method = 'GET';
+        $this->curl->url = 'https://sandbox.pagueveloz.com.br/api/v1/CEP/89050100';
     }
 
     public function testInit()
     {
         $response = $this->curl->init();
-        $this->assertInstanceOf( 'PagueVeloz\Service\Context\HttpResponse', $response);
+        $this->assertInstanceOf('PagueVeloz\Service\Context\HttpResponse', $response);
+
         return $response;
     }
 
@@ -29,7 +28,8 @@ class CurlTest extends TestCase {
     {
         $this->curl->proxy = true;
         $response = $this->curl->init();
-        $this->assertInstanceOf( 'PagueVeloz\Service\Context\HttpResponse', $response);
+        $this->assertInstanceOf('PagueVeloz\Service\Context\HttpResponse', $response);
+
         return $response;
     }
 
@@ -37,7 +37,8 @@ class CurlTest extends TestCase {
     {
         $this->curl->urlReferer = 'http://localhost';
         $response = $this->curl->init();
-        $this->assertInstanceOf( 'PagueVeloz\Service\Context\HttpResponse', $response);
+        $this->assertInstanceOf('PagueVeloz\Service\Context\HttpResponse', $response);
+
         return $response;
     }
 
@@ -59,8 +60,8 @@ class CurlTest extends TestCase {
     public function testHeaders()
     {
         $this->curl->request = 'Host: www.example.com'
-            . "\r\n\r\n"
-            . 'Content-Type: application/x-www-form-urlencoded; charset=utf-8';
+            ."\r\n\r\n"
+            .'Content-Type: application/x-www-form-urlencoded; charset=utf-8';
         $headers = $this->curl->headers();
         $this->assertInternalType('array', $headers);
         $this->assertGreaterThan(0, count($headers));

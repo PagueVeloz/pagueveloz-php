@@ -2,6 +2,6 @@
 
 namespace PagueVeloz;
 
-class PagueVelozSub extends PagueVeloz {
-
+class PagueVelozSub extends PagueVeloz
+{
 }
