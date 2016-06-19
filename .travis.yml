@@ -22,7 +22,7 @@ before_script:
   - composer install
 
 script:
-  - travis_retry bash -x ./run-tests.sh
+  - travis_retry bash -x ./run-tests-with-coverage.sh
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)
