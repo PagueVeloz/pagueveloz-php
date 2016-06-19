@@ -11,5 +11,5 @@ fi
 # number of parallel jobs
 NUMJOBS="$(($(nproc)+1))"
 
-# run paratest
-./vendor/bin/paratest --coverage-clover=clover.xml --processes $NUMJOBS --functional --phpunit ./vendor/bin/phpunit --bootstrap ./vendor/autoload.php --configuration $TESTFILE --colors --path ./tests/
+# run tests
+./vendor/bin/paratest --coverage-clover="coverage.xml" --processes $NUMJOBS --phpunit ./vendor/bin/phpunit --no-test-tokens --runner ParaTest\\Runners\\WrapperRunner
