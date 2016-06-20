@@ -18,7 +18,8 @@ matrix:
     fast_finish: true
 
 before_script:
-  - composer install
+  - travis_retry composer self-update
+  - travis_retry composer install --no-interaction --prefer-source --dev
 
 script:
   - if [ "$TRAVIS_PHP_VERSION" = "7.0" ]; then  travis_retry bash -x ./run-tests-with-coverage.sh; fi
