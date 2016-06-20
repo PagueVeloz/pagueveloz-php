@@ -12,4 +12,4 @@ fi
 NUMJOBS="$(($(nproc)+1))"
 
 # run tests
-./vendor/bin/paratest --coverage-clover="coverage.xml" --processes $NUMJOBS --functional --phpunit ./vendor/bin/phpunit --configuration $TESTFILE --colors --path ./tests/ --no-test-tokens --runner ParaTest\\Runners\\WrapperRunner
+./vendor/bin/paratest --coverage-clover=coverage.xml --processes $NUMJOBS --functional --phpunit ./vendor/bin/phpunit --configuration $TESTFILE --colors --path ./tests/ --no-test-tokens --runner ParaTest\\Runners\\WrapperRunner
