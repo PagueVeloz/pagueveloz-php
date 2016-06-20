@@ -25,4 +25,4 @@ script:
   - if [ "$TRAVIS_PHP_VERSION" != "7.0" ]; then  travis_retry bash -x ./run-tests.sh; fi
 
 after_success:
-  - if [ "$TRAVIS_PHP_VERSION" = "7.0" ]; then then bash <(curl -s https://codecov.io/bash); fi
+  - if [ "$TRAVIS_PHP_VERSION" = "7.0" ]; then bash <(curl -s https://codecov.io/bash); fi
