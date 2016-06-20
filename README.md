@@ -2,6 +2,7 @@
 
 [![StyleCI](https://styleci.io/repos/27489184/shield)](https://styleci.io/repos/27489184)
 [![Build Status](https://travis-ci.org/PagueVeloz/pagueveloz-php.svg)](https://travis-ci.org/PagueVeloz/pagueveloz-php)
+[![codecov](https://codecov.io/gh/PagueVeloz/pagueveloz-php/branch/master/graph/badge.svg)](https://codecov.io/gh/PagueVeloz/pagueveloz-php)
 [![Latest Stable Version](https://poser.pugx.org/pagueveloz/pagueveloz/v/stable)](https://packagist.org/packages/pagueveloz/pagueveloz)
 [![Total Downloads](https://poser.pugx.org/pagueveloz/pagueveloz/downloads)](https://packagist.org/packages/pagueveloz/pagueveloz)
 [![Latest Unstable Version](https://poser.pugx.org/pagueveloz/pagueveloz/v/unstable)](https://packagist.org/packages/pagueveloz/pagueveloz)
