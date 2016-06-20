@@ -21,7 +21,8 @@ before_script:
   - composer install
 
 script:
-  - travis_retry bash -x ./run-tests-with-coverage.sh
+  - if [ "$TRAVIS_PHP_VERSION" = "7.0"]; then travis_retry bash -x ./run-tests-with-coverage.sh; fi
+  - if [ "$TRAVIS_PHP_VERSION" != "7.0"]; then travis_retry bash -x ./run-tests.sh; fi
 
 after_success:
-  - bash <(curl -s https://codecov.io/bash)
+  - - if [ "$TRAVIS_PHP_VERSION" = "7.0"]; then bash <(curl -s https://codecov.io/bash); fi
