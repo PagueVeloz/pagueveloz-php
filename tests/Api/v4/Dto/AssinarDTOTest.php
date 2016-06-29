@@ -19,6 +19,11 @@ class AssinarDTOTest extends TestCase
         $this->dto = new AssinarDTO();
     }
 
+    public function testGetDTOTelefone()
+    {
+        $this->assertInstanceOf(TelefoneDTO::class, $this->dto->getDTOTelefone());
+    }
+
     public function testGetNotEmpty()
     {
         $this->assertTrue(is_array($this->dto->getNotEmpty()));
