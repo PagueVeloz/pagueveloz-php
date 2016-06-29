@@ -2,7 +2,7 @@
 
 namespace PagueVeloz\Exception;
 
-class ApiVersionNotFound extends InvalidInputException
+class ApiVersionNotFoundException extends InvalidInputException
 {
     protected $message = 'Versão da API não encontrada';
 }
