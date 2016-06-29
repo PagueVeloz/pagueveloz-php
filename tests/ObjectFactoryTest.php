@@ -33,6 +33,15 @@ class ObjectFactoryTest extends TestCase
     /**
      * @dataProvider attributesProvider
      */
+    public function testIsset($field)
+    {
+        $this->mock->$field = $field;
+        $this->assertTrue(isset($this->mock->$field));
+    }
+
+    /**
+     * @dataProvider attributesProvider
+     */
     public function testToArray($field)
     {
         $this->assertArrayHasKey($field, $this->mock->toArray());
