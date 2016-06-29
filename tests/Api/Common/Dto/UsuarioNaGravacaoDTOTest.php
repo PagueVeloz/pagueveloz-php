@@ -6,18 +6,18 @@ use TestCase;
 
 class UsuarioNaGravacaoDTOTest extends TestCase
 {
+    protected $dto;
 
-	protected $dto;
+    public function setUp()
+    {
+        parent::setUp();
 
-	public function setUp() {
-		parent::setUp();
-
-		$this->dto = new UsuarioNaGravacaoDTO;
-	}
+        $this->dto = new UsuarioNaGravacaoDTO();
+    }
 
     public function testGetNotEmpty()
     {
-		$this->assertNotEmpty($this->dto->getNotEmpty());
+        $this->assertNotEmpty($this->dto->getNotEmpty());
     }
 
     public function testSetNome()
@@ -126,24 +126,23 @@ class UsuarioNaGravacaoDTOTest extends TestCase
     }
 
     public function testSetId()
-	{
-		$id = $this->faker->randomNumber;
-
-		$this->dto->setId($id);
-
-		$this->assertAttributeEquals($id, 'Id', $this->dto);
-
-		return $id;
-	}
-
-	/**
-	 * @depends testSetId
-	 */
-    public function testGetId($id)
     {
-		$this->dto->setId($id);
+        $id = $this->faker->randomNumber;
 
-		$this->assertEquals($id, $this->dto->getId());
+        $this->dto->setId($id);
+
+        $this->assertAttributeEquals($id, 'Id', $this->dto);
+
+        return $id;
     }
 
+    /**
+     * @depends testSetId
+     */
+    public function testGetId($id)
+    {
+        $this->dto->setId($id);
+
+        $this->assertEquals($id, $this->dto->getId());
+    }
 }

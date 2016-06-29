@@ -1,35 +1,39 @@
 <?php
 
 /**
- * Dump and die
+ * Dump and die.
  */
-function dd() {
+function dd()
+{
     $args = func_get_args();
-    foreach($args as $arg) {
+    foreach ($args as $arg) {
         var_dump($arg);
     }
     exit();
 }
 
 /**
- * Print and die
+ * Print and die.
  */
-function pd() {
+function pd()
+{
     $args = func_get_args();
-    foreach($args as $arg) {
+    foreach ($args as $arg) {
         print_r($arg);
     }
     exit();
 }
 
 /**
- * Dump and return
+ * Dump and return.
  */
-function dr() {
+function dr()
+{
     $args = func_get_args();
     $result = '';
-    foreach($args as $arg) {
+    foreach ($args as $arg) {
         $result .= print_r($arg, true);
     }
+
     return $result;
 }

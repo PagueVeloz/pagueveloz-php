@@ -7,8 +7,8 @@ use PagueVeloz\PagueVeloz;
 use PagueVeloz\Api\v4\Dto\ContaBancariaDTOTest;
 use PagueVeloz\Api\v4\Dto\ContaBancariaDTO;
 
-class ContaBancariaTest extends TestCase {
-
+class ContaBancariaTest extends TestCase
+{
     protected $contaBancaria;
 
     public function setUp()
@@ -34,7 +34,7 @@ class ContaBancariaTest extends TestCase {
     public function testNew($version)
     {
         $object = PagueVeloz::ContaBancaria($version);
-        $class = 'PagueVeloz\Api\\' . $version . '\ContaBancaria';
+        $class = 'PagueVeloz\Api\\'.$version.'\ContaBancaria';
         $this->assertInstanceOf($class, $object);
     }
 
@@ -48,7 +48,7 @@ class ContaBancariaTest extends TestCase {
 
     public function testPostContaPropria()
     {
-        $dtoTest = new ContaBancariaDTOTest;
+        $dtoTest = new ContaBancariaDTOTest();
         $dtoTest->setUp();
 
         $this->contaBancaria->auth = $this->auth();
@@ -66,16 +66,16 @@ class ContaBancariaTest extends TestCase {
         $result = $this->contaBancaria->Post();
 
         $responseObject = json_decode($result->body);
-        $this->assertEquals('stdClass', get_class($responseObject), "Deve ser possível converter em objeto\n" . dr($responseObject));
-        $this->assertEquals(201, $result->status, "Deve retornar status 201\n" . dr($result->body));
-        $this->assertObjectHasAttribute('Id', $responseObject, "Deve retornar um Id\n" . dr($result->body));
+        $this->assertEquals('stdClass', get_class($responseObject), "Deve ser possível converter em objeto\n".dr($responseObject));
+        $this->assertEquals(201, $result->status, "Deve retornar status 201\n".dr($result->body));
+        $this->assertObjectHasAttribute('Id', $responseObject, "Deve retornar um Id\n".dr($result->body));
 
         return $responseObject->Id;
     }
 
     public function testPostContaSocio()
     {
-        $dtoTest = new ContaBancariaDTOTest;
+        $dtoTest = new ContaBancariaDTOTest();
         $dtoTest->setUp();
 
         $this->contaBancaria->auth = $this->auth();
@@ -94,16 +94,16 @@ class ContaBancariaTest extends TestCase {
         $result = $this->contaBancaria->Post();
 
         $responseObject = json_decode($result->body);
-        $this->assertEquals('stdClass', get_class($responseObject), "Deve ser possível converter em objeto\n" . dr($responseObject));
-        $this->assertEquals(201, $result->status, "Deve retornar status 201\n" . dr($result->body));
-        $this->assertObjectHasAttribute('Id', $responseObject, "Deve retornar um Id\n" . dr($result->body));
+        $this->assertEquals('stdClass', get_class($responseObject), "Deve ser possível converter em objeto\n".dr($responseObject));
+        $this->assertEquals(201, $result->status, "Deve retornar status 201\n".dr($result->body));
+        $this->assertObjectHasAttribute('Id', $responseObject, "Deve retornar um Id\n".dr($result->body));
 
         return $responseObject->Id;
     }
 
     public function testPostContaTerceiroSemDataValidadeSolicitada()
     {
-        $dtoTest = new ContaBancariaDTOTest;
+        $dtoTest = new ContaBancariaDTOTest();
         $dtoTest->setUp();
 
         $this->contaBancaria->auth = $this->auth();
@@ -122,16 +122,16 @@ class ContaBancariaTest extends TestCase {
         $result = $this->contaBancaria->Post();
 
         $responseObject = json_decode($result->body);
-        $this->assertEquals('stdClass', get_class($responseObject), "Deve ser possível converter em objeto\n" . dr($responseObject));
-        $this->assertEquals(201, $result->status, "Deve retornar status 201\n" . dr($result->body));
-        $this->assertObjectHasAttribute('Id', $responseObject, "Deve retornar um Id\n" . dr($result->body));
+        $this->assertEquals('stdClass', get_class($responseObject), "Deve ser possível converter em objeto\n".dr($responseObject));
+        $this->assertEquals(201, $result->status, "Deve retornar status 201\n".dr($result->body));
+        $this->assertObjectHasAttribute('Id', $responseObject, "Deve retornar um Id\n".dr($result->body));
 
         return $responseObject->Id;
     }
 
     public function testPostContaTerceiroComDataValidadeSolicitada()
     {
-        $dtoTest = new ContaBancariaDTOTest;
+        $dtoTest = new ContaBancariaDTOTest();
         $dtoTest->setUp();
 
         $this->contaBancaria->auth = $this->auth();
@@ -151,9 +151,9 @@ class ContaBancariaTest extends TestCase {
         $result = $this->contaBancaria->Post();
 
         $responseObject = json_decode($result->body);
-        $this->assertEquals('stdClass', get_class($responseObject), "Deve ser possível converter em objeto\n" . dr($responseObject));
-        $this->assertEquals(201, $result->status, "Deve retornar status 201\n" . dr($result->body));
-        $this->assertObjectHasAttribute('Id', $responseObject, "Deve retornar um Id\n" . dr($result->body));
+        $this->assertEquals('stdClass', get_class($responseObject), "Deve ser possível converter em objeto\n".dr($responseObject));
+        $this->assertEquals(201, $result->status, "Deve retornar status 201\n".dr($result->body));
+        $this->assertObjectHasAttribute('Id', $responseObject, "Deve retornar um Id\n".dr($result->body));
 
         return $responseObject->Id;
     }
@@ -171,11 +171,11 @@ class ContaBancariaTest extends TestCase {
         $this->assertEquals('array', gettype($result));
 
         $contas = [];
-        foreach($result as $conta) {
+        foreach ($result as $conta) {
             $contas[] = $conta['Id'];
         }
 
-        $this->assertContains($contaBancariaId, $contas, "Deve retornar na lista uma conta já cadastrada");
+        $this->assertContains($contaBancariaId, $contas, 'Deve retornar na lista uma conta já cadastrada');
 
         return $contas;
     }
@@ -190,7 +190,7 @@ class ContaBancariaTest extends TestCase {
 
         $conta = json_decode($result->body, true);
         $this->assertArrayHasKey('Id', $conta, "Deve retornar um campo 'Id");
-        $this->assertEquals($contaBancariaId, $conta['Id'], "Deve ser igual a da conta cadastrada");
+        $this->assertEquals($contaBancariaId, $conta['Id'], 'Deve ser igual a da conta cadastrada');
 
         return $conta['Id'];
     }
@@ -202,7 +202,7 @@ class ContaBancariaTest extends TestCase {
     {
         $this->contaBancaria->auth = $this->auth();
         $result = $this->contaBancaria->Termo($contaBancariaId);
-        $this->assertEquals(404, $result->status, "Deve retornar status 404");
+        $this->assertEquals(404, $result->status, 'Deve retornar status 404');
     }
 
     /**
@@ -212,7 +212,7 @@ class ContaBancariaTest extends TestCase {
     {
         $this->contaBancaria->auth = $this->auth();
         $result = $this->contaBancaria->Termo($contaBancariaId);
-        $this->assertEquals(404, $result->status, "Deve retornar status 404");
+        $this->assertEquals(404, $result->status, 'Deve retornar status 404');
     }
 
     /**
@@ -224,8 +224,8 @@ class ContaBancariaTest extends TestCase {
 
         $result = $this->contaBancaria->Termo($contaBancariaId);
 
-        $this->assertEquals(200, $result->status, "Deve retornar status 200");
-        $this->assertEquals('application/pdf', $result->contentType, "Deve retornar um arquivo PDF");
+        $this->assertEquals(200, $result->status, 'Deve retornar status 200');
+        $this->assertEquals('application/pdf', $result->contentType, 'Deve retornar um arquivo PDF');
     }
 
     /**
@@ -233,7 +233,7 @@ class ContaBancariaTest extends TestCase {
      */
     public function testPut($contaBancariaId)
     {
-        $dtoTest = new ContaBancariaDTOTest;
+        $dtoTest = new ContaBancariaDTOTest();
         $dtoTest->setUp();
 
         $this->contaBancaria->auth = $this->auth();
@@ -250,7 +250,7 @@ class ContaBancariaTest extends TestCase {
             ->setId($contaBancariaId);
 
         $result = $this->contaBancaria->Put($contaBancariaId);
-        $this->assertEquals(200, $result->status, "Deve retornar status 200\n" . dr($result->body));
+        $this->assertEquals(200, $result->status, "Deve retornar status 200\n".dr($result->body));
     }
 
     /**
@@ -268,7 +268,7 @@ class ContaBancariaTest extends TestCase {
     {
         $this->contaBancaria->auth = $this->auth();
         $result = $this->contaBancaria->Delete($contaBancariaId);
-        $this->assertEquals(200, $result->status, "Deve retornar status 200\n" . dr($result->body));
+        $this->assertEquals(200, $result->status, "Deve retornar status 200\n".dr($result->body));
     }
 
     /**
@@ -278,7 +278,7 @@ class ContaBancariaTest extends TestCase {
     {
         $this->contaBancaria->auth = $this->auth();
         $result = $this->contaBancaria->Ativar($contaBancariaId);
-        $this->assertEquals(200, $result->status, "Deve retornar status 200\n" . dr($result->body));
+        $this->assertEquals(200, $result->status, "Deve retornar status 200\n".dr($result->body));
     }
 
     /**
@@ -288,6 +288,6 @@ class ContaBancariaTest extends TestCase {
     {
         $this->contaBancaria->auth = $this->auth();
         $result = $this->contaBancaria->PossuiSaques($contaBancariaId);
-        $this->assertEquals(200, $result->status, "Deve retornar status 200\n" . dr($result->body));
+        $this->assertEquals(200, $result->status, "Deve retornar status 200\n".dr($result->body));
     }
 }

@@ -2,6 +2,6 @@
 
 namespace PagueVeloz;
 
-class LogProviderSub extends LogProvider {
-
+class LogProviderSub extends LogProvider
+{
 }

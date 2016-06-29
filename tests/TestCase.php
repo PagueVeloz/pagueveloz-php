@@ -32,7 +32,7 @@ class TestCase extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * Return the email of the current user
+     * Return the email of the current user.
      */
     protected function email()
     {
@@ -40,7 +40,7 @@ class TestCase extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * Return the token of the current user
+     * Return the token of the current user.
      */
     protected function token()
     {
@@ -48,7 +48,8 @@ class TestCase extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * Get the current Auth instance
+     * Get the current Auth instance.
+     *
      * @return PagueVeloz\Api\Common\Auth
      */
     protected function auth()
@@ -56,7 +57,7 @@ class TestCase extends PHPUnit_Framework_TestCase
         $email = $this->email();
         $token = $this->token();
 
-        $auth = new Auth;
+        $auth = new Auth();
         $auth->setEmail($email);
         $auth->setToken($token);
 

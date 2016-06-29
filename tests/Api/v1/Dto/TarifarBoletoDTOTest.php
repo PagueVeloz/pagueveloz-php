@@ -4,15 +4,15 @@ namespace PagueVeloz\Api\v1\Dto;
 
 use TestCase;
 
-class TarifarBoletoDTOTest extends TestCase {
-
+class TarifarBoletoDTOTest extends TestCase
+{
     protected $dto;
 
     public function setUp()
     {
         parent::setUp();
 
-        $this->dto = new TarifarBoletoDTO;
+        $this->dto = new TarifarBoletoDTO();
     }
 
     public function testSetBoleto()

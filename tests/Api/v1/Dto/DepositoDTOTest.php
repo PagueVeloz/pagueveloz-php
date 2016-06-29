@@ -4,15 +4,15 @@ namespace PagueVeloz\Api\v1\Dto;
 
 use TestCase;
 
-class DepositoDTOTest extends TestCase {
-
+class DepositoDTOTest extends TestCase
+{
     protected $dto;
 
     public function setUp()
     {
         parent::setUp();
 
-        $this->dto = new DepositoDTO;
+        $this->dto = new DepositoDTO();
     }
 
     public function testSetBanco()
@@ -38,7 +38,7 @@ class DepositoDTOTest extends TestCase {
 
     public function testSetStatus()
     {
-        $status = $this->faker->randomElement(['A','I']);
+        $status = $this->faker->randomElement(['A', 'I']);
 
         $this->dto->setStatus($status);
 
@@ -206,7 +206,7 @@ class DepositoDTOTest extends TestCase {
 
     public function testSetContaBancaria()
     {
-        $conta = new ContaBancariaDTO;
+        $conta = new ContaBancariaDTO();
 
         $this->dto->setContaBancaria($conta);
 

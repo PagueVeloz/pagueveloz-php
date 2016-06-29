@@ -4,15 +4,15 @@ namespace PagueVeloz\Api\v1\Dto;
 
 use TestCase;
 
-class DefaultBoletoDTOTest extends TestCase {
-
+class DefaultBoletoDTOTest extends TestCase
+{
     protected $dto;
 
     public function setUp()
     {
         parent::setUp();
 
-        $this->dto = new DefaultBoletoDTO;
+        $this->dto = new DefaultBoletoDTO();
     }
 
     public function testSetLinha1()
