@@ -3,6 +3,7 @@
 namespace PagueVeloz\Api\v1\Dto;
 
 use TestCase;
+use PagueVeloz\Api\Common\Dto\TelefoneDTO;
 
 class AssinarDTOTest extends TestCase
 {
@@ -18,6 +19,11 @@ class AssinarDTOTest extends TestCase
     public function testGetNotEmpty()
     {
         $this->assertTrue(is_array($this->dto->getNotEmpty()));
+    }
+
+    public function testGetDTOTelefone()
+    {
+        $this->assertInstanceOf(TelefoneDTO::class, $this->dto->getDTOTelefone());
     }
 
     public function testSetNome()
