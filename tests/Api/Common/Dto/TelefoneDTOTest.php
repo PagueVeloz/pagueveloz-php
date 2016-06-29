@@ -82,4 +82,25 @@ class TelefoneDTOTest extends TestCase
 
         $this->assertEquals($observacao, $this->dto->getObservacao());
     }
+
+    public function testSetId()
+    {
+        $id = $this->faker->randomNumber;
+
+        $this->dto->setId($id);
+
+        $this->assertAttributeEquals($id, 'Id', $this->dto);
+
+        return $id;
+    }
+
+    /**
+     * @depends testSetId
+     */
+    public function testGetId($id)
+    {
+        $this->dto->setId($id);
+
+        $this->assertEquals($id, $this->dto->getId());
+    }
 }

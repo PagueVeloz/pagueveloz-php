@@ -4,6 +4,7 @@ namespace PagueVeloz\Api\Common\Dto;
 
 class TelefoneDTO extends \PagueVeloz\AbstractDTO
 {
+    protected $Id;
     protected $Numero;
     protected $Tipo;
     protected $Observacao;
@@ -11,6 +12,30 @@ class TelefoneDTO extends \PagueVeloz\AbstractDTO
     public function getNotEmpty()
     {
         return ['Numero', 'Tipo'];
+    }
+
+    /**
+     * Gets the value of Id.
+     *
+     * @return mixed
+     */
+    public function getId()
+    {
+        return $this->Id;
+    }
+
+    /**
+     * Sets the value of Id.
+     *
+     * @param mixed $Id the id
+     *
+     * @return self
+     */
+    public function setId($Id)
+    {
+        $this->Id = $Id;
+
+        return $this;
     }
 
     /**
@@ -81,30 +106,6 @@ class TelefoneDTO extends \PagueVeloz\AbstractDTO
     public function setObservacao($Observacao)
     {
         $this->Observacao = $Observacao;
-
-        return $this;
-    }
-
-    /**
-     * Gets the value of Id.
-     *
-     * @return mixed
-     */
-    public function getId()
-    {
-        return $this->Id;
-    }
-
-    /**
-     * Sets the value of Id.
-     *
-     * @param mixed $Id the id
-     *
-     * @return self
-     */
-    public function setId($Id)
-    {
-        $this->Id = $Id;
 
         return $this;
     }
