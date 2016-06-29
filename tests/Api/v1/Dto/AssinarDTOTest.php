@@ -3,7 +3,6 @@
 namespace PagueVeloz\Api\v1\Dto;
 
 use TestCase;
-use PagueVeloz\Api\Common\Dto\TelefoneDTO;
 
 class AssinarDTOTest extends TestCase
 {
