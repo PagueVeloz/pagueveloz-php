@@ -15,7 +15,7 @@ abstract class PagueVeloz
         ['service' => 'Extrato', 'version' => ['v1'], 'default' => 'v1'],
         ['service' => 'Saldo', 'version' => ['v1'], 'default' => 'v1'],
         ['service' => 'Tarifa', 'version' => ['v1'], 'default' => 'v1'],
-        ['service' => 'Saque', 'version' => ['v1','v2'], 'default' => 'v2'],
+        ['service' => 'Saque', 'version' => ['v1', 'v2'], 'default' => 'v2'],
         ['service' => 'Transferencia', 'version' => ['v1', 'v2'], 'default' => 'v2'],
         ['service' => 'UsuarioCliente', 'version' => ['v1'], 'default' => 'v1'],
         ['service' => 'MensagemSMS', 'version' => ['v1'], 'default' => 'v1'],
