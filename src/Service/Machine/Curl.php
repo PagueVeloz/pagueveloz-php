@@ -38,6 +38,7 @@ class Curl extends \PagueVeloz\Service\Machine\CurlDTO implements \PagueVeloz\Se
         $opt[CURLOPT_URL] = trim($this->url);
         $opt[CURLOPT_CUSTOMREQUEST] = $this->method;
         $opt[CURLOPT_RETURNTRANSFER] = 1;
+        $opt[CURLOPT_TIMEOUT] = 30;
 
         if (!empty($this->urlReferer)) {
             $opt[CURLOPT_REFERER] = $this->urlReferer;

@@ -279,7 +279,6 @@ abstract class PagueVeloz
             break;
         }
 
-
         return $service;
     }
 
