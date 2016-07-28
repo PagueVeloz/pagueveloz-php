@@ -36,6 +36,16 @@ class Saque extends ServiceProvider implements InterfaceApi
         return $this->init();
     }
 
+    public function GetByPeriodo($dtInicial, $dtFinal)
+    {
+        $this->method = 'GET';
+        $this->Authorization();
+
+        $this->url = sprintf('%s/Filtro?inicio=%s&fim=%s', $this->url, $dtInicial, $dtFinal);
+
+        return $this->init();
+    }
+
     public function Post()
     {
         if ($this->isEmpty($this->dto->getRequest())) {
