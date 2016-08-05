@@ -29,7 +29,7 @@ abstract class AbstractDTO extends ObjectFactory
                 }
             } elseif (is_object($element)) {
                 $response[$key] = $element->toArray();
-            } elseif ($element || $element == 0) {
+            } elseif (strlen($element) > 0) {
                 $response[$key] = utf8_encode($element);
             }
         }
