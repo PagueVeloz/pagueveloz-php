@@ -23,12 +23,11 @@ abstract class AbstractDTO extends ObjectFactory
     {
         $response = [];
         foreach ($array as $key => $element) {
-            if (is_array($element)) {
+
+            if (is_array($element) || is_object($element)) {
                 if ($child = $this->__request($element)) {
                     $response[$key] = $child;
                 }
-            } elseif (is_object($element)) {
-                $response[$key] = $element->toArray();
             } elseif (strlen($element) > 0) {
                 $response[$key] = utf8_encode($element);
             }
