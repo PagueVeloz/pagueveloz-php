@@ -30,7 +30,7 @@
 </p>
 
 <p align="center">
-Cliente PHP da API do [PagueVeloz](https://www.pagueveloz.com.br), com base nas informações contidas no [help](https://www.pagueveloz.com.br/help).
+Cliente PHP da API do <a href="https://www.pagueveloz.com.br">PagueVeloz</a>, com base nas informações contidas no <a href="https://www.pagueveloz.com.br/help">help</a>.
 </p>
 
 **Pré-requisitos**
