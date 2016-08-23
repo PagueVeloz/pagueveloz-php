@@ -36,8 +36,8 @@ Cliente PHP da API do <a href="https://www.pagueveloz.com.br">PagueVeloz</a>, co
 **Pré-requisitos**
 
  * PHP 5.4 ou superior
- * extensão cURL
- * [composer](https://getcomposer.org)
+ * Extensão cURL
+ * [Composer](https://getcomposer.org)
 
 **Instalação via composer:**
 ```
@@ -47,11 +47,16 @@ composer require pagueveloz/pagueveloz
 ## Serviços disponíveis:
 |                   	| V1 	| V2 	| V3 	|V4  |
 |-------------------	|----	|----	|----	|----|
+| Assinar           	|    	|   	|    	| x  |
+| Boleto            	|    	|   	| x  	|    |
 | Cep               	| x  	|    	|    	|    |
 | Cliente           	| x  	|    	|    	|    |
+| CreditoSMS        	| x  	|    	|    	|    |
 | Consultar         	| x  	|    	|    	|    |
 | ConsultarBoleto   	| x  	|    	|    	|    |
-| CreditoSMS        	| x  	|    	|    	|    |
+| ComprarCreditoSMS 	|    	| x  	|    	|    |
+| Consultar         	|    	| x  	|    	|    |
+| ContaBancaria     	|    	| x  	|    	| x  |
 | DefaultBoleto     	| x  	|    	|    	|    |
 | Extrato           	| x  	|    	|    	|    |
 | MensagemSMS       	| x  	|    	|    	|    |
@@ -62,11 +67,6 @@ composer require pagueveloz/pagueveloz
 | Tarifa            	| x  	|    	|    	|    |
 | Transferencia     	| x  	|    	|    	|    |
 | UsuarioCliente    	| x  	|    	|    	|    |
-| Assinar           	|    	|   	|    	| x  |
-| Boleto            	|    	|   	| x  	|    |
-| ComprarCreditoSMS 	|    	| x  	|    	|    |
-| Consultar         	|    	| x  	|    	|    |
-| ContaBancaria     	|    	| x  	|    	| x  |
 
 # Exemplos:
 
@@ -89,14 +89,14 @@ $assinar->dto
 
 $assinar->Post();
 ```
-Operações de financiamento via cartão digitado
+## Operações de financiamento via cartão digitado
+
+> Obs.: O cliente deve ter o termo CHARGEBACK assinado com o PAGUEVELOZ
+
+Verificar se a operação de Financiamento via VendaDigitada está habilitada para o cliente:
+
 ```php
 <?php
-
-/**
- * Verificar se a operação de Financiamento via VendaDigitada está habilitada para o cliente
- * Obs.: Cliente deve ter o termo CHARGEBACK assinado com o PAGUEVELOZ
- */
 $cartaoHabilitado = PagueVeloz::CartaoHabilitado();
 
 $cartaoHabilitado->auth->setEmail('suaassinaturacompagueveloz@dominio.com')
@@ -108,9 +108,6 @@ $response = $cartaoHabilitado->Get();
 $cartaoHabilitado = (bool)$response->body;
 
 /**
- * Lista as Bandeiras disponíveis para o cliente
- *
- * Response final será um object json ex:
  * [{
  *    "Id": "33",
  *    "Nome": "Diners"
@@ -124,7 +121,11 @@ $cartaoHabilitado = (bool)$response->body;
  *    "Nome": "Visa"
  *  }]
  */
+```
 
+Listagem de parcelas por bandeira:
+
+```php
 $bandeiras = PagueVeloz::BandeirasCartao();
 
 $bandeiras->auth->setEmail('suaassinaturacompagueveloz@dominio.com')
@@ -136,9 +137,6 @@ $response = $bandeiras->Get();
 $bandeiras = json_decode($response->body);
 
 /**
- * Listagem de parcelas para a bandeira selecionada
- *
- * Ex.Retorno:
  * [{
  *   "Parcelas": 1,
  *   "ValorParcela": 510,
@@ -152,7 +150,11 @@ $bandeiras = json_decode($response->body);
  *   "ValorTotal": 514
  * }]
  */
+```
 
+Criando uma transação:
+
+```php
 $parcelamento = PagueVeloz::Parcelamento();
 
 $parcelamento->auth->setEmail('suaassinaturacompagueveloz@dominio.com')
@@ -167,10 +169,14 @@ $response = $parcelamento->Get();
 $parcelamento = json_decode($response->body);
 
 /**
- * Cria transação com o PagueVeloz
- *
- * Caso o request retorne 200 a api retorna o Id da transação no PagueVeloz Ex. 740
+ * Caso o request retorne 200 a api retorna o Id da transação no PagueVeloz
+ * { "Id": 123 }
  */
+```
+
+Fazendo um pagamento:
+
+```php
 $transacaoPV = PagueVeloz::Transacao();
 
 $transacaoPV->auth->setEmail('suaassinaturacompagueveloz@dominio.com')
@@ -199,9 +205,7 @@ $response = $transacaoPV->Post();
 $transacaoPagueVeloz = json_decode($response->body);
 
 /**
- * 	Faz o pagamento no PagueVeloz
- *
- *  Ex.Response Recusa:
+ * Ex. recusa:
  * {
  *  "Id": 740,
  *  "Sucesso": false,
@@ -211,7 +215,7 @@ $transacaoPagueVeloz = json_decode($response->body);
  *  "CupomCliente": null
  *}
  *
- * Ex.OK:
+ * Ex. OK:
  * {
  * "Id": 740,
  * "Sucesso": true,
@@ -221,6 +225,11 @@ $transacaoPagueVeloz = json_decode($response->body);
  * "CupomCliente": "S...I...M...U...L...A...D...O...."
  *	}
  */
+```
+
+Confirmando ou cancelando um pagamento:
+
+```php
 $pagamento = PagueVeloz::Pagamento();
 
 $pagamento->auth
@@ -237,9 +246,6 @@ $pagamento->dto
 $response = $pagamento->Post();
 $pagamentoPagueVeloz = json_decode($response->body);
 
-/**
- * Confirma ou Cancela o Pagamento
- */
 $confirmaPagamento = PagueVeloz::Confirmacao();
 
 $confirmaPagamento->auth
@@ -253,11 +259,16 @@ $confirmaPagamento->dto
 
 $response = $confirmaPagamento->Post();
 ```
-Observação : Todo retorno será um objeto do tipo "PagueVeloz\Service\Context\HttpResponse"
+
+> Observação : Todo retorno será um objeto do tipo "PagueVeloz\Service\Context\HttpResponse"
 
 ### Serviços com autenticação
 
 Serviços que necessitem de autenticação devem enviar o cabeçalho ***"Authentication"*** com o valor ***"Basic valor"***, sendo ***"valor"*** igual ao texto em base64 do e-mail do usuário concatenado com o caracter ":" concatenado com o token do usuário.
+
+```php
+base64_encode("email@dominio.com.br" . ":" "token");
+```
 
 ### Serviços sem autenticação
 
