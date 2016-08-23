@@ -267,7 +267,7 @@ $response = $confirmaPagamento->Post();
 Serviços que necessitem de autenticação devem enviar o cabeçalho ***"Authentication"*** com o valor ***"Basic valor"***, sendo ***"valor"*** igual ao texto em base64 do e-mail do usuário concatenado com o caracter ":" concatenado com o token do usuário.
 
 ```php
-base64_encode("email@dominio.com.br" . ":" "token");
+base64_encode("email@dominio.com.br" . ":" . "token");
 ```
 
 ### Serviços sem autenticação
