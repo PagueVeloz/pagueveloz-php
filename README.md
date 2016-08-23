@@ -1,12 +1,33 @@
-![PagueVeloz](https://www.pagueveloz.com.br/Content/Img/logo-pagueveloz-topo_03.png "PagueVeloz")
+<p align="center">
+<img src="https://www.pagueveloz.com.br/Content/Img/logo-pagueveloz-topo_03.png" alt="PagueVeloz"/>
+</p>
 
-[![StyleCI](https://styleci.io/repos/27489184/shield)](https://styleci.io/repos/27489184)
-[![Build Status](https://travis-ci.org/PagueVeloz/pagueveloz-php.svg)](https://travis-ci.org/PagueVeloz/pagueveloz-php)
-[![codecov](https://codecov.io/gh/PagueVeloz/pagueveloz-php/branch/master/graph/badge.svg)](https://codecov.io/gh/PagueVeloz/pagueveloz-php)
-[![Latest Stable Version](https://poser.pugx.org/pagueveloz/pagueveloz/v/stable)](https://packagist.org/packages/pagueveloz/pagueveloz)
-[![Total Downloads](https://poser.pugx.org/pagueveloz/pagueveloz/downloads)](https://packagist.org/packages/pagueveloz/pagueveloz)
-[![Latest Unstable Version](https://poser.pugx.org/pagueveloz/pagueveloz/v/unstable)](https://packagist.org/packages/pagueveloz/pagueveloz)
-[![License](https://poser.pugx.org/pagueveloz/pagueveloz/license)](https://packagist.org/packages/pagueveloz/pagueveloz)
+<p align="center">
+<a href="https://styleci.io/repos/27489184">
+<img src="https://styleci.io/repos/27489184/shield" alt="StyleCI"/>
+</a>
+<a href="https://travis-ci.org/PagueVeloz/pagueveloz-php">
+<img src="https://travis-ci.org/PagueVeloz/pagueveloz-php.svg" alt="Build Status"/>
+</a>
+<a href="https://codecov.io/gh/PagueVeloz/pagueveloz-php">
+<img src="https://codecov.io/gh/PagueVeloz/pagueveloz-php/branch/master/graph/badge.svg" alt="codecov"/>
+</a>
+</p>
+
+<p align="center">
+<a href="https://packagist.org/packages/pagueveloz/pagueveloz">
+<img src="https://poser.pugx.org/pagueveloz/pagueveloz/v/stable" alt="Latest Stable Version"/>
+</a>
+<a href="https://packagist.org/packages/pagueveloz/pagueveloz">
+<img src="https://poser.pugx.org/pagueveloz/pagueveloz/downloads" alt="Total Downloads"/>
+</a>
+<a href="https://packagist.org/packages/pagueveloz/pagueveloz">
+<img src="https://poser.pugx.org/pagueveloz/pagueveloz/v/unstable" alt="Unstable Version"/>
+</a>
+<a href="https://packagist.org/packages/pagueveloz/pagueveloz">
+<img src="https://poser.pugx.org/pagueveloz/pagueveloz/license" alt="License"/>
+</a>
+</p>
 
 > Cliente PHP da API do [PagueVeloz](https://www.pagueveloz.com.br), com base nas informações contidas no [help](https://www.pagueveloz.com.br/help) .
 
