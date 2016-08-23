@@ -29,7 +29,9 @@
 </a>
 </p>
 
-> Cliente PHP da API do [PagueVeloz](https://www.pagueveloz.com.br), com base nas informações contidas no [help](https://www.pagueveloz.com.br/help) .
+<p align="center">
+Cliente PHP da API do [PagueVeloz](https://www.pagueveloz.com.br), com base nas informações contidas no [help](https://www.pagueveloz.com.br/help).
+</p>
 
 **Pré-requisitos**
 
