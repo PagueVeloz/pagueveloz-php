@@ -4,12 +4,12 @@ namespace PagueVeloz\Api\Common\Dto;
 
 class UsuarioNaGravacaoDTO extends \PagueVeloz\AbstractDTO
 {
-    protected $Nome = null;
-    protected $Email = null;
-    protected $Senha = null;
-    protected $ConfirmacaoSenha = null;
-    protected $Ativo = null;
-    protected $Id = null;
+    protected $Nome;
+    protected $Email;
+    protected $Senha;
+    protected $ConfirmacaoSenha;
+    protected $Ativo;
+    protected $Id;
 
     public function getNotEmpty()
     {

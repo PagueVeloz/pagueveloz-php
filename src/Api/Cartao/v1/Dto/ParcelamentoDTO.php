@@ -4,7 +4,7 @@ namespace PagueVeloz\Api\Cartao\v1\Dto;
 
 class ParcelamentoDTO extends \PagueVeloz\AbstractDTO
 {
-    protected $Bandeira = null;
+    protected $Bandeira;
     protected $Valor = 0;
 
     public function getNotEmpty()

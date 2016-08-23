@@ -6,15 +6,15 @@ use PagueVeloz\Api\Common\Dto\CepDTO;
 
 class AssinarDTO extends \PagueVeloz\AbstractDTO
 {
-    protected $Nome = null;
-    protected $Documento = null;
+    protected $Nome;
+    protected $Documento;
     protected $TipoPessoa = 0; // 0=NaoDefinido|1=Fisica|2=Juridica
-    protected $LoginUsuarioDefault = null;
-    protected $Email = null;
-    protected $UrlNotificacao = null;
-    protected $Endereco = null;
-    protected $Cupom = null;
-    protected $Id = null;
+    protected $LoginUsuarioDefault;
+    protected $Email;
+    protected $UrlNotificacao;
+    protected $Endereco;
+    protected $Cupom;
+    protected $Id;
 
     public function __construct()
     {

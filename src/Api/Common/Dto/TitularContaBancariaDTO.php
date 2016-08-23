@@ -8,9 +8,9 @@ class TitularContaBancariaDTO extends \PagueVeloz\AbstractDTO
     const TIPO_PESSOA_FISICA = 1;
     const TIPO_PESSOA_JURIDICA = 2;
 
-    protected $Nome = null;
-    protected $Documento = null;
-    protected $TipoPessoa = null;
+    protected $Nome;
+    protected $Documento;
+    protected $TipoPessoa;
 
     public function getNotEmpty()
     {

@@ -8,7 +8,7 @@ class HttpResponse extends \PagueVeloz\ObjectFactory
 
     protected $contentType = 'Content-type: application/json';
 
-    protected $headers = null;
+    protected $headers;
 
-    protected $body = null;
+    protected $body;
 }

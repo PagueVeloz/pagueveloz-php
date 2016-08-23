@@ -10,9 +10,9 @@ use PagueVeloz\Service\Machine\Curl;
 
 abstract class ServiceProvider extends Curl
 {
-    protected $uri = null;
-    protected $auth = null;
-    protected $dto = null;
+    protected $uri;
+    protected $auth;
+    protected $dto;
     protected $isOperationCartao = false;
 
     public function __construct()

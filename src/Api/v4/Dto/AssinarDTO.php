@@ -12,19 +12,19 @@ class AssinarDTO extends \PagueVeloz\AbstractDTO
     const TIPO_PESSOA_FISICA = 1;
     const TIPO_PESSOA_JURIDICA = 2;
 
-    protected $Id = null;
-    protected $Nome = null;
-    protected $Documento = null;
-    protected $TipoPessoa = 0;
-    protected $Email = null;
-    protected $UrlNotificacao = null;
-    protected $Endereco = null;
-    protected $Cupom = null;
-    protected $Telefones = null;
-    protected $InscricaoEstadual = null;
-    protected $InscricaoMunicipal = null;
-    protected $Usuario = null;
-    protected $DataNascimento = null;
+    protected $Id;
+    protected $Nome;
+    protected $Documento;
+    protected $TipoPessoa;
+    protected $Email;
+    protected $UrlNotificacao;
+    protected $Endereco;
+    protected $Cupom;
+    protected $Telefones;
+    protected $InscricaoEstadual;
+    protected $InscricaoMunicipal;
+    protected $Usuario;
+    protected $DataNascimento;
 
     public function __construct()
     {

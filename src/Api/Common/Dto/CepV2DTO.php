@@ -4,12 +4,12 @@ namespace PagueVeloz\Api\Common\Dto;
 
 class CepV2DTO extends \PagueVeloz\AbstractDTO
 {
-    protected $Cidade = null;
-    protected $Logradouro = null;
-    protected $Numero = null;
-    protected $CEP = null;
-    protected $Bairro = null;
-    protected $Complemento = null;
+    protected $Cidade;
+    protected $Logradouro;
+    protected $Numero;
+    protected $CEP;
+    protected $Bairro;
+    protected $Complemento;
 
     public function __construct()
     {

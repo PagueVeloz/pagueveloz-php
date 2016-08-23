@@ -4,9 +4,9 @@ namespace PagueVeloz\Api\Common;
 
 class Auth
 {
-    protected $Email = null;
-    protected $Senha = null;
-    protected $Token = null;
+    protected $Email;
+    protected $Senha;
+    protected $Token;
 
     public function getAuthorization()
     {

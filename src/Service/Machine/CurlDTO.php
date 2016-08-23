@@ -4,9 +4,9 @@ namespace PagueVeloz\Service\Machine;
 
 class CurlDTO extends \PagueVeloz\ObjectFactory
 {
-    protected $host = null;
-    protected $url = null;
-    protected $urlReferer = null;
+    protected $host;
+    protected $url;
+    protected $urlReferer;
     protected $method = 'GET';
     protected $headers = [];
     protected $proxy = false;
