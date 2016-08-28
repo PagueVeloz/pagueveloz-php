@@ -8,8 +8,15 @@ else
     TESTFILE="./phpunit.xml.dist"
 fi
 
-# number of parallel jobs
-NUMJOBS="$(($(nproc)+1))"
+# --coverage-clover=coverage.xml
 
-# run paratest
-./vendor/bin/paratest --processes $NUMJOBS --functional --phpunit ./vendor/bin/phpunit --bootstrap ./vendor/autoload.php --configuration $TESTFILE --colors --path ./tests/
+# run tests
+./vendor/bin/paratest \
+$COVERAGE \
+--colors \
+--functional \
+--path ./tests/ \
+--processes $(($(nproc)+1)) \
+--configuration $TESTFILE \
+--phpunit ./vendor/bin/phpunit \
+--runner ParaTest\\Runners\\WrapperRunner
