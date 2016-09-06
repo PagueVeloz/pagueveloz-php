@@ -2,7 +2,6 @@
 
 namespace PagueVeloz\Service\Machine;
 
-use PagueVeloz\LogProvider;
 use PagueVeloz\Service\Context\HttpRequest;
 use PagueVeloz\Service\Context\HttpResponse;
 
@@ -74,17 +73,6 @@ class Curl extends \PagueVeloz\Service\Machine\CurlDTO implements \PagueVeloz\Se
         $response->body = $this->request;
 
         curl_close($init);
-
-        if ($this->log) {
-            if (isset($request) && !empty($request)) {
-                LogProvider::Info(sprintf('Request (%s)', $this->url.' '.$this->method), json_decode($request->body, true));
-            }
-
-            LogProvider::Info(sprintf('Headers (%s)', $this->url), $this->headers);
-            LogProvider::Info(sprintf('Response RAW (%s)', $this->url.' '.$this->method), [$this->request]);
-            LogProvider::Info(sprintf('Response  (%s)', $this->url.' '.$this->method), $response->toArray());
-        }
-
         return $response;
     }
 }

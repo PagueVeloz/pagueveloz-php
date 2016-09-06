@@ -5,7 +5,6 @@ namespace PagueVeloz\Api\v4;
 use TestCase;
 use PagueVeloz\PagueVeloz;
 use PagueVeloz\Api\v4\Dto\AssinarDTOTest;
-use PagueVeloz\LogProvider;
 
 class AssinarTest extends TestCase
 {
@@ -80,7 +79,6 @@ class AssinarTest extends TestCase
         $result = $this->assinar->Post();
         $this->assertTrue(in_array($result->status, [200, 201, 204]), $result->body);
 
-        LogProvider::Info(dr($result));
         $responseArray = json_decode($result->body, true);
         $this->assertInternalType('array', $responseArray);
         $this->assertArrayHasKey('Token', $responseArray);
@@ -102,7 +100,6 @@ class AssinarTest extends TestCase
 
         $result = $this->assinar->Post();
         $this->assertTrue(in_array($result->status, [200, 201, 204]), $result->body);
-        LogProvider::Info(dr($result));
         $responseArray = json_decode($result->body, true);
         $this->assertInternalType('array', $responseArray);
         $this->assertArrayHasKey('Token', $responseArray);
