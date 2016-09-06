@@ -73,6 +73,7 @@ class Curl extends \PagueVeloz\Service\Machine\CurlDTO implements \PagueVeloz\Se
         $response->body = $this->request;
 
         curl_close($init);
+
         return $response;
     }
 }
