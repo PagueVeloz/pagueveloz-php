@@ -59,7 +59,7 @@ class Cliente extends ServiceProvider implements InterfaceApi
     {
         $this->method = 'GET';
         $this->Authorization();
-        $this->url = sprintf('/%s/DocumentosPendentes', $this->url);
+        $this->url = sprintf('%s/DocumentosPendentes', $this->url);
 
         return $this->init();
     }
@@ -68,7 +68,7 @@ class Cliente extends ServiceProvider implements InterfaceApi
     {
         $this->method = 'PUT';
         $this->Authorization();
-        $this->url = sprintf('/%s/DocumentosPendentes', $this->url);
+        $this->url = sprintf('%s/DocumentosPendentes', $this->url);
 
         $request = new HttpRequest();
 
@@ -81,7 +81,7 @@ class Cliente extends ServiceProvider implements InterfaceApi
     {
         $this->method = 'GET';
         $this->Authorization();
-        $this->url = sprintf('/%s/DocumentosEnviados/%s/Baixar', $this->url, $id);
+        $this->url = sprintf('%s/DocumentosEnviados/%s/Baixar', $this->url, $id);
 
         return $this->init();
     }

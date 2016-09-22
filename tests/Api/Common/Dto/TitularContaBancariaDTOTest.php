@@ -64,7 +64,7 @@ class TitularContaBancariaDTOTest extends TestCase
 
     public function testSetTipoPessoa()
     {
-        $tipo = $this->faker->randomElement([0,1,2]);
+        $tipo = $this->faker->randomElement([0, 1, 2]);
 
         $this->dto->setTipoPessoa($tipo);
 

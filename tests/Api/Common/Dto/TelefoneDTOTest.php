@@ -43,7 +43,7 @@ class TelefoneDTOTest extends TestCase
 
     public function testSetTipo()
     {
-        $tipo = $this->faker->randomElement([1,2,4]);
+        $tipo = $this->faker->randomElement([1, 2, 4]);
 
         $this->dto->setTipo($tipo);
 
