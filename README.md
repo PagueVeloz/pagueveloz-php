@@ -15,21 +15,6 @@
 </p>
 
 <p align="center">
-<a href="https://packagist.org/packages/pagueveloz/pagueveloz">
-<img src="https://poser.pugx.org/pagueveloz/pagueveloz/v/stable" alt="Latest Stable Version"/>
-</a>
-<a href="https://packagist.org/packages/pagueveloz/pagueveloz">
-<img src="https://poser.pugx.org/pagueveloz/pagueveloz/downloads" alt="Total Downloads"/>
-</a>
-<a href="https://packagist.org/packages/pagueveloz/pagueveloz">
-<img src="https://poser.pugx.org/pagueveloz/pagueveloz/v/unstable" alt="Unstable Version"/>
-</a>
-<a href="https://packagist.org/packages/pagueveloz/pagueveloz">
-<img src="https://poser.pugx.org/pagueveloz/pagueveloz/license" alt="License"/>
-</a>
-</p>
-
-<p align="center">
 Cliente PHP da API do <a href="https://www.pagueveloz.com.br">PagueVeloz</a>, com base nas informações contidas no <a href="https://www.pagueveloz.com.br/help">help</a>.
 </p>
 
@@ -44,7 +29,7 @@ Cliente PHP da API do <a href="https://www.pagueveloz.com.br">PagueVeloz</a>, co
 composer require pagueveloz/pagueveloz
 ```
 
-## Serviços disponíveis:
+### Serviços disponíveis:
 |                   	| V1 	| V2 	| V3 	|V4  |
 |-------------------	|----	|----	|----	|----|
 | Assinar           	|    	|   	|    	| x  |
@@ -70,7 +55,8 @@ composer require pagueveloz/pagueveloz
 
 # Exemplos:
 
-Assinar (Serviço de assinatura do PagueVeloz)
+### Assinar
+
 ```php
 require_once __DIR__."/vendor/autoload.php";
 
@@ -93,7 +79,7 @@ $assinar->Post();
 
 > Obs.: O cliente deve ter o termo CHARGEBACK assinado com o PAGUEVELOZ
 
-Verificar se a operação de Financiamento via VendaDigitada está habilitada para o cliente:
+#### Verificar se a operação de Financiamento via VendaDigitada está habilitada para o cliente:
 
 ```php
 <?php
@@ -122,8 +108,7 @@ $cartaoHabilitado = (bool)$response->body;
  *  }]
  */
 ```
-
-Listagem de parcelas por bandeira:
+#### Listagem de parcelas por bandeira:
 
 ```php
 $bandeiras = PagueVeloz::BandeirasCartao();
@@ -151,8 +136,7 @@ $bandeiras = json_decode($response->body);
  * }]
  */
 ```
-
-Criando uma transação:
+#### Criando uma transação:
 
 ```php
 $parcelamento = PagueVeloz::Parcelamento();
@@ -173,8 +157,7 @@ $parcelamento = json_decode($response->body);
  * { "Id": 123 }
  */
 ```
-
-Fazendo um pagamento:
+#### Fazendo um pagamento:
 
 ```php
 $transacaoPV = PagueVeloz::Transacao();
@@ -226,8 +209,7 @@ $transacaoPagueVeloz = json_decode($response->body);
  *	}
  */
 ```
-
-Confirmando ou cancelando um pagamento:
+#### Confirmando ou cancelando um pagamento:
 
 ```php
 $pagamento = PagueVeloz::Pagamento();
