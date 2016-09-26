@@ -15,22 +15,17 @@ use PagueVeloz\ServiceProvider;
 */
 class Cliente extends ServiceProvider implements InterfaceApi
 {
-    protected $documentoDoClienteDTO;
+    protected $dtoDocumentoDoCliente;
 
-    public function __construct(ClienteDTO $dto, DocumentoDoClienteDTO $documentoDoClienteDTO)
+    public function __construct(ClienteDTO $dto, DocumentoDoClienteDTO $dtoDocumentoDoCliente)
     {
         $this->dto = $dto;
-        $this->documentoDoClienteDTO = $documentoDoClienteDTO;
+        $this->dtoDocumentoDoCliente = $dtoDocumentoDoCliente;
         $this->uri = '/v3/Cliente';
 
         parent::__construct();
 
         return $this;
-    }
-
-    public function documentoDoClienteDTO()
-    {
-        return $this->documentoDoClienteDTO;
     }
 
     public function Get()
@@ -64,7 +59,7 @@ class Cliente extends ServiceProvider implements InterfaceApi
         return $this->init();
     }
 
-    public function PutDocumentosPendentes()
+    public function PutDocumentosPendentes(DocumentoDoClienteDTO $dto)
     {
         $this->method = 'PUT';
         $this->Authorization();
@@ -72,7 +67,7 @@ class Cliente extends ServiceProvider implements InterfaceApi
 
         $request = new HttpRequest();
 
-        $request->body = $this->dto->getRequest();
+        $request->body = $dto->getRequestInArrayJSON();
 
         return $this->init($request);
     }

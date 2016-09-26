@@ -18,6 +18,13 @@ class DocumentoDoClienteDTO extends \PagueVeloz\AbstractDTO
     protected $ConteudoArquivoBase64;
     protected $Id;
 
+    public function getRequestInArrayJSON()
+    {
+        $request = json_decode($this->getRequest());
+
+        return json_encode([$request]);
+    }
+
     /**
      * Gets the value of NomeArquivo.
      *
