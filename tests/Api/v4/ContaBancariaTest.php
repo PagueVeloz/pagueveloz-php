@@ -43,7 +43,7 @@ class ContaBancariaTest extends TestCase
      */
     public function testPostThrowExceptionIfNoParams()
     {
-        $response = $this->contaBancaria->Post();
+        $this->contaBancaria->Post();
     }
 
     public function testPostContaPropria()
@@ -258,7 +258,7 @@ class ContaBancariaTest extends TestCase
      */
     public function testPutThrowException()
     {
-        $result = $this->contaBancaria->Put(1);
+        $this->contaBancaria->Put(1);
     }
 
     /**

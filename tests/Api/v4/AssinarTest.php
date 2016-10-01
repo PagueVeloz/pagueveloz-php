@@ -42,7 +42,7 @@ class AssinarTest extends TestCase
      */
     public function testGet()
     {
-        $response = $this->assinar->Get();
+        $this->assinar->Get();
     }
 
     /**
@@ -50,7 +50,7 @@ class AssinarTest extends TestCase
      */
     public function testGetById()
     {
-        $response = $this->assinar->GetById(1);
+        $this->assinar->GetById(1);
     }
 
     /**
@@ -58,7 +58,7 @@ class AssinarTest extends TestCase
      */
     public function testPostThrowExceptionIfNoParams()
     {
-        $response = $this->assinar->Post();
+        $this->assinar->Post();
     }
 
     public function testPostHasPessoaFisica()
@@ -110,7 +110,7 @@ class AssinarTest extends TestCase
      */
     public function testPut()
     {
-        $response = $this->assinar->Put(1);
+        $this->assinar->Put(1);
     }
 
     /**
@@ -118,6 +118,6 @@ class AssinarTest extends TestCase
      */
     public function testDelete()
     {
-        $response = $this->assinar->Delete(1);
+        $this->assinar->Delete(1);
     }
 }

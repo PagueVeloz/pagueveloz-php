@@ -8,5 +8,4 @@ class ObjectFactorySub extends ObjectFactory
     protected $field2;
     protected $field3;
     protected $field4;
-    private $field5;
 }
