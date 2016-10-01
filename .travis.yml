@@ -22,8 +22,8 @@ before_script:
   - travis_retry composer install --prefer-dist --no-scripts --no-progress --optimize-autoloader --no-ansi --no-interaction --profile --no-plugins -vvv
 
 script:
-  - if [ "$TRAVIS_PHP_VERSION" = "5.6" ]; then  travis_retry bash -x COVERAGE='--coverage-clover=coverage.xml' ./run-tests.sh; fi
-  - if [ "$TRAVIS_PHP_VERSION" != "5.6" ]; then  travis_retry bash -x ./run-tests.sh; fi
+  - if [ "$TRAVIS_PHP_VERSION" = "5.6" ]; then  travis_retry bash -x COVERAGE='--coverage-clover=coverage.xml' phpdbg -qrr ./vendor/bin/phpunit; fi
+  - if [ "$TRAVIS_PHP_VERSION" != "5.6" ]; then  travis_retry bash -x phpdbg -qrr ./vendor/bin/phpunit; fi
 
 after_success:
   - if [ "$TRAVIS_PHP_VERSION" = "5.6" ]; then bash <(curl -s https://codecov.io/bash) -f coverage.xml -B $TRAVIS_BRANCH; fi
