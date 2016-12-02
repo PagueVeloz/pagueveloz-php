@@ -6,7 +6,7 @@ use TestCase;
 use PagueVeloz\Api\Common\Dto\CepV2DTO;
 use PagueVeloz\Api\Common\Dto\CidadeDTO;
 use PagueVeloz\Api\Common\Dto\TelefoneDTO;
-use PagueVeloz\Api\Common\Dto\UsuarioNaGravacaoDTO;
+use PagueVeloz\Api\Common\Dto\UsuarioNaAssinaturaDTO;
 
 class AssinarDTOTest extends TestCase
 {
@@ -137,7 +137,7 @@ class AssinarDTOTest extends TestCase
 
     public function testSetUsuario()
     {
-        $usuario = new UsuarioNaGravacaoDTO();
+        $usuario = new UsuarioNaAssinaturaDTO();
         $usuario->Nome = $this->faker->name;
         $usuario->Email = $this->faker->freeEmail;
         $senha = $this->faker->bothify('P????###');

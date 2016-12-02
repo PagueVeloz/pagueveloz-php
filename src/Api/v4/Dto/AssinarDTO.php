@@ -4,7 +4,7 @@ namespace PagueVeloz\Api\v4\Dto;
 
 use PagueVeloz\Api\Common\Dto\CepV2DTO;
 use PagueVeloz\Api\Common\Dto\TelefoneDTO;
-use PagueVeloz\Api\Common\Dto\UsuarioNaGravacaoDTO;
+use PagueVeloz\Api\Common\Dto\UsuarioNaAssinaturaDTO;
 
 class AssinarDTO extends \PagueVeloz\AbstractDTO
 {
@@ -29,7 +29,7 @@ class AssinarDTO extends \PagueVeloz\AbstractDTO
     public function __construct()
     {
         $this->setEndereco(new CepV2DTO());
-        $this->setUsuario(new UsuarioNaGravacaoDTO());
+        $this->setUsuario(new UsuarioNaAssinaturaDTO());
         $this->setTelefones([]);
     }
 
@@ -39,7 +39,6 @@ class AssinarDTO extends \PagueVeloz\AbstractDTO
                 'Nome',
                 'Documento',
                 'TipoPessoa',
-                'LoginUsuarioDefault',
                 'Email',
                 'Endereco',
                 'Telefones',
@@ -309,7 +308,7 @@ class AssinarDTO extends \PagueVeloz\AbstractDTO
      *
      * @return self
      */
-    public function setUsuario(UsuarioNaGravacaoDTO $Usuario)
+    public function setUsuario(UsuarioNaAssinaturaDTO $Usuario)
     {
         $this->Usuario = $Usuario;
 
