@@ -15,6 +15,10 @@ matrix:
         - php: nightly
     fast_finish: true
 
+cache:
+  directories:
+  - ./vendor
+
 before_script:
   - travis_retry composer self-update
   - travis_retry composer install --prefer-dist --no-scripts --no-progress --optimize-autoloader --no-ansi --no-interaction --profile --no-plugins -vvv
