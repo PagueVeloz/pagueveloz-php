@@ -78,7 +78,6 @@ class AssinarTest extends TestCase
 
         $result = $this->assinar->Post();
         $this->assertTrue(in_array($result->status, [200, 201, 204]), $result->body);
-
         $responseArray = json_decode($result->body, true);
         $this->assertInternalType('array', $responseArray, $result->body);
         $this->assertArrayHasKey('Token', $responseArray, $result->body);
