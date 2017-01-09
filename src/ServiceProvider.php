@@ -27,7 +27,6 @@ abstract class ServiceProvider extends Curl
 
         $this->ssl = true;
         $this->proxy = false;
-        $this->log = PagueVeloz::$isLog;
 
         if (!$this->isOperationCartao) {
             $this->host = PagueVeloz::$url;

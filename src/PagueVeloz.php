@@ -48,8 +48,6 @@ abstract class PagueVeloz
 
     public static $urlCartao;
 
-    public static $isLog = true;
-
     public static function ApiVersion($version)
     {
         self::$version = $version;
@@ -65,11 +63,6 @@ abstract class PagueVeloz
     public static function UrlCartao($url)
     {
         self::$urlCartao = $url;
-    }
-
-    public static function isLog($log)
-    {
-        self::$isLog = $log;
     }
 
     private static function GetVersion($service, $v)
