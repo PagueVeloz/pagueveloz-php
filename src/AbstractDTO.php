@@ -28,10 +28,15 @@ abstract class AbstractDTO extends ObjectFactory
                     $response[$key] = $child;
                 }
             } elseif (strlen($element) > 0) {
-                $response[$key] = utf8_encode($element);
+                $response[$key] = $this->isUTF8($element) ? $element : utf8_encode($element);
             }
         }
 
         return $response;
+    }
+
+    public function isUTF8($string)
+    {
+        return mb_detect_encoding($string.'x', 'UTF-8, ISO-8859-1') == 'UTF-8';
     }
 }
