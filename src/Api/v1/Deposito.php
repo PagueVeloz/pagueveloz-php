@@ -6,6 +6,7 @@ use PagueVeloz\Api\InterfaceApi;
 use PagueVeloz\Api\v1\Dto\DepositoDTO;
 use PagueVeloz\Service\Context\HttpRequest;
 use PagueVeloz\ServiceProvider;
+use PagueVeloz\Exception\NotImplementedException;
 
 class Deposito extends ServiceProvider implements InterfaceApi
 {
@@ -53,11 +54,11 @@ class Deposito extends ServiceProvider implements InterfaceApi
 
     public function Put($id = null)
     {
-        return $this->NoContent();
+        throw new NotImplementedException;
     }
 
     public function Delete($id)
     {
-        return $this->NoContent();
+        throw new NotImplementedException;
     }
 }
