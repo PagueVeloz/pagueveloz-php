@@ -81,6 +81,15 @@ class Cliente extends ServiceProvider implements InterfaceApi
         return $this->init();
     }
 
+    public function GetTermoChargebackCartao()
+    {
+        $this->method = 'GET';
+        $this->Authorization();
+        $this->url = sprintf('%s/TermoChargebackCartao/Baixar', $this->url);
+
+        return $this->init();
+    }
+
     public function Post()
     {
         throw new NotImplementedException();
