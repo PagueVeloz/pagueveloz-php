@@ -108,7 +108,7 @@ class DepositoTest extends TestCase
 
         $response = $this->deposito->GetById($id);
 
-        $this->assertInstanceOf(\PagueVeloz\Service\Context\HttpResponse::class, $response);
+        $this->assertInstanceOf('PagueVeloz\Service\Context\HttpResponse', $response);
         $this->assertEquals(200, $response->status);
         $this->assertJson($response->body);
         $response = json_decode($response->body, true);
