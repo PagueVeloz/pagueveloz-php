@@ -77,7 +77,7 @@ class AssinarTest extends TestCase
             ->setTelefones($dtoTest->testSetTelefones());
 
         $result = $this->assinar->Post();
-        $this->assertTrue(in_array($result->status, [200, 201, 204]), $result->body);
+        $this->assertTrue(in_array($result->status, [200, 201, 204]), $result->body, $result->body);
         $responseArray = json_decode($result->body, true);
         $this->assertInternalType('array', $responseArray, $result->body);
         $this->assertArrayHasKey('Token', $responseArray, $result->body);
