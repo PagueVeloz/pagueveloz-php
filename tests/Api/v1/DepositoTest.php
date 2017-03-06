@@ -65,7 +65,7 @@ class DepositoTest extends TestCase
 
         $response = $this->deposito->Post();
 
-        $this->assertTrue(in_array($response->status, [200, 201]));
+        $this->assertTrue(in_array($response->status, [200, 201]), $response->body);
         $this->assertJson($response->body);
 
         $response = json_decode($response->body, true);
