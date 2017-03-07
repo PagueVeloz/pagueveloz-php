@@ -88,6 +88,7 @@ class DepositoTest extends TestCase
         $this->assertJson($response->body);
         $response = json_decode($response->body, true);
         $this->assertGreaterThan(0, count($response));
+        $hasId = false;
         foreach($response as $deposito) {
             $this->assertArrayHasKey('Banco', $deposito);
             $this->assertArrayHasKey('Status', $deposito);
@@ -95,8 +96,11 @@ class DepositoTest extends TestCase
             $this->assertArrayHasKey('DataSolicitacao', $deposito);
             $this->assertArrayHasKey('DataProcessamento', $deposito);
             $this->assertArrayHasKey('Id', $deposito);
+            if ($deposito['Id'] == $id) {
+                $hasId = true;
+            }
         }
-        $this->assertContains($id, array_column($response, 'Id'));
+        $this->assertTrue($hasId, 'Um Id cadastrado com post() deve ser recuperável pelo get()');
     }
 
     /**
