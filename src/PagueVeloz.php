@@ -12,7 +12,7 @@ abstract class PagueVeloz
         ['service' => 'Cliente', 'version' => ['v1', 'v3'], 'default' => 'v3'],
         ['service' => 'Consultar', 'version' => ['v1', 'v2'], 'default' => 'v2'],
         ['service' => 'CreditoSMS', 'version' => ['v1'], 'default' => 'v1'],
-        ['service' => 'Extrato', 'version' => ['v1'], 'default' => 'v1'],
+        ['service' => 'Extrato', 'version' => ['v1','v2'], 'default' => 'v2'],
         ['service' => 'Saldo', 'version' => ['v1'], 'default' => 'v1'],
         ['service' => 'Tarifa', 'version' => ['v1'], 'default' => 'v1'],
         ['service' => 'Saque', 'version' => ['v1', 'v2'], 'default' => 'v2'],
@@ -441,6 +441,12 @@ abstract class PagueVeloz
         case 'v1':
 
             $service = new \PagueVeloz\Api\v1\Extrato();
+            break;
+
+        }
+        case 'v2':
+
+            $service = new \PagueVeloz\Api\v2\Extrato();
             break;
 
         }
