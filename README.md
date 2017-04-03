@@ -43,7 +43,7 @@ composer require pagueveloz/pagueveloz
 | Consultar         	|    	| x  	|    	|    |
 | ContaBancaria     	|    	| x  	|    	| x  |
 | DefaultBoleto     	| x  	|    	|    	|    |
-| Extrato           	| x  	|    	|    	|    |
+| Extrato           	|   	| x    	|    	|    |
 | MensagemSMS       	| x  	|    	|    	|    |
 | PacoteSMS         	| x  	|    	|    	|    |
 | Ping              	| x  	|    	|    	|    |
