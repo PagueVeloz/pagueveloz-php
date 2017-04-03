@@ -443,7 +443,7 @@ abstract class PagueVeloz
             $service = new \PagueVeloz\Api\v1\Extrato();
             break;
 
-        }
+
         case 'v2':
 
             $service = new \PagueVeloz\Api\v2\Extrato();
