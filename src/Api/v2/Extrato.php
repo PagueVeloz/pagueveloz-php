@@ -3,8 +3,8 @@
 namespace PagueVeloz\Api\v2;
 
 use PagueVeloz\Api\InterfaceApi;
-use PagueVeloz\ServiceProvider;
 use PagueVeloz\Exception\NotImplementedException;
+use PagueVeloz\ServiceProvider;
 
 class Extrato extends ServiceProvider implements InterfaceApi
 {
@@ -39,6 +39,7 @@ class Extrato extends ServiceProvider implements InterfaceApi
         $this->Authorization();
 
         $this->url = sprintf('%s?inicio=%s&fim=%s', $this->url, $_inicio->format('Y-m-d'), $_final->format('Y-m-d'));
+
         return $this->init();
     }
 
