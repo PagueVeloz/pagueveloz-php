@@ -20,7 +20,7 @@ before_script:
   - travis_retry composer install --prefer-dist --no-scripts --no-progress --optimize-autoloader --no-ansi --no-interaction --profile --no-plugins -vvv
 
 script:
-    - if [ "$TRAVIS_PHP_VERSION" = "7.0" ]; then  travis_retry composer test:ci; fi
+  - if [ "$TRAVIS_PHP_VERSION" = "7.0" ]; then  travis_retry composer test:ci; fi
   - if [ "$TRAVIS_PHP_VERSION" != "7.0" ]; then  travis_retry composer test; fi
 
 after_success:
