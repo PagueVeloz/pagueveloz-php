@@ -46,6 +46,9 @@
         "test": [
             "./vendor/bin/paratest --configuration ./phpunit.xml --phpunit ./vendor/bin/phpunit ./tests"
         ],
+        "test:ci-parallel": [
+            "./vendor/bin/paratest --configuration ./phpunit.xml.dist --phpunit ./vendor/bin/phpunit ./tests"
+        ],
         "test:ci": [
             "./vendor/bin/phpunit --coverage-clover=coverage.xml"
         ]

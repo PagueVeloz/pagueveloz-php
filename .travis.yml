@@ -21,7 +21,7 @@ before_script:
 
 script:
   - if [ "$TRAVIS_PHP_VERSION" = "7.0" ]; then  travis_retry composer test:ci; fi
-  - if [ "$TRAVIS_PHP_VERSION" != "7.0" ]; then  travis_retry composer test; fi
+  - if [ "$TRAVIS_PHP_VERSION" != "7.0" ]; then  travis_retry composer test:ci-parallel; fi
 
 after_success:
   - if [ "$TRAVIS_PHP_VERSION" = "7.0" ]; then bash <(curl -s https://codecov.io/bash) -f coverage.xml -B $TRAVIS_BRANCH; fi
