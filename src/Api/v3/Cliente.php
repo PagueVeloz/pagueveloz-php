@@ -61,13 +61,21 @@ class Cliente extends ServiceProvider implements InterfaceApi
 
     public function PutDocumentosPendentes(DocumentoDoClienteDTO $dto)
     {
+        $dto = json_encode(array_map(function ($element) {
+            if (!$element instanceof DocumentoDoClienteDTO) {
+                throw new \Exception("Objeto Documento do Cliente inválido.", 1);
+            }
+
+           return json_decode($element->getRequest());
+        }, $dto));
+
         $this->method = 'PUT';
         $this->Authorization();
         $this->url = sprintf('%s/DocumentosPendentes', $this->url);
 
         $request = new HttpRequest();
 
-        $request->body = $dto->getRequestInArrayJSON();
+        $request->body = $dto;
 
         return $this->init($request);
     }
