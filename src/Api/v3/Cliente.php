@@ -59,25 +59,56 @@ class Cliente extends ServiceProvider implements InterfaceApi
         return $this->init();
     }
 
-    public function PutDocumentosPendentes(DocumentoDoClienteDTO $dto)
+    public function PutSolicitaPaginaAdicional($id)
     {
-        $dto = json_encode(array_map(function ($element) {
-            if (!$element instanceof DocumentoDoClienteDTO) {
-                throw new \Exception('Objeto Documento do Cliente inválido.', 1);
-            }
-
-            return json_decode($element->getRequest());
-        }, $dto));
 
         $this->method = 'PUT';
         $this->Authorization();
-        $this->url = sprintf('%s/DocumentosPendentes', $this->url);
-
+        $this->url = sprintf('%s/DocumentosPendentes/%s/SolicitarPaginaAdicional', $this->url, $id);
         $request = new HttpRequest();
 
-        $request->body = $dto;
+       $request->body = '';
 
-        return $this->init($request);
+       return $this->init($request);
+    }
+
+    public function PutDocumentosPendentes(Array $dto)
+    {
+        $url = $this->url;
+
+       $firstDto = array_shift($dto);
+
+            $dto = array_map(function ($element) use ($url) {
+            if (!$element instanceof DocumentoDoClienteDTO) {
+                throw new \Exception("Objeto inválido", 1);
+            }
+
+            $this->url = $url;
+            $response = $this->PutSolicitaPaginaAdicional($element->Id);
+
+           if (!in_array($response->status, [200, 201])) {
+
+               throw new \Exception("Problema ao criar pagina adicional", 1);
+            }
+
+           $paginaAdicional = json_decode($response->body);
+
+           $element->Id = $paginaAdicional->Id;
+
+           return json_decode($element->getRequest());
+        }, $dto);
+
+       array_push($dto, json_decode($firstDto->getRequest()));
+
+       $this->method = 'PUT';
+        $this->Authorization();
+        $this->url = sprintf('%s/DocumentosPendentes', $url);
+
+       $request = new HttpRequest();
+
+       $request->body = $dto;
+
+       return $this->init($request);
     }
 
     public function GetDocumentosEnviados($id)
