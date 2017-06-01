@@ -79,14 +79,14 @@ class Cliente extends ServiceProvider implements InterfaceApi
 
         $dto = array_map(function ($element) use ($url) {
             if (!$element instanceof DocumentoDoClienteDTO) {
-                throw new \Exception("Objeto inválido", 1);
+                throw new \Exception('Objeto inválido', 1);
             }
 
             $this->url = $url;
             $response = $this->PutSolicitaPaginaAdicional($element->Id);
 
             if (!in_array($response->status, [200, 201])) {
-                throw new \Exception("Problema ao criar pagina adicional", 1);
+                throw new \Exception('Problema ao criar pagina adicional', 1);
             }
 
             $paginaAdicional = json_decode($response->body);
