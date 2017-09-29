@@ -55,7 +55,7 @@ class DepositoTest extends TestCase
             ->setId(1);
 
         $this->deposito->dto
-            ->setValor($this->faker->randomFloat(2,0,100))
+            ->setValor($this->faker->randomFloat(2, 0, 100))
             ->setComprovanteBase64(base64_encode($this->faker->text))
             ->setNomeArquivoComprovante($this->faker->lexify("????.pdf"))
             ->setContaBancaria($contaBancariaDTO)
@@ -89,7 +89,7 @@ class DepositoTest extends TestCase
         $response = json_decode($response->body, true);
         $this->assertGreaterThan(0, count($response));
         $hasId = false;
-        foreach($response as $deposito) {
+        foreach ($response as $deposito) {
             $this->assertArrayHasKey('Banco', $deposito);
             $this->assertArrayHasKey('Status', $deposito);
             $this->assertArrayHasKey('Valor', $deposito);
