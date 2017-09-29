@@ -24,7 +24,7 @@ abstract class PagueVeloz
         ['service' => 'DefaultBoleto', 'version' => ['v1'], 'default' => 'v1'],
         ['service' => 'ConsultarBoleto', 'version' => ['v1'], 'default' => 'v1'],
         ['service' => 'ContaBancaria', 'version' => ['v1', 'v2', 'v3', 'v4'], 'default' => 'v4'],
-        ['service' => 'Boleto', 'version' => ['v2', 'v3'], 'default' => 'v3'],
+        ['service' => 'Boleto', 'version' => ['v2', 'v3', 'v4'], 'default' => 'v4'],
         ['service' => 'ComprarCreditoSMS', 'version' => ['v2'], 'default' => 'v2'],
         ['service' => 'TarifarBoleto', 'version' => ['v1'], 'default' => 'v1'],
         ['service' => 'ContaPag', 'version' => ['v1', 'v2'], 'default' => 'v2'],
@@ -303,6 +303,11 @@ abstract class PagueVeloz
         case 'v3':
             $dto = new \PagueVeloz\Api\v3\Dto\BoletoDTO();
             $service = new \PagueVeloz\Api\v3\Boleto($dto);
+            break;
+
+        case 'v4':
+            $dto = new \PagueVeloz\Api\v4\Dto\BoletoDTO();
+            $service = new \PagueVeloz\Api\v4\Boleto($dto);
             break;
 
         }
