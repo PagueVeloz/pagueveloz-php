@@ -19,8 +19,16 @@ class ContaPag extends ServiceProvider implements InterfaceApi
         return $this;
     }
 
-    public function Get()
+    public function Get($filters = null)
     {
+        if (!is_null($filters) && is_array($filters)) {
+            $filters = implode('&', array_map(function ($v, $k) {
+                return sprintf('%s=%s', $k, $v);
+            }, $filters, array_keys($filters)));
+
+            $this->url = $this->url.(strlen($filters) > 0 ? sprintf('?%s', $filters) : '');
+        }
+
         $this->method = 'GET';
         $this->Authorization();
 
@@ -30,6 +38,16 @@ class ContaPag extends ServiceProvider implements InterfaceApi
     public function GetById($id)
     {
         $this->url = $this->url.'/'.$id;
+
+        $this->method = 'GET';
+        $this->Authorization();
+
+        return $this->init();
+    }
+
+    public function GetComprovanteById($id)
+    {
+        $this->url = $this->url.'/'.$id.'/Comprovante';
 
         $this->method = 'GET';
         $this->Authorization();

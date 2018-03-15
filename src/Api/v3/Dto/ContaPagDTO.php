@@ -6,6 +6,7 @@ use PagueVeloz\Api\v3\Dto\TituloDTO;
 
 final class ContaPagDTO extends \PagueVeloz\AbstractDTO
 {
+    protected $ConsultaId;
     protected $Descricao;
     protected $Vencimento;
     protected $Valor;
@@ -14,6 +15,11 @@ final class ContaPagDTO extends \PagueVeloz\AbstractDTO
     protected $Acrescimos;
     protected $Agendamento;
     protected $Titulo;
+
+    public function __construct()
+    {
+        $this->setTitulo(new TituloDTO());
+    }
 
     /**
      * @return mixed
@@ -171,6 +177,26 @@ final class ContaPagDTO extends \PagueVeloz\AbstractDTO
     public function setTitulo(TituloDTO $Titulo)
     {
         $this->Titulo = $Titulo;
+
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getConsultaId()
+    {
+        return $this->ConsultaId;
+    }
+
+    /**
+     * @param mixed $ConsultaId
+     *
+     * @return self
+     */
+    public function setConsultaId($ConsultaId)
+    {
+        $this->ConsultaId = $ConsultaId;
 
         return $this;
     }
