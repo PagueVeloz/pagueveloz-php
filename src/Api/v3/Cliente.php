@@ -109,6 +109,15 @@ class Cliente extends ServiceProvider implements InterfaceApi
         return $this->init($request);
     }
 
+    public function DeleteDocumentoPendente($id)
+    {
+        $this->method = 'DELETE';
+        $this->Authorization();
+        $this->url = sprintf('%s/DocumentosPendentes/%s/Excluir', $this->url, $id);
+
+        return $this->init();
+    }
+
     public function GetDocumentosEnviados($id)
     {
         $this->method = 'GET';

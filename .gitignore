@@ -5,6 +5,7 @@ phpunit.xml
 composer.phar
 composer.lock
 .php_cs.cache
+.phpintel
 .DS_Store
 Thumbs.db
 coverage.xml
