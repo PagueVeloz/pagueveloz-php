@@ -61,4 +61,17 @@ class Deposito extends ServiceProvider implements InterfaceApi
     {
         throw new NotImplementedException();
     }
+
+    public function withFilters($filters = [])
+    {
+        if ($filters) {
+            $filters = array_map(function ($key, $value) {
+                return sprintf('%s=%s', $key, $value);
+            }, array_keys($filters), $filters);
+
+            $this->url = sprintf('%s/Filtro%s', $this->url, '?'.implode('&', $filters));
+        }
+
+        return $this;
+    }
 }
