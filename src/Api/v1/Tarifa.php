@@ -42,7 +42,7 @@ class Tarifa extends ServiceProvider implements InterfaceApi
 
     public function CalcularByTipo($tipo, $valor)
     {
-        $this->url = sprintf('%s/Calcular?tipo=%s&valor=%01.2f', $this->url, $tipo, $valor);
+        $this->url = sprintf('%s/Calcular?tipo=%s&valor=%s', $this->url, $tipo, number_format($valor, 2, '.', ''));
 
         $this->method = 'GET';
         $this->Authorization();
