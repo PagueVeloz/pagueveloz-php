@@ -213,7 +213,7 @@ class AssinarDTOTest extends TestCase
         $endereco->setCidade($cidade);
         $endereco->setLogradouro($this->faker->address);
         $endereco->setNumero(123);
-        $endereco->setCEP($this->faker->postcode);
+        $endereco->setCEP('89010-904');
         $endereco->setBairro($this->faker->streetName);
         $endereco->setComplemento($this->faker->randomElement(['casa', 'apartamento']));
 
