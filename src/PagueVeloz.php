@@ -308,12 +308,14 @@ abstract class PagueVeloz
             $dto = new \PagueVeloz\Api\v3\Dto\BoletoDTO();
             $service = new \PagueVeloz\Api\v3\Boleto($dto);
             break;
-
         case 'v4':
             $dto = new \PagueVeloz\Api\v4\Dto\BoletoDTO();
             $service = new \PagueVeloz\Api\v4\Boleto($dto);
             break;
-
+        case 'v5':
+            $dto = new \PagueVeloz\Api\v5\Dto\BoletoDTO();
+            $service = new \PagueVeloz\Api\v5\Boleto($dto);
+            break;
         }
 
         return $service;
