@@ -41,6 +41,7 @@ abstract class PagueVeloz
         ['service' => 'RFB', 'version' => ['v1'], 'default' => 'v1'],
         ['service' => 'Bancos', 'version' => ['v1'], 'default' => 'v1'],
         ['service' => 'Socios', 'version' => ['v1'], 'default' => 'v1'],
+        ['service' => 'DespachantePagamentos', 'version' => ['v1'], 'default' => 'v1'],
     ];
 
     protected static $version;
@@ -691,7 +692,19 @@ abstract class PagueVeloz
 
             $service = new \PagueVeloz\Api\v1\Socios();
             break;
+        }
 
+        return $service;
+    }
+
+    public static function DespachantePagamentos($version = null)
+    {
+        $service = self::GetService('DespachantePagamentos');
+
+        switch (self::GetVersion($service, $version)) {
+            case 'v1':
+                $service = new \PagueVeloz\Api\v1\Transito\SP\Despachantes\Pagamentos($dto);
+                break;
         }
 
         return $service;
