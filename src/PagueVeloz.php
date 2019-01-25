@@ -703,6 +703,7 @@ abstract class PagueVeloz
 
         switch (self::GetVersion($service, $version)) {
             case 'v1':
+                $dto = new \PagueVeloz\Api\v1\Transito\SP\Despachantes\Dto\PagamentoDespachanteDTO();
                 $service = new \PagueVeloz\Api\v1\Transito\SP\Despachantes\Pagamentos($dto);
                 break;
         }

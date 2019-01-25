@@ -3,13 +3,15 @@
 namespace PagueVeloz\Api\v1\Transito\SP\Despachantes;
 
 use PagueVeloz\Api\InterfaceApi;
-use PagueVeloz\Api\v1\Dto\UsuarioClienteDTO;
+use PagueVeloz\Api\v1\Transito\SP\Despachantes\Dto\PagamentoDespachanteDTO;
 use PagueVeloz\ServiceProvider;
+use PagueVeloz\Service\Context\HttpRequest;
 
 class Pagamentos extends ServiceProvider implements InterfaceApi
 {
-    public function __construct()
+    public function __construct(PagamentoDespachanteDTO $dto)
     {
+        $this->dto = $dto;
         $this->uri = '/v1/Transito/SP/Despachantes/Pagamentos';
 
         parent::__construct();
@@ -65,7 +67,18 @@ class Pagamentos extends ServiceProvider implements InterfaceApi
 
     public function Post()
     {
-        return $this->NoContent();
+        $request = new HttpRequest();
+        if ($this->isEmpty($this->dto->getRequest())) {
+            throw new \Exception('Erro ao montar request');
+        }
+
+        $this->method = 'POST';
+        $this->Authorization();
+        $this->url = sprintf('%/Pagar', $this->url);
+
+        $request->body = $this->dto->getRequest();
+
+        return $this->init($request);
     }
 
     public function Put($id = null)
