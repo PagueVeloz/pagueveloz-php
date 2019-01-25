@@ -30,6 +30,7 @@ class Parcelamento extends ServiceProvider implements InterfaceApi
         $this->Authorization();
 
         $this->url = sprintf('%s?Bandeira=%s&valorServico=%s', $this->url, $bandeira, number_format($valor, 2, '.', ''));
+
         $this->method = 'GET';
         $this->Authorization();
 
