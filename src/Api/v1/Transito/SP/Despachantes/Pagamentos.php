@@ -32,7 +32,7 @@ class Pagamentos extends ServiceProvider implements InterfaceApi
     {
         $this->method = 'GET';
         $this->Authorization();
-        $this->url = sprintf('%/Servicos', $this->url);
+        $this->url = sprintf('%s/Servicos', $this->url);
 
         return $this->init();
     }
@@ -41,7 +41,7 @@ class Pagamentos extends ServiceProvider implements InterfaceApi
     {
         $this->method = 'GET';
         $this->Authorization();
-        $this->url = sprintf('%/Listas', $this->url);
+        $this->url = sprintf('%s/Listas', $this->url);
 
         return $this->init();
     }
@@ -50,7 +50,7 @@ class Pagamentos extends ServiceProvider implements InterfaceApi
     {
         $this->method = 'GET';
         $this->Authorization();
-        $this->url = sprintf('%/ConsultarPrimeiroRegistro', $this->url);
+        $this->url = sprintf('%s/ConsultarPrimeiroRegistro', $this->url);
 
         return $this->init();
     }
@@ -74,7 +74,7 @@ class Pagamentos extends ServiceProvider implements InterfaceApi
 
         $this->method = 'POST';
         $this->Authorization();
-        $this->url = sprintf('%/Pagar', $this->url);
+        $this->url = sprintf('%s/Pagar', $this->url);
 
         $request->body = $this->dto->getRequest();
 
