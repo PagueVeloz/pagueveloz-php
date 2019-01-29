@@ -77,7 +77,7 @@ class SplitDoBoletoDTO extends \PagueVeloz\AbstractDTO
      */
     public function setValorPercentual($ValorPercentual)
     {
-        $this->ValorPercentual = $_ValorPercentual->format('Y-m-d');
+        $this->ValorPercentual = $ValorPercentual;
 
         return $this;
     }
