@@ -101,7 +101,6 @@ class Boleto extends ServiceProvider implements InterfaceApi
     private function filters()
     {
         $seuNumero = $this->dto->getSeuNumero();
-        $dataPagamento = $this->dto->getDataPagamento();
         $status = $this->dto->getStatus();
 
         $filters = [];
