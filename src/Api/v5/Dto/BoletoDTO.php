@@ -21,6 +21,7 @@ class BoletoDTO extends \PagueVeloz\AbstractDTO
     protected $Desconto;
     protected $Slip;
     protected $Id;
+    protected $Status;
 
     public function __construct()
     {
@@ -364,6 +365,28 @@ class BoletoDTO extends \PagueVeloz\AbstractDTO
     {
         $this->Split[] = $Split;
 
+        return $this;
+    }
+    
+    /**
+     * Gets the value of Status.
+     *
+     * @return mixed
+     */
+    public function getStatus()
+    {
+        return $this->Status;
+    }
+    /**
+     * Sets the value of Status.
+     *
+     * @param mixed $Status the status
+     *
+     * @return self
+     */
+    public function setStatus($Status)
+    {
+        $this->Status = $Status;
         return $this;
     }
 }
