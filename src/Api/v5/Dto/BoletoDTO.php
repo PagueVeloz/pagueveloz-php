@@ -19,7 +19,7 @@ class BoletoDTO extends \PagueVeloz\AbstractDTO
     protected $DataEnvioEmail;
     protected $Pdf;
     protected $Desconto;
-    protected $Slip;
+    protected $Split;
     protected $Id;
     protected $Status;
 
