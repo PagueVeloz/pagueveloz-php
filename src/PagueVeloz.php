@@ -2,7 +2,7 @@
 
 namespace PagueVeloz;
 
-use PagueVeloz\Exception\ApiVersionNotFound;
+use PagueVeloz\Exception\ApiVersionNotFoundException;
 
 abstract class PagueVeloz
 {
@@ -95,7 +95,7 @@ abstract class PagueVeloz
         }
 
         if (empty($version)) {
-            throw new ApiVersionNotFound();
+            throw new ApiVersionNotFoundException();
         }
 
         return $version;
